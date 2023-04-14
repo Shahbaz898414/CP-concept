@@ -1,8 +1,3 @@
-
-
-
-
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -18,7 +13,10 @@ long long getHas(string s){
 }
 
 int main() {
-  cout<<(getHas("ab") == getHas("ab"));
+  // cout<<(getHas("ab") == getHas("ab"));
+  string s,r;cin>>s>>r;
+  int k;cin>>k;
+  
   return 0;
 }
 
