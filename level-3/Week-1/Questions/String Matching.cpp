@@ -1,20 +1,21 @@
 #include <bits/stdc++.h>
+#define int long long
+#define float double
+#define sz 100005
+#define all(a) a.begin(), a.end()
+#define mod 1000000007
 using namespace std;
-
-#define ll long long
-
-int const mod=1e9+7;
-
-
-long long getHas(string s){
-  long long h=0;
-
-  for(auto c:s)  h=( h*31+( c-'a'+1 ) )%mod;
-
-  return h;
-
-}
-
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define debug cout << "here" << endl;
+#define rep(i, n) for (int i = 0; i < n; ++i)
+#define pb push_back
+#define ff first
+#define ss second
+#define pi pair<int, int>
+#define RNG
+using namespace std;
+ 
 int mpow(int a, int b, int m) // (a^b)%mod
 {
 	if (b == 0)
@@ -27,13 +28,13 @@ int mpow(int a, int b, int m) // (a^b)%mod
 	}
 	return x;
 }
-
-
-
-
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+ 
+int32_t main()
+{
+ 
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+ 
     string a,b;
     cin >> a >> b;
     int n = a.length();
@@ -52,21 +53,20 @@ int main() {
  
     for(int i = n-1; i>=0; i--) inverse_p_pow[i] = ((31)*inverse_p_pow[i+1])%mod;
  
-    vector<int> prefixHash(n); 
+    vector<int> prefixHash(n); // stores the prefix hash for string a
     for(int i =0;i<n; i+=1){
         prefixHash[i] = (a[i]-'a'+1)*p_pow[i];
         if(i) prefixHash[i] += prefixHash[i-1];
         prefixHash[i] %= mod;
     }
-
-
-    int hashToCompare = 0; 
+ 
+    int hashToCompare = 0; // hash of string b
     for(int i =0;i <m; i+=1){
         hashToCompare += (b[i]-'a'+1)*p_pow[i];
         hashToCompare %= mod;
     }
     int answer =0;
-    
+    // Now we will compare
     for(int i =0;i<n; i+=1){
         if((i+m-1)>=n) break;
         int substringHash = prefixHash[i+m-1];
@@ -79,9 +79,10 @@ int main() {
         if(substringHash == hashToCompare) answer += 1;
     }
     cout << answer << endl;
-
-
-
-   
     return 0;
+ 
+ 
+ 
+ 
+ 
 }
