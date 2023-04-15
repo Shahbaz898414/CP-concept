@@ -45,28 +45,28 @@ int32_t main()
         return 0;
     }
  
-    vector<int> p_pow(n+1,1); // (p^i)%mod
-    vector<int> inverse_p_pow(n+1,-1); // (1/p^i) % mod
+    vector<int> p_pow(n+1,1); 
+    vector<int> inverse_p_pow(n+1,-1); 
     for(int i = 1;i <=n; i+=1) p_pow[i] = (p_pow[i-1]*31)%mod;
  
     inverse_p_pow[n] = mpow(p_pow[n],mod-2,mod);
  
     for(int i = n-1; i>=0; i--) inverse_p_pow[i] = ((31)*inverse_p_pow[i+1])%mod;
  
-    vector<int> prefixHash(n); // stores the prefix hash for string a
+    vector<int> prefixHash(n); 
     for(int i =0;i<n; i+=1){
         prefixHash[i] = (a[i]-'a'+1)*p_pow[i];
         if(i) prefixHash[i] += prefixHash[i-1];
         prefixHash[i] %= mod;
     }
  
-    int hashToCompare = 0; // hash of string b
+    int hashToCompare = 0; 
     for(int i =0;i <m; i+=1){
         hashToCompare += (b[i]-'a'+1)*p_pow[i];
         hashToCompare %= mod;
     }
     int answer =0;
-    // Now we will compare
+   
     for(int i =0;i<n; i+=1){
         if((i+m-1)>=n) break;
         int substringHash = prefixHash[i+m-1];
@@ -74,7 +74,7 @@ int32_t main()
             substringHash -= prefixHash[i-1];
         }
         substringHash = (substringHash%mod + mod)%mod;
-        int denominator = inverse_p_pow[i];  // we need to divide the hash by p^i
+        int denominator = inverse_p_pow[i];  
         substringHash = (substringHash*denominator)%mod;
         if(substringHash == hashToCompare) answer += 1;
     }
