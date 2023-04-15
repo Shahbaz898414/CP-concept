@@ -16,8 +16,7 @@ void sort(vector<ll>& a) {
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-string s;
-    cin >> s;
+    string s; cin >> s;
 
     vector<int> a(26);
     for(char c : s) a[c - 'A']++;
