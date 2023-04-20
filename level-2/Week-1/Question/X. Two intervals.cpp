@@ -2,32 +2,29 @@
 #define ll long long
 using namespace std;
 
+
+
 int main(){
   
-  int a,b,c,d;cin>>a>>b>>c>>d;
-   int m2=max(a,b);
-   int m1=min(a,b);
-   int m3=min(c,d);
-   int m4=max(c,d);
-
-   if(m3>m2){
+  int n1,n2,n3,n4;
+  cin>>n1>>n2>>n3>>n4;
+  int start,end;
+  if((n3<n1 && n4<n1)||(n3>n2 && n4>n2)){
     cout<<-1<<endl;
-   }else {
-    if(m1==m3) 
-      cout<<m2<<" "<<m3<<endl;
-    else {
-      if(m2>m4){
-        cout<<m3<< " "<<m4<<endl;
-      }else {
-        cout<<m3<<" "<<m2<<endl;
-      }
-    }  
-
-   }
-
-   
-
-
+  }else{
+    if(n1>n3){
+      start=n1;
+ 
+    }else{
+      start=n3;
+    }
+    if(n2>n4){
+      end=n4;
+    }else{
+      end=n2;
+    }
+    cout<<start<<" "<<end<<endl;
+  }
 
 
   return 0;
