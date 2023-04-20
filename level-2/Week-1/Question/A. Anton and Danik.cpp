@@ -5,12 +5,11 @@ using namespace std;
 int main(){
   ll n;
   cin>>n;
+  string s;cin>>s;
   
 
-  for(int i=1;i<=n;i++){
-    if(n%i==0){
-      cout<<i<<endl;
-    }
-  }
+  
+
+
   return 0;
 }
