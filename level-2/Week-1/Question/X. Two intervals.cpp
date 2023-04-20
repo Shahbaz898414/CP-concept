@@ -24,6 +24,8 @@ int main(){
       end=n2;
     }
     cout<<start<<" "<<end<<endl;
+
+    
   }
 
 
