@@ -21,9 +21,10 @@ int main() {
     }else{
       end=n2;
     }
+
+
     cout<<start<<" "<<end;
     
   }
-
   return 0;
 }
