@@ -13,8 +13,12 @@ int main() {
 
     int len=s.size();
 
-    cout<<len-2<<endl;
+    if(len<=10){
+      cout<<s<<endl;
+    }else {
+       cout<<s[0]<<len-2<<s[len-1]<<endl;
+    }
+   
   }
-
   return 0;
 }
