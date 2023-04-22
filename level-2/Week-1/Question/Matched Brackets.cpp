@@ -11,8 +11,7 @@ int main() {
     vector<int> stck;
     vector<pair<int, int>> closed;
 
-    int nesting = 0;
-    int nesting_pos = -1;
+    int nesting = 0;int nesting_pos = -1;
 
     int longest = 0;
     int longest_pos = -1;
