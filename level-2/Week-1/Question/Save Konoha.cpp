@@ -24,6 +24,8 @@ int main() {
       pq.pop();
     }
 
+    
+
     cout<<endl;
     
     // while(pq.size() && Z > 0){
