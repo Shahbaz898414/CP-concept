@@ -15,7 +15,7 @@ int main() {
     int widthMax = 0;
     for(int i=0; i<n; i++) {
         cin >> v;
-        if(v==1) { // opening bracket
+        if(v==1) { 
             if(depth==0)
                 posOpening = pos;
             depth++;
@@ -24,7 +24,7 @@ int main() {
                 posDepth = pos;
             }
         }
-        else { // closing bracket
+        else { 
             depth--;
             if(depth==0) {
                 int width = pos-posOpening+1;
