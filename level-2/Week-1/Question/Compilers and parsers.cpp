@@ -20,7 +20,6 @@ int main() {
         cur--;
       }
 
-
       if(cur<0){
         break;
       }
@@ -28,7 +27,6 @@ int main() {
       if(cur==0){
         pre=i+1;
       }
-
 
     }
 
