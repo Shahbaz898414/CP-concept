@@ -26,6 +26,7 @@ int main() {
                 nesting = stck.size();
                 nesting_pos = i;
             }
+
         } else {
             int el = stck.back();
             stck.pop_back();
