@@ -29,7 +29,11 @@ int main() {
       if(cur==0){
         pre=i+1;
       }
+
+
     }
+
+    
 
     cout<<pre<<endl;
   }
