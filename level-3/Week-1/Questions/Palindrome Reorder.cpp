@@ -35,11 +35,13 @@ int main() {
             for(int j = 0; j < a[i]/2; j++) result.push_back(i + 'A');
         }
     }
+
     for (int i = 0; i < 26; i++){
         if(a[i]%2){
             for(int j = 0; j < a[i]; j++) result.push_back(i + 'A');
         }
     }
+    
     for (int i = 25; i >= 0; i--){
         if(!(a[i]%2)){
             for(int j = 0; j < a[i]/2; j++) result.push_back(i + 'A');
