@@ -78,7 +78,10 @@ int32_t main()
         substringHash = (substringHash*denominator)%mod;
         if(substringHash == hashToCompare) answer += 1;
     }
+
+
     cout << answer << endl;
     return 0;
  
 }
+
