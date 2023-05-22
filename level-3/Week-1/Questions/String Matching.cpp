@@ -1,82 +1,69 @@
-/*
+  
 #include <bits/stdc++.h>
 #define int long long
 
 using namespace std;
- 
-const int mod =1e9+7;
 
-long long get_hash(string s){
-    int n=s.size();
+pair<const int, const int> mod = { 1e9 + 7,1e9 + 9 };
 
-    long long h=0;
+pair<int, int> get_hash(string s) {
+    int n = s.size();
 
-    for (int i = 0; i <n; i++){
-        h=(h*31+(s[i]-'a'+1))%mod;
+    pair<int, int> h = { 0,0 };
 
-        return h;
+    for (int i = 0; i < n; i++) {
+        h.first = (h.first * 31 + (s[i] - 'a' + 1)) % mod.first;
+        h.second = (h.second * 53 + (s[i] - 'a' + 1)) % mod.second;
+
     }
+    return h;
 }
 
 
-vector<int>  rabin_karp(string s,string t){
-    int n=s.size(),m=t.size();
-    long long p=1;
+vector<int>  rabin_karp(string s, string t) {
+    int n = s.size(), m = t.size();
+    pair<int, int> p = { 1,1 };
 
-    for (int i = 0; i < m-1; i++) {
-        p=(p*31)%mod;
+    for (int i = 0; i < m - 1; i++) {
+        p.first = (p.first * 31) % mod.first;
+        p.second = (p.second * 53) % mod.second;
     }
-
     vector<int> pos;
-    long long ht=get_hash(t);
+    pair<int, int> ht = get_hash(t);
 
-    long long hs=get_hash(s.substr(0,m));
+    pair<int, int> hs = get_hash(s.substr(0, m));
 
-    if(hs==ht) {
+    if (hs == ht) {
         pos.push_back(0);
     }
-    
 
-    for (int l = 1,r=m; r <n; l++,r++) {
-        int del=((s[l-1]-'a'+1)*p)%mod;
-        int add =s[r]-'a'+1;
-        hs=((hs-del+mod)*31+add)%mod;
-        if(hs==ht) pos.push_back(l);
+
+    for (int l = 1, r = m; r < n; l++, r++) {
+        int del = ((s[l - 1] - 'a' + 1) * p.first) % mod.first;
+        int add = s[r] - 'a' + 1;
+        hs.first = ((hs.first - del + mod.first) * 31 + add) % mod.first;
+        del = ((s[l - 1] - 'a' + 1) * p.second) % mod.second;
+        add = s[r] - 'a' + 1;
+        hs.second = ((hs.second - del + mod.second) * 53 + add) % mod.second;
+        if (hs == ht) pos.push_back(l);
     }
 
     return pos;
-    
+
 }
- 
+
 int32_t main() {
- 
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-   string s,t;cin>>s>>t;
 
-   vector<int> v=rabin_karp(s,t);
-//    cout<<size(rabin_karp(s,t))<<endl;
-    cout<<v.size()<<endl;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    string s, t;cin >> s >> t;
+    vector<int> v = rabin_karp(s, t);
+    //    cout<<size(rabin_karp(s,t))<<endl;
+    cout << v.size() << endl;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
+/*
 #include <bits/stdc++.h>
 #include <vector>
 
@@ -173,4 +160,4 @@ int main()
     return 0;
 }
 
-
+*/
