@@ -29,8 +29,7 @@ ll power(ll base,ll x){
     return ans;
 }
 
-bool check(string &s, ll len)
-{
+bool check(string &s, ll len) {
     string p = s.substr(e, len);
     ll plen = len;
     ll slen = s.length();
