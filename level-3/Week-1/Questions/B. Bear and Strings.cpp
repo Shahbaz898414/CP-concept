@@ -41,19 +41,17 @@ int32_t main()
   cin.tie(NULL);
   string s;
   cin >> s;
-  ll k=0,d=0;
+  ll k = 0, d = 0;
   ll len = s.size();
 
   for (ll i = 0; i < len; i++)
   {
     string r = s.substr(i, 4);
-   if (r == "bear")
+    if (r == "bear")
       k += (len - i - 3) * (i + 1) - d * (len - i - 3), d = i + 1;
-    
   }
 
-
-  cout << k<<endl;
+  cout << k << endl;
 
   return 0;
 }
