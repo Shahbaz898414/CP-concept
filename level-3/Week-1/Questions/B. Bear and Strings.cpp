@@ -53,7 +53,6 @@ int32_t main()
   }
 
 
-  
   cout << k<<endl;
 
   return 0;
