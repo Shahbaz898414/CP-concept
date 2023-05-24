@@ -6,24 +6,26 @@ using namespace std;
 
 int32_t main() {
 
-    ll n, m;
-    cin >> n >> m;
-    ll arr[n];
+    string s;cin>>s;
 
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> arr[i];
+    ll len=s.size();
+
+    vector<string> v;
+      map<string,int> mp;
+    for (ll i = 0; i < len-10; i++) {
+      string h=s.substr(i,10);
+      mp[h]++;
     }
 
-    ll t=0;
-
-    for (ll i = 0; i < n-1; i++)
-    {
-        
-        t=max(t,arr[i]-arr[i+1]-m);
+    for(auto it:mp){
+      if(it.seocnd>1){
+        v.push_back(it.first);
+      }
     }
 
-    cout<<t<<endl;
+
+    
+    
     
 }
 
