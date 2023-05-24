@@ -54,7 +54,7 @@ int32_t main()
 
 
   
-  cout << k;
+  cout << k<<endl;
 
   return 0;
 }
