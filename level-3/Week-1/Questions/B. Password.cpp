@@ -4,7 +4,7 @@ const int mod = 1e9 + 7;
 using namespace std;
 
 
-ll backbox(string s){
+ll backbox(string &s){
     ll ans=0;
     ll pr=1;
     for (ll i = 0; i < s.size(); i++) {
@@ -30,7 +30,7 @@ ll power(ll base,ll x){
 }
 
 bool check(string &s, ll len) {
-    string p = s.substr(e, len);
+    string p = s.substr(0, len);
     ll plen = len;
     ll slen = s.length();
     ll phash = blackbox(p);
