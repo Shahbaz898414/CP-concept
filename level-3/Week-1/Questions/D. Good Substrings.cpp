@@ -13,7 +13,7 @@ long long getHas(string s){
 }
 
 int main() {
-  // cout<<(getHas("ab") == getHas("ab"));
+  
   string s,r;cin>>s>>r;
   int k;cin>>k;
   

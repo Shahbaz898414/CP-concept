@@ -39,11 +39,9 @@ int32_t main()
 
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
-  string s;
-  cin >> s;
+  string s;cin >> s;
   ll k = 0, d = 0;
   ll len = s.size();
-
   for (ll i = 0; i < len; i++) {
     string r = s.substr(i, 4);
     if (r == "bear")
