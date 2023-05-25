@@ -9,30 +9,13 @@ using namespace std;
 class Solution {
 public:
     vector<int> subsetSums(vector<int> arr, int N) {
-        set<ll> se;
+        vector<int > ans;
 
-        
+        solve(arr, ans,0,N,0);
 
-        for (int i = 0; i < N; i++)
-        {
-          /* code */
-          se.insert(arr[i]);
-          for (int j = 0; j < N; j++)
-          {
-            /* code */
-            se.insert(arr[i]+arr[j]);
-          }
-          
-        }
+        sort(ans.begin(),ans.end());
 
-        vector<int> v;
-
-        for(auto it:se){
-          v.push_back(it);
-        }
-
-        return v;
-        
+        return ans;
         
     }
 };
