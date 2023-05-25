@@ -8,6 +8,18 @@ using namespace std;
 
 class Solution {
 public:
+
+    void solve(vector<int> &arr,vector<int> &res,int i,int N,int sum){
+      if(i==N){
+        res.push_back(sum);
+        return ;
+      }
+
+      solve(arr,res,i+1,N,sum+arr[i]);
+      solve(arr,res,i+1,N,sum);
+    }
+
+
     vector<int> subsetSums(vector<int> arr, int N) {
         vector<int > ans;
 
