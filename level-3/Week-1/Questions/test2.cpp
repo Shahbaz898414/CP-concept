@@ -1,41 +1,42 @@
-#include <bits/stdc++.h>
-#define ll long long
+#include <iostream>
+
 using namespace std;
 
 
 
-int32_t main() {
+int main() {
+   int t;cin>>t;
 
-    ll n, m;
-    cin >> n >> m;
-    ll arr[n];
+   while(t--){
+    //     int turns;
+    //     cin >> turns;
+    //     string str;
+    //     cin >> str;
 
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> arr[i];
+    //     int rec = 0;
+    // int send = 0;
+    // char ans = 'A';  
+
+    // for (int i = 0; i < turns; i++) {
+    //     if (str[i] == ans) { 
+    //         if (ans == 'A') 
+    //             rec += 1;
+    //          else 
+    //             send += 1;
+            
+    //     } else {  
+    //         if (ans == 'A') 
+    //             ans = 'B';
+    //          else 
+    //             ans = 'A';
+            
+    //     }
+    // }
+
+    // cout<<rec<< " "<<send<<endl;
+       
     }
 
-    ll t=0;
-
-    for (ll i = 0; i < n-1; i++)
-    {
-        
-        t=max(t,arr[i]-arr[i+1]-m);
-    }
-
-    cout<<t<<endl;
-    
+    return 0;
 }
 
-/*
-string s;
-    cin>>s;
-    int n=s.size(),t=0;
-    for(int i=0; i<n; i++)
-    {
-        int x=s.find("bear",i);
-        if(x!=-1)
-            t+=n-x-4+1;
-    }
-    cout<<t;
-*/
