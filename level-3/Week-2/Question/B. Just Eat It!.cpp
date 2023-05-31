@@ -2,17 +2,46 @@
 #define ll long long
 using namespace std;
 
-int main() {
-  ll t;cin>>t;
+int main()
+{
+  ll t;
+  cin >> t;
 
-  while(t--) {
-    int n;cin>>n;
+  while (t--)
+  {
+    ll n;
+    cin >> n;
 
-    int arr[n];
+    vector<int> a;
 
-    for (int i = 0; i < n; i++) {
-      cin>>arr[i];
+    ll l = 0, p = 0, r = 0, ans = 0;
+
+    for (auto &i : a)
+      cin >> i;
+    ll sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+      sum += a[i];
+      if (sum <= 0)
+      {
+        l = -1;
+        break;
+      }
     }
-    
+    sum = 0;
+    for (int i = n - 1; i >= 0; i--)
+    {
+      sum += a[i];
+      if (sum <= 0)
+      {
+        r = -1;
+        break;
+      }
+    }
+
+    if (l == -1 || r == -1)
+      cout << "NO" << endl;
+    else
+      cout << "YES" << endl;
   }
 }
