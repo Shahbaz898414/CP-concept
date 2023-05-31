@@ -12,12 +12,13 @@ int main()
     ll n;
     cin >> n;
 
-    vector<int> a;
+    vector<int> a(n);
 
     ll l = 0, p = 0, r = 0, ans = 0;
 
     for (auto &i : a)
       cin >> i;
+    
     ll sum = 0;
     for (int i = 0; i < n; i++)
     {
@@ -28,6 +29,12 @@ int main()
         break;
       }
     }
+
+     if (l == -1 ){
+      cout << "NO" << endl;
+      continue;
+     }
+      
     sum = 0;
     for (int i = n - 1; i >= 0; i--)
     {
@@ -39,7 +46,7 @@ int main()
       }
     }
 
-    if (l == -1 || r == -1)
+    if (r == -1)
       cout << "NO" << endl;
     else
       cout << "YES" << endl;
