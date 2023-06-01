@@ -1,4 +1,4 @@
-//{ Driver Code Starts
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -7,7 +7,7 @@ using namespace std;
 class Solution {
   public:
     int numProvinces(vector<vector<int>> adj, int V) {
-        // code here
+       
     }
 };
 
@@ -39,4 +39,3 @@ int main() {
     }
     return 0;
 }
-// } Driver Code Ends
