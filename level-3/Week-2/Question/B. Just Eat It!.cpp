@@ -30,10 +30,7 @@ int main()
       }
     }
 
-     if (l == -1 ){
-      cout << "NO" << endl;
-      continue;
-     }
+   
       
     sum = 0;
     for (int i = n - 1; i >= 0; i--)
@@ -46,9 +43,12 @@ int main()
       }
     }
 
-    if (r == -1)
+
+
+    if (r == -1 || l == -1 )
       cout << "NO" << endl;
     else
       cout << "YES" << endl;
+    
   }
 }
