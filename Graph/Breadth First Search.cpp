@@ -45,6 +45,9 @@ void printAns(vector <int> &ans) {
 }
 
 int main()  {
+
+
+    
     vector <int> adj[6];
     
     addEdge(adj, 0, 1);
