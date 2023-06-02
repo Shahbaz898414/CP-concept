@@ -2,17 +2,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// } Driver Code Ends
+
 class Solution 
 {
     public:
-    //Function to find minimum time required to rot all oranges. 
+   
     int orangesRotting(vector<vector<int>>& grid) {
         // Code here
     }
 };
 
-//{ Driver Code Starts.
+
 int main(){
 	int tc;
 	cin >> tc;
@@ -31,4 +31,3 @@ int main(){
 	}
 	return 0;
 }
-// } Driver Code Ends
