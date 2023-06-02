@@ -26,8 +26,6 @@ int main()
                 
         }
         
-        // ghbg
-        
         if(n%2==1 || alt>=0) {
             cout<<"YES"<<endl;
         }else {
