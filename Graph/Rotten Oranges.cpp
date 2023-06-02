@@ -40,6 +40,12 @@ public:
 
 			q.pop();
 
+			for (int i = 0; i <4; i++) {
+				int nrow=r+drow[i];
+				int ncol=c+dcol[i];
+			}
+			
+
 
 		}
 
