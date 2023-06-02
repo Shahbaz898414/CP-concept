@@ -26,7 +26,11 @@ public:
 			}
 		}
 
+
 		int tm=0;
+
+		int drow[]={-1,0,+1,0};
+		int dcol[]={0,1,0,-1};
 
 		while(!q.empty()){
 			int r=q.front().first.first;
@@ -38,8 +42,6 @@ public:
 
 
 		}
-
-
 
 	}
 };
