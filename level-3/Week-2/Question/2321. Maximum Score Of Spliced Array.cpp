@@ -3,6 +3,12 @@
 using namespace std;
 
 
+class Solution {
+public:
+    int maximumsSplicedArray(vector<int>& nums1, vector<int>& nums2) {
+        
+    }
+};
 
 int main() {
   ll t=1; 
@@ -51,29 +57,27 @@ int main() {
 
 /*
 
-string str;
-	cin>>str;
-	char b[str.size()+1];
-	int len =str.size();
-	b[len]='z';
-	for(int i=len-1;i>=0;i--)
-	{
-		b[i]=min(str[i],b[i+1]);
-	}
-	stack<char> s;
-	int curr=0;
-	while(!s.empty()||curr<len)
-	{
-		if(!s.empty()&&s.top()<=b[curr])
-		{
-			cout<<s.top();
-			s.pop();
-		}
-		else
-		{
-			s.push(str[curr++]);
-		}
+int score(vector<int>& a, vector<int>& b) {
+    int runningSum = 0, maxi = 0;
+    int sum = accumulate(a.begin(), a.end(), 0);
+
+    for (int i = 0; i < a.size(); i++) {
+        runningSum += b[i] - a[i];
+        if (runningSum < 0)
+            runningSum = 0;
+        maxi = max(maxi, runningSum);
+    }
+
+    return sum + maxi;
 }
-	return 0;
+
+int maximumsSplicedArray(vector<int>& nums1, vector<int>& nums2) {
+    return max(score(nums1, nums2), score(nums2, nums1));
+}
+
+
+10 kg aata
+
 
 */
+
