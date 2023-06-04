@@ -8,7 +8,7 @@ class Solution
 public:
   vector<int> nextGreaterElements(vector<int> &nums)
   {
-    
+
   }
 };
 
@@ -73,23 +73,23 @@ class Solution {
 public:
 vector<int>ans;
     vector<int> nextGreaterElements(vector<int>& nums) {
-    for(int i=0;i<nums.size();i++){
-        int num=nums[i];
-        int count=0;
-        int j=i;
-        while(count<nums.size()){
-            cout<<nums[j]<<"  "<<num<<endl;
-            if(nums[j]>num) {
-           ans.push_back(nums[j]);
-           break ;
-            }
-            if(j == nums.size()-1) j=-1;
-              j++;
-            count++;
-        }
-        if(count == nums.size()) ans.push_back(-1);
-    }
-    return ans;
+      for(int i=0;i<nums.size();i++){
+          int num=nums[i];
+          int count=0;
+          int j=i;
+          while(count<nums.size()){
+              cout<<nums[j]<<"  "<<num<<endl;
+              if(nums[j]>num) {
+            ans.push_back(nums[j]);
+            break ;
+              }
+              if(j == nums.size()-1) j=-1;
+                j++;
+              count++;
+          }
+          if(count == nums.size()) ans.push_back(-1);
+      }
+      return ans;
     }
 };
 
