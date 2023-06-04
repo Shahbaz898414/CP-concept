@@ -6,28 +6,24 @@ using namespace std;
 class Solution
 {
 
-  void dfs(int row, int col, vector<vector<int>> &ans, vector<vector<int>> &image, int newColor, int delRow[], int delCol)
-  {
-
+  void dfs(int row, int col, vector<vector<int>> &ans, vector<vector<int>> &image, int newColor, int delRow[], int delCol,int iniColor) {
     ans[row][col] = newColor;
     int n = image.size();
     int m = image[0].size();
-    for (int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++) {
 
       int nrow = row + delRow[i];
       int ncol = col + delCol[i];
       if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m &&
           image[nrow][ncol] == iniColor && ans[nrow][ncol] != newColor)
-      {
         dfs(nrow, ncol, ans, image, newColor, delRow, delCol, iniColor);
-      }
+      
     }
   }
 
 public:
-  vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
-  {
+  vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor) {
+
     int iniColor = image[sr][sc];
 
     vector<vector<int>> ans = image;
@@ -37,10 +33,13 @@ public:
     int delCol[] = {0, +1, 0, -1};
 
     dfs(sr, sc, ans, image, newColor, delRow, delCol);
+
+    return ans;
   }
 };
 
-//{ Driver Code Starts.
+
+
 int main()
 {
   int tc;
@@ -68,4 +67,4 @@ int main()
   }
   return 0;
 }
-// } Driver Code Ends
+
