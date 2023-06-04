@@ -26,7 +26,9 @@ int main() {
   // }
 
   // cout<<endl;
-  
+
+  ll sum=0;
+
   
   
 
