@@ -11,26 +11,26 @@ int main()
 
   for (ll i = 1; i <= n; i++)
   {
-
     for (ll j = 1; j <= m; j++)
     {
-
       cin >> arr[i][j];
     }
   }
 
-  ll ans[n + 1][m + 1];
+  vector<vector<int>> ans(n + 1, vector<int>(m + 1, 0));
 
-  for (int i = 1; i <= n; i++)
+  ll q;
+  cin >> q;
+  while (q-- > 0)
   {
-    /*  */
-    for (int j = 1; j <= m; j++)
-    {
-      /*  */
-    }
-  }
-
-  while (m-- > 0)
-  {
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+    b[x1][y1]++;
+    if (x2 + 1 <= n && y2 + 1 <= m)
+      b[x2 + 1][y2 + 1]++;
+    if (y2 + 1 <= m)
+      b[x1][y2 + 1]--;
+    if (x2 + 1 <= n)
+      b[x2 + 1][y1]--;
   }
 }
