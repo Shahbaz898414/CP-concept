@@ -7,17 +7,7 @@ int main()
 {
   int n, q;
   cin >> n >> q;
-  ll arr[n];
-
-  for (ll i = 0; i < n; i++)
-  {
-    /* code */
-    cin >> arr[i];
-  }
-
-  while (q--)
-  {
-  }
+  long long a[200010]={},t[200010]={},f=0;
 }
 
 /*
