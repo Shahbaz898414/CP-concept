@@ -21,10 +21,12 @@ int main()
 
   ll q;
   cin >> q;
-  while (q-- > 0)
+  while (q--)
   {
     int x1, y1, x2, y2;
     cin >> x1 >> y1 >> x2 >> y2;
+
+    cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
     ans[x1][y1]++;
     if (x2 + 1 <= n && y2 + 1 <= m)
       ans[x2 + 1][y2 + 1]++;
@@ -34,17 +36,32 @@ int main()
       ans[x2 + 1][y1]--;
   }
 
-  for (int i = 1; i <= n; i++)
-  {
+  // for (int i = 1; i <= n; i++)
+  // {
 
+  //   for (int j = 1; j <= m; j++)
+  //   {
+
+  //     cout << ans[i][j] << " ";
+  //   }
+
+  //   cout << endl;
+  // }
+
+  // cout << endl;
+
+  for (int i = 0; i <= m; i++)
+  {
+    for (int j = 1; j <= n; j++)
+    {
+      b[j][i] += b[j - 1][i];
+    }
+  }
+  for (int i = 0; i <= n; i++)
+  {
     for (int j = 1; j <= m; j++)
     {
-
-      cout << ans[i][j] << " ";
+      b[i][j] += b[i][j - 1];
     }
-
-    cout << endl;
   }
-
-  cout << endl;
 }
