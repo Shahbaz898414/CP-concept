@@ -4,22 +4,39 @@ using namespace std;
 
 int main()
 {
+
   int n, q;
   cin >> n >> q;
-  long long a[200010] = {}, cnt[200010] = {}, f = 0;
+  ll a[200010] = {}, cnt[200010] = {}, f = 0, d = 0;
 
-  for (int i = 0; i < n; i++)
+  for (int i = 1; i <= n; i++)
     cin >> a[i];
 
   for (int i = 1; i <= q; i++)
   {
+    ll l, r;
     cin >> l >> r;
     cnt[l]++;
     cnt[r + 1]--;
   }
+
+  for (int i = 1; i <= n; i++)
+    cnt[i] = cnt[i - 1] + cnt[i];
+
+  sort(cnt + 1, cnt + 1 + n);
+  sort(a + 1, a + n + 1);
+
+  for (int i = 1; i <= n; i++)
+  {
+    d += (cnt[i] * a[i]);
+  }
+
+  cout << d << endl;
 }
 
 /*
+
+
 #include<bits/stdc++.h>
 using namespace std;
 int n,q,l,r,i;
@@ -37,6 +54,8 @@ for(i=1;i<n;i++)t[i]+=t[i-1];
 sort(t,t+n);
 for(i=0;i<n;i++)f+=a[i]*t[i];
 cout<<f<<endl;
+
+
 }
 
 /////////////////////////////////////////////////////
@@ -49,11 +68,11 @@ int main(){
   cin>>n>>q;
   for (int i=1;i<=n;i++)cin>>a[i];
   for (int i=1;i<=q;i++){
-  cin>>l>>r;
-  cnt[l]++;
-  cnt[r+1]--;
+    cin>>l>>r;
+    cnt[l]++;
+    cnt[r+1]--;
   }
-  for(int i=1;i<=n;i++)cnt[i]=cnt[i-1]+cnt[i];
+  for(int i=1;i<=n;i++) cnt[i]=cnt[i-1]+cnt[i];
   sort(cnt+1,cnt+n+1);
   sort(a+1,a+n+1);
   for(int i=1;i<=n;i++)d+=(cnt[i]*a[i]);
