@@ -20,11 +20,11 @@ int main()
     cnt[r + 1]--;
   }
 
-  for(int i=0;i<=n;i++) {
-    cout<<cnt[i]<<" ";
-  }
+  // for(int i=0;i<=n;i++) {
+  //   cout<<cnt[i]<<" ";
+  // }
 
-  cout<<endl;
+  // cout<<endl;
 
   for (int i = 1; i <= n; i++)
     cnt[i] = cnt[i - 1] + cnt[i];
