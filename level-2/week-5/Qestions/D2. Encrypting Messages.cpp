@@ -1,16 +1,23 @@
+
+
 #include<bits/stdc++.h>
 #define ll long long
 using namespace std;
 
-const mod=1000;
+
+
+const int mod=1000;
+
+
+
 int main( ) {
   int n, m,c;cin >> n >> m>>c;
-  ll arr[n],b[m];
+  ll a[n],b[m];
 
   vector<ll> t(n,0);
 
   for (int i = 0; i < n; i++) {
-    cin>>arr[i];
+    cin>>a[i];
   }
 
   for (ll i = 0; i < m; i++) {
@@ -26,19 +33,16 @@ int main( ) {
 
   ll sum=0;
 
-  for (int i = 0; i < n; i++)
-  {
-    /* code */
+  for (int i = 0; i < n; i++) {
     sum+=b[i];
     t[i]=sum;
     ll ans=((sum%mod)+(a[i]%mod))%mod;
-
     cout<<ans<<" ";
 
   }
 
   cout<<endl;
-  
-  
-}
 
+
+
+}
