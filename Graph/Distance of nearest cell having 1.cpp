@@ -18,17 +18,17 @@ public:
       for (int j = 0; j < m; j++)
       {
         /* code */
-        if(grid[i][j]==0){
-          q.push({{i,j},0});
-          vis[i][j]=1;
-        }else{
-          v[i][j]=0;
+        if (grid[i][j] == 0)
+        {
+          q.push({{i, j}, 0});
+          vis[i][j] = 1;
+        }
+        else
+        {
+          v[i][j] = 0;
         }
       }
-      
     }
-    
-
   }
 };
 
