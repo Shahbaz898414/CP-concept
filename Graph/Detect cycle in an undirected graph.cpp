@@ -26,21 +26,34 @@ public:
         {
           vis[adjacentNode] = 1;
         }
-        else if (parent != adjcentNode)
+        else if (parent != adjacentNode)
         {
           return true;
         }
       }
     }
+
+    return false;
   }
 
   bool isCycle(int V, vector<int> adj[])
   {
-    // Code here
+    int vis[V] = {0};
+
+    for (int i = 0; i < V; i++)
+    {
+      /* code */
+      if (!vis[i])
+      {
+        if (detect(i, adj, vis))
+          return true;
+      }
+    }
+
+    return false;
   }
 };
 
-//{ Driver Code Starts.
 int main()
 {
   int tc;
