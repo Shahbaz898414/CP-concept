@@ -27,16 +27,17 @@ public:
   {
     int vis[V] = {0};
 
-    for (int i = 0; i < V; i++)
-    {
-      /* code */
+    for (int i = 0; i < V; i++){
       if (!vis[i])
-      {
         if (dfs(i,-1, adj, vis)==true)
           return true;
-      }
     }
-  };
+
+    return false;
+  }
+
+
+};
 
   int main()
   {
