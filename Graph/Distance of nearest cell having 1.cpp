@@ -33,7 +33,7 @@ public:
     int delrow[] = {-1, 0, +1, 0};
     int delcol[] = {0, +1, 0, -1};
 
-    while (!empty())
+    while (!q.empty())
     {
       int row = q.front().first.first;
       int col = q.front().first.second;
