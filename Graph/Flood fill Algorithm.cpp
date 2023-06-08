@@ -1,11 +1,9 @@
 //{ Driver Code Starts
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 // } Driver Code Ends
-class Solution
-{
-
+class Solution {
   private:
     void dfs(int row, int col, vector<vector<int>>&ans,
      vector<vector<int>>& image, int newColor, int delRow[], int delCol[],
@@ -42,14 +40,11 @@ public:
 
 
 
-int main()
-{
+int main() {
   int tc;
   cin >> tc;
-  while (tc--)
-  {
-    int n, m;
-    cin >> n >> m;
+  while (tc--) {
+    int n, m; cin >> n >> m;
     vector<vector<int>> image(n, vector<int>(m, 0));
     for (int i = 0; i < n; i++)
     {
