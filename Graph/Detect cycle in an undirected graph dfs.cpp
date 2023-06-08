@@ -32,7 +32,7 @@ public:
       /* code */
       if (!vis[i])
       {
-        if (detect(i, adj, vis))
+        if (dfs(i,-1, adj, vis)==true)
           return true;
       }
     }
