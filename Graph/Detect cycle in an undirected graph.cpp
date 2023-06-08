@@ -2,11 +2,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// } Driver Code Ends
+
 class Solution
 {
 public:
-  // Function to detect cycle in an undirected graph.
+  
 
   bool detect(int src, vector<int> adj[], int vis[])
   {
@@ -43,7 +43,7 @@ public:
 
     for (int i = 0; i < V; i++)
     {
-      /* code */
+  
       if (!vis[i])
       {
         if (detect(i, adj, vis))
