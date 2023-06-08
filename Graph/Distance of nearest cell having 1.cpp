@@ -12,6 +12,23 @@ public:
     vector<vector<int>> vis(n, vector<int>(m, 0));
     vector<vector<int>> dist(n, vector<int>(m, 0));
     queue<pair<pair<int, int>, int>> q;
+    for (int i = 0; i < n; i++)
+    {
+      /* code */
+      for (int j = 0; j < m; j++)
+      {
+        /* code */
+        if(grid[i][j]==0){
+          q.push({{i,j},0});
+          vis[i][j]=1;
+        }else{
+          v[i][j]=0;
+        }
+      }
+      
+    }
+    
+
   }
 };
 
