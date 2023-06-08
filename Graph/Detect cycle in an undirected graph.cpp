@@ -25,6 +25,7 @@ public:
         if (!vis[adjacentNode])
         {
           vis[adjacentNode] = 1;
+          q.push({adjacentNode,node});
         }
         else if (parent != adjacentNode)
         {
