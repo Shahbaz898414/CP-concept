@@ -20,10 +20,15 @@ int solve(int i = 0, int s = 0)
     return abs(s - other);
   }
 
-  return min(solve(i + 1, +a[i] + s), solve(i + 1, s));
+  return min(
+    solve(i + 1, a[i] + s),
+    solve(i + 1, s)
+    );
+
+    
 }
 
-int main()
+signed main()
 {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
@@ -31,11 +36,8 @@ int main()
 
   cin >> n;
 
-  for (int i = 0; i < n; i++)
-  {
-
+  for (int i = 0; i < n; i++) {
     cin >> a[i];
-
     sum += a[i];
   }
 
