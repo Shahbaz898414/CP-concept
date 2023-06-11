@@ -11,12 +11,15 @@ int a[23];
 
 int sum = 0;
 
-int solve(int i = 0, int s = 0)
-{
-  if (i == n)
-  {
-    return;
+int solve(int i = 0, int s = 0) {
+  if (i == n) {
+    int other=sum-s;
+
+    return  abs(s-other);
   }
+
+
+  return min(solve(i+1,+a[i]+s),solve(i+1,s));
 }
 
 int main()
