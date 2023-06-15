@@ -163,8 +163,7 @@ signed main()
     {
       if (n % i == 0)
       {
-        if (i <= k)
-          ans = min(ans, i);
+        if (i <= k) ans = min(ans, i);
         if ((n / n % i) == i)
         {
           if ((n / i) <= k)
