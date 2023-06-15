@@ -136,10 +136,11 @@ void rotateMatrix(vector<vector<int>> &v, int n)
   }
 }
 
+
+
 ll m = 998244353;
 
-long long erfd(long long a, long long b)
-{
+long long erfd(long long a, long long b) {
   if (b == 0)
     return 1;
   long long ans = erfd(a, b / 2);
@@ -155,18 +156,22 @@ signed main() {
   cin.tie(nullptr);
   int t; cin >> t;
   while(t--) {
-    ll n;cin>> n;
-    vector<ll> v(n+1);
-
+    ll n;cin>> n;vector<ll> v(n+1);
     for (int i = 1; i <=n; i++) {
       cin>>v[i];
     }
 
     ll ans=0;
 
+    // vector<ll>  v2,v2;
+ 
     for (int i = 1; i <=n; i++){ 
       ans=__gcd(ans,abs(v[i]-i));
+
+      // cout<<ans<<" "<<abs(v[i]-i)<<" ";
     }
+
+    cout<<endl;
 
     cout<<ans<<endl;
     
