@@ -146,16 +146,28 @@ long long erfd(long long a, long long b)
     return ans % m * ans % m;
 }
 
+int f(int d) {
+  for(int j=2;j<=sqrt(d);j++) {
+    if(d%j==0)  d=f(d+1);
+  }
+
+  return d;
+}
+
 signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   int t;
   cin >> t;
-  while (t--)
-  {
+  while (t--) {
     ll n, k, x, j;
     cin >> n;
+    k=f(n+1);
+    x=f(k+n);
+
+    cout<<x*k<<endl;
+    
   }
   return 0;
 }
