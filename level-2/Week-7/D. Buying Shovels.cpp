@@ -156,7 +156,8 @@ signed main() {
   cin.tie(nullptr);
   int t; cin >> t;
   while(t--) {
-    ll n;cin>> n;vector<ll> v(n+1);
+    ll n;cin>> n;
+    vector<ll> v(n+1);
     for (int i = 1; i <=n; i++) {
       cin>>v[i];
     }

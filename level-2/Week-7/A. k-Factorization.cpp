@@ -1,32 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
+#define ll long long
 
 const int mod = 1e9 + 1;
 
-int n;
 
-int a[23];
-
-int sum = 0;
-
-int solve(int i = 0, int s = 0)
-{
-  if (i == n)
-  {
-    int other = sum - s;
-
-    return abs(s - other);
-  }
-
-  return min(
-    solve(i + 1, a[i] + s),
-    solve(i + 1, s)
-    );
-
-    
-}
 
 signed main()
 {
@@ -34,12 +13,36 @@ signed main()
   cin.tie(NULL);
   cout.tie(NULL);
 
-  cin >> n;
+  ll n,k;cin>>n>>k;
 
-  for (int i = 0; i < n; i++) {
-    cin >> a[i];
-    sum += a[i];
+  vector<ll> v;
+
+  ll ans=n;
+
+  for (ll i =2; i <=n; i++) {
+    while(n%i==0){
+      v.push_back(i);
+      n/=i;
+    }
+  }
+  
+  if(v.size()>=k){
+    for (int i = 0; i < k-1; i++)
+    {
+      /* code */
+      cout<<v[i]<<" ";
+      ans=ans/v[i];
+    }
+
+    cout<<ans<<endl;
+    
+  }else{
+    cout<<"-1"<<endl;
   }
 
-  cout << solve() << endl;
+
+
+
+
+  
 }
