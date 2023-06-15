@@ -150,25 +150,33 @@ signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
-  while (t--)
+  // int t;
+  // cin >> t;
+  // while (t--)
+  // {
+  ll n, k;
+  cin >> n;
+
+  ll arr[n];
+
+  for (ll i = 1; i <= n; i++)
   {
-    ll n, k;
-    cin >> n >> k;
-
-    ll ans = n;
-
-    for (ll i = 1; i  <= sqrt(n); i++)
+    /* code */
+    cin >> arr[i];
+    k = sqrt(arr[i]);
+    for (ll j = 2; j * j < k; j++)
     {
-      if (n % i == 0)
-      {
-        if (i <= k) ans = min(ans, n/i);
-        if(n/i<=k) ans=min(ans,i);
-      }
-    }
+      /* code */
+      if (arr[i] % j == 0)
+        break;
 
-    cout << ans << endl;
+      if (j * j > k and k * k == arr[i] and arr[i] > 1)
+        cout << "YES" << endl;
+      else
+        cout << "NO" << endl;
+    }
   }
+
+  // }
   return 0;
 }
