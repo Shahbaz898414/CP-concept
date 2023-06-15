@@ -150,31 +150,12 @@ signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  // int t;
-  // cin >> t;
-  // while (t--)
-  // {
-  ll n, k,x,j;
-  cin >> n;
-
-  ll arr[n+1];
-
-  for (ll i = 1; i <= n; i++)
+  int t;
+  cin >> t;
+  while (t--)
   {
-    
-    cin >> x;
-    k = sqrt(x);
-    for ( j = 2; j * j < k; j++) 
-      if (x % j == 0)
-        break;
-    
-      if (j * j > k and k * k == x and x > 1)
-        cout << "YES" << endl;
-      else
-        cout << "NO" << endl;
-    
+    ll n, k, x, j;
+    cin >> n;
   }
-
-  // }
   return 0;
 }
