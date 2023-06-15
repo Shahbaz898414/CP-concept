@@ -118,9 +118,6 @@ bool isValid(string s)
   return true;
 }
 
-
-
-
 void rotateMatrix(vector<vector<int>> &v, int n)
 {
   for (int i = 0; i < n / 2; i++)
@@ -136,11 +133,10 @@ void rotateMatrix(vector<vector<int>> &v, int n)
   }
 }
 
-
-
 ll m = 998244353;
 
-long long erfd(long long a, long long b) {
+long long erfd(long long a, long long b)
+{
   if (b == 0)
     return 1;
   long long ans = erfd(a, b / 2);
@@ -150,16 +146,34 @@ long long erfd(long long a, long long b) {
     return ans % m * ans % m;
 }
 
-
-signed main() {
+signed main()
+{
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t; cin >> t;
-  while(t--) {
-    ll n,k;cin>> n>>k;
-   
-    
+  int t;
+  cin >> t;
+  while (t--)
+  {
+    ll n, k;
+    cin >> n >> k;
+
+    ll ans = INT_MAX;
+
+    for (ll i = 1; i * i <= sqrt(n); i++)
+    {
+      if (n % i == 0)
+      {
+        if (i <= k)
+          ans = min(ans, i);
+        if ((n / n % i) == i)
+        {
+          if ((n / i) <= k)
+            ans = min(ans, n);
+        }
+      }
+    }
+
+    cout << ans << endl;
   }
   return 0;
 }
-
