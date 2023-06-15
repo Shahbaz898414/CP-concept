@@ -154,23 +154,23 @@ signed main()
   // cin >> t;
   // while (t--)
   // {
-  ll n, k;
+  ll n, k,x;
   cin >> n;
 
-  ll arr[n];
+  ll arr[n+1];
 
   for (ll i = 1; i <= n; i++)
   {
-    /* code */
-    cin >> arr[i];
-    k = sqrt(arr[i]);
+    
+    cin >> x;
+    k = sqrt(x);
     for (ll j = 2; j * j < k; j++)
     {
-      /* code */
-      if (arr[i] % j == 0)
+      
+      if (x % j == 0)
         break;
 
-      if (j * j > k and k * k == arr[i] and arr[i] > 1)
+      if (j * j > k and k * k == x and x > 1)
         cout << "YES" << endl;
       else
         cout << "NO" << endl;
