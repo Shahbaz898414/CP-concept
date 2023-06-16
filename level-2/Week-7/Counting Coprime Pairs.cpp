@@ -161,10 +161,10 @@ signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
-  while (t--)
-  {
+  // int t;
+  // cin >> t;
+  // while (t--)
+  // {
     ll n, k;
     cin >> n;
     ll arr[n + 1];
@@ -172,11 +172,10 @@ signed main()
     for (ll i = 1; i <= n; i++)
     {
       cin >> arr[i];
-      if (arr[i] == 1)
-        f1 = 1;
+     
     }
 
    
-  }
+  // }
   return 0;
 }
