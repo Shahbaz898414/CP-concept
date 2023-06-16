@@ -161,8 +161,7 @@ signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
+  int t; cin >> t;
   while (t--)
   {
     ll n, k, m;
@@ -175,9 +174,9 @@ signed main()
     sort(arr + 1, arr + 1 + n);
 
     for (ll i = 1; i <= m; i++)
-    
       cin >> arr2[i];
-    
+
+
   }
   return 0;
 }
