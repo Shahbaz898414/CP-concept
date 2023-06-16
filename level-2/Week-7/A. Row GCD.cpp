@@ -161,10 +161,10 @@ signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
-  while (t--)
-  {
+  // int t;
+  // cin >> t;
+  // while (t--)
+  // {
     ll n, k, m;
     cin >> n >> m;
     ll arr[n + 1], arr2[m + 1];
@@ -178,12 +178,11 @@ signed main()
       cin >> arr2[i];
 
     for (ll i = 2; i <= n; i++)
-    {
       f1 = __gcd(f1, arr[i] - arr[0]);
-    }
+    
 
     for (ll i = 1; i <= m; i++)
       cout << (__gcd(arr[0] + arr2[i], f1)) << " ";
-  }
+  // }
   return 0;
 }
