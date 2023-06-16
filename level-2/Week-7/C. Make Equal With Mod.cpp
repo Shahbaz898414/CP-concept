@@ -165,14 +165,29 @@ signed main()
   cin >> t;
   while (t--)
   {
-    ll n, ;
+    ll n, k;
     cin >> n;
-    vector<ll> arr(n);
-
-    for (ll i = 0; i < n; i++)
+    ll arr[n + 1];
+    ll f1 = 0, f2 = 0;
+    for (ll i = 1; i <= n; i++)
     {
       cin >> arr[i];
+      if (arr[i] == 1)
+        f1 = 1;
     }
+
+    sort(arr + 1, arr + n + 1);
+
+    for (ll i = 2; i <= n; i++)
+    {
+      if (arr[i] - arr[i - 1] == 1)
+        f2 = 1;
+    }
+
+    if (f1 || f2)
+      cout << "NO" << endl;
+    else
+      cout << "YES" << endl;
   }
   return 0;
 }
