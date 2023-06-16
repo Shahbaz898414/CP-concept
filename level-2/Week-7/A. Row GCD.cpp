@@ -165,24 +165,29 @@ signed main()
   // cin >> t;
   // while (t--)
   // {
-    ll n, k, m;
-    cin >> n >> m;
-    ll arr[n + 1], arr2[m + 1];
-    ll f1 = 0, f2 = 0;
-    for (ll i = 1; i <= n; i++)
-      cin >> arr[i];
+  ll n, k, m;
+  cin >> n >> m;
+  ll arr[n + 1], arr2[m + 1];
+  ll f1 = 0, f2 = 0;
+  for (ll i = 1; i <= n; i++)
+    cin >> arr[i];
 
-    sort(arr + 1, arr + 1 + n);
+  sort(arr + 1, arr + 1 + n);
+  for (ll i = 1; i <= n; i++)
+    cout << arr[i] << " ";
+  cout << endl;
+  for (ll i = 1; i <= m; i++)
+    cin >> arr2[i];
 
-    for (ll i = 1; i <= m; i++)
-      cin >> arr2[i];
+  for (ll i = 1; i <= m; i++)
+    cout << arr2[i] << " ";
+  cout << endl;
 
-    for (ll i = 2; i <= n; i++)
-      f1 = __gcd(f1, arr[i] - arr[0]);
-    
+  for (ll i = 2; i <= n; i++)
+    f1 = __gcd(f1, arr[i] - arr[0]);
 
-    for (ll i = 1; i <= m; i++)
-      cout << (__gcd(arr[0] + arr2[i], f1)) << " ";
+  for (ll i = 1; i <= m; i++)
+    cout << (__gcd(arr[0] + arr2[i], f1)) << " ";
   // }
   return 0;
 }
