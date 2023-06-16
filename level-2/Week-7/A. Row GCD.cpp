@@ -163,25 +163,21 @@ signed main()
   cin.tie(nullptr);
   int t;
   cin >> t;
-  while (t--) {
-    ll n, k,m;
-    cin >> n>>m;
-    ll arr[n + 1],arr2[m+1];
+  while (t--)
+  {
+    ll n, k, m;
+    cin >> n >> m;
+    ll arr[n + 1], arr2[m + 1];
     ll f1 = 0, f2 = 0;
     for (ll i = 1; i <= n; i++)
       cin >> arr[i];
+
+    sort(arr + 1, arr + 1 + n);
+
+    for (ll i = 1; i <= m; i++)
     
-    sort(arr+1,arr+1+n);
-
-    for (ll i = 1; i <= m; i++) {
       cin >> arr2[i];
-    }
-
-
-
-
-
-   
+    
   }
   return 0;
 }
