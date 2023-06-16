@@ -175,55 +175,55 @@ signed main()
     cin >> arr[i];
   }
 
-
-  for (int i = 2; i < mxn; i++){/* code */
-    for (int j = 2*i; j < mxn; j+=i)
+  for (int i = 2; i < mxn; i++)
+  { /* code */
+    for (int j = 2 * i; j < mxn; j += i)
     {
       /* code */
-      m[i]+=m[j];
+      m[i] += m[j];
     }
   }
 
-
-  for (int i = 0; i < mxn; i++) {
-    use[i]=1;
+  for (int i = 0; i < mxn; i++)
+  {
+    use[i] = 1;
   }
-  
-  
 
   for (int i = 2; i < mxn; i++)
   {
-   
 
     if (!vis[i])
     {
       for (int j = i; j < mxn; j += i)
       {
-       
+
         vis[j] = 1;
         f[j]++;
-        if (j % (ll)i * i)
+        if (j % (ll)i * i == 0)
           use[j] = 0;
       }
     }
   }
 
-  ll ans=0;
+  ll ans = 0;
 
-  for (int i =2; i < mxn; i++)
+  for (int i = 2; i < mxn; i++)
   {
     /* code */
-    if(use[i]){
-      if(m[i]==0) continue;
-      if(f[i]&1) ans+=((ll)m[i]*(m[i]-1))/2;
-      else ans -=((ll)m[i]*(m[i]-1))/2;
+    if (use[i])
+    {
+      if (m[i] == 0)
+        continue;
+      if ((f[i] & 1))
+        ans += ((ll)m[i] * (m[i] - 1)) / 2;
+      else
+        ans -= ((ll)m[i] * (m[i] - 1)) / 2;
     }
   }
 
-  ans=((ll)n*(n-1))/2-ans;
+  ans = ((ll)n * (n - 1)) / 2 - ans;
 
-  cout<<endl;
-  
+  cout << ans << endl;
 
   // }
   return 0;
