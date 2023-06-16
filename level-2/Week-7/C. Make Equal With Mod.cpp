@@ -146,9 +146,12 @@ long long erfd(long long a, long long b)
     return ans % m * ans % m;
 }
 
-int f(int d) {
-  for(int j=2;j<=sqrt(d);j++) {
-    if(d%j==0)  d=f(d+1);
+int f(int d)
+{
+  for (int j = 2; j <= sqrt(d); j++)
+  {
+    if (d % j == 0)
+      d = f(d + 1);
   }
 
   return d;
@@ -160,17 +163,16 @@ signed main()
   cin.tie(nullptr);
   int t;
   cin >> t;
-  while (t--) {
+  while (t--)
+  {
     ll n, ;
     cin >> n;
-  vector<ll> arr(n);
+    vector<ll> arr(n);
 
-  for (ll i = 0; i < n; i++) {
-    cin>>arr[i];
-  }
-
-  
-    
+    for (ll i = 0; i < n; i++)
+    {
+      cin >> arr[i];
+    }
   }
   return 0;
 }
