@@ -161,12 +161,15 @@ signed main()
   int t;
   cin >> t;
   while (t--) {
-    ll n, k, x, j;
+    ll n, ;
     cin >> n;
-    k=f(n+1);
-    x=f(k+n);
+  vector<ll> arr(n);
 
-    cout<<x*k<<endl;
+  for (ll i = 0; i < n; i++) {
+    cin>>arr[i];
+  }
+
+  
     
   }
   return 0;
