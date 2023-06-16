@@ -176,18 +176,7 @@ signed main()
         f1 = 1;
     }
 
-    sort(arr + 1, arr + n + 1);
-
-    for (ll i = 2; i <= n; i++)
-    {
-      if (arr[i] - arr[i - 1] == 1)
-        f2 = 1;
-    }
-
-    if (!f1 || !f2)
-      cout << "YES" << endl;
-    else
-      cout << "NO" << endl;
+   
   }
   return 0;
 }
