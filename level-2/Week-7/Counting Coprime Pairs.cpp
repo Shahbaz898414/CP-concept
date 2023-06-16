@@ -170,19 +170,21 @@ signed main()
   cin >> n;
   ll arr[n + 1];
   ll f1 = 0, f2 = 0;
-  for (ll i = 0; i < n; i++)
-  {
+  for (ll i = 0; i < n; i++) {
     cin >> arr[i];
+    m[arr[i]]++;
   }
 
   for (int i = 2; i < mxn; i++)
-  { /* code */
+  { 
     for (int j = 2 * i; j < mxn; j += i)
     {
-      /* code */
+      
       m[i] += m[j];
     }
   }
+
+
 
   for (int i = 0; i < mxn; i++)
   {
