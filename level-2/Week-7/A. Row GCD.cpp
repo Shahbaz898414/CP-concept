@@ -173,9 +173,11 @@ signed main()
     cin >> arr[i];
 
   sort(arr + 1, arr + 1 + n);
+
   // for (ll i = 1; i <= n; i++)
   //   cout << arr[i] << " ";
   // cout << endl;
+  
   for (ll i = 1; i <= m; i++)
     cin >> arr2[i];
 
@@ -188,6 +190,11 @@ signed main()
 
   for (ll i = 1; i <= m; i++)
     cout << (__gcd(arr[0] + arr2[i], f1)) << " ";
+
   // }
+
+
   return 0;
 }
+
+
