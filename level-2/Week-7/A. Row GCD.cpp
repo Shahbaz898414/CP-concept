@@ -157,6 +157,13 @@ int f(int d)
   return d;
 }
 
+unsigned long long gcd(unsigned long long x, unsigned long long y)
+{
+  if (y == 0)
+    return x;
+  return gcd(y, x % y);
+}
+
 signed main()
 {
   ios::sync_with_stdio(false);
@@ -165,24 +172,24 @@ signed main()
   // cin >> t;
   // while (t--)
   // {
-  long long n,m;
-    cin>>n>>m;
-    long long a[n],b[m];
-    for(int i=0;i<n;i++) cin>>a[i];
-    for(int i=0;i<m;i++) cin>>b[i];
-    long long pre_gcd = 0;
-    long long ans = 0;
-    for(int i=1;i<n;i++) pre_gcd = gcd(pre_gcd,abs(a[i]-a[0]));
-    for(int i=0;i<m;i++){
-        ans = gcd((a[0]+b[i]),pre_gcd);
-        cout<<ans<<" ";
-    } 
-  
+  long long n, m;
+  cin >> n >> m;
+  long long a[n], b[m];
+  for (int i = 0; i < n; i++)
+    cin >> a[i];
+  for (int i = 0; i < m; i++)
+    cin >> b[i];
+  long long pre_gcd = 0;
+  long long ans = 0;
+  for (int i = 1; i < n; i++)
+    pre_gcd = gcd(pre_gcd, abs(a[i] - a[0]));
+  for (int i = 0; i < m; i++)
+  {
+    ans = gcd((a[0] + b[i]), pre_gcd);
+    cout << ans << " ";
+  }
 
   // }
 
-
   return 0;
 }
-
-
