@@ -2,6 +2,7 @@
 using namespace std;
 #define ll long long
 #define mod 1000000007
+#define mxn 1000005
 #define Time cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl;
 #define pb push_back
 #define mp make_pair
@@ -133,8 +134,6 @@ void rotateMatrix(vector<vector<int>> &v, int n)
   }
 }
 
-ll m = 998244353;
-
 long long erfd(long long a, long long b)
 {
   if (b == 0)
@@ -157,6 +156,8 @@ int f(int d)
   return d;
 }
 
+int arr[100005], m[mxn], f[mxn], vis[mxn], use[mxn];
+
 signed main()
 {
   ios::sync_with_stdio(false);
@@ -165,17 +166,65 @@ signed main()
   // cin >> t;
   // while (t--)
   // {
-    ll n, k;
-    cin >> n;
-    ll arr[n + 1];
-    ll f1 = 0, f2 = 0;
-    for (ll i = 1; i <= n; i++)
-    {
-      cin >> arr[i];
-     
-    }
+  ll n, k;
+  cin >> n;
+  ll arr[n + 1];
+  ll f1 = 0, f2 = 0;
+  for (ll i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
 
+
+  for (int i = 2; i < mxn; i++){/* code */
+    for (int j = 2*i; j < mxn; j+=i)
+    {
+      /* code */
+      m[i]+=m[j];
+    }
+  }
+
+
+  for (int i = 0; i < mxn; i++) {
+    use[i]=1;
+  }
+  
+  
+
+  for (int i = 2; i < mxn; i++)
+  {
    
+
+    if (!vis[i])
+    {
+      for (int j = i; j < mxn; j += i)
+      {
+       
+        vis[j] = 1;
+        f[j]++;
+        if (j % (ll)i * i)
+          use[j] = 0;
+      }
+    }
+  }
+
+  ll ans=0;
+
+  for (int i =2; i < mxn; i++)
+  {
+    /* code */
+    if(use[i]){
+      if(m[i]==0) continue;
+      if(f[i]&1) ans+=((ll)m[i]*(m[i]-1))/2;
+      else ans -=((ll)m[i]*(m[i]-1))/2;
+    }
+  }
+
+  ans=((ll)n*(n-1))/2-ans;
+
+  cout<<endl;
+  
+
   // }
   return 0;
 }
