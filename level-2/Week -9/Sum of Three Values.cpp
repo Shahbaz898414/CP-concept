@@ -164,50 +164,69 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-signed main() {
+signed main()
+{
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   // int t;
   // cin >> t;
   // while (t--)
   // {
-  long long n, m; cin >> n >> m;
-  long long a[n], b[m];
+  long long n, m;
+  cin >> n >> m;
+  // long long a[n], b[m];
+
+  vector<pair<int, int>> a;
   for (int i = 0; i < n; i++)
-    cin >> a[i];
+  {
+    int x;cin>>x;
 
-  for (ll i = 0; i < m; i++)
-    cin>>b[i];
-  
-  ll j=0,i=0;
-  ll sum=0,ans=0;
-
-  while(i<n and j<m) {
-    if(a[i]<b[j]){
-      i++;
-    }else if(a[i]>b[j]){
-      j++;
-    }else {
-      ll t=a[i];
-      ll cnt1=0,cnt2=0;
-
-      while(i<n and a[i]==t){
-        cnt1++;
-        i++;
-      }
-
-      while(j<m and b[j]==t){
-        cnt2++;
-        j++;
-      }
-
-      ans+=(cnt1*cnt2);
-    }
+    a.push_back({x, i + 1});
   }
 
- cout<<ans<<endl;
+  sort(a.begin(), a.end());
+  ll f1 = 1;
+
+  for (ll i = 0; i < n; i++)
+  {
+    /* code */
+    int rem = m - a[i].first;
+    if (rem >= 0)
+    {
+      ll l = 0, r = n - 1;
+
+      while (l < r)
+      {
+        int s = a[l].first + a[r].first;
+        if (s == rem and l != i and r != i)
+        {
+          cout << (a[i].second) << " " << (a[l].second ) << " " << (a[r].second ) << endl;
+          f1 = 0;
+          break;
+        }else if(s>rem) {
+          r--;
+        }else {
+          l++;
+        }
+
+        // if(f1==0) break;
+      }
+    }
+
+    if(f1==0) break;
+  }
+
+  if(f1==1)  cout<<"IMPOSSIBLE"<<endl;
+
+  // ll j = 0, i = 0;
+  // ll sum = 0, ans = 0;
 
   // }
 
   return 0;
 }
+
+/*
+abs(8-a[i])
+
+*/

@@ -164,48 +164,35 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-signed main() {
+signed main()
+{
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   // int t;
   // cin >> t;
   // while (t--)
   // {
-  long long n, m; cin >> n >> m;
+  long long n, m;
+  cin >> n >> m;
   long long a[n], b[m];
   for (int i = 0; i < n; i++)
     cin >> a[i];
-
-  for (ll i = 0; i < m; i++)
-    cin>>b[i];
-  
   ll j=0,i=0;
+
   ll sum=0,ans=0;
 
-  while(i<n and j<m) {
-    if(a[i]<b[j]){
-      i++;
-    }else if(a[i]>b[j]){
-      j++;
-    }else {
-      ll t=a[i];
-      ll cnt1=0,cnt2=0;
+  while(j<n){
+    sum+=a[j];
 
-      while(i<n and a[i]==t){
-        cnt1++;
-        i++;
-      }
-
-      while(j<m and b[j]==t){
-        cnt2++;
-        j++;
-      }
-
-      ans+=(cnt1*cnt2);
+    while(sum>m){
+      sum -=a[i++];
     }
+
+    ans+=(j-i+1);
+    j++;
   }
 
- cout<<ans<<endl;
+  cout<<ans<<endl;
 
   // }
 
