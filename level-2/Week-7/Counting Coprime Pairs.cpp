@@ -156,7 +156,7 @@ int f(int d)
   return d;
 }
 
-int arr[100005], m[mxn], f[mxn], vis[mxn], use[mxn];
+ll arr[100005], m[mxn], f[mxn], vis[mxn], use[mxn];
 
 signed main()
 {
@@ -166,8 +166,7 @@ signed main()
   // cin >> t;
   // while (t--)
   // {
-  ll n, k;
-  cin >> n;
+  ll n, k; cin >> n;
   ll arr[n + 1];
   ll f1 = 0, f2 = 0;
   for (ll i = 0; i < n; i++) {
@@ -201,7 +200,7 @@ signed main()
 
         vis[j] = 1;
         f[j]++;
-        if (j % (ll)i * i == 0)
+        if ((j % (ll)i * i) == 0)
           use[j] = 0;
       }
     }
@@ -211,13 +210,13 @@ signed main()
 
   for (int i = 2; i < mxn; i++)
   {
-    /* code */
+   
     if (use[i])
     {
       if (m[i] == 0)
         continue;
-      if ((f[i] & 1))
-        ans += ((ll)m[i] * (m[i] - 1)) / 2;
+      if ((f[i] % 2)!=0)
+        ans += ((ll) m[i] * (m[i] - 1)) / 2;
       else
         ans -= ((ll)m[i] * (m[i] - 1)) / 2;
     }
