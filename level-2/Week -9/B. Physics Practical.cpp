@@ -181,19 +181,7 @@ signed main()
 
   ll sum=0,ans=0;
 
-  while(j<n){
-    sum+=a[j];
-
-    while(sum>=m){
-      sum -=a[i++];
-    }
-
-    ans+=(j-i+1);
-    j++;
-  }
-
-  ll total=(n*(n+1))/2;
-  cout<<total-ans<<endl;
+ 
 
   // }
 
