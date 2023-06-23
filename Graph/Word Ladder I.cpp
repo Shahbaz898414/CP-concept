@@ -1,9 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-
-
 class Solution {
 public:
     int wordLadderLength(string startWord, string targetWord, vector<string>& wordList) {
@@ -30,4 +27,3 @@ int main(){
 	}
 	return 0;
 }
-// } Driver Code Ends
