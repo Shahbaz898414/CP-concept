@@ -4,7 +4,39 @@ using namespace std;
 class Solution {
 public:
     int wordLadderLength(string startWord, string targetWord, vector<string>& wordList) {
-        
+			queue<pair<string,int>> q;
+			q.push({startWord,1});
+			unordered_set<string>st(wordList.begin(),wordList.end());
+			st.erase(startWord);
+
+			while(!q.empty()){
+				string word=q.front().first;
+				int step=q.front().second;
+				q.pop();
+				if(word==targetWord)  return step;
+
+				for (int i = 0; i < word.size(); i++)
+				{
+					/* code */
+					char ori=word[i];
+					for (char i = 'a'; i <='z' ; i++)
+					{
+						/* code */
+						word[i]=i;
+
+						if(st.find(word)!=st.end()){
+							st.erase(word);
+							q.push({word,step+1});
+						}
+					}
+
+
+
+				}
+				
+
+			}
+
     }
 };
 
