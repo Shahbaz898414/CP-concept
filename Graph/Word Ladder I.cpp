@@ -17,11 +17,11 @@ public:
 
 				for (int i = 0; i < word.size(); i++)
 				{
-					/* code */
+					
 					char ori=word[i];
 					for (char i = 'a'; i <='z' ; i++)
 					{
-						/* code */
+						
 						word[i]=i;
 
 						if(st.find(word)!=st.end()){
