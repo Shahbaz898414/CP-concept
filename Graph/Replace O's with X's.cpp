@@ -10,16 +10,11 @@ class Solution{
 
     int n=mat.size();
     int m=mat[0].size();
-    for (int i = 0; i < 4; i++)
-    {
-      /* code */
+    for (int i = 0; i < 4; i++){
       int nrow=row+delrow[i];
       int ncol=col+delcol[i];
-
-      if(nrow>=0 and nrow<n and ncol>=0 and ncol<m and !vis[nrow][ncol] and mat[nrow][ncol]=='O'){
+      if(nrow>=0 and nrow<n and ncol>=0 and ncol<m and !vis[nrow][ncol] and mat[nrow][ncol]=='O')
         dfs(nrow,ncol,vis,mat,delrow,delcol);
-      }
-
     }
     
   }
@@ -33,36 +28,31 @@ public:
 
         for (int j = 0; j < m; j++) {
           /* first row */
-          if(!vis[0][j] and mat[0][j]=='O'){
+          if(!vis[0][j] and mat[0][j]=='O') {
             dfs(0,j,vis,mat,delrow,delcol);
           }
 
           //last row 
-          if(!vis[n-1][j]  and mat[n-1][j]=='O'){
+          if(!vis[n-1][j]  and mat[n-1][j]=='O') {
             dfs(n-1,j,vis,mat,delrow,delcol);
           }
         }
         
 
-        for (int i = 0; i <n; i++)
-        {
+        for (int i = 0; i <n; i++) {
           /* first column */
-          if(!vis[i][0] and mat[i][0]=='O'){
+          if(!vis[i][0] and mat[i][0]=='O') {
             dfs(i,0,vis,mat,delrow,delcol);
           }
 
-          if(!vis[i][m-1] and mat[i][m-1]=='O'){
+          if(!vis[i][m-1] and mat[i][m-1]=='O') {
             dfs(i,m-1,vis,mat,delrow,delcol);
           }
         }
 
 
-        for (int i = 0; i < n; i++)
-        {
-          /* code */
-          for (int j = 0; j < m; j++)
-          {
-            /* code */
+        for (int i = 0; i < n; i++) {
+          for (int j = 0; j < m; j++) {
             if(!vis[i][j] and mat[i][j]=='O'){
               mat[i][j]='X';
             }
