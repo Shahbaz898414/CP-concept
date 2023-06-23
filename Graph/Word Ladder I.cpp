@@ -8,9 +8,6 @@ public:
     }
 };
 
-
-
-
 int main(){
 	int tc;
 	cin >> tc;
