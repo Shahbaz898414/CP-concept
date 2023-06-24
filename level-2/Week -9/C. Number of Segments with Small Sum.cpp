@@ -164,8 +164,7 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-signed main()
-{
+signed main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   // int t;
@@ -194,7 +193,11 @@ signed main()
 
   cout<<ans<<endl;
 
+// dfdc
   // }
 
   return 0;
 }
+
+
+

@@ -173,7 +173,7 @@ signed main()
   // while (t--)
   // {
   long long n, m;
-  cin >> n >> m;
+  cin >> n ;
   long long a[n], b[m];
   for (int i = 0; i < n; i++)
     cin >> a[i];
