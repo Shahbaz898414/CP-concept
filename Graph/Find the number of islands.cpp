@@ -9,6 +9,26 @@ class Solution {
   public:
     
     int numIslands(vector<vector<char>>& grid) {
+       int n=grid.size();
+       int m=grid[0].size();
+
+       vector<vector<int>> vis(n,vector<int>(m,0));
+
+       for (int row = 0; row <n; row++)
+       {
+
+          for (int col = 0; col < m; col++)
+          {
+            if(!vis[row][col]){
+              cnt++;
+
+              bfs(row,col,vis,grid);
+            }
+          }
+          
+       }
+
+       return cnt;
        
     }
 };
