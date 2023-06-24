@@ -3,20 +3,17 @@
 using namespace std;
 
 
-// } Driver Code Ends
-//User function Template for C++
-
 class Solution {
 public:
     vector<vector<string>> findSequences(string beginWord, string endWord, vector<string>& wordList) {
-        // code here
+        
     }
 };
 
 
 
 
-//{ Driver Code Starts.
+
 
 bool comp(vector<string> a, vector<string> b)
 {
@@ -58,4 +55,3 @@ int main(){
 	}
 	return 0;
 }
-// } Driver Code Ends
