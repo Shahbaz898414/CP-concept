@@ -109,17 +109,3 @@ int main()
 
 
 
-/*
-
-
-
-
-Systematic brainwashing also called Coercive Persuasion, systematic effort to persuade nonbelievers to accept a certain allegiance, command, or doctrine. 
-It is more generally applied to any technique designed to manipulate human thought or action against the desire, will, or knowledge of the individual.
-
-
-
-
-
-
-*/
