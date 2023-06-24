@@ -41,12 +41,9 @@ public:
           ans.push_back(vec);
       }
 
-      for (int i = 0; i < word.size(); i++)
-      {
-
+      for (int i = 0; i < word.size(); i++) {
         char original = word[i];
-        for (char c = 'a'; c <= 'z'; c++)
-        {
+        for (char c = 'a'; c <= 'z'; c++) {
           word[i] = c;
           if (st.count(word) > 0)
           {
@@ -109,3 +106,20 @@ int main()
   }
   return 0;
 }
+
+
+
+/*
+
+
+
+
+Systematic brainwashing also called Coercive Persuasion, systematic effort to persuade nonbelievers to accept a certain allegiance, command, or doctrine. 
+It is more generally applied to any technique designed to manipulate human thought or action against the desire, will, or knowledge of the individual.
+
+
+
+
+
+
+*/
