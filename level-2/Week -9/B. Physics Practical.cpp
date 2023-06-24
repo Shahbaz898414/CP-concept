@@ -164,12 +164,9 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-void solve(int test){
-
-}
-
-signed main()
-{
+signed main() {
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   // int t;
@@ -194,11 +191,14 @@ signed main()
 
     ll len=j-i+1;
     ans=max(ans,len);
+    j++;
   }
 
   cout<<n-ans<<endl;
 
   // }
+
+  
 
   return 0;
 }
