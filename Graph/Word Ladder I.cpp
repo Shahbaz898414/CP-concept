@@ -30,13 +30,12 @@ public:
 						}
 					}
 
-
-
+					word[i]=ori;
 				}
-				
-
 			}
 
+			
+			return 0;
     }
 };
 
