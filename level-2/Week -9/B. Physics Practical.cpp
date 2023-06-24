@@ -164,6 +164,10 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+void solve(int test){
+
+}
+
 signed main()
 {
   ios::sync_with_stdio(false);
@@ -174,14 +178,25 @@ signed main()
   // {
   long long n, m;
   cin >> n ;
-  long long a[n], b[m];
+  long long a[n];
   for (int i = 0; i < n; i++)
     cin >> a[i];
-  ll j=0,i=0;
 
+  sort(a,a+n);
+  ll j=0,i=0;
+  
   ll sum=0,ans=0;
 
- 
+  while(j<n){
+    while(a[j]>2*a[i]){
+      i++;
+    }
+
+    ll len=j-i+1;
+    ans=max(ans,len);
+  }
+
+  cout<<n-ans<<endl;
 
   // }
 
