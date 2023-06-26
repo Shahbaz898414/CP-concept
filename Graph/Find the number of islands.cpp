@@ -9,6 +9,9 @@ class Solution {
 
   private: 
   void bfs(int row, int col, vector<vector<int>> &vis, vector<vector<char>>&grid) {
+
+    int delrow[]={-1,0,+1,0};
+      int delcol[]={0,1,0,-1};
       
       vis[row][col] = 1; 
       queue<pair<int,int>> q;
@@ -24,18 +27,19 @@ class Solution {
           q.pop(); 
           
           // traverse in the neighbours and mark them if its a land 
-          for(int delrow = -1; delrow<=1;delrow++) {
-              for(int delcol = -1; delcol <= 1; delcol++) {
-                  int nrow = row + delrow; 
-                  int ncol = col + delcol; 
+            for(int i=0;i<4;i++) {
+                 int nrow = nrow + delrow[i]; 
+                  int ncol = ncol + delcol[i]; 
                   // neighbour row and column is valid, and is an unvisited land
                   if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m 
                   && grid[nrow][ncol] == '1' && !vis[nrow][ncol]) {
                       vis[nrow][ncol] = 1; 
                       q.push({nrow, ncol}); 
                   }
-              }
-          }
+            }
+                 
+            
+          
       }
 
       
