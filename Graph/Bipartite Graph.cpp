@@ -4,14 +4,31 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
+
+  private:
+  bool dfs(int node,int i,int color[],vector<int> adj[]){
+
+  }
+
+  
 public:
 	bool isBipartite(int V, vector<int>adj[]){
 	    // Code here
       int color[V];
-      for (int i = 0; i <V; i++){
-      
+      for (int i = 0; i <V; i++) {
         color[i]=-1;
       }
+
+      for (int i = 0; i < V; i++)
+      {
+        if(color[i]==-1){
+          if(dfs(i,0,color,adj)==false) return false;
+        }
+      }
+
+
+      return true;
+      
       
 	}
 
