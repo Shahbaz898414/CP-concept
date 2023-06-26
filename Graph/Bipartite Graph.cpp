@@ -74,8 +74,8 @@ int main(){
 
 class Solution {
 public:
-    bool ans=1;
-    vector<int> color;
+    bool ans=1; vector<int> color;
+    
     void dfs(int i,  int c, vector<vector<int>>& graph){
         if (color[i]!=-1) return ;
         color[i]=c;
