@@ -9,15 +9,15 @@ class Solution {
 
   private: 
   void bfs(int row, int col, vector<vector<int>> &vis, vector<vector<char>>&grid) {
-      // mark it visited
+      
       vis[row][col] = 1; 
       queue<pair<int,int>> q;
-      // push the node in queue
+      
       q.push({row, col}); 
       int n = grid.size(); 
       int m = grid[0].size(); 
       
-      // until the queue becomes empty
+      
       while(!q.empty()) {
           int row = q.front().first; 
           int col = q.front().second; 
