@@ -9,15 +9,13 @@ class Solution {
   bool dfs(int node,int col,int color[],vector<int> adj[]){
     color[node]=col;
 
-
     for(auto it:adj[node]){
       if(color[it]==-1){
-        dfs(it,!col,color,adj);
+        if(dfs(it, !col, color, adj) == false) return false;
       }else if(color[it]==col) {
         return false;
       }
     }
-
 
     return true;
   }
@@ -67,4 +65,40 @@ int main(){
 	}
 	return 0;
 }
-// } Driver Code Ends
+
+
+
+
+/*
+
+
+class Solution {
+public:
+    bool ans=1;
+    vector<int> color;
+    void dfs(int i,  int c, vector<vector<int>>& graph){
+        if (color[i]!=-1) return ;
+        color[i]=c;
+        for(int j: graph[i]){
+            if( color[j]==color[i]){
+                ans=0;
+                return;
+            }
+            else{
+                dfs(j, (c+1)&1, graph);
+            }
+        }
+    }
+
+    bool isBipartite(vector<vector<int>>& graph) {
+        int n=graph.size();
+        color.assign(n, -1);
+        for (int i=0; i<n; i++)
+            dfs(i, 1, graph);
+        return ans;
+    }
+};
+
+
+
+*/
