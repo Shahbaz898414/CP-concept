@@ -6,11 +6,23 @@ using namespace std;
 class Solution {
 
   private:
-  bool dfs(int node,int i,int color[],vector<int> adj[]){
+  bool dfs(int node,int col,int color[],vector<int> adj[]){
+    color[node]=col;
 
+
+    for(auto it:adj[node]){
+      if(color[it]==-1){
+        dfs(it,!col,color,adj);
+      }else if(color[it]==col) {
+        return false;
+      }
+    }
+
+
+    return true;
   }
 
-  
+
 public:
 	bool isBipartite(int V, vector<int>adj[]){
 	    // Code here
