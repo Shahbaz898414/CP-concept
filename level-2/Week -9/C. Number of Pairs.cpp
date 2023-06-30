@@ -3,23 +3,26 @@
 using namespace std;
 
 int main() {
-
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
 
 
-  ll n,m;
-  cin>>n;
+  ll t;cin>>t;
 
-  ll a[n],b[n],total=0,ans;
+  while(t--){
+    ll n,l,r;cin>>n>>l>>r;
+    
 
-  for (int i = 0; i < n; i++) {
-    cin>>a[i];
+    vector<ll>  arr(n);
+
+
+    for (ll i = 0; i < n; i++)
+    {
+      
+      cin>>arr[i];
+    }
+    
   }
-  
-  ll sum=0;
-
-  string s;cin>>s;
 
   
   
