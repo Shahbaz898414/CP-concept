@@ -19,14 +19,12 @@ class Solution
 	}
 
 	public:
-	vector<int> topoSort(int V, vector<int> adj[]) 
-	{
-	    int vis[V] = {0};
+	vector<int> topoSort(int V, vector<int> adj[])  {
+	  int vis[V] = {0};
 		stack<int> st;
 		for (int i = 0; i < V; i++) {
-			if (!vis[i]) {
+			if (!vis[i]) 
 				dfs(i, vis, st, adj);
-			}
 		}
 
 		vector<int> ans;
