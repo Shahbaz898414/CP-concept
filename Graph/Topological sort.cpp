@@ -12,9 +12,13 @@ class Solution
   void dfs(int node,int vis[],stack<int> st,vector<int> adj[]){
       vis[node]=1;
 
-      for(auto it:adj[]){
-        
+      for(auto it:adj[node]){
+        if(!vis[it]){
+          dfs(it,vis,st,adj);
+        }
       }
+
+      st.push(node);
   }
 	
 
@@ -28,12 +32,21 @@ class Solution
 
       for (int i = 0; i < V; i++)
       {
-        
-
         if(!vis[i]){
           dfs(i,vis,st,adj);
         }
       }
+
+      vector<int> ans;
+
+      while(!st.empty()){
+        ans.push_back(st.top());
+
+        st.pop();
+      }
+
+
+      return ans;
       
 	}
 };
