@@ -11,16 +11,15 @@ int main() {
 
   while(t--){
     ll n,l,r;cin>>n>>l>>r;
-    
-
+  
     vector<ll>  arr(n);
 
-
-    for (ll i = 0; i < n; i++)
-    {
-      
+    for (ll i = 0; i < n; i++) 
       cin>>arr[i];
-    }
+    
+
+    sort(arr.begin(),arr.end());
+    
     
   }
 
