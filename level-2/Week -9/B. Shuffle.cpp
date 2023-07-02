@@ -8,9 +8,9 @@ int main() {
   cin >> t;
   while (t--) {
     ll n,x,m;cin>>n>>x>>m;
+    ll a=x,b=x;
 
-
-    for (int i = 0; i < m; i++) {
+    for (int i = 1; i <=m; i++) {
       
     }
     
