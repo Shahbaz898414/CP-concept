@@ -173,11 +173,28 @@ signed main() {
   // cin >> t;
   // while (t--)
   // {
+
+
   long long n, m;
   cin >> n >>m;
   long long a[n];
   for (int i = 0; i < n; i++)
     cin >> a[i];
+
+  ll cnt=0;
+
+  int i=0,j=0;
+
+  while(i<n-2){
+    while(j<n and a[j]<=a[i]+m)
+      j++;
+    int c=j-i-1;
+
+    cnt+=((long long))
+  }
+
+
+  // cout<<n*(m)<<endl;
 
  
 
