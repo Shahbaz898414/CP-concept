@@ -183,21 +183,19 @@ int32_t main() {
   cin.tie(nullptr);
   int t;
   cin >> t;
-  while (t--)
-  {
+  while (t--) {
 
+    ll a,b,c;cin>>a>>b>>c;
 
- 
+    // a;b;c;
 
- 
+    if((a+b+c)%9!=0)  no
+    else yes
 
 
   
 
   }
-
-  
-
   return 0;
 }
 
