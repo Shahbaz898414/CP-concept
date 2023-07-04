@@ -133,18 +133,22 @@ void rotateMatrix(vector<vector<int>> &v, int n)
   }
 }
 
-ll m = 998244353;
+// ll m = 998244353;
 
-long long erfd(long long a, long long b)
-{
-  if (b == 0)
-    return 1;
-  long long ans = erfd(a, b / 2);
-  if (b % 2)
-    return (ans % m * ans % m * a) % m;
-  else
-    return ans % m * ans % m;
-}
+
+
+// long long erfd(long long a, long long b)
+// {
+//   if (b == 0)
+//     return 1;
+//   long long ans = erfd(a, b / 2);
+//   if (b % 2)
+//     return (ans % m * ans % m * a) % m;
+//   else
+//     return ans % m * ans % m;
+// }
+
+
 
 int f(int d)
 {
@@ -157,6 +161,8 @@ int f(int d)
   return d;
 }
 
+
+
 unsigned long long gcd(unsigned long long x, unsigned long long y)
 {
   if (y == 0)
@@ -164,9 +170,16 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-signed main() {
-  // freopen("input.txt","r",stdin);
-  // freopen("output.txt","w",stdout);
+
+
+int maximizeWin(vector<ll>& v, ll k) {
+    ll len=v.size();
+
+
+}
+
+int32_t main() {
+ 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   // int t;
@@ -177,24 +190,13 @@ signed main() {
 
   ll n, m;
   cin >> n >>m;
-  ll a[n];
+  vector<ll>  arr(n);
   for (int i = 0; i < n; i++)
-    cin >> a[i];
+    cin >> arr[i];
 
-  ll cnt=0;
+  maximizeWin(arr,m);
 
-  int i=0,j=0;
-
-  while(i<n-2){
-    while(j<n and a[j]<=a[i]+m)
-      j++;
-    int c=j-i-1;
-
-    cnt+=((long long)c*(c-1)/2);
-    i++;
-  }
-
-  cout<<cnt<<endl;
+ 
 
 
   // cout<<n*(m)<<endl;
@@ -205,3 +207,44 @@ signed main() {
 
   return 0;
 }
+
+
+/*
+
+
+
+class Solution {
+public:
+    vector<vector<int>>dp;
+    int fn(int ind,vector<int>&arr,int segment,int k) 
+    {
+        if(segment==0)
+            return 0;
+        if(ind>=arr.size())
+            return 0;
+        if(dp[ind][segment]!=-1)
+            return dp[ind][segment];
+        
+        int non_pick=fn(ind+1,arr,segment,k); 
+        int target=lower_bound(arr.begin(),arr.end(),arr[ind]+k+1)-arr.begin();
+        int pick=target-ind; 
+        
+        pick+=fn(target,arr,segment-1,k);
+        
+        return dp[ind][segment]= max(non_pick,pick);
+        
+        
+    }
+        
+    int maximizeWin(vector<int>& arr, int k) {
+        int n=arr.size();
+        dp.resize(n,vector<int>(3,-1));
+        
+        return fn(0,arr,2,k);
+        
+        
+    }
+};
+
+
+*/
