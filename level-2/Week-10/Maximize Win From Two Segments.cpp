@@ -172,7 +172,7 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 
 
 
-int maximizeWin(vector<ll>& v, ll k) {
+int maximizeWin(vector<int>& v, int k) {
     ll len=v.size();
 
     vector<int> ans(len);
@@ -224,13 +224,13 @@ int32_t main() {
   // {
 
 
-  ll n, m;
+  int n, m;
   cin >> n >>m;
-  vector<ll>  arr(n);
+  vector<int>  arr(n);
   for (int i = 0; i < n; i++)
     cin >> arr[i];
 
-  maximizeWin(arr,m);
+ cout<< maximizeWin(arr,m);
 
  
 
@@ -246,9 +246,6 @@ int32_t main() {
 
 
 
-
-// https://www.facebook.com/reel/937482650874691
-// kjnm
 
 
 /*
