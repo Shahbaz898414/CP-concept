@@ -175,6 +175,39 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 int maximizeWin(vector<ll>& v, ll k) {
     ll len=v.size();
 
+    vector<int> ans(len);
+    vector<int>  suf(len+1);
+
+    for (int i = 0; i < len; i++)
+    {
+      /* code */
+      auto lb=upper_bound(v.begin(),v.end(),v[i]+k);
+      lb--;
+      int g=(lb-v.begin())-i+1;
+      ans[i]=len;
+    }
+
+    for (int i = len-1; i >=0; i--)
+    {
+      /* code */
+      suf[i]=max(suf[i+1],ans[i]);
+
+    }
+
+    int realans=0;
+
+
+    for (int i = 0; i <len; i++)
+    {
+      /* code */
+      int temp=ans[i]+suf[i+ans[i]];
+
+      realans=max(temp,realans);
+    }
+    
+    
+    return realans;
+
 
 }
 
@@ -214,8 +247,8 @@ int32_t main() {
 
 
 
-
-
+// https://www.facebook.com/reel/937482650874691
+// kjnm
 
 
 /*
