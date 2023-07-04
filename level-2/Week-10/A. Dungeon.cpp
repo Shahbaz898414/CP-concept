@@ -189,7 +189,7 @@ int32_t main() {
 
     // a;b;c;
 
-    if((a+b+c)%9!=0)  no
+    if((a+b+c)%9==0 and min(a,min(c,b))>=(a+b+c)/9) no
     else yes
 
 
