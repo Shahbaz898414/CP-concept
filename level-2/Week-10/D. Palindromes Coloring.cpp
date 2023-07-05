@@ -185,17 +185,36 @@ int32_t main() {
   cin >> t;
   while (t--) {
 
-    ll a,b,c;cin>>a>>b>>c;
+    ll c,m,x; cin>>c>>m;
+    string s;cin>>s;
 
-    // a;b;c;
-
-    if((a+b+c)%9==0 and min(a,min(c,b))>=(a+b+c)/9) yes
-    else no
-  
+    vector<ll> vec(26);
+      
 
   }
+
+  
   return 0;
 }
+
+/*
+
+int n,k;
+    	cin>>n>>k;
+    	string s;cin>>s;
+    	map<char,int>m;
+    	for(char c:s)++m[c];
+    	int ans=0;
+    	for(auto ele:m){
+    		ans+=ele.second/2;
+    	}
+    	int res=(ans*2)/k;
+    	if(res%2)res--;
+    	if(n-res*k>=k)++res;
+    	cout<<res<<'\n';
+
+*/
+
 
 
 

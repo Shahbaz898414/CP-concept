@@ -1,0 +1,1 @@
+{"name":"Local: C","url":"c:\\Users\\91771\\Desktop\\cpp\\CPofTLE\\level-2\\Week-10\\C. Perfect Team.cpp","tests":[{"id":1688511689040,"input":"6\n1 1 1\n3 6 0\n0 0 0\n0 1 1\n10 1 10\n4 4 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91771\\Desktop\\cpp\\CPofTLE\\level-2\\Week-10\\C. Perfect Team.cpp","group":"local","local":true}

@@ -184,18 +184,14 @@ int32_t main() {
   int t;
   cin >> t;
   while (t--) {
+    ll c,m,x; cin>>c>>m>>x;
 
-    ll a,b,c;cin>>a>>b>>c;
-
-    // a;b;c;
-
-    if((a+b+c)%9==0 and min(a,min(c,b))>=(a+b+c)/9) yes
-    else no
-  
+      cout<<min(min(c,m),(c+m+x)/3)<<endl;  
 
   }
   return 0;
 }
+
 
 
 

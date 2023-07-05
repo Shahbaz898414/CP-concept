@@ -40,7 +40,7 @@ public:
 
 int main() {
 
-	//V = 6;
+	
 	vector<int> adj[6] = {{}, {}, {3}, {1}, {0, 1}, {0, 2}};
 	int V = 6;
 	Solution obj;
@@ -49,7 +49,7 @@ int main() {
 	for (auto node : ans) {
 		cout << node << " ";
 	}
-	cout << endl;
 
+	cout << endl;
 	return 0;
 }
