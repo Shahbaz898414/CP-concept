@@ -185,10 +185,21 @@ int32_t main() {
   cin >> t;
   while (t--) {
 
-    ll c,m,x; cin>>c>>m;
+    ll n,c,m,x; cin>>n>>m;
     string s;cin>>s;
 
     vector<ll> vec(26);
+
+    for (int i = 0; i < n; i++) {
+      vec[s[i]-'a']++;
+    }
+
+     int cntPairs = 0, cntOdd = 0;
+      for (int c : vec) {
+            cntPairs += c / 2;
+            cntOdd += c % 2;
+        }
+    
       
 
   }
