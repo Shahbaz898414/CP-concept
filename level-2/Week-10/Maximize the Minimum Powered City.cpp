@@ -171,12 +171,48 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 }
 
 
+bool possible(long long mid,vector<int> s,long long k,int r){
+  long long sum=0;
+  vector<long long>  v(s.begin(),s.end());
+
+  int n=v.size();
+
+  for (int i = 0; i <=r; i++) {
+    sum+=1ll*v[i];
+  }
+
+  for (int i = 0; i <n; i++)
+  {
+    /* code */
+    if(i-r-1>=0) sum+=1ll*v[i-r-1];
+    if(i+r<n and i!=0) sum+=1ll*v[i+r];
+
+    if(sum<mid){
+      v[min(n-1,i+r)]+=(mid-sum);
+
+      k-=(mid-sum);
+      sum=mid;
+      if(k<0)  return 0;
+    }
+  }
+  
+  return 1;
+}
+
 
 long long maxPower(vector<int>& v, int r, int k) {
       int n=v.size();
+      long long lo=0,hi=1e5,res=0;
 
+      while(lo<=hi){
+        long long mid=(lo+hi)/2;
+        if(possible(mid,v,k,r)){
+          res=mid;
+          lo=mid+1;
+        }else hi=mid-1;
+      }
 
-
+      return res;
 }
 
 
@@ -206,8 +242,6 @@ int32_t main() {
   // cout<<n*(m)<<endl;
 
   // }
-
-  
 
   return 0;
 }
