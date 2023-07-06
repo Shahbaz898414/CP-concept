@@ -173,8 +173,7 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 
 
 long long maxPower(vector<int>& v, int r, int k) {
-
-        int n=v.size();
+      int n=v.size();
 
 
 
