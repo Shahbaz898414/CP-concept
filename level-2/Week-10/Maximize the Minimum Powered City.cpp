@@ -135,6 +135,8 @@ void rotateMatrix(vector<vector<int>> &v, int n)
 
 // ll m = 998244353;
 
+
+
 // long long erfd(long long a, long long b)
 // {
 //   if (b == 0)
@@ -145,6 +147,8 @@ void rotateMatrix(vector<vector<int>> &v, int n)
 //   else
 //     return ans % m * ans % m;
 // }
+
+
 
 int f(int d)
 {
@@ -157,6 +161,8 @@ int f(int d)
   return d;
 }
 
+
+
 unsigned long long gcd(unsigned long long x, unsigned long long y)
 {
   if (y == 0)
@@ -164,63 +170,81 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-int32_t main()
-{
 
+
+int maximizeWin(vector<int>& v, int k) {
+    ll len=v.size();
+
+    vector<int> ans(len);
+    vector<int>  suf(len+1);
+
+    for (int i = 0; i < len; i++)
+    {
+      /* code */
+      auto lb=upper_bound(v.begin(),v.end(),v[i]+k);
+      lb--;
+      int g=(lb-v.begin())-i+1;
+      ans[i]=len;
+    }
+
+    for (int i = len-1; i >=0; i--)
+    {
+      /* code */
+      suf[i]=max(suf[i+1],ans[i]);
+
+    }
+
+    int realans=0;
+
+
+    for (int i = 0; i <len; i++)
+    {
+      /* code */
+      int temp=ans[i]+suf[i+ans[i]];
+
+      realans=max(temp,realans);
+    }
+    
+    
+    return realans;
+
+
+}
+
+
+
+
+int32_t main() {
+ 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
-  while (t--)
-  {
+  // int t;
+  // cin >> t;
+  // while (t--)
+  // {
 
-    ll n, c, m, x;
-    cin >> n >> m;
-    string s;
-    cin >> s;
 
-    vector<ll> vec(26);
+  int n, m;
+  cin >> n >>m;
+  vector<int>  arr(n);
+  for (int i = 0; i < n; i++)
+    cin >> arr[i];
 
-    for (int i = 0; i < n; i++)
-    {
-      vec[s[i] - 'a']++;
-    }
+ cout<< maximizeWin(arr,m);
 
-    int cntPairs = 0, cntOdd = 0;
-    for (int c : vec)
-    {
-      cntPairs += c / 2;
-      cntOdd += c % 2;
-    }
+ 
 
-    // cout<<cntPairs<<" "<<cntOdd<<endl;
 
-    int ans = 2 * (cntPairs / m);
-    cntOdd += 2 * (cntPairs % m);
-    if (cntOdd >= m)
-    {
-      ans++;
-    }
-    cout << ans << '\n';
-  }
+  // cout<<n*(m)<<endl;
+
+  // }
+
+  
 
   return 0;
 }
 
-/*
 
-int n,k;
-      cin>>n>>k;
-      string s;cin>>s;
-      map<char,int>m;
-      for(char c:s)++m[c];
-      int ans=0;
-      for(auto ele:m){
-        ans+=ele.second/2;
-      }
-      int res=(ans*2)/k;
-      if(res%2)res--;
-      if(n-res*k>=k)++res;
-      cout<<res<<'\n';
 
-*/
+
+
