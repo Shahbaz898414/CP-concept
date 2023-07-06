@@ -172,41 +172,10 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 
 
 
-int maximizeWin(vector<int>& v, int k) {
-    ll len=v.size();
+long long maxPower(vector<int>& v, int r, int k) {
 
-    vector<int> ans(len);
-    vector<int>  suf(len+1);
+        int n=v.size();
 
-    for (int i = 0; i < len; i++)
-    {
-      /* code */
-      auto lb=upper_bound(v.begin(),v.end(),v[i]+k);
-      lb--;
-      int g=(lb-v.begin())-i+1;
-      ans[i]=len;
-    }
-
-    for (int i = len-1; i >=0; i--)
-    {
-      /* code */
-      suf[i]=max(suf[i+1],ans[i]);
-
-    }
-
-    int realans=0;
-
-
-    for (int i = 0; i <len; i++)
-    {
-      /* code */
-      int temp=ans[i]+suf[i+ans[i]];
-
-      realans=max(temp,realans);
-    }
-    
-    
-    return realans;
 
 
 }
@@ -224,13 +193,13 @@ int32_t main() {
   // {
 
 
-  int n, m;
-  cin >> n >>m;
+  int n,r,k;
+  cin >> n >>r>>k;
   vector<int>  arr(n);
   for (int i = 0; i < n; i++)
     cin >> arr[i];
 
- cout<< maximizeWin(arr,m);
+ cout<< maxPower(arr,r,k);
 
  
 
@@ -245,6 +214,158 @@ int32_t main() {
 }
 
 
+/*
 
+class Solution {
+public:
+    long long maxPower(vector<int>& stations, int r, int k) {
+        int n = stations.size(); 
+        long long lo = 0, hi = 2e10; 
+        while (lo < hi) {
+            long long mid = lo + (hi-lo+1)/2, prefix = 0; 
+			int kk = k; 
+			bool ok = true; 
+			vector<int> ss = stations; 
+            for (int i = 0; i < n+r; ++i) {
+                if (i < n) prefix += ss[i]; 
+                if (i >= 2*r+1) prefix -= ss[i-2*r-1]; 
+                if (i >= r && prefix < mid) {
+                    if (kk < mid - prefix) {
+						ok = false; 
+						break; 
+					}						
+                    kk -= mid - prefix; 
+                    if (i < n) ss[i] += mid - prefix; 
+                    prefix = mid; 
+                }
+            }
+            if (ok) lo = mid; 
+            else hi = mid-1; 
+        }
+        return lo; 
+    }
+};
+
+
+*/
+
+
+/*
+
+
+class Solution {
+public:
+    bool check(long long  mid , vector<long long>  ans, int r , int k){
+        long long sum=0;
+        int n=ans.size();
+        for(int i=0;i<r;i++)
+            sum+=ans[i];
+        for(int i=0;i<n;i++){
+            sum+=((i+r<=n-1)?ans[i+r]:0)-((i-r-1>=0)?ans[i-r-1]:0);
+            if(sum<mid){
+                    if(mid-sum>k)
+                        return false;
+                if(i+r<=n-1)ans[i+r]+=mid-sum;
+                k-=mid-sum;
+                sum=mid;
+            }
+        }
+        return true;
+    }
+    long long maxPower(vector<int>& stations, int r, int k) {
+        long long  l=0;
+        long long h=k;
+        int n=stations.size();
+        for(int i=0;i<n;i++)
+            h+=1LL*stations[i];
+        vector<long long> ans(n);
+        for(int i=0;i<n;i++)
+            ans[i]=stations[i];
+        while(l<h){
+            long long  mid=h+(l-h)/2;
+            if(check(mid,ans,r,k))
+                l=mid;
+            else
+                h=mid-1;
+        }
+        return l;
+    }
+};
+
+
+*/
+
+
+
+
+/*
+
+
+class Solution {
+public:
+    #define ll long long
+
+    bool check(vector<ll>&arr,int r,int k,ll mid,ll n){
+        ll sum=0;
+        vector<ll>container(n,0);
+        for(ll i=0;i<n;i++){
+            sum+=container[i];
+            ll diff=mid-(arr[i]+sum);
+            if(diff>0){
+                if(k<diff){
+                    return false;
+                }
+                k-=diff;
+                sum+=diff;
+                if(i+(r<<1)+1<n){
+                    container[i+(r<<1)+1]-=diff;
+                }
+            }
+        }
+        return true;
+    }
+
+    vector<ll> pre(vector<int>&stations,ll n,int r){
+        ll sum=0,i=0;
+        vector<ll>answer(n);
+        while(i<n && i<=r){
+            sum+=stations[i];
+            answer[i]=sum;
+            i++;
+        }
+        while(i<n){
+            sum+=stations[i]-stations[i-r-1];
+            answer[i]=sum;
+            i++;
+        }
+        return answer;
+    }
+
+    long long maxPower(vector<int>& stations, int r, int k) {
+        ll n=stations.size(),sum=0;
+        vector<ll>arr(n),prefix=pre(stations,n,r);
+        reverse(stations.begin(),stations.end());
+        vector<ll>suffix=pre(stations,n,r);
+        reverse(suffix.begin(),suffix.end());
+        reverse(stations.begin(),stations.end());
+        for(ll i=0;i<n;i++){
+            arr[i]=prefix[i]+suffix[i]-stations[i];
+        }
+        ll low=0,high=1e18,mid,answer;
+        while(low<=high){
+            mid=(low+high)>>1;
+            if(check(arr,r,k,mid,n)){
+                answer=mid;
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return answer;
+    }
+};
+
+*/
 
 
