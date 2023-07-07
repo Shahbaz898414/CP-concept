@@ -135,6 +135,8 @@ void rotateMatrix(vector<vector<int>> &v, int n)
 
 // ll m = 998244353;
 
+
+
 // long long erfd(long long a, long long b)
 // {
 //   if (b == 0)
@@ -145,6 +147,8 @@ void rotateMatrix(vector<vector<int>> &v, int n)
 //   else
 //     return ans % m * ans % m;
 // }
+
+
 
 int f(int d)
 {
@@ -157,6 +161,8 @@ int f(int d)
   return d;
 }
 
+
+
 unsigned long long gcd(unsigned long long x, unsigned long long y)
 {
   if (y == 0)
@@ -164,156 +170,88 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-bool possible(long long mid, vector<int> s, long long k, int r)
-{
-  long long sum = 0;
-  vector<long long> v(s.begin(), s.end());
 
-  int n = v.size();
 
-  for (int i = 0; i <= r; i++)
-  {
-    sum += 1ll * v[i];
-  }
+int maximizeWin(vector<int>& v, int k) {
+    ll len=v.size();
 
-  for (int i = 0; i < n; i++)
-  {
-    /* code */
-    if (i - r - 1 >= 0)
-      sum += 1ll * v[i - r - 1];
-    if (i + r < n and i != 0)
-      sum += 1ll * v[i + r];
+    vector<int> ans(len);
+    vector<int>  suf(len+1);
 
-    if (sum < mid)
+    for (int i = 0; i < len; i++)
     {
-      v[min(n - 1, i + r)] += (mid - sum);
-
-      k -= (mid - sum);
-      sum = mid;
-      if (k < 0)
-        return 0;
+      /* code */
+      auto lb=upper_bound(v.begin(),v.end(),v[i]+k);
+      lb--;
+      int g=(lb-v.begin())-i+1;
+      ans[i]=len;
     }
-  }
 
-  return 1;
+    for (int i = len-1; i >=0; i--)
+    {
+      /* code */
+      suf[i]=max(suf[i+1],ans[i]);
+
+    }
+
+    int realans=0;
+
+
+    for (int i = 0; i <len; i++)
+    {
+      /* code */
+      int temp=ans[i]+suf[i+ans[i]];
+
+      realans=max(temp,realans);
+    }
+    
+    
+    return realans;
+
+
 }
 
-long long maxPower(vector<int> &v, int r, int k)
-{
-  int n = v.size();
-  long long lo = 0, hi = 1e5, res = 0;
 
-  while (lo <= hi)
-  {
-    long long mid = (lo + hi) / 2;
-    if (possible(mid, v, k, r))
-    {
-      res = mid;
-      lo = mid + 1;
-    }
-    else
-      hi = mid - 1;
-  }
 
-  return res;
+
+int minCapability(vector<int>& arr, int k) {
+    int n=arr.size();        
 }
 
-string fact(const vector<vector<char>> &board)
-{
-  // Check rows
-  for (const auto &row : board)
-  {
-    if (row[0] == row[1] && row[0] == row[2])
-    {
-      if (row[0] == 'X')
-        return "X";
-      else if (row[0] == 'O')
-        return "O";
-      else if (row[0] == '+')
-        return "+";
-    }
-  }
 
-  // Check columns
-  for (int col = 0; col < 3; col++)
-  {
-    if (board[0][col] == board[1][col] && board[0][col] == board[2][col])
-    {
-      if (board[0][col] == 'X')
-        return "X";
-      else if (board[0][col] == 'O')
-        return "O";
-      else if (board[0][col] == '+')
-        return "+";
-    }
-  }
 
-  // Check diagonals
-  if (board[0][0] == board[1][1] && board[0][0] == board[2][2])
-  {
-    if (board[0][0] == 'X')
-      return "X";
-    else if (board[0][0] == 'O')
-      return "O";
-    else if (board[0][0] == '+')
-      return "+";
-  }
 
-  if (board[0][2] == board[1][1] && board[0][2] == board[2][0])
-  {
-    if (board[0][2] == 'X')
-      return "X";
-    else if (board[0][2] == 'O')
-      return "O";
-    else if (board[0][2] == '+')
-      return "+";
-  }
-
-  return "DRAW";
-}
-
-bool compare(const pair<int, int> &a, const pair<int, int> &b)
-{
-  if (a.first != b.first)
-    return (a.first < b.first);
-  else
-    return (a.second > b.second);
-}
-
-int32_t main()
-{
-
+int32_t main() {
+ 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
+  // int t;
+  // cin >> t;
+  // while (t--)
+  // {
 
-  while (t--)
-  {
 
-    ll n,k,x;cin>>n>>k>>x;
+  int n, m;
+  cin >> n >>m;
+  vector<int>  arr(n);
+  for (int i = 0; i < n; i++)
+    cin >> arr[i];
 
-    if(x!=1){
-      yes
-      cout<<n<<endl;
-      for (int i = 0; i <n; i++)
-      {
-        /* code */
-        cout<<1<<" ";
-      }
+ cout<< minCapability(arr,m);
 
-      cout<<endl;
-      
-    }else if((n%2 and k==2) ||(k==1)) {
-      no
-    }else {
-      yes
-      cout<<n/2<<endl;
-      // cout<<n/2<<'\n';
-			for(int i=1;i<n/2;i++) cout<<2<<" ";
-			cout<<2+(n%2)<<'\n';
-    }
-  }
+ 
+
+
+  // cout<<n*(m)<<endl;
+
+  // }
+
+  
 
   return 0;
 }
+
+
+
+
+
