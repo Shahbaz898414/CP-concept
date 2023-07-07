@@ -14,10 +14,10 @@ bool check(ll x) {
   
   for (int i = 1; i <=n; i++) {
     if(a[i]>x)  {
-      if(f==0) {
-        f=1;
-        cout<<" s h a h b a z "<<endl;
-      }
+      // if(f==0) {
+      //   f=1;
+      //   cout<<" s h a h b a z "<<endl;
+      // }
       sum+=b[i];
     }
   }
