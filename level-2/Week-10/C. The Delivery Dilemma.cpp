@@ -13,10 +13,10 @@ bool check(ll x) {
   ll sum=0;
   
   for (int i = 1; i <=n; i++) {
-    if(a[i]>x) {
-      if(f==0){
+    if(a[i]>x)  {
+      if(f==0) {
         f=1;
-        cout<<"  s h a h b  a z"<<endl;
+        cout<<" s h a h b a z "<<endl;
       }
       sum+=b[i];
     }
@@ -31,8 +31,7 @@ int32_t main() {
  
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
+  int t; cin >> t;
   while (t--) {
 
     cin>>n;
