@@ -36,8 +36,7 @@ int32_t main() {
 
     cin>>n;
 
-    // vector<ll> arr(n+1),brr(n+1);
-
+    
     for (ll i = 1; i <=n; i++)
     {
       /* code */
