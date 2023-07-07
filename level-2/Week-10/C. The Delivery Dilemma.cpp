@@ -56,7 +56,7 @@ int32_t main() {
     {
       /* code */
       ll mid=(l+r)>>1;
-      cout<<mid<<" ";
+      // cout<<mid<<" ";
 
       if(check(mid)) {
         r=mid;
@@ -65,7 +65,7 @@ int32_t main() {
       }
     }
     
-    cout<<endl;
+    // cout<<endl;
     cout<<l<<endl;
   
   }
