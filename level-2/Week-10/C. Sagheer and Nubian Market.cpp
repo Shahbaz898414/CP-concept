@@ -6,18 +6,11 @@ const int N=1e6+10;
 
 int a[N],b[N];
 int n;
-int f=0;
-
 
 bool check(ll x) {
   ll sum=0;
-  
   for (int i = 1; i <=n; i++) {
     if(a[i]>x) {
-      if(f==0){
-        f=1;
-        cout<<"  s h a h b  a z"<<endl;
-      }
       sum+=b[i];
     }
   }
@@ -58,7 +51,6 @@ int32_t main() {
     {
       /* code */
       ll mid=(l+r)>>1;
-      cout<<mid<<" ";
 
       if(check(mid)) {
         r=mid;
@@ -67,7 +59,6 @@ int32_t main() {
       }
     }
     
-    cout<<endl;
     cout<<l<<endl;
   
   }
