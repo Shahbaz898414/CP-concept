@@ -242,13 +242,26 @@ int32_t main() {
   // while (t--) {
     ll n,k,x,m;cin>>n;
 
-    vector<ll> arr(n+1);
-
+    vector<ll> arr(1000100,0);
+    int cnt=0;
     for (ll i = 0; i < n; i++) {
-      cin>>arr[i];
+      int x;cin>>x;
+      arr[x]++;
     }
 
     ll ans=0;
+
+    for (int i = 0; i < 1000099; i++)
+    {
+      /* code */
+      arr[i+1]+=arr[i]/2;
+      arr[i]=arr[i]%2;
+      cnt+=arr[i];
+    }
+
+
+    cout<<cnt<<endl;
+    
 
    
     
