@@ -137,8 +137,6 @@ void rotateMatrix(vector<vector<int>> &v, int n)
 
 // ll m = 998244353;
 
-
-
 // long long erfd(long long a, long long b)
 // {
 //   if (b == 0)
@@ -149,8 +147,6 @@ void rotateMatrix(vector<vector<int>> &v, int n)
 //   else
 //     return ans % m * ans % m;
 // }
-
-
 
 int f(int d)
 {
@@ -163,8 +159,6 @@ int f(int d)
   return d;
 }
 
-
-
 unsigned long long gcd(unsigned long long x, unsigned long long y)
 {
   if (y == 0)
@@ -172,56 +166,63 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+bool possible(long long mid, vector<int> s, long long k, int r)
+{
+  long long sum = 0;
+  vector<long long> v(s.begin(), s.end());
 
-bool possible(long long mid,vector<int> s,long long k,int r){
-  long long sum=0;
-  vector<long long>  v(s.begin(),s.end());
+  int n = v.size();
 
-  int n=v.size();
-
-  for (int i = 0; i <=r; i++) {
-    sum+=1ll*v[i];
+  for (int i = 0; i <= r; i++)
+  {
+    sum += 1ll * v[i];
   }
 
-  for (int i = 0; i <n; i++)
+  for (int i = 0; i < n; i++)
   {
     /* code */
-    if(i-r-1>=0) sum+=1ll*v[i-r-1];
-    if(i+r<n and i!=0) sum+=1ll*v[i+r];
+    if (i - r - 1 >= 0)
+      sum += 1ll * v[i - r - 1];
+    if (i + r < n and i != 0)
+      sum += 1ll * v[i + r];
 
-    if(sum<mid){
-      v[min(n-1,i+r)]+=(mid-sum);
+    if (sum < mid)
+    {
+      v[min(n - 1, i + r)] += (mid - sum);
 
-      k-=(mid-sum);
-      sum=mid;
-      if(k<0)  return 0;
+      k -= (mid - sum);
+      sum = mid;
+      if (k < 0)
+        return 0;
     }
   }
-  
+
   return 1;
 }
 
+long long maxPower(vector<int> &v, int r, int k)
+{
+  int n = v.size();
+  long long lo = 0, hi = 1e5, res = 0;
 
-long long maxPower(vector<int>& v, int r, int k) {
-      int n=v.size();
-      long long lo=0,hi=1e5,res=0;
+  while (lo <= hi)
+  {
+    long long mid = (lo + hi) / 2;
+    if (possible(mid, v, k, r))
+    {
+      res = mid;
+      lo = mid + 1;
+    }
+    else
+      hi = mid - 1;
+  }
 
-      while(lo<=hi){
-        long long mid=(lo+hi)/2;
-        if(possible(mid,v,k,r)){
-          res=mid;
-          lo=mid+1;
-        }else hi=mid-1;
-      }
-
-      return res;
+  return res;
 }
 
+int32_t main()
+{
 
-
-
-int32_t main() {
- 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   int t;
@@ -229,16 +230,15 @@ int32_t main() {
   while (t--)
   {
 
-
-    int n,r,k;
-    cin >> n >>r>>k;
+    int n, r, k;
+    cin >> n >> r >> k;
 
     vector<int> a(n);
 
     for (int i = 0; i < n; i++)
     {
       /* code */
-      cin>>a[i];
+      cin >> a[i];
     }
 
     vector<vector<int>> pos(n);
@@ -246,77 +246,72 @@ int32_t main() {
     for (int i = 0; i < n; i++)
     {
       /* code */
-      pos[a[i]-1].pb(i);
+      pos[a[i] - 1].pb(i);
     }
 
     sort(all(pos), [&](vector<int> a, vector<int> b)
          { return sz(a) > sz(b); });
-    
-    int l=0,h=n;
+
+    int l = 0, h = n;
 
     vector<int> ans;
 
-
     auto f = [&](int mid) -> bool
     {
-        vector<int> tempans(n);
-        int cnt = 0;
-        vector<int> rem;
-        for (int i = 0; i < n; i++)
+      vector<int> tempans(n);
+      int cnt = 0;
+      vector<int> rem;
+      for (int i = 0; i < n; i++)
+      {
+        if (sz(pos[i]) >= k)
         {
-            if (sz(pos[i]) >= k)
-            {
-                for (int j = 0; j < k; j++)
-                {
-                    tempans[pos[i][j]] = j + 1;
-                }
-                cnt++;
-            }
-            else
-            {
-                for (int j = 0; j < sz(pos[i]); j++)
-                {
-                    rem.pb(pos[i][j]);
-                }
-            }
-        }
-        for (int i = 0; i <= sz(rem) - k; i += k)
-        {
-            for (int j = 0; j < k; j++)
-            {
-                tempans[rem[i + j]] = j + 1;
-            }
-        }
-        if (cnt >= mid)
-        {
-            ans = tempans;
-        }
-        return cnt >= mid;
-    };
-
-     while (l <= h)
-    {
-        int mid = (l + h) / 2;
-        if (f(mid))
-        {
-            l = mid + 1;
+          for (int j = 0; j < k; j++)
+          {
+            tempans[pos[i][j]] = j + 1;
+          }
+          cnt++;
         }
         else
         {
-            h = mid - 1;
+          for (int j = 0; j < sz(pos[i]); j++)
+          {
+            rem.pb(pos[i][j]);
+          }
         }
+      }
+      for (int i = 0; i <= sz(rem) - k; i += k)
+      {
+        for (int j = 0; j < k; j++)
+        {
+          tempans[rem[i + j]] = j + 1;
+        }
+      }
+      if (cnt >= mid)
+      {
+        ans = tempans;
+      }
+      return cnt >= mid;
+    };
+
+    while (l <= h)
+    {
+      int mid = (l + h) / 2;
+      if (f(mid))
+      {
+        l = mid + 1;
+      }
+      else
+      {
+        h = mid - 1;
+      }
     }
-    for(auto it:ans){
-      cout<<it<<" ";
+    for (auto it : ans)
+    {
+      cout << it << " ";
     }
 
-    cout<<endl;
-    
-    
-
+    cout << endl;
   }
 
   return 0;
 }
-
-
