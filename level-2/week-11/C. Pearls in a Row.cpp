@@ -293,7 +293,7 @@ int32_t main() {
   // cin >> t;
 
   // while (t--) {
-    ll n,k,x,m;cin>>n>>m>>k;
+    ll n,k,x,m;cin>>n;
 
     vector<ll> arr(m+1,INT_MAX);
 
