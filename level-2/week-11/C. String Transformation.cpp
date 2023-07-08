@@ -226,35 +226,29 @@ bool compare(const pair<int, int> &a, const pair<int, int> &b)
     return (a.second > b.second);
 }
 
-int32_t main() {
+int32_t main()
+{
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
+  // int t;
+  // cin >> t;
 
-  while (t--) {
-    string s;
-  cin>>s;
-  int l=0;
-  for(int i=0;i<s.length();i++)
-  {
-    if(s[i]-'a'<=l)
-    {
-      s[i]='a'+l;
-      l++;
+  // while (t--)
+  // {
+    string s; cin >> s;
+    int l = 0;
+    for (int i = 0; i < s.length(); i++) {
+      if (s[i] - 'a' <= l) {
+        s[i] = 'a' + l;
+        l++;
+      }
+      if (l >= 26)
+        break;
     }
-    if(l>=26)
-    break;
-  }
-  if(l<26)
-  cout<<-1;
-  else
-  cout<<s;
-
-
-
-  }
+    if (l < 26)
+      cout << -1;
+    else
+      cout << s;
+  // }
   return 0;
 }
-
-
