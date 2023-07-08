@@ -231,7 +231,7 @@ int32_t main()
   {
 
     int n, r, k;
-    cin >> n >> r >> k;
+    cin >> n  >> k;
 
     vector<int> a(n);
 
