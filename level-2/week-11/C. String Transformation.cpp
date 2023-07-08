@@ -233,13 +233,28 @@ int32_t main() {
   cin >> t;
 
   while (t--) {
-    string s;cin>>s;
-
-    ll len=s.size();
+    string s;
+  cin>>s;
+  int l=0;
+  for(int i=0;i<s.length();i++)
+  {
+    if(s[i]-'a'<=l)
+    {
+      s[i]='a'+l;
+      l++;
+    }
+    if(l>=26)
+    break;
+  }
+  if(l<26)
+  cout<<-1;
+  else
+  cout<<s;
 
 
 
   }
   return 0;
 }
+
 
