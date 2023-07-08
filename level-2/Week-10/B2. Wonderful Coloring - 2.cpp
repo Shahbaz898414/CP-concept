@@ -9,6 +9,8 @@ using namespace std;
 #define ff first
 #define ss second
 #define vi vector<int>
+#define all(s) s.begin(), s.end()
+#define sz(x) (int)x.size()
 #define no cout << "NO" << endl;
 #define yes cout << "YES" << endl;
 #define printv(v)                      \
@@ -171,76 +173,48 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 }
 
 
+bool possible(long long mid,vector<int> s,long long k,int r){
+  long long sum=0;
+  vector<long long>  v(s.begin(),s.end());
 
-int maximizeWin(vector<int>& v, int k) {
-    ll len=v.size();
+  int n=v.size();
 
-    vector<int> ans(len);
-    vector<int>  suf(len+1);
+  for (int i = 0; i <=r; i++) {
+    sum+=1ll*v[i];
+  }
 
-    for (int i = 0; i < len; i++)
-    {
-      /* code */
-      auto lb=upper_bound(v.begin(),v.end(),v[i]+k);
-      lb--;
-      int g=(lb-v.begin())-i+1;
-      ans[i]=len;
-    }
-
-    for (int i = len-1; i >=0; i--)
-    {
-      /* code */
-      suf[i]=max(suf[i+1],ans[i]);
-
-    }
-
-    int realans=0;
-
-
-    for (int i = 0; i <len; i++)
-    {
-      /* code */
-      int temp=ans[i]+suf[i+ans[i]];
-
-      realans=max(temp,realans);
-    }
-    
-    
-    return realans;
-
-
-}
-
-bool fact(ll mid,ll n,vector<int> arr,int k){
-  ll cnt=0;
-  for (ll i = 0; i < n; i++)
+  for (int i = 0; i <n; i++)
   {
     /* code */
-    if(arr[i]<mid){
-      cnt++;
-      i++;
+    if(i-r-1>=0) sum+=1ll*v[i-r-1];
+    if(i+r<n and i!=0) sum+=1ll*v[i+r];
+
+    if(sum<mid){
+      v[min(n-1,i+r)]+=(mid-sum);
+
+      k-=(mid-sum);
+      sum=mid;
+      if(k<0)  return 0;
     }
   }
-
-  return cnt>=k;
   
+  return 1;
 }
 
 
+long long maxPower(vector<int>& v, int r, int k) {
+      int n=v.size();
+      long long lo=0,hi=1e5,res=0;
 
-int minCapability(vector<int>& arr, int k) {
-    int n=arr.size();  
-  ll l=0,h=1e9;
-  ll ans=h;
-  while(l<=h){
-    ll mid=(l+h)/2;
-    if(fact(mid,n,arr,k)){
-      ans=mid;
-      h=mid-1;
-    }else{
-      l=mid+l;
-    }
-  }
+      while(lo<=hi){
+        long long mid=(lo+hi)/2;
+        if(possible(mid,v,k,r)){
+          res=mid;
+          lo=mid+1;
+        }else hi=mid-1;
+      }
+
+      return res;
 }
 
 
@@ -250,33 +224,99 @@ int32_t main() {
  
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  // int t;
-  // cin >> t;
-  // while (t--)
-  // {
+  int t;
+  cin >> t;
+  while (t--)
+  {
 
 
-  int n, m;
-  cin >> n >>m;
-  vector<int>  arr(n);
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
+    int n,r,k;
+    cin >> n >>r>>k;
 
- cout<< minCapability(arr,m);
+    vector<int> a(n);
 
- 
+    for (int i = 0; i < n; i++)
+    {
+      /* code */
+      cin>>a[i];
+    }
+
+    vector<vector<int>> pos(n);
+
+    for (int i = 0; i < n; i++)
+    {
+      /* code */
+      pos[a[i]-1].pb(i);
+    }
+
+    sort(all(pos), [&](vector<int> a, vector<int> b)
+         { return sz(a) > sz(b); });
+    
+    int l=0,h=n;
+
+    vector<int> ans;
 
 
-  // cout<<n*(m)<<endl;
+    auto f = [&](int mid) -> bool
+    {
+        vector<int> tempans(n);
+        int cnt = 0;
+        vector<int> rem;
+        for (int i = 0; i < n; i++)
+        {
+            if (sz(pos[i]) >= k)
+            {
+                for (int j = 0; j < k; j++)
+                {
+                    tempans[pos[i][j]] = j + 1;
+                }
+                cnt++;
+            }
+            else
+            {
+                for (int j = 0; j < sz(pos[i]); j++)
+                {
+                    rem.pb(pos[i][j]);
+                }
+            }
+        }
+        for (int i = 0; i <= sz(rem) - k; i += k)
+        {
+            for (int j = 0; j < k; j++)
+            {
+                tempans[rem[i + j]] = j + 1;
+            }
+        }
+        if (cnt >= mid)
+        {
+            ans = tempans;
+        }
+        return cnt >= mid;
+    };
 
-  // }
+     while (l <= h)
+    {
+        int mid = (l + h) / 2;
+        if (f(mid))
+        {
+            l = mid + 1;
+        }
+        else
+        {
+            h = mid - 1;
+        }
+    }
+    for(auto it:ans){
+      cout<<it<<" ";
+    }
 
-  
+    cout<<endl;
+    
+    
+
+  }
 
   return 0;
 }
-
-
-
 
 
