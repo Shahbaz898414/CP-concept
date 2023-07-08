@@ -218,8 +218,6 @@ long long maxPower(vector<int> &v, int r, int k)
   return res;
 }
 
-
-
 bool compare(const pair<int, int> &a, const pair<int, int> &b)
 {
   if (a.first != b.first)
@@ -228,11 +226,8 @@ bool compare(const pair<int, int> &a, const pair<int, int> &b)
     return (a.second > b.second);
 }
 
-
-
-
-
-int32_t main() {
+int32_t main()
+{
 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
@@ -240,48 +235,49 @@ int32_t main() {
   // cin >> t;
 
   // while (t--) {
-    // ll n,k,x,m;cin>>n;
+  // ll n,k,x,m;cin>>n;
 
-    // vector<ll> arr(300010);
+  // vector<ll> arr(300010);
 
-    // for (ll i = 0; i < n; i++) {
-    //   cin>>arr[i];
-    // }
+  // for (ll i = 0; i < n; i++) {
+  //   cin>>arr[i];
+  // }
 
-    // ll ans=0;
+  // ll ans=0;
 
+  set<int> s;
+  int n, a, A[300010], i, j, sum;
+  cin >> n;
+  sum = 0;
+  for (i = 1; i <= n; i++)
+  {
+    cin >> a;
+    if (s.count(a) == 0)
+      s.insert(a);
+    else
+    {
+      sum++;
+      s.clear();
+      A[sum] = i;
+    }
+  }
+  if (sum == 0)
+    cout << -1 << endl;
+  else
+  {
+    cout << sum << endl;
+    a = 1;
+    for (i = 1; i < sum; i++)
+    {
+      cout << a << " " << A[i] << endl;
+      a = A[i] + 1;
+    }
+    cout << a << " " << n << endl;
+  }
 
-    set<int>s;
-	int n,a,A[300010],i,j,sum;
-	cin>>n;
-    sum=0;
-	for(i=1;i<=n;i++){
-		cin>>a;
-		if(s.count(a)==0)	s.insert(a);
-		else{
-			sum++;
-			s.clear();
-			A[sum]=i;
-		}
-	}
-	if(sum==0) cout<<-1<<endl;
-	else{
-		cout<<sum<<endl;
-		a=1;
-		for(i=1;i<sum;i++){
-			cout<<a<<" "<<A[i]<<endl;
-			a=A[i]+1;
-		}
-		cout<<a<<" "<<n<<endl;
-	}
-
-   
-    
-    
   // }
   return 0;
 }
-
 
 /*
 
@@ -290,21 +286,21 @@ using namespace std;
 int i,n,t,b,c[150005][2],k,a;
 map <int,int> mp;
 int main(){
-	ios::sync_with_stdio(0);
-	cin>>n;
-	for(i=1;i<=n;i++){
-		cin>>a;
-		if(t==0) b=i;
-		mp[a]++;
-		t++;
-		if(mp[a]==2){ mp.clear(); c[k][0]=b; c[k][1]=i; t=0; k++;}
-	}
-	if(k==0){ cout<<-1; return 0;}
-	cout<<k<<endl;
-	for(i=0;i<k;i++){
-		if(i==k-1) c[i][1]=n;
-		cout<<c[i][0]<<" "<<c[i][1]<<endl;
-	}
+  ios::sync_with_stdio(0);
+  cin>>n;
+  for(i=1;i<=n;i++){
+    cin>>a;
+    if(t==0) b=i;
+    mp[a]++;
+    t++;
+    if(mp[a]==2){ mp.clear(); c[k][0]=b; c[k][1]=i; t=0; k++;}
+  }
+  if(k==0){ cout<<-1; return 0;}
+  cout<<k<<endl;
+  for(i=0;i<k;i++){
+    if(i==k-1) c[i][1]=n;
+    cout<<c[i][0]<<" "<<c[i][1]<<endl;
+  }
 }
 
 */
@@ -315,30 +311,30 @@ int main(){
 #include<set>
 using namespace std;
 int main(){
-	set<int>s;
-	int n,a,A[300010],i,j,sum;
-	cin>>n;
+  set<int>s;
+  int n,a,A[300010],i,j,sum;
+  cin>>n;
     sum=0;
-	for(i=1;i<=n;i++){
-		cin>>a;
-		if(s.count(a)==0)	s.insert(a);
-		else{
-			sum++;
-			s.clear();
-			A[sum]=i;
-		}
-	}
-	if(sum==0) cout<<-1<<endl;
-	else{
-		cout<<sum<<endl;
-		a=1;
-		for(i=1;i<sum;i++){
-			cout<<a<<" "<<A[i]<<endl;
-			a=A[i]+1;
-		}
-		cout<<a<<" "<<n<<endl;
-	}
-	return 0;
+  for(i=1;i<=n;i++){
+    cin>>a;
+    if(s.count(a)==0)	s.insert(a);
+    else{
+      sum++;
+      s.clear();
+      A[sum]=i;
+    }
+  }
+  if(sum==0) cout<<-1<<endl;
+  else{
+    cout<<sum<<endl;
+    a=1;
+    for(i=1;i<sum;i++){
+      cout<<a<<" "<<A[i]<<endl;
+      a=A[i]+1;
+    }
+    cout<<a<<" "<<n<<endl;
+  }
+  return 0;
 }
 
 */
