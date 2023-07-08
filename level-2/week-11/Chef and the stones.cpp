@@ -226,17 +226,24 @@ bool compare(const pair<int, int> &a, const pair<int, int> &b)
     return (a.second > b.second);
 }
 
-int32_t main()
-{
-
+int32_t main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   int t;
   cin >> t;
 
   while (t--) {
-    
-  
+    ll n1,n2,m;cin>>n1>>n2>>m;
+    ll maxi=min(n1,n2);
+
+    ll sum=(m*(m+1))/2;
+
+    sum=min(sum,maxi);
+
+    cout<<(n1-sum)+n2-sum<<endl;
+
+
+
   }
   return 0;
 }
