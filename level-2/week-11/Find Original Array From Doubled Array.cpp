@@ -281,6 +281,28 @@ bool compare(const pair<int, int> &a, const pair<int, int> &b)
     return (a.second > b.second);
 }
 
+vector<int> findOriginalArray(vector<ll>& changed) {
+        if(changed.size()&1){return {};}
+        sort(changed.begin(), changed.end());
+        vector<int>ans;
+        unordered_map<int, int>m;
+        for(int i=0; i<changed.size(); i++){
+            m[changed[i]]++;
+        }
+        for(int i=0; i<changed.size(); i++){
+            if(m[changed[i]]==0){
+                continue;
+            }
+            m[changed[i]]--;
+            if(m[changed[i]*2]==0){
+                return {};
+            }
+            m[changed[i]*2]--;
+            ans.push_back(changed[i]);
+        }
+        return ans;
+}
+
 
 
 int32_t main() {
@@ -298,6 +320,11 @@ int32_t main() {
     for (ll i = 0; i < n; i++) {
       cin>>arr[i];
     }
+
+    vector<ll> ar = findOriginalArray(arr);
+    for(auto it:ar){
+      cout<<it<<" ";
+    }
     
 
     
@@ -305,3 +332,40 @@ int32_t main() {
 
   return 0;
 }
+
+
+/*
+
+class Solution {
+public:
+    int next(int l,vector<int> &changed){
+        while(l<changed.size() && changed[l]==-1){
+            l++;
+        }
+        return l;
+    }
+    vector<int> findOriginalArray(vector<int>& changed) {
+        sort(changed.begin(),changed.end());
+        int l=0,h=1,n=changed.size(),count=0;
+        if(n%2) return {};
+        vector<int> ans;
+        while(h<n){
+            if((long long)changed[l]*2==changed[h]){
+                count++;
+                ans.push_back(changed[l]);
+                changed[l]=-1;
+                changed[h]=-1;
+                l=next(l,changed);
+                h++;
+                if(l==h) h++;
+            }else{
+                h++;
+            }
+        }
+        if(count!=n/2) ans={};
+        return ans;
+
+    }
+};
+
+*/
