@@ -252,6 +252,7 @@ int32_t main()
     cout << -1;
   else
     cout << s;
+    
   // }
   return 0;
 }
