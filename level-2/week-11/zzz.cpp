@@ -312,8 +312,7 @@ int32_t main()
     else
     {
       yes
-              cout
-          << n / 2 << endl;
+      cout<< n / 2 << endl;
       // cout<<n/2<<'\n';
       for (int i = 1; i < n / 2; i++)
         cout << 2 << " ";
