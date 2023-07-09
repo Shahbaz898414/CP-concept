@@ -234,7 +234,43 @@ int32_t main()
 
   while (t--) {
    ll n,k;cin>>n;
-    
+
+   vector<ll> a(n);
+   vector<ll> l(n);
+
+   vector<ll>  b;
+   for (ll i = 0; i < n; i++)
+   {
+    /* code */
+    cin>>a[i];
+   }
+
+   for (int i = 0; i < n; i++) {
+    cin>>l[i];
+    if(l[i]==0){
+      b.push_back(a[i]);
+    }
+   }
+
+   sort(b.begin(),b.end(),greater<int>());
+   int sum=0;
+   
+   for (int i = 0; i < n; i++)
+   {
+
+    /* code */
+    if(l[i]==0){
+      a[i]=b[sum];
+      sum++;
+    }
+   }
+
+   for(auto it:a){
+    cout<<it<< " ";
+   }
+   
+   cout<<endl;
+
     
   }
   return 0;
