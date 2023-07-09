@@ -285,35 +285,40 @@ int32_t main()
 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
+  // int t;
+  // cin >> t;
 
-  while (t--)
-  {
+  // while (t--)
+  // {
 
-    ll n,k,x;cin>>n>>k>>x;
+  //   ll n,k,x;cin>>n>>k>>x;
 
-    if(x!=1){
-      yes
-      cout<<n<<endl;
-      for (int i = 0; i <n; i++)
-      {
-        /* code */
-        cout<<1<<" ";
-      }
+  //   if(x!=1){
+  //     yes
+  //     cout<<n<<endl;
+  //     for (int i = 0; i <n; i++)
+  //     {
+  //       /* code */
+  //       cout<<1<<" ";
+  //     }
 
-      cout<<endl;
+  //     cout<<endl;
       
-    }else if((n%2 and k==2) ||(k==1)) {
-      no
-    }else {
-      yes
-      cout<<n/2<<endl;
-      // cout<<n/2<<'\n';
-			for(int i=1;i<n/2;i++) cout<<2<<" ";
-			cout<<2+(n%2)<<'\n';
-    }
-  }
+  //   }else if((n%2 and k==2) ||(k==1)) {
+  //     no
+  //   }else {
+  //     yes
+  //     cout<<n/2<<endl;
+  //     // cout<<n/2<<'\n';
+	// 		for(int i=1;i<n/2;i++) cout<<2<<" ";
+	// 		cout<<2+(n%2)<<'\n';
+  //   }
+  // }
+
+
+
+  cout<<'z'-'n'<<endl;
+  cout<<'z'-'a'<<endl;
 
   return 0;
 }

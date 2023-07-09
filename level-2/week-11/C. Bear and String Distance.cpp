@@ -241,28 +241,30 @@ int32_t main()
     for (int i = 0; i < n; i++)
     {
         char c = s[i];
-        int maxadd = 'z' - c, maxsub = c - 'a';
+        ll maxadd = 'z' - c, maxsub = c - 'a';
         if (maxadd >= maxsub)
         {
-            int add = min(maxadd, k);
+            ll add = min(maxadd, k);
             c += add;
             ans += c;
             k -= add;
         }
         else
         {
-            int sub = min(maxsub, k);
+            ll sub = min(maxsub, k);
             c -= sub;
             ans += c;
             k -= sub;
         }
     }
+
+    
     if (k > 0)
     {
         cout << -1 << endl;
-        return;
+       
     }
-    cout << ans << endl;
+    else cout << ans << endl;
     
   // }
   return 0;
