@@ -229,39 +229,13 @@ int32_t main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  // int t;
-  // cin >> t;
+  int t;
+  cin >> t;
 
-  // while (t--)
-  // {
-  ll n,k;cin>>n>>k;
-  string s;cin>>s;
-  string ans;
-    for (int i = 0; i < n; i++) {
-        char c = s[i];
-        ll maxadd = 'z' - c, maxsub = c - 'a';
-        if (maxadd >= maxsub) {
-            ll add = min(maxadd, k);
-            c += add;
-            ans += c;
-            k -= add;
-        }
-        else {
-            ll sub = min(maxsub, k);
-            c -= sub;
-            ans += c;
-            k -= sub;
-        }
-    }
-
-
-    if (k > 0)
-    {
-        cout << -1 << endl;
-       
-    }
-    else cout << ans << endl;
+  while (t--) {
+   ll n,k;cin>>n;
     
-  // }
+    
+  }
   return 0;
 }
