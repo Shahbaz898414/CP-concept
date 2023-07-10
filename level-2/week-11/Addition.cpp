@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define lld long long int
 #define mod 1000000007
 #define Time cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl;
 #define pb push_back
@@ -219,29 +218,58 @@ long long maxPower(vector<int> &v, int r, int k)
   return res;
 }
 
-string convert(lld n)
+string fact(const vector<vector<char>> &board)
 {
-  string s = "";
-  while (n > 0)
+  // Check rows
+  for (const auto &row : board)
   {
-    if (n % 2 == 1)
-      s = "1" + s;
-    else
-      s = "0" + s;
-    n /= 2;
+    if (row[0] == row[1] && row[0] == row[2])
+    {
+      if (row[0] == 'X')
+        return "X";
+      else if (row[0] == 'O')
+        return "O";
+      else if (row[0] == '+')
+        return "+";
+    }
   }
-  return s;
-}
 
-lld convertBack(string s)
-{
-  lld n = 0, p = 1;
-  for (lld i = s.length() - 1; i >= 0; i--)
+  // Check columns
+  for (int col = 0; col < 3; col++)
   {
-    n += ((s[i] - '0') * p);
-    p *= 2;
+    if (board[0][col] == board[1][col] && board[0][col] == board[2][col])
+    {
+      if (board[0][col] == 'X')
+        return "X";
+      else if (board[0][col] == 'O')
+        return "O";
+      else if (board[0][col] == '+')
+        return "+";
+    }
   }
-  return n;
+
+  // Check diagonals
+  if (board[0][0] == board[1][1] && board[0][0] == board[2][2])
+  {
+    if (board[0][0] == 'X')
+      return "X";
+    else if (board[0][0] == 'O')
+      return "O";
+    else if (board[0][0] == '+')
+      return "+";
+  }
+
+  if (board[0][2] == board[1][1] && board[0][2] == board[2][0])
+  {
+    if (board[0][2] == 'X')
+      return "X";
+    else if (board[0][2] == 'O')
+      return "O";
+    else if (board[0][2] == '+')
+      return "+";
+  }
+
+  return "DRAW";
 }
 
 bool compare(const pair<int, int> &a, const pair<int, int> &b)
@@ -259,30 +287,46 @@ int32_t main()
   cin.tie(nullptr);
   int t;
   cin >> t;
-  while (t--) {
-    ll n, k; cin >> n >> k;
-    vector<ll> arr(n);
 
-    for (ll i = 0; i < n; i++)
-      cin >> arr[i];
+  while (t--)
+  {
 
-     ll ans=0;
-     for (ll i = 0; i < 32; i++) {
-      ll cnt=0;
-      for(int j=0;j<n;j++){
-	      if(arr[j]&(1<<i)){
-	        cnt++;
-	      }
-	    }
-      if(cnt%k==0){
-        ans+=cnt/k;
-      }else {
-        ans+=cnt/k;
-        ans++;
-      }
-     }
-      cout<<ans+1<<endl;
+    string s1,s2;cin>>s1>>s2;
+
+    reverse(begin(s1),end(s1));
+    reverse(begin(s2),end(s2));
+
+    while(s1.size()<s2.size()){
+      s1+="0";
+    }
+    while(s2.size()<s1.size()){
+      s2+="0";
+    }
+
+    s1+="0";
+    s2+="0";
+    int ans=0,carry=0,cur=0;
+
+    for (int i = 0; i <s1.size(); i++)
+    { 
+      carry=carry+(s1[i]-'0')+(s2[i]-'0');
+
+      if(carry>1){
+        cur++;
+      }else cur=0;
+
+      carry/=2;
+
+      ans=max(ans,cur);
+    }
+    
+    
+    cout<<ans+(s2.find('1')!=string::npos)<<endl;
+
+
   }
+
+  
 
   return 0;
 }

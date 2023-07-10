@@ -1,0 +1,1 @@
+{"name":"Local: Addition","url":"c:\\Users\\91771\\Desktop\\cpp\\CPofTLE\\level-2\\week-11\\Addition.cpp","tests":[{"id":1689019006023,"input":"3\n100010\n0\n0\n100010\n11100\n1010","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91771\\Desktop\\cpp\\CPofTLE\\level-2\\week-11\\Addition.cpp","group":"local","local":true}
