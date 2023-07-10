@@ -315,7 +315,7 @@ int32_t main()
         cur++;
       }else cur=0;
 
-      carry/=2;
+      carry=carry/2;
 
       ans=max(ans,cur);
     }
