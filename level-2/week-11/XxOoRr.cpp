@@ -259,23 +259,29 @@ int32_t main()
   cin.tie(nullptr);
   int t;
   cin >> t;
-  while (t--)
-  {
-    ll n, k;
-    cin >> n >> k;
-
+  while (t--) {
+    ll n, k; cin >> n >> k;
     vector<ll> arr(n);
 
     for (ll i = 0; i < n; i++)
       cin >> arr[i];
 
-
      ll ans=0;
-     for (ll i = 0; i < 32; i++)
-     {
-      /* code */
+     for (ll i = 0; i < 32; i++) {
+      ll cnt=0;
+      for(int j=0;j<n;j++){
+	      if(arr[j]&(1<<i)){
+	        cnt++;
+	      }
+	    }
+      if(cnt%k==0){
+        ans+=cnt/k;
+      }else {
+        ans+=cnt/k;
+        ans++;
+      }
      }
-      
+      cout<<ans+1<<endl;
   }
 
   return 0;
