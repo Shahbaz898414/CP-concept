@@ -282,8 +282,6 @@ bool compare(const pair<int, int> &a, const pair<int, int> &b)
 
 int cnt[35];
 
-
-
 int32_t main()
 {
 
@@ -295,39 +293,12 @@ int32_t main()
   while (t--)
   {
 
-    ll n;cin>>n;
+    ll n, l, r, x;
+    cin >> n >> l >> r >> x;
 
-    
-  vector<ll> arr(n);
+    vector<ll> arr(n);
     for (ll i = 0; i < n; i++)
-      cin>>arr[i];
-    
-    memset(cnt,0,sizeof cnt);
-    for (int i = 0; i < n; i++)
-    {
-      /* code */
-      for (int j = 0; j <=30; j++)
-      {
-        /* code */
-        if(((arr[i]>>j)&1)) cnt[j]++;
-      }
-    }
-
-    int r=0;
-
-    for (int i = 0; i <=30; i++)
-    {
-      
-      r=__gcd(r,cnt[i]);
-    }
-
-
-    for (int i = 0; i < n; i++) { 
-      if(r%(i+1)==0)  cout<<i+1<<" ";
-    }
-
-    cout<<endl;
-    
+      cin >> arr[i];
   }
 
   return 0;
