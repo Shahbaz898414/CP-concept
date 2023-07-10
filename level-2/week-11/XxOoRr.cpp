@@ -268,6 +268,14 @@ int32_t main()
 
     for (ll i = 0; i < n; i++)
       cin >> arr[i];
+
+
+     ll ans=0;
+     for (ll i = 0; i < 32; i++)
+     {
+      /* code */
+     }
+      
   }
 
   return 0;
