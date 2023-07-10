@@ -291,34 +291,17 @@ int32_t main()
   while (t--)
   {
 
-    string s1, s2;
-    cin >> s1 >> s2;
+    ll n;cin>>n;
 
-    reverse(begin(s1), end(s1));
-    reverse(begin(s2), end(s2));
+    vector<ll> arr(n);
 
-    while (s1.size() < s2.size())
-      s1 += "0";
-    
-    while (s2.size() < s1.size())
-      s2 += "0";
-    
-    s1 += "0";
-    s2 += "0";
-    int ans = 0, carry = 0, cur = 0;
-
-    for (int i = 0; i < s1.size(); i++) {
-      carry = carry + (s1[i] - '0') + (s2[i] - '0');
-      if (carry==2)
-        cur++;
-      else
-        cur = carry / 2;
-
-      carry = carry / 2;
-      ans = max(ans, cur);
+    for (ll i = 0; i < n; i++)
+    {
+      /* code */
+      cin>>arr[i];
     }
-
-    cout << ans + (s2.find('1') != string::npos) << endl;
+    
+    
   }
 
   return 0;
