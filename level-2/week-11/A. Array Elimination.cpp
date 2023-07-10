@@ -280,6 +280,8 @@ bool compare(const pair<int, int> &a, const pair<int, int> &b)
     return (a.second > b.second);
 }
 
+int cnt[35];
+
 int32_t main()
 {
 
@@ -296,11 +298,20 @@ int32_t main()
     vector<ll> arr(n);
 
     for (ll i = 0; i < n; i++)
+      cin>>arr[i];
+    
+    memset(cnt,0,sizeof(cnt));
+    for (int i = 0; i < n; i++)
     {
       /* code */
-      cin>>arr[i];
+      for (int i = 0; i <=30; i++)
+      {
+        /* code */
+        
+      }
+      
     }
-    
+        
     
   }
 
