@@ -219,24 +219,29 @@ long long maxPower(vector<int> &v, int r, int k)
   return res;
 }
 
-string convert(lld n) {
-	string s = "";
-	while (n > 0) {
-		if (n % 2 == 1) s = "1" + s;
-		else s = "0" + s;
-		n /= 2;
-	}
-	return s;
+string convert(lld n)
+{
+  string s = "";
+  while (n > 0)
+  {
+    if (n % 2 == 1)
+      s = "1" + s;
+    else
+      s = "0" + s;
+    n /= 2;
+  }
+  return s;
 }
 
-
-lld convertBack(string s) {
-	lld n = 0 , p = 1;
-	for (lld i = s.length() - 1; i >= 0; i--) {
-		n += ((s[i] - '0') * p);
-		p *= 2;
-	}
-	return n;
+lld convertBack(string s)
+{
+  lld n = 0, p = 1;
+  for (lld i = s.length() - 1; i >= 0; i--)
+  {
+    n += ((s[i] - '0') * p);
+    p *= 2;
+  }
+  return n;
 }
 
 bool compare(const pair<int, int> &a, const pair<int, int> &b)
@@ -252,19 +257,17 @@ int32_t main()
 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t; cin >> t;
-  while (t--) {
+  int t;
+  cin >> t;
+  while (t--)
+  {
+    ll n, k;
+    cin >> n >> k;
 
-    ll n;cin>>n;
+    vector<ll> arr(n);
 
-    int p = log2(n);
-    int power = pow(2, p);
-    int x = power / 2;
-    int y = n - power + 1;
-    if (x > y)
-      cout << x << endl;
-    else
-      cout << y << endl;
+    for (ll i = 0; i < n; i++)
+      cin >> arr[i];
   }
 
   return 0;
