@@ -304,13 +304,28 @@ int32_t main()
     for (int i = 0; i < n; i++)
     {
       /* code */
-      for (int i = 0; i <=30; i++)
+      for (int j = 0; j <=30; j++)
       {
         /* code */
-        
+        if((arr[i]>>j)&1) cnt[j]++;
       }
-      
     }
+
+    int r=0;
+
+    for (int i = 0; i <=30; i++)
+    {
+      /* code */
+      r=__gcd(r,cnt[i]);
+    }
+
+
+    for (int i = 0; i < n; i++)
+    {
+      /* code */
+    }
+    
+    
         
     
   }
