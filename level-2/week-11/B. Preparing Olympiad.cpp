@@ -280,7 +280,7 @@ bool compare(const pair<int, int> &a, const pair<int, int> &b)
     return (a.second > b.second);
 }
 
-int cnt[35];
+
 
 int32_t main()
 {
@@ -296,12 +296,38 @@ int32_t main()
     ll n, l, r, x;
     cin >> n >> l >> r >> x;
 
-    vector<ll> arr(n);
+    vector<ll> arr(n,0);
     for (ll i = 0; i < n; i++)
       cin >> arr[i];
 
+      int ans=0;
+    for (int i = 0; i < (1<<n); i++)
+    {
+      /* code */
+      if(__builtin_popcount(i)<2){
+        continue;
+      }
 
+      ll tot=0,eas=INT_MAX,hard=0;
+
+      for (int j = 0; j < n; j++)
+      {
+        /* code */
+        if((i>>j)&1){
+          tot+=arr[i];
+          eas=min(eas,arr[i]);
+          hard=max(hard,arr[i]);
+
+        }
+      }
+
+      if((tot>=1) and (tot<=r) and (hard-eas>=x)) 
+        ans++;
       
+    }
+    
+    cout<<ans<<endl;
+
   }
 
   return 0;
