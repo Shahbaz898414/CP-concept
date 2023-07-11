@@ -287,11 +287,11 @@ int32_t main()
 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
+  // int t;
+  // cin >> t;
 
-  while (t--)
-  {
+  // while (t--)
+  // {
 
     ll n, l, r, x;
     cin >> n >> l >> r >> x;
@@ -328,7 +328,7 @@ int32_t main()
     
     cout<<ans<<endl;
 
-  }
+  // }
 
   return 0;
 }
