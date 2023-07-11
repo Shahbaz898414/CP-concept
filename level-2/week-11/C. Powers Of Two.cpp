@@ -294,40 +294,14 @@ int32_t main()
   // {
 
     ll n, l, r, x;
-    cin >> n >> l >> r >> x;
+    cin >> n >> x;
 
     vector<ll> arr(n,0);
-    for (ll i = 0; i < n; i++)
-      cin >> arr[i];
+    // for (ll i = 0; i < n; i++)
+      // cin >> arr[i];
 
       int ans=0;
-    for (int i = 0; i < (1<<n); i++)
-    {
-     
-      if(__builtin_popcountll(i)<2){
-        continue;
-      }
-
-      ll tot=0,eas=INT_MAX,hard=0;
-
-      for (int j = 0; j < n; j++)
-      {
-        
-        if((i>>j)&1){
-          tot+=arr[j];
-          eas=min(eas,arr[j]);
-          hard=max(hard,arr[j]);
-
-        }
-      }
-
-      if((tot>=l) and (tot<=r) and (hard-eas>=x)) 
-        ans++;
-      
-    }
-    
-    cout<<ans<<endl;
-
+  
   // }
 
   return 0;
