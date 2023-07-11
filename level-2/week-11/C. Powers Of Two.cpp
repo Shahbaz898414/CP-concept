@@ -289,7 +289,6 @@ int32_t main()
   cin.tie(nullptr);
   // int t;
   // cin >> t;
-
   // while (t--)
   // {
 
@@ -299,9 +298,11 @@ int32_t main()
     vector<ll> arr(n,0);
     // for (ll i = 0; i < n; i++)
       // cin >> arr[i];
-
-      int ans=0;
+    int ans=0;
   
+
+
+
   // }
 
   return 0;
