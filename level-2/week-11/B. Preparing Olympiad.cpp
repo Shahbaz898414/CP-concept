@@ -304,7 +304,7 @@ int32_t main()
     for (int i = 0; i < (1<<n); i++)
     {
       /* code */
-      if(__builtin_popcount(i)<2){
+      if(__builtin_popcountll(i)<2){
         continue;
       }
 
@@ -312,16 +312,16 @@ int32_t main()
 
       for (int j = 0; j < n; j++)
       {
-        /* code */
+        
         if((i>>j)&1){
-          tot+=arr[i];
-          eas=min(eas,arr[i]);
-          hard=max(hard,arr[i]);
+          tot+=arr[j];
+          eas=min(eas,arr[j]);
+          hard=max(hard,arr[j]);
 
         }
       }
 
-      if((tot>=1) and (tot<=r) and (hard-eas>=x)) 
+      if((tot>=l) and (tot<=r) and (hard-eas>=x)) 
         ans++;
       
     }
