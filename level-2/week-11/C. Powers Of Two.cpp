@@ -292,13 +292,25 @@ int32_t main()
   // while (t--)
   // {
 
-    ll n, l, r, x;
-    cin >> n >> x;
-
-    vector<ll> arr(n,0);
-    // for (ll i = 0; i < n; i++)
-      // cin >> arr[i];
-    int ans=0;
+   int n,k;
+	cin>>n>>k;
+	int a[k+1],sum=k;
+	fill(a,a+k,1);
+	for(int i=k-1;i>=0;i--)
+	{
+		while(sum+a[i]<=n)
+		{
+			sum+=a[i];
+			a[i]*=2;
+		}
+	}
+	if(sum!=n)
+	cout<<"NO\n";
+	else {
+		cout<<"YES\n";
+		for(int i=0;i<k;i++)
+		cout<<a[i]<<" ";
+	}
   
 
 
