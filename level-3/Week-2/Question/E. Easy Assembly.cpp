@@ -56,6 +56,8 @@ int main()
         }
     }
 
+    
+
     cout << (split - n) << " " << (split - 1) << endl;
 
     return 0;
