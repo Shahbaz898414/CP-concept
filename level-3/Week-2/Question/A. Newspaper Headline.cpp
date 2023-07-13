@@ -16,7 +16,7 @@ void solve()
 
     for (int i = 0; i < n; i++)
     {
-        /* code */
+       
         posn[s[i] - 'a'].insert(i);
     }
 
@@ -24,7 +24,7 @@ void solve()
 
     for (int i = 0; i < m; i++)
     {
-        /* code */
+       
         int ch = t[i] - 'a';
         if(posn[ch].size()==0){
             cout<<-1<<endl;
@@ -32,7 +32,7 @@ void solve()
         }
 
         auto it=posn[ch].upper_bound(lastindex);
-        
+
         if(it==posn[ch].end())
 
         ans++,lastindex=*posn[ch].begin();
