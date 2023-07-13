@@ -296,6 +296,16 @@ int32_t main()
     ll n, l, r, x;
     cin >> n ;
 
+    if(n==0){
+      cout<<"5 4 2 6"<<endl;
+    }
+    else if(n==1){
+      cout<<(1LL<<35)<<" "<<(1LL<<36)<<" "<<3<<" "<<2<<endl;
+    }
+    else {
+      cout<<(1LL<<35)<<" "<<(1LL<<36)<<" "<<1<<" "<<(n^1)<<endl;  
+    }
+
    
   }
 
