@@ -24,7 +24,7 @@ public:
   int maximumsSplicedArray(vector<int> &nums1, vector<int> &nums2)
   {
 
-    int n=num1.size();
+    int n=nums1.size();
 
     int sum1=0,sum2=0;
 

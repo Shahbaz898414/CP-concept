@@ -16,9 +16,15 @@ class Solution
         {
           /* code */
           meet[i]={end[i],start[i]};
+          // meet[i]={start[i],end[i]};
         }
 
         sort(meet.begin(),meet.end());
+
+
+        for(auto it:meet){
+          cout<<it.first<< " "<<it.second<<endl;
+        }
 
         int avail=0;
 
@@ -26,11 +32,11 @@ class Solution
 
         for (int i = 0; i < n; i++)
         {
-          /* code */
           if(avail<=meet[i].second){
             cnt++;
             avail=meet[i].first+1;
           }
+
         }
 
         
