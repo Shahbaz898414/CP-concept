@@ -32,8 +32,11 @@ void solve()
         }
 
         auto it=posn[ch].upper_bound(lastindex);
+        
         if(it==posn[ch].end())
+
         ans++,lastindex=*posn[ch].begin();
+
         else lastindex=*it;
     }
 
