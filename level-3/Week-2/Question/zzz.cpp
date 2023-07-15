@@ -10,12 +10,10 @@ void solve()
 
     vector<ll> arr(n);
     ll g = 0;
-
     ll rem = 0, store = 0;
+
     for (ll i = 0; i < n; i++)
-    {
         cin >> arr[i];
-    }
 
     for (ll i = 0; i < n; i++)
     {
@@ -25,10 +23,16 @@ void solve()
         }
         else
         {
-            store = arr[i];
+            if (arr[i] % k == 0)
+                continue;
+            store = arr[i] / k;
             rem = (arr[i] % k);
+            store++;
+            g += min(store * k - arr[i], rem);
         }
     }
+
+    cout << g << endl;
 }
 
 int main()
