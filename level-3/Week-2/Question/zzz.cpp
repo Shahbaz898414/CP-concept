@@ -3,61 +3,46 @@ using namespace std;
 #define ll long long
 #define lld long long int
 
-void solve()
-{
-    ll n, k;
-    cin >> n >> k;
+void solve() {
+    ll n, k; cin >> n ;
 
     vector<ll> arr(n);
-    ll g = 0;
-    ll rem = 0, store = 0;
+    ll g = 0; ll rem = 0, store = 0;
 
     for (ll i = 0; i < n; i++)
         cin >> arr[i];
 
-    for (ll i = 0; i < n; i++)
-    {
-        if (arr[i] > k)
-        {
+    sort(arr.begin(),arr.end());
 
-            if (arr[i] % k == 0)
-            {
-                arr[i] = 0;
-                continue;
-            }
+    double z=0;
 
-            store = arr[i] / k;
-            rem = (arr[i] % k);
-            // arr[i]-=rem;
-            // arr[i]+=k;
+    // for (ll i = n-2; i >=0; i--)
+    // {
+    //     /* code */
+    // }
+    
 
-            store++;
-
-            // cout<<store<<" "<<arr[i]<<endl;
-            arr[i] = min(rem, abs(store * k) - arr[i]);
+    for (ll i = 0; i < n; i++) {
+        if(i==0){
+            z=arr[n-1];
+            
+        }else {
+            z=(z+arr[n-1-i])/2;
         }
     }
-
-    for (ll i = 0; i < n; i++)
-    {
-        /* code */
-        g += arr[i];
-    }
-
-    // cout<<endl;
-
-    cout << g << endl;
+    
+    cout<<fixed<<setprecision(8)<<z<<endl;
+    
 }
+
 
 int main()
 {
 
     int t;
     cin >> t;
-    while (t--)
-    {
+    while (t--) {
         solve();
     }
-
     return 0;
 }
