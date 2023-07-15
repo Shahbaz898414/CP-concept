@@ -17,20 +17,34 @@ void solve()
 
     for (ll i = 0; i < n; i++)
     {
-        if (arr[i] < k)
+        if (arr[i] > k)
         {
-            g += arr[i];
-        }
-        else
-        {
+
             if (arr[i] % k == 0)
+            {
+                arr[i] = 0;
                 continue;
+            }
+
             store = arr[i] / k;
             rem = (arr[i] % k);
+            // arr[i]-=rem;
+            // arr[i]+=k;
+
             store++;
-            g += min(store * k - arr[i], rem);
+
+            // cout<<store<<" "<<arr[i]<<endl;
+            arr[i] = min(rem, abs(store * k) - arr[i]);
         }
     }
+
+    for (ll i = 0; i < n; i++)
+    {
+        /* code */
+        g += arr[i];
+    }
+
+    // cout<<endl;
 
     cout << g << endl;
 }
