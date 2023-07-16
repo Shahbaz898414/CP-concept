@@ -37,13 +37,33 @@ int main()
 
   cout << c << endl;
 
-  for (int i = 0; i < c; i++)
-  {
+  for (int i = 0; i < c; i++) {
     cout << v[i].size() << " ";
-
     for (int j = 0; j < v[i].size(); j++)
       cout << v[i][j] << " ";
 
+
+
     cout << endl;
+
   }
+
+
+
+  return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
