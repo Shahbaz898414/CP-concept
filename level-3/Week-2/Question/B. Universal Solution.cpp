@@ -7,14 +7,41 @@ using namespace std;
 
 int main() {
 
-    int t;cin>>t;
+    int t;
+    cin>>t;
     while(t--) {
-      string s;cin>>s;
+      string str;
+      cin>>str;
 
-      for (ll i = 0; i < count; i++)
-      {
-        /* code */
+      ll r=0,s=0,p=0;
+      char ch;
+      for (ll i = 0; i < str.size(); i++) {
+        if(str[i]=='S') s++;
+        else if(str[i]=='R') r++;
+        else p++;
       }
+      
+    ll mx=max({p,r,s});
+
+    if(mx==r){
+      ch='P';
+    }else if(mx==s){
+      ch='R';
+    }else {
+      ch='S';
+    }
+
+    for (ll i = 0; i <str.size(); i++)
+    {
+      /* code */
+      cout<<ch;
+    }
+
+    cout<<endl;
+    
+    
+
+      // cout<<s<<" "<<r<<" "<<p<<endl;
       
 
     }
