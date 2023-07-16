@@ -11,6 +11,12 @@ int main() {
     while(t--) {
       string s;cin>>s;
 
+      for (ll i = 0; i < count; i++)
+      {
+        /* code */
+      }
+      
+
     }
 
   
