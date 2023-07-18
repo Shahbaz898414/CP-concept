@@ -23,10 +23,22 @@ int main()
 
   for (ll i = 0; i < n; i++)
   {
+    /* code */
+    cout<<arr[i]<<" ";
+  }
+
+  cout<<endl;
+  
+  vector<ll> brr;
+  for (ll i = 0; i < n; i++)
+  {
 
     while (q.size() and arr[i] - q.front() >= m)
     {
+
+      brr.push_back(arr[i]);
       q.pop();
+
     }
 
     if (q.size() >= k - 1)
