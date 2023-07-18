@@ -26,6 +26,7 @@ int main()
   }
 
   cout << f(l);
+  cout <<l;
 
   return 0;
 }
