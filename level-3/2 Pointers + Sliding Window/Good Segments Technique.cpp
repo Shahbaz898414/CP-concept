@@ -179,7 +179,7 @@ int i=0,j=0;
 while(j<n){
   sum+=a[j];
   while(i<=j and sum<=k){
-    ans=min(ans,j-i+1);
+    ans+=(j-i+1);
 
     sum-=a[i];
     i++;
