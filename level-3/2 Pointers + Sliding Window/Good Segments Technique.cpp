@@ -164,6 +164,137 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+
+/*
+
+Given an array of positive integers find no. of
+of smallest subarrays with sum of elements >= K
+
+vector<int> a(n);
+int k;
+int ans=INF;
+int sum=0;
+int i=0,j=0;
+
+while(j<n){
+  sum+=a[j];
+  while(i<=j and sum<=k){
+    ans=min(ans,j-i+1);
+
+    sum-=a[i];
+    i++;
+  }
+  j++;
+}
+
+
+
+
+
+Given an array of positive integers find the length
+of smallest subarray with sum of elements >=k
+
+
+vector<int> a(n);
+int k;
+int ans=INF;
+int sum=0;
+int i=0,j=0;
+
+while(j<n){
+  sum+=a[j];
+  while(i<=j and sum<=k){
+    ans=min(ans,j-i+1);
+
+    sum-=a[i];
+    i++;
+  }
+  j++;
+}
+
+
+
+Given an array of positive integers find no. of subarrays with sum <= K.
+
+vector<int>  a(n);
+
+int k=0;
+int ans=0;
+int i=0,j=0;
+while(j<n){
+  sum+=a[j];
+  while(i<=j and sum>k){
+    aum-=a[i];
+    i++;
+  }
+
+  ans+=j-i+1;
+  j++;
+}
+
+cout<<ans<<endl;
+
+
+
+Given an array of positive integers find the length
+of longest subarray with sum <= K.
+
+ ll j=0,i=0;
+  ll sum=0,ans=0;
+
+  while(j<n){
+    sum+=a[j];
+
+    while(i<=j and sum>k){
+      sum-=a[i];
+      i++;
+    }
+
+    // if(sum<=k)
+      ans=max(ans,j-i+1);
+
+    j++;
+  }
+
+  cout<<ans<<endl;
+
+
+
+Given an array find the length of longest
+subarray with not more than K distinct elements.
+
+vector<int > a(n);
+
+int k;
+int ans=0;
+itn i=0,j=0;
+
+map<int,int>  freq;
+
+while(j<n){
+  freq[a[j]]++;
+
+  while(i<=j and freq.size()>k){
+    freq[a[i]]--;
+    if(freq[a[i]]==0)
+    freq.erase(a[i]);
+
+    i++;
+  }
+
+
+  ans=max(ans,j-i+1);
+
+  j++;
+}
+
+cout<<ans<<endl;
+
+
+
+
+*/
+
 signed main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
@@ -171,41 +302,32 @@ signed main() {
   // cin >> t;
   // while (t--)
   // {
-  long long n, m; cin >> n >> m;
-  long long a[n], b[m];
+  long long n, k; cin >> n >> k;
+  long long a[n];
   for (int i = 0; i < n; i++)
     cin >> a[i];
 
-  for (ll i = 0; i < m; i++)
-    cin>>b[i];
+  // for (ll i = 0; i < m; i++)
+  //   cin>>b[i];
   
   ll j=0,i=0;
   ll sum=0,ans=0;
 
-  while(i<n and j<m) {
-    if(a[i]<b[j]){
+  while(j<n){
+    sum+=a[j];
+
+    while(i<=j and sum>k){
+      sum-=a[i];
       i++;
-    }else if(a[i]>b[j]){
-      j++;
-    }else {
-      ll t=a[i];
-      ll cnt1=0,cnt2=0;
-
-      while(i<n and a[i]==t){
-        cnt1++;
-        i++;
-      }
-
-      while(j<m and b[j]==t){
-        cnt2++;
-        j++;
-      }
-
-      ans+=(cnt1*cnt2);
     }
+
+    // if(sum<=k)
+      ans=max(ans,j-i+1);
+
+    j++;
   }
 
- cout<<ans<<endl;
+  cout<<ans<<endl;
 
   // }
 
