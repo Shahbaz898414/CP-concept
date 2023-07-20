@@ -164,13 +164,38 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-
 /*
 
 Given an array, what is the maximum sum of a
 subarray of size k.
 
-int n,k;
+int n,k;cin>>n>>k;
+vector<int> arr(n);
+
+for(auto &it:arr)  cin>>arr[i];
+
+vector<int>  ans;
+queue<int> qe;
+
+for(int i=0;i<n;i++){
+  if(arr[i]<0)  qe.push(i);
+}
+
+int idx=qu.front();
+
+ans.push_back(arr[idx]);
+
+
+for(int i=1;i<=n-k;i++){
+  int j=i+k-1;
+
+  if(arr[j]<0) qe.push(j);
+  if(qe.front()==i-1)qe.pop();
+
+  idx=qe.front();
+
+  ans.push_back(arr[idx]);
+}
 
 
 void printFirstNegative(int arr[], int n, int k)
@@ -178,7 +203,7 @@ void printFirstNegative(int arr[], int n, int k)
     // Create an empty deque to store the indices of
     // negative integers
     deque<int> negIndices;
- 
+
     // Traverse through the array
     for (int i = 0; i < n; i++) {
         // If the deque is not empty and the leftmost
@@ -187,12 +212,12 @@ void printFirstNegative(int arr[], int n, int k)
         if (!negIndices.empty()
             && negIndices.front() == i - k)
             negIndices.pop_front();
- 
+
         // If the current element is negative, add its index
         // to the deque
         if (arr[i] < 0)
             negIndices.push_back(i);
- 
+
         // If the current window is of size k, print the
         // first negative integer (if present)
         if (i >= k - 1) {
@@ -218,39 +243,54 @@ every subarray of size k.
 
 */
 
-signed main() {
+signed main()
+{
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   // int t;
   // cin >> t;
   // while (t--)
   // {
-  long long n, k; cin >> n >> k;
-  long long a[n];
+
+  int n, k;
+  cin >> n >> k;
+  vector<int> arr(n);
+
+  for (auto &it : arr)
+    cin >> arr[it];
+
+  vector<int> ans;
+  queue<int> qe;
+
   for (int i = 0; i < n; i++)
-    cin >> a[i];
-
-  // for (ll i = 0; i < m; i++)
-  //   cin>>b[i];
-  
-  ll j=0,i=0;
-  ll sum=0,ans=0;
-
-  while(j<n){
-    sum+=a[j];
-
-    while(i<=j and sum>k){
-      sum-=a[i];
-      i++;
-    }
-
-    // if(sum<=k)
-      ans=max(ans,j-i+1);
-
-    j++;
+  {
+    if (arr[i] < 0)
+      qe.push(i);
   }
 
-  cout<<ans<<endl;
+  int idx = qe.front();
+
+  ans.push_back(arr[idx]);
+
+  for (int i = 1; i <= n - k; i++)
+  {
+    int j = i + k - 1;
+
+    if (arr[j] < 0)
+      qe.push(j);
+    if (qe.front() == i - 1)
+      qe.pop();
+
+    idx = qe.front();
+
+    ans.push_back(arr[idx]);
+  }
+
+  for (auto it : ans)
+    cout << it << " ";
+  
+
+  cout << endl;
 
   // }
 
