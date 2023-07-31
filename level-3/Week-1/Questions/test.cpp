@@ -3,8 +3,8 @@
 using namespace std;
 
 bool isSubstring(string s, string t) {
-    int n = s.length();
-    int m = t.length();
+    int n = s.length();int m = t.length();
+    
     for (int i = 0; i <= n - m; i++) {
         bool found = true;
         for (int j = 0; j < m; j++) {
