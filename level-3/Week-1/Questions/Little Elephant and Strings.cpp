@@ -61,24 +61,18 @@ int32_t main()
 
   // vector<string>  brr(n);
 
-  for (ll i = 0; i < k; i++)
-  {
-    /* code */
+  for (ll i = 0; i < k; i++)  
     cin >> arr[i];
-  }
+  
 
-  for (ll i = 0; i < n; i++)
-  {
-    string s;
-    cin >> s;
+  for (ll i = 0; i < n; i++) {
+    string s; cin >> s;
     if (isGoodString(s, arr))
-    {
       cout << "Good" << endl;
-    }
+    
     else
-    {
       cout << "Bad" << endl;
-    }
+    
   }
 
   // }
