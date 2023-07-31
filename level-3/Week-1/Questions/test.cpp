@@ -1,18 +1,12 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h>  
 #define ll long long
 using namespace std;
 
 
-
-int32_t main()
-{
-
-  int t;
-  cin >> t;
-
-  while (t--)
-  {
-      
+int32_t main( ) {
+  int t; cin >> t;
+  while (t--) {
+    ll n,k,l;cin>>n>>k>>l;   
   }
     
 }
