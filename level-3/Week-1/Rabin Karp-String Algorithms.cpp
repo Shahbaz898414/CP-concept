@@ -26,9 +26,9 @@ int main()
 
   vector<long long> h(T + 1, 0);
   for (int i = 0; i < T; i++)
-  {
+  
     h[i + 1] = (h[i] + (t[i] - 'a' + 1) * powers[i]) % MOD;
-  }
+  
 
   // for(auto it:h){
   //   cout<<it<<" ";
@@ -39,9 +39,8 @@ int main()
   long long h_s = 0;
 
   for (int i = 0; i < S; i++)
-  {
     h_s = (h_s + (s[i] - 'a' + 1) * powers[i]) % MOD;
-  }
+  
 
   vector<int> v;
   for (int i = 0; i + S - 1 < T; i++)
@@ -56,7 +55,7 @@ int main()
   }
 
   for(auto it:v)  cout<<it<<" ";
-  
 
+  cout<<endl;
   return 0;
 }
