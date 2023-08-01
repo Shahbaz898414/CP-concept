@@ -30,11 +30,11 @@ int main()
     h[i + 1] = (h[i] + (t[i] - 'a' + 1) * powers[i]) % MOD;
   }
 
-  for(auto it:h){
-    cout<<it<<" ";
-  }
+  // for(auto it:h){
+  //   cout<<it<<" ";
+  // }
 
-  cout<<endl;
+  // cout<<endl;
 
   long long h_s = 0;
 
