@@ -54,7 +54,9 @@ int main()
     }
   }
 
-  for(auto it:v)  cout<<it<<" ";
+  if(v.size()==0)  cout<<-1<<endl;
+
+  else for(auto it:v)  cout<<it<<" ";
 
   cout<<endl;
   return 0;
