@@ -49,9 +49,14 @@ int main()
     long long cur_h = (h[i + S] - h[i] + MOD) % MOD;
     if (cur_h == (h_s * powers[i]) % MOD)
     {
-      cout << "Found at index " << i + 1 << endl;
+      // cout << "Found at index " << i + 1 << endl;
+
+      v.push_back(i+1);
     }
   }
+
+  for(auto it:v)  cout<<it<<" ";
+  
 
   return 0;
 }
