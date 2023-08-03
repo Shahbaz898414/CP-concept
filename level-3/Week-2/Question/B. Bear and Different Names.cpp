@@ -16,6 +16,12 @@ int main()
     s[i] = i;
   }
 
+  // for(int i=0;i<k-1;i++){
+  //   cout<<s[i]<<" ";
+  // }
+
+  // cout<<endl;
+
   string q;
   // cin >> q;
 
