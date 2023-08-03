@@ -12,16 +12,16 @@ int main()
 
   for (int i = 0; i < k - 1; i++)
   {
-    /* code */
+   
     s[i] = i;
   }
 
   string q;
-  cin >> q;
+  // cin >> q;
 
   for (int i = k - 1; i < n; i++)
   {
-    /* code */
+   
     cin >> q;
     if (q == "NO")
     {
