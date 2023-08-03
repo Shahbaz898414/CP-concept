@@ -33,7 +33,7 @@ int main()
 
   for (int i = 0; i < n; i++)
   {
-    /* code */
+    
     if (s[i] < 26)
       cout << char(s[i] + 65) << " ";
     else
