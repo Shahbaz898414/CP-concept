@@ -10,7 +10,11 @@ int main()
   string s;cin>>s;
   ll k;cin>>k;
 
+  while(k--){
+    string x;cin>>x;
+  }
   
+
 
   return 0;
 }
