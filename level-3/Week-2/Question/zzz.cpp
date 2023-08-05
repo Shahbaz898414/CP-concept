@@ -1,6 +1,5 @@
 
 
-
 // using namespace std;
 /*
 void solve()
@@ -144,7 +143,6 @@ int main()
 }
 */
 
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -191,31 +189,42 @@ int main()
 
     while (t--)
     {
-        int n; cin >> n;
+        int n;
+        cin >> n;
         vector<int> A(n), C(n);
 
-        int mi=INT_MAX;
-        int mx=INT_MIN;
-        int sum=0;
-        for (int i = 0; i < n; i++) {
+        int mi = INT_MAX;
+        int mx = INT_MIN;
+        int sum = 0;
+
+        map<int, int> mp;
+        for (int i = 0; i < n; i++)
+        {
             cin >> A[i];
-            mi=min(mi,A[i]);
+            // mi=min(mi,A[i]);
+
+            mp[A[i]]++;
         }
 
-        if(is_sorted(A.begin(),A.end())){
-            cout<<0<<endl;
-            continue;}
+        if (n == 1)
+        {
+            cout << "NO" << endl;
+            continue;
+        }
 
+        if (mp.size() == n)
+        {
+            cout << "YES" << endl;
+            continue;
+        }
+
+        // if(is_sorted(A.begin(),A.end())){
+        //     cout<<0<<endl;
+        //     continue;}
 
         //  vector<int>  B=A;
 
         //  sort(B.begin(),B.end());
-
-       
-
-
-
-
     }
 
     return 0;
