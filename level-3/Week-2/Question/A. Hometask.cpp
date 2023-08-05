@@ -12,6 +12,7 @@ int main()
 
   while(k--){
     string x;cin>>x;
+    cout<<x<<" ";
   }
   
 
