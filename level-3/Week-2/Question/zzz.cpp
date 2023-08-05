@@ -1,8 +1,8 @@
+
+
+
+// using namespace std;
 /*
-
-#include <bits/stdc++.h>
-using namespace std;
-
 void solve()
 {
 }
@@ -75,8 +75,6 @@ int main()
 }
 */
 
-
-
 /*
 
 #include <iostream>
@@ -147,78 +145,78 @@ int main()
 */
 
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
-bool canRearrange(vector<int>& A, vector<int>& B, vector<int>& C) {
+bool canRearrange(vector<int> &A, vector<int> &B, vector<int> &C)
+{
     int n = A.size();
     vector<pair<int, int>> sortedPairs;
-    
-    for (int i = 0; i < n; i++) {
+
+    for (int i = 0; i < n; i++)
+    {
         sortedPairs.push_back(make_pair(max(A[i], B[i]), C[i]));
     }
-    
+
     sort(sortedPairs.begin(), sortedPairs.end());
-    
-    for (int i = 0; i < n; i++) {
+
+    for (int i = 0; i < n; i++)
+    {
         int maxVal = sortedPairs[i].first;
         int targetVal = sortedPairs[i].second;
-        
-        if (A[i] != maxVal && B[i] != maxVal) {
+
+        if (A[i] != maxVal && B[i] != maxVal)
+        {
             return false;
         }
-        
-        if (A[i] == maxVal && B[i] != targetVal) {
+
+        if (A[i] == maxVal && B[i] != targetVal)
+        {
             swap(A[i], B[i]);
-        } else if (B[i] == maxVal && A[i] != targetVal) {
+        }
+        else if (B[i] == maxVal && A[i] != targetVal)
+        {
             swap(A[i], B[i]);
         }
     }
-    
+
     return true;
 }
 
-int main() {
+int main()
+{
 
-    int t;cin>>t;
+    int t;
+    cin >> t;
 
-    while(t--){
-         int n;
-    cin >> n;
-    
-    vector<int> A(n), B(n), C(n);
-    for (int i = 0; i < n; i++) {
-        cin >> A[i];
-    }
-    
-    for (int i = 0; i < n; i++) {
-        cin >> B[i];
-    }
-    
-    for (int i = 0; i < n; i++) {
-        cin >> C[i];
-    }
-    
-    if (canRearrange(A, B, C)) {
-        cout << "YES" << endl;
-        // for (int i = 0; i < n; i++) {
-        //     cout << A[i] << " ";
-        // }
-        // cout << endl;
-        // for (int i = 0; i < n; i++) {
-        //     cout << B[i] << " ";
-        // }
-        // cout << endl;
-    } else {
-        cout << "NO" << endl;
-    }
+    while (t--)
+    {
+        int n; cin >> n;
+        vector<int> A(n), B(n), C(n);
+
+        int mi=INT_MAX;
+        int mx=INT_MIN;
+        int sum=0;
+        for (int i = 0; i < n; i++) {
+            cin >> A[i];
+            mi=min(mi,A[i]);
+        }
+
+        for (int i = 0; i <n; i++)
+        {
+            /* code */
+            if(A[i]!=mi){
+                sum+=abs(A[i]-mi);
+            }
+        }
+        
+
+        cout<<mi<<endl;
+
 
 
 
     }
-   
-    
+
     return 0;
 }
