@@ -192,7 +192,7 @@ int main()
     while (t--)
     {
         int n; cin >> n;
-        vector<int> A(n), B(n), C(n);
+        vector<int> A(n), C(n);
 
         int mi=INT_MAX;
         int mx=INT_MIN;
@@ -202,16 +202,16 @@ int main()
             mi=min(mi,A[i]);
         }
 
-        for (int i = 0; i <n; i++)
-        {
-            /* code */
-            if(A[i]!=mi){
-                sum+=abs(A[i]-mi);
-            }
-        }
-        
+        if(is_sorted(A.begin(),A.end())){
+            cout<<0<<endl;
+            continue;}
 
-        cout<<mi<<endl;
+
+        //  vector<int>  B=A;
+
+        //  sort(B.begin(),B.end());
+
+       
 
 
 
