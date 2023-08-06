@@ -28,11 +28,11 @@ int main()
     }
   }
 
-  for(auto it:vec){
-    cout<<it<<" ";
-  }
+  // for(auto it:vec){
+  //   cout<<it<<" ";
+  // }
 
-  cout<<endl;
+  // cout<<endl;
 
   for (ll i = 0; i < vec.size(); i++)
   {
@@ -57,10 +57,10 @@ int main()
     }
   }
 
-  for(auto it:cnt){
-    cout<<it<<" ";
-  }
-  cout<<endl;
+  // for(auto it:cnt){
+  //   cout<<it<<" ";
+  // }
+  // cout<<endl;
 
   cout << ans << endl;
 
