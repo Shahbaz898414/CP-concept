@@ -8,7 +8,7 @@ int main() {
   ll n, k;
   cin >> n;
   string s, t;
-  cin >> s >> t;
+  cin >> s ;
 
   int c = 0, ac = 0, bc = 0;
 
