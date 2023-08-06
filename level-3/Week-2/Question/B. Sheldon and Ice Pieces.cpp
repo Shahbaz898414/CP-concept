@@ -17,7 +17,7 @@ int main()
 {
 
   ll n, k;
-  cin >> n;
+  // cin >> n;
   string s, t;
   cin >> s >> t;
 
