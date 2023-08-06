@@ -32,9 +32,9 @@ int main()
   {
     
     if (i > 0 and i < vec.size() - 1 and vec[i - 1] == vec[i + 1])
-    {
+  
       cnt[vec[i]] += 2;
-    }
+    
     else
       cnt[vec[i]] += 1;
   }
