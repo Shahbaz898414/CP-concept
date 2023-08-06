@@ -28,6 +28,12 @@ int main()
     }
   }
 
+  // for(auto it:vec){
+  //   cout<<it<<" ";
+  // }
+
+  // cout<<endl;
+
   for (ll i = 0; i < vec.size(); i++)
   {
     
