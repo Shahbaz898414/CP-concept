@@ -3,47 +3,46 @@ using namespace std;
 #define ll long long
 #define lld long long int
 
-int main() {
+int convert(char s)
+{
+  if (s == '2')
+    return 5;
+  else if (s == '9')
+    return 6;
+  else
+    return s - '0';
+}
+
+int main()
+{
 
   ll n, k;
   cin >> n;
   string s, t;
-  cin >> s ;
+  cin >> s >> t;
 
   int c = 0, ac = 0, bc = 0;
-
+  int a[30] = {0}, b[46] = {0}, ans = INT_MAX;
   // vector<ll> arr(n);
 
-  for (ll i = 0; i < 2 * n; i++)
+  for (auto it : s)
   {
-
-    // cin >> arr[i];
-
-    if (s[i] == '1')
-      ac++;
-    if (t[i] == '1')
-      bc++;
-    if (s[i] == '1' && t[i] == '1')
-      c++;
+    a[convert(it)]++;
   }
 
-  // vector<ll> vec, cnt(k + 1);
+  for (auto it : t)
+  {
+    b[convert(it)]++;
+  }
 
-  if (c % 2 == 1)
-    c = 1;
-  else if (c % 2 == 0)
-    c = 0;
-  if (bc > ac + c)
-    c++;
+  for (int i = 0; i <= 9; i++)
+  {
+    /* code */
+    if (a[i])
+      ans = min(ans, b[i] / a[i]);
+  }
 
-
-  if (ac + c > bc)
-    cout << "First";
-    
-  if (ac + c < bc)
-    cout << "Second";
-  if (ac + c == bc)
-    cout << "Draw";
+  cout << ans;
 
   return 0;
 }
