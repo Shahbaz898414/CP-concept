@@ -17,16 +17,10 @@ int main()
     // cin >> t;
     // while (t--)
     // {
-    ll n;
-    cin >> n;
+    ll n,x;
+    cin >> n>>x;
     ll ans=1;
-    while(n%ans==0){
-        ans*=3;
-    }
-
-    cout<<n/ans<<endl;
-
-    cout<<n/ans+1<<endl;
+    
     // vector<string> a(n), b(n);
     // for (int i = 0; i < n; i++)
     //     cin >> a[i];
