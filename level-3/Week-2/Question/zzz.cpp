@@ -22,7 +22,7 @@ int main()
 
         for (ll i = 0; i < n; i++)
         {
-            /* code */
+            
             cin>>b[i];
         }
         
@@ -34,7 +34,7 @@ int main()
 
         for (ll i = 0; i < n; i++)
         {
-            /* code */
+            
             if(a[i]!=b[i] and l==0){
                 l=i+1;
                 continue;
