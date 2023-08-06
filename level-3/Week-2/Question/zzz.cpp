@@ -14,7 +14,7 @@ int main()
     {
         ll n;
         cin >> n;
-        vector<ll> a(n),b(n);
+        vector<ll> a(n), b(n);
         for (int i = 0; i < n; i++)
         {
             cin >> a[i];
@@ -22,37 +22,32 @@ int main()
 
         for (ll i = 0; i < n; i++)
         {
-            
-            cin>>b[i];
+
+            cin >> b[i];
         }
-        
 
-        ll l=0,r=0;
+        ll l = 0, r = -1;
 
-
-        ll maxi = LLONG_MIN;
+        // ll maxi = LLONG_MIN;
 
         for (ll i = 0; i < n; i++)
         {
-            
-            if(a[i]!=b[i] and l==0){
-                l=i+1;
-                continue;
+
+            if (a[i] != b[i])
+            {
+                l = min(l, i);
+                r = max(r, i);
             }
-
-            if(a[i]!=b[i] and r==0){
-                r=i+1;
-                break;   
-            }
-
-
         }
 
-        cout<<r<<" "<<l<<endl;
+        if (r == -1)
+        {
+            cout << 0 << endl;
+            continue;
+        }
+        // cout<<r<<" "<<l<<endl;
 
-        // cout<<((r)-(l))<<endl;
-        
-        
+        cout << r - l + 1 << endl;
     }
     return 0;
 }
