@@ -4,19 +4,15 @@ using namespace std;
 const int M = 1e9 + 7;
 
 
-
 int main() {
  
- 
-  ios_base::sync_with_stdio(false);
-  cin.tie(nullptr);
+  ios_base::sync_with_stdio(false); cin.tie(nullptr);
 
   ll n, x; cin >> n >> x;
 
   ll t[n], h[n], m[n];
 
-  for (ll i = 0; i < n; i++)
-    cin >> t[i] >> h[i] >> m[i];
+  for (ll i = 0; i < n; i++) cin >> t[i] >> h[i] >> m[i];
 
 
   ll atb = 0;
@@ -33,24 +29,29 @@ int main() {
         if (!ty[j] && h[j] <= x2 && t[j] == (e + i) % 2)
         {
           if (c == -1 || m[j] > m[c])
-          {
+          
             c = j;
-          }
+          
         }
       }
-      if (c == -1)
-        break;
+      if (c == -1) break;
+
+
+
 
       x2 += m[c];
 
       ty[c] = true;
 
-
       atb = max(atb, i + 1);
     }
   }
 
+
+
   cout << atb;
+
+
 
   return 0;
 }
