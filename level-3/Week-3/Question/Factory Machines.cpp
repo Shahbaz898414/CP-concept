@@ -1,13 +1,27 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
 #define ll long long
+
+
 
 int main( ) {
 
-   ll n,k;cin>>n>>k;
+   ll n,t;cin>>n>>t;
+   vector<ll>  arr(n);
+
+   for (ll i = 0; i < n; i++) {
+      cin>>arr[i];
+   }
+
+   ll l=0,r=n-1;
 
    
+   
+
+
+
+
+
 
     return 0;
 }
