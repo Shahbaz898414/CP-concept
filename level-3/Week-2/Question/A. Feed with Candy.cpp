@@ -21,23 +21,15 @@ int main() {
   {
     ll x2 = x;
     vector<bool> ty(n);
-    for (ll i = 0; i < n; i++)
-    {
+    for (ll i = 0; i < n; i++) {
       ll c = -1;
-      for (ll j = 0; j < n; j++)
-      {
+      for (ll j = 0; j < n; j++) {
         if (!ty[j] && h[j] <= x2 && t[j] == (e + i) % 2)
-        {
           if (c == -1 || m[j] > m[c])
-          
             c = j;
-          
-        }
       }
+
       if (c == -1) break;
-
-
-
 
       x2 += m[c];
 
