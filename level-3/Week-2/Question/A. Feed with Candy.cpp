@@ -15,7 +15,7 @@ int main()
   // {
   ll n, x;
   cin >> n >> x;
-  ll ans = 1;
+  ll ans = 1;ll sum=0;
 
   while (n-- > 0)
   {
