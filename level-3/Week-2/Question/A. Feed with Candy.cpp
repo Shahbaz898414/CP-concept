@@ -12,7 +12,7 @@ int main() {
   // cin >> t;
   // while (t--) {
 
-    
+
   ll n, x;
   cin >> n >> x;
   ll ans = 1;ll sum=0;
@@ -23,9 +23,7 @@ int main() {
   }
 
 
-  // vector<string> a(n), b(n);
-  // for (int i = 0; i < n; i++)
-  //     cin >> a[i];
+ 
 
   
   return 0;
