@@ -10,8 +10,9 @@ int main() {
   // cin.tie(nullptr);
   // int t;
   // cin >> t;
-  // while (t--)
-  // {
+  // while (t--) {
+
+    
   ll n, x;
   cin >> n >> x;
   ll ans = 1;ll sum=0;
@@ -20,9 +21,11 @@ int main() {
     ll t, h, m;
     cin >> t >> h >> m;
   }
-  vector<string> a(n), b(n);
-  for (int i = 0; i < n; i++)
-      cin >> a[i];
+
+
+  // vector<string> a(n), b(n);
+  // for (int i = 0; i < n; i++)
+  //     cin >> a[i];
 
   
   return 0;
