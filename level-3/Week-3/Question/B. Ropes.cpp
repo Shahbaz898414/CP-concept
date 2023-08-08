@@ -4,6 +4,23 @@
 using namespace std;
 #define ll long long
 
+
+int prd(vector<int>  &a,int  k,double x)
+{
+    if(x==0)  return true;
+
+    int cnt=0;
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        /* code */
+        cnt+=a[i]/x;
+    }
+
+    return cnt>=k;
+    
+}
+
 int main() {
     int n,k; cin >> n>>k;
     vector<int> a(n);
