@@ -26,7 +26,7 @@ int main() {
 #include <algorithm>
 using namespace std;
 
-bool canCutPieces(const vector<int>& ropes, int k, int len) {
+bool canCutPieces(const vector<int>& ropes, int k, double len) {
     int count = 0;
     for (int rope : ropes) {
         count += rope / len;
@@ -38,10 +38,10 @@ int findMaxLengthOfPieces(const vector<int>& ropes, int k) {
     int minLen = *min_element(ropes.begin(), ropes.end());
     int left = 1;
     int right = minLen;
-    int result = 0;
+    double result = 0;
 
     while (left <= right) {
-        int mid = left + (right - left) / 2;
+        double mid = left + (right - left) / 2;
         if (canCutPieces(ropes, k, mid)) {
             result = max(result, mid);
             left = mid + 1;

@@ -20,6 +20,13 @@ int main()
       cin >> arr[i];
       sum += arr[i];
     }
+
+    ll l=0,h=1e8;
+
+
+    
+
+
   }
 
   return 0;
