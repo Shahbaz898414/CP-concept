@@ -1,5 +1,8 @@
 
 
+/*
+
+
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -27,10 +30,6 @@ int main()
 
     ll l=0,h=1e8;
 
-
-
-
-
   }
 
   return 0;
@@ -39,10 +38,9 @@ int main()
 
 
 
-/*
+*/
 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 typedef pair<int, int> PII;
 typedef long long ll;
@@ -55,52 +53,46 @@ ll s[N];
 
 bool check(ll x)
 {
-	ll t = 0;
-	ll sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		t = i;
-		sum = s[n - i] + i * s[1];
-		if (sum > k)
-		{
-			t += (sum - k + i) / (i + 1);
-		}
-		if (t <= x) return true;
-	}
+  ll t = 0;
+  ll sum = 0;
+  for (int i = 0; i < n; i++)
+  {
+    t = i;
+    sum = s[n - i] + i * s[1];
+    if (sum > k)
+    {
+      t += (sum - k + i) / (i + 1);
+    }
+    if (t <= x)
+      return true;
+  }
 }
-
-
 
 int main()
 {
-	int T; cin >> T;
-	while (T--)
-	{
-		cin >> n >> k;
-		for (int i = 1; i <= n; i++) cin >> a[i];
-		sort(a, a + n + 1);
-		for (int i = 1; i <= n; i++) s[i] = s[i - 1] + a[i];
+  int T;
+  cin >> T;
+  while (T--)
+  {
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++)
+      cin >> a[i];
+    sort(a, a + n + 1);
+    for (int i = 1; i <= n; i++)
+      s[i] = s[i - 1] + a[i];
 
-		ll l = 0, r = 1e16;
-		while (l < r)
-		{
-			ll mid = l + r >> 1;
-			if (check(mid)) r = mid;
-			else l = mid + 1;
-		}
+    ll l = 0, r = 1e16;
+    while (l < r)
+    {
+      ll mid = l + r >> 1;
+      if (check(mid))
+        r = mid;
+      else
+        l = mid + 1;
+    }
 
-		cout << l << endl;
-		
-	}
+    cout << l << endl;
+  }
 
-
-
-
-
-	return 0;
+  return 0;
 }
-
-
-
-
-*/
