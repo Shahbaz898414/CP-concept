@@ -78,8 +78,23 @@ int main()
     for (int i = 1; i <= n; i++)
       cin >> a[i];
     sort(a, a + n + 1);
+
     for (int i = 1; i <= n; i++)
+      cout<<a[i]<<" ";
+
+    cout<<endl;
+
+    for (int i = 1; i <= n; i++){
       s[i] = s[i - 1] + a[i];
+       cout<<s[i]<<" "<<a[i]<<endl;
+    }
+      
+
+
+    // for (int i = 1; i <= n; i++)
+     
+
+    cout<<endl;
 
     ll l = 0, r = 1e16;
     while (l < r)
