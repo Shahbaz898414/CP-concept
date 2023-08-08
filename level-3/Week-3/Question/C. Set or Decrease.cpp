@@ -53,19 +53,18 @@ ll s[N];
 
 bool check(ll x)
 {
-  ll t = 0;
-  ll sum = 0;
-  for (int i = 0; i < n; i++)
-  {
+  ll t = 0; ll sum = 0;
+  for (int i = 0; i < n; i++) {
     t = i;
     sum = s[n - i] + i * s[1];
-    if (sum > k)
-    {
+    if (sum > k) 
       t += (sum - k + i) / (i + 1);
-    }
+    
     if (t <= x)
       return true;
   }
+
+
 }
 
 int main()
