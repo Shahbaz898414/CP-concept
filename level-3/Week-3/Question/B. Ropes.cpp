@@ -1,4 +1,10 @@
 
+/*
+
+There are n ropes, you need to cut k pieces of the same length from them. Find the maximum length of pieces you can get.
+
+*/
+
 
 #include<bits/stdc++.h>
 using namespace std;
