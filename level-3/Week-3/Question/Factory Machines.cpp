@@ -13,8 +13,7 @@ int main()
    {
       cin >> k[i];
    }
-   ll lo = 0;
-   ll hi = 1e18;
+   ll lo = 0;ll hi = 1e18;
    ll ans = 0;
    while (lo <= hi)
    {

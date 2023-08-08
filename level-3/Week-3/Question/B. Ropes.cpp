@@ -1,4 +1,3 @@
-
 /*
 
 There are n ropes, you need to cut k pieces of the same length from them. Find the maximum length of pieces you can get.
@@ -11,17 +10,14 @@ using namespace std;
 #define ll long long
 
 
-int prd(vector<int>  &a,int  k,double x)
-{
+int prd(vector<int>  &a,int  k,double x ) {
     if(x==0)  return true;
 
     int cnt=0;
 
-    for (int i = 0; i < a.size(); i++)
-    {
-        /* code */
+    for (int i = 0; i < a.size(); i++)   
         cnt+=a[i]/x;
-    }
+    
 
     return cnt>=k;
     
