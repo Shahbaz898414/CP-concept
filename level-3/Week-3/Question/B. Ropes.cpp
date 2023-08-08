@@ -60,12 +60,7 @@ int main() {
 /*
 
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cmath>
-#include <set>
-#include <iomanip>
+#include<bits/stdc++.h>
 
 using namespace std;
 #define MOD 1000000007
