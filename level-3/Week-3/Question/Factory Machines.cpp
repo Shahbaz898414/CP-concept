@@ -3,7 +3,7 @@ using namespace std;
 #define ll long long
 
 
-bool binary(vector<int>  &a,int mid,int k,int n){
+bool binary(vector<ll>  &a,ll mid,ll k,ll n){
    int cnt=0;
 
    for (int i = 0; i <n; i++)
@@ -30,17 +30,26 @@ int main( ) {
 
    for (ll i = 0; i < n; i++) {
       cin>>arr[i];
-      // sum+=arr[i];
+      sum+=arr[i];
    }
 
 
-   // ll itr=sum;
-   ll l=0,r=n-1;
+   ll itr=sum;
+   ll l=0,r=4e18,ans=4e18;
 
+   while(l<=r){
+      ll mid=(l+r)/2;
 
+      if(binary(arr,mid,t,n)){
+         ans=mid;
+         r=mid-1;
+      }else {
+         l=mid-1;
+      }
 
-   
-   
+   }
+
+   cout<<ans<<endl;
 
 
 
