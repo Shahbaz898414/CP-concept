@@ -1,4 +1,3 @@
-/*
 
 
 #include<bits/stdc++.h>
@@ -9,15 +8,29 @@ int main() {
     int n,k; cin >> n>>k;
     vector<int> a(n);
     for(ll i = 0; i < n; i++) {
-
-
+        cin>>a[i];
     }
+
+    double l=0,r=1e8,mid;
+
+    int lp=100;
+
+    while(lp--){
+        mid=l+(r-l)/2;
+        if(prd(a,k,mid)){
+            l= mid;
+        }else{
+            r=mid;
+        }
+    }
+
+    cout<<l<<endl;
 
 
 }
 
 
-*/
+
 
 
 

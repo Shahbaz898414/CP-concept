@@ -14,6 +14,7 @@ int main()
     cin >> n >> k;
     vector<ll> arr(n);
     ll sum = 0;
+    ll ans=0;
 
     for (ll i = 0; i < n; i++)
     {
@@ -24,7 +25,7 @@ int main()
     ll l=0,h=1e8;
 
 
-    
+
 
 
   }
