@@ -9,9 +9,6 @@ ll b[mx];
 ll n;
 
 
-
-
-
 int main() {
 
   // ll t; cin >> t;
