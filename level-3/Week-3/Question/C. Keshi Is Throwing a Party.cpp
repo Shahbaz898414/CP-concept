@@ -27,6 +27,7 @@ int main() {
   while (t--) {
     cin >> n;
     for(int i=1;i<=n;i++)cin>>a[i]>>b[i];
+    /* code */
     int l = 1;
     int r = n;
     int mid;
