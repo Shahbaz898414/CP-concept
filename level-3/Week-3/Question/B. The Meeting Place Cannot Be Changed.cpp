@@ -36,6 +36,11 @@ int main()
             l=mid;
         }
     }
+
+    // if(l==r)  cout<<"YES"<<endl;
+    // else cout<<"NO"<<endl;
+
+
     // printf("%.9lf ",r);
     cout << fixed;
     cout << setprecision(12);
