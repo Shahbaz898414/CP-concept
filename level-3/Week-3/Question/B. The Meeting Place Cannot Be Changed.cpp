@@ -7,17 +7,22 @@ const int mx = 1e6;
 ll a[mx];
 ll b[mx];
 
-bool isPossible(ll *p, ll *v, ll n, double t)
-{
+
+
+bool isPossible(ll *p, ll *v, ll n, double t) {
   double left = -1e9, right = 1e9;
-  for (ll i = 0; i < n; i++)
-  {
+  for (ll i = 0; i < n; i++) {
     left = max(left, p[i] - v[i] * t);
     right = min(right, p[i] + v[i] * t);
   }
+
+
   if (left <= right)
     return true;
+
+
   return false;
+
 }
 
 int main()
