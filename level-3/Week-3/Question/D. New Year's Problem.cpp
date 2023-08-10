@@ -18,15 +18,9 @@ ll b[mx];
 int main()
 {
 
-  ll n;
-  cin >> n;
-  ll p[n];
-  ll v[n];
-
-  for (ll i = 0; i < n; i++)
-    cin >> p[i];
-  for (ll i = 0; i < n; i++)
-    cin >> v[i];
+  ll n,m;
+  cin >> n>>m;
+  
 
 
 
