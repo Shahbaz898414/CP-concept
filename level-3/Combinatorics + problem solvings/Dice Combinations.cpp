@@ -23,12 +23,14 @@ int main()
       { 
 
         if (j > i)
-        
           continue;
-        
+          
+        cout<<dp[i-j]<<" ";
 
         dp[i] = (dp[i] % mod + dp[i - j] % mod) % mod;
       }
+
+      cout<<endl;
     }
 
     cout << dp[n] % mod<<endl;
