@@ -29,14 +29,13 @@ bool check(int x){
 
 // shahbaz
 
-int main()
-{
+int main() {
 
   cin>>t;
     while(t--){
         cin>>m>>n;
         for(int i=1;i<=m;++i)
-            for(int j=1;j<=n;++j) cin>>a[(i-1)*n+j];
+        for(int j=1;j<=n;++j) cin>>a[(i-1)*n+j];
         l=0,r=1000000000;
         while(l<r){
             int mid=(l+r)/2;
