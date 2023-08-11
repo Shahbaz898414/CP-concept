@@ -11,6 +11,8 @@ ll b[mx];
 
 ll t,n,m,a[200005],b,l=0,r=1000000000;
 
+
+
 bool check(int x){
     for(int i=1;i<=n;++i){
         int f=1;
@@ -27,12 +29,12 @@ bool check(int x){
     return 0;
 }
 
-// shahbaz
+
 
 int main() {
 
-  cin>>t;
-    while(t--){
+    cin>>t;
+    while(t--) {
         cin>>m>>n;
         for(int i=1;i<=m;++i)
         for(int j=1;j<=n;++j) cin>>a[(i-1)*n+j];
@@ -42,11 +44,12 @@ int main() {
             if(check(mid+1)) l=mid+1;
             else r=mid;
         }
+
         cout<<l<<endl;
     }
+
+
     return 0;
-
-
 }
 
 
