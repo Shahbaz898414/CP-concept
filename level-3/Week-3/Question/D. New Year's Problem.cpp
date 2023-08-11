@@ -3,8 +3,6 @@ using namespace std;
 #define ll long long
 
 const int mod = 1000000009;
-
-
 const int mx = 1e6;
 
 
