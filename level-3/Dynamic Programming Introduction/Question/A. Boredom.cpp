@@ -228,12 +228,28 @@ signed main()
     ll n;
     cin >> n;
     vector<ll> vec(n);
+    ll mx=-1;
 
-    for (ll i = 0; i < n; i++)
-    {
+    vector<ll> map(100005,0);
 
-      cin >> vec[i];
+    for (ll i = 0; i < n; i++){
+       cin >> vec[i];
+      map[vec[i]]++;
+
+      mx=max(mx,vec[i]);
     }
+
+    vector<ll> b(100005,0);
+    b[0]=0;
+    b[1]=map[1];
+     
+     for(ll i=2;i<=100000;i++){
+            b[i]=max(b[i-1],b[i-2]+(map[i]*i));
+        }
+        cout<<b[mx];
+    
+
+
   }
 
   return 0;
