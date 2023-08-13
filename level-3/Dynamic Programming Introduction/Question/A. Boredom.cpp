@@ -225,8 +225,7 @@ signed main()
   while (t--)
   {
 
-    ll n;
-    cin >> n;
+    ll n; cin >> n;
     vector<ll> vec(n);
     ll mx = -1;
 
@@ -240,7 +239,7 @@ signed main()
       mx = max(mx, vec[i]);
     }
 
-    cout<<mx<<endl;
+    // cout<<mx<<endl;
 
     vector<ll> b(100005, 0);
     b[0] = 0;
@@ -249,13 +248,15 @@ signed main()
     for (ll i = 2; i <= 100000; i++){
       b[i] = max(b[i - 1], b[i - 2] + (map[i] * i));
 
-      cout<<b[i]<<" ";
-      if(i==7) break;
+      // cout<<b[i]<<" ";
+      // if(i==7) break;
     }
 
-    cout<<endl;
+    // cout<<endl;
       
     cout << b[mx];
+
+    
   }
 
   return 0;
