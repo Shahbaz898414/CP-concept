@@ -250,7 +250,7 @@ signed main()
       b[i] = max(b[i - 1], b[i - 2] + (map[i] * i));
 
       cout<<b[i]<<" ";
-      if(i==6) break;
+      if(i==7) break;
     }
 
     cout<<endl;
