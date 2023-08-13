@@ -239,13 +239,14 @@ signed main()
       mx = max(mx, vec[i]);
     }
 
-    cout<<mx<<endl;
 
+
+    cout<<mx<<endl;
     for(int i=1;i<=5;i++){
       cout<<map[i]<< " ";
     }
-
     cout<<endl;
+
 
     vector<ll> b(100005, 0);
     b[0] = 0;
@@ -267,3 +268,5 @@ signed main()
 
   return 0;
 }
+
+
