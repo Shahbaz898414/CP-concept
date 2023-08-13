@@ -216,14 +216,7 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 signed main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  // int t;
-  // cin >> t;
-  // while (t--)
-  // {
- 
-
-  // }
-
+  
   ll n;cin>>n;
   vector<ll> vec(n);
 
