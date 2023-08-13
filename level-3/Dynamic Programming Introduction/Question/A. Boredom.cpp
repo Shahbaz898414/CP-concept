@@ -240,16 +240,22 @@ signed main()
       mx = max(mx, vec[i]);
     }
 
+    cout<<mx<<endl;
+
     vector<ll> b(100005, 0);
     b[0] = 0;
     b[1] = map[1];
 
-    for (ll i = 2; i <= 100000; i++)
+    for (ll i = 2; i <= 100000; i++){
       b[i] = max(b[i - 1], b[i - 2] + (map[i] * i));
-    
+
+      cout<<b[i]<<" ";
+      if(i==6) break;
+    }
+
+    cout<<endl;
+      
     cout << b[mx];
-
-
   }
 
   return 0;
