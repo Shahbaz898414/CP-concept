@@ -225,44 +225,22 @@ signed main()
   while (t--)
   {
 
-    ll n; cin >> n;
+    ll n,x; cin >> n>>x;
     vector<ll> vec(n);
+    vector<int> page(n),price(n);
     ll mx = -1;
 
-    vector<ll> map(100005, 0);
+    int a,b;
 
-    for (ll i = 0; i < n; i++)
-    {
-      cin >> vec[i];
-      map[vec[i]]++;
+    for(int&i : price)
+    cin>>i;
 
-      mx = max(mx, vec[i]);
-    }
+    for(int&i : page)
+    cin>>i;
 
-
-
-    // cout<<mx<<endl;
-    // for(int i=1;i<=5;i++){
-    //   cout<<map[i]<< " ";
-    // }
-    // cout<<endl;
+    vector<vector<int>> dp(n+1,vector<int>(x+1,0));
 
 
-    vector<ll> b(100005, 0);
-    b[0] = 0;
-    b[1] = map[1];
-
-    for (ll i = 2; i <= 100000; i++){
-
-
-      b[i] = max(b[i - 1], b[i - 2] + (map[i] * i));
-      // cout<<b[i]<<" ";
-      // if(i==7) break;
-    }
-
-    // cout<<endl;
-      
-    cout << b[mx];
 
 
   }
