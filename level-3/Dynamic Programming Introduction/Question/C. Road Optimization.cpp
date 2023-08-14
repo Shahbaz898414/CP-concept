@@ -225,20 +225,28 @@ int main()
   while (t--)
   {
 
-    ll n,x; cin >> n>>x;
-    vector<ll> vec(n+1);
-    // vector<int> page(n),price(n);
+    ll n,x,l,k; cin >> n>>l>>k;
+    // vector<ll> vec(n+1);
+    vector<int> page(n+1),price(n+1);
     // ll mx = -1;
 
-    int a,b;
+    // int a,b;
 
     for (ll i = 1; i <=n; i++)
     {
       /* code */
-      cin>>vec[i];
+      // cin>>vec[i];
+      cin>>page[i];
     }
 
-    sort(vec.begin(),vec.end());
+     for (ll i = 1; i <=n; i++)
+    {
+      /* code */
+      // cin>>vec[i];
+      cin>>price[i];
+    }
+
+    
 
     // for(auto it:vec){
     //   cout<<it<<" ";
@@ -246,40 +254,13 @@ int main()
 
     // cout<<endl;
 
-    vector<ll> ans(n + 1);
-    vector<ll> prefix(n + 1);
+    // vector<ll> ans(n + 1);
+    // vector<ll> prefix(n + 1);
 
 
 
 
-    prefix[0] = 0;
-    for (int i = 1; i <= n; i++)
-        prefix[i] = prefix[i - 1] + vec[i];
-
-
-
-
-        for (ll i = 1; i <=n; i++)
-        {
-          /* code */
-          if(i<=x){
-            ans[i]=prefix[i];
-          }else{
-            ll total=ans[i-x]+prefix[i];
-            ans[i]=total;
-          }
-        }
-
-// cout<<1<<endl;
-
-        for (ll i = 1; i <=n; i++) {
-          cout<<ans[i]<< " ";
-        }
-        
-        
-    cout<<endl;
-
-    
+      
 
 
 
