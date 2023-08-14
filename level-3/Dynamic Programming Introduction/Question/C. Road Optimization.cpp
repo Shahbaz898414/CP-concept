@@ -141,9 +141,9 @@ long long erfd(long long a, long long b)
     return 1;
   long long ans = erfd(a, b / 2);
   if (b % 2)
-    return (ans % m * ans % m * a) % m;
+    return (ans % md * ans % md * a) % md;
   else
-    return ans % m * ans % m;
+    return ans % md * ans % md;
 }
 
 const ll N = 1e5;
@@ -227,24 +227,29 @@ int main()
 
     ll n,x,l,k; cin >> n>>l>>k;
     // vector<ll> vec(n+1);
-    vector<int> page(n+1),price(n+1);
+    vector<int> pos(n),speed(n);
     // ll mx = -1;
 
     // int a,b;
 
-    for (ll i = 1; i <=n; i++)
+    for (ll i = 0; i <n; i++)
     {
       /* code */
       // cin>>vec[i];
-      cin>>page[i];
+      cin>>pos[i];
     }
 
-     for (ll i = 1; i <=n; i++)
+    pos.push_back(l);
+
+     for (ll i = 0; i <n; i++)
     {
       /* code */
       // cin>>vec[i];
-      cin>>price[i];
+      cin>>speed[i];
     }
+
+
+    vector<vector<int>> dp(n+1,vector<int>(k+1,INT_MAX));
 
     
 
