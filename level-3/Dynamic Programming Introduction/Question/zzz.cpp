@@ -221,12 +221,12 @@ int main()
   cin.tie(nullptr);
 
   ll t = 1;
-  // cin>>t;
+  cin>>t;
   while (t--)
   {
 
-    ll n,x; cin >> n>>x;
-    vector<ll> vec(n);
+    // ll n,x; cin >> n>>x;
+    // vector<ll> vec(n);
     // vector<int> page(n),price(n);
     // ll mx = -1;
 
@@ -238,12 +238,32 @@ int main()
     //   cin>>vec[i];
     // }
 
-    if(n==1){
-      cout<<x<<endl;
-    }else if(n==x){
-      cout<<x<<endl;
-    }
+    /*
+
+    s/k==c.f
+    s=k*c.f
+
+    c.f=n/k
+
+    */
+
+    // if(n==1){
+    //   cout<<x<<endl;
+    // }else if(n==x){
+    //   cout<<1<<endl;
+    // }
+    // else{
+      // cout<< (int)((x + n - 1) / n)<<endl;
+    // }
     
+
+    long long n, k;
+    cin >> n >> k;
+    
+    long long cf = (n + k - 1) / k;
+    k *= cf;
+    
+    cout << (k + n - 1) / n << endl;
 
     
 

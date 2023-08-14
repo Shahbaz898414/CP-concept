@@ -230,7 +230,7 @@ int main()
     // vector<int> page(n),price(n);
     // ll mx = -1;
 
-    // int a,b;
+    int a,b;
 
     for (ll i = 0; i < n; i++)
     {
