@@ -249,7 +249,13 @@ int main()
     }
 
 
-    vector<vector<int>> dp(n+1,vector<int>(k+1,INT_MAX));
+    vector<vector<ll>> dp(n+1,vector<ll>(k+1,INT_MAX));
+
+    for (ll i = 0; i < n; i++)
+    {
+      /* code */
+    }
+    
 
     
 
