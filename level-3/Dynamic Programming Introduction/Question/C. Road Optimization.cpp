@@ -245,9 +245,11 @@ int main()
       }
     }
     for (int i = 0; i <= 504; ++i)
-    {
+    
       dp[1][i] = 0;
-    }
+    
+
+    
     for (int i = 2; i <= n + 1; ++i)
     {
       for (int j = 1; j < i; ++j)
