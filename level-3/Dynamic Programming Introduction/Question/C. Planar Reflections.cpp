@@ -215,50 +215,20 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-ll a[505], d[505], dp[505][505];
+
 int main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
   ll t = 1;
-  // cin>>t;
+  cin>>t;
   while (t--)
   {
 
     ll n, l, K;
-    cin >> n >> l >> K;
-    for (int i = 1; i <= n; ++i)
-    {
-      cin >> d[i];
-    }
-    d[n + 1] = l;
-    for (int i = 1; i <= n; ++i)
-    {
-      cin >> a[i];
-    }
-    for (int i = 0; i <= 504; ++i)
-      for (int j = 0; j <= 504; ++j)
-        dp[i][j] = 1e9;
-      
+    cin >> n >> K;
     
-    for (int i = 0; i <= 504; ++i)
-    
-      dp[1][i] = 0;
-    
-
-
-    for (int i = 2; i <= n + 1; ++i)
-    {
-      for (int j = 1; j < i; ++j)
-      {
-        for (int k = i - j - 1; k <= K; ++k)
-        
-          dp[i][k] = min(dp[i][k], dp[j][k - (i - j - 1)] + a[j] * (d[i] - d[j]));
-        
-      }
-    }
-    cout << dp[n + 1][K] << endl;
   }
 
   return 0;
