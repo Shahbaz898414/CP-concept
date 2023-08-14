@@ -215,6 +215,8 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+
+long long a[505],d[505],dp[505][505];
 int main()
 {
   ios::sync_with_stdio(false);
@@ -225,59 +227,33 @@ int main()
   while (t--)
   {
 
-    ll n,x,l,k; cin >> n>>l>>k;
-    // vector<ll> vec(n+1);
-    vector<int> pos(n),speed(n);
-    // ll mx = -1;
-
-    // int a,b;
-
-    for (ll i = 0; i <n; i++)
-    {
-      /* code */
-      // cin>>vec[i];
-      cin>>pos[i];
-    }
-
-    pos.push_back(l);
-
-     for (ll i = 0; i <n; i++)
-    {
-      /* code */
-      // cin>>vec[i];
-      cin>>speed[i];
-    }
-
-
-    vector<vector<ll>> dp(n+1,vector<ll>(k+1,INT_MAX));
-
-    for (ll i = 0; i < n; i++)
-    {
-      /* code */
-    }
+   long long n,l,K;
+	cin>>n>>l>>K;
+	for(int i=1;i<=n;++i){
+		cin>>d[i];
+	}
+	d[n+1]=l;
+	for(int i=1;i<=n;++i){
+		cin>>a[i];
+	}
+	for(int i=0;i<=504;++i){
+		for(int j=0;j<=504;++j){
+			dp[i][j]=1e9;
+		}
+	}
+	for(int i=0;i<=504;++i){
+		dp[1][i]=0;
+	}
+	for(int i=2;i<=n+1;++i){
+		for(int j=1;j<i;++j){
+			for(int k=i-j-1;k<=K;++k){
+				dp[i][k]=min(dp[i][k],dp[j][k-(i-j-1)]+a[j]*(d[i]-d[j]));
+			}
+		}
+	}
+	cout<<dp[n+1][K]<<endl;
     
-
-    
-
-    // for(auto it:vec){
-    //   cout<<it<<" ";
-    // }
-
-    // cout<<endl;
-
-    // vector<ll> ans(n + 1);
-    // vector<ll> prefix(n + 1);
-
-
-
-
-      
-
-
-
   }
 
   return 0;
 }
-
-
