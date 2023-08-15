@@ -215,26 +215,39 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-
 int main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
   ll t = 1;
-  cin>>t;
+  cin >> t;
   while (t--)
   {
 
-    ll n, ;
+    ll n, k;
     cin >> n >> k;
+    ll ans = 1;
+    vector<ll> walls(n, 1);
 
-    vector<ll>  walls(n,1);
+    while (--k)
+    {
+      for (auto &it : walls)
+        ans = (ans + it) % mod;
 
-    while(--k){
+      vector<ll> newwalls(n);
 
+      for (ll i = n - 2; i >= 0; i--)
+      {
+        /* code */
+        newwalls[i] = (newwalls[i + 1] + walls[i + 1]) % mod;
+      }
+
+      walls = newwalls;
+
+      reverse(walls.begin(), walls.end());
     }
-    
+    cout << ans << endl;
   }
 
   return 0;
