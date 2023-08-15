@@ -226,8 +226,14 @@ int main()
   while (t--)
   {
 
-    ll n, l, K;
-    cin >> n >> K;
+    ll n, ;
+    cin >> n >> k;
+
+    vector<ll>  walls(n,1);
+
+    while(--k){
+
+    }
     
   }
 
