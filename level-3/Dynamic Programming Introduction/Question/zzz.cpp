@@ -225,46 +225,17 @@ int main()
   while (t--)
   {
 
-    // ll n,x; cin >> n>>x;
-    // vector<ll> vec(n);
-    // vector<int> page(n),price(n);
-    // ll mx = -1;
+    ll a,b,c,m,n,d;cin>>n>>m>>d;
 
-    // int a,b;
 
-    // for (ll i = 0; i < n; i++)
-    // {
-    //   /* code */
-    //   cin>>vec[i];
-    // }
+   vector<ll> arr(n);
 
-    /*
-
-    s/k==c.f
-    s=k*c.f
-
-    c.f=n/k
-
-    */
-
-    // if(n==1){
-    //   cout<<x<<endl;
-    // }else if(n==x){
-    //   cout<<1<<endl;
-    // }
-    // else{
-      // cout<< (int)((x + n - 1) / n)<<endl;
-    // }
-    
-
-    long long n, k;
-    cin >> n >> k;
-    
-    long long cf = (n + k - 1) / k;
-    k *= cf;
-    
-    cout << (k + n - 1) / n << endl;
-
+   for (ll i = 0; i < n; i++)
+   {
+    /* code */
+    cin>>arr[i];
+   }
+   
     
 
 

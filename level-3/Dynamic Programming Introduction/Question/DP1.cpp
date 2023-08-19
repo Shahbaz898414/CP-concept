@@ -146,33 +146,38 @@ long long erfd(long long a, long long b)
     return ans % m * ans % m;
 }
 
-const ll N=1e5;
-ll fact[N+1];
+const ll N = 1e5;
+ll fact[N + 1];
 
-void precomp() {
-  fact[0]=1;
+void precomp()
+{
+  fact[0] = 1;
 
-  for (ll i = 0; i <=N; i++)
+  for (ll i = 0; i <= N; i++)
   {
-    
-    fact[i]=(fact[i]*i)%mod;
+
+    fact[i] = (fact[i] * i) % mod;
   }
-  
 }
 
-
-ll power(ll base,ll x){
-  if(x<0){
+ll power(ll base, ll x)
+{
+  if (x < 0)
+  {
     return 0;
   }
 
-  ll ans=1;
-  while(x){
-    if(x%2==0){
-      base=(base*base)%mod;
-      x=x/2;
-    }else {
-      ans=(ans*base)%mod;
+  ll ans = 1;
+  while (x)
+  {
+    if (x % 2 == 0)
+    {
+      base = (base * base) % mod;
+      x = x / 2;
+    }
+    else
+    {
+      ans = (ans * base) % mod;
       x--;
     }
   }
@@ -180,16 +185,16 @@ ll power(ll base,ll x){
   return ans;
 }
 
+ll ncr(ll n, ll r)
+{
+  if (r > n)
+    return 0;
 
-ll ncr(ll n,ll r ){
-  if(r>n)  return 0;
-
-  ll numo=fact[n];
-  ll demo=(fact[r]*fact[n-r])%mod;
-  ll ans=(numo*power(demo,mod-2))%mod;
+  ll numo = fact[n];
+  ll demo = (fact[r] * fact[n - r]) % mod;
+  ll ans = (numo * power(demo, mod - 2)) % mod;
 
   return ans;
-
 }
 
 int f(int d)
@@ -210,25 +215,51 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-
 /*
 give Q queries for every query given n and r. Print Cnr.
 1<=r<=n<=1e5 and q<=1e5
 
 */
 
-signed main() {
+signed main()
+{
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  // int t;
-  // cin >> t;
-  // while (t--)
-  // {
- 
+  int t;
+  cin >> t;
+  while (t--)
+  {
 
-  // }
+    ll n;
+    cin >> n;
+    vector<int> main;
+    vector<bool> arr(n + 1, 0);
+int k;
+    for (ll i = 1; i <= n; i++)
+    {
+      /* code */
+      if (arr[i])
+        continue;
+
+       k = i;
+      
+      while (k <= n && arr[k] == false)
+      {
+        arr[k] = true;
+
+        main.push_back(k);
+        
+        k *= 2;
+      }
+    }
+
+    for (auto val : main)
+    {
+      cout << val << " ";
+    }
+
+    cout << endl;
+  }
 
   return 0;
 }
-
-
