@@ -225,41 +225,34 @@ signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t;
-  cin >> t;
-  while (t--)
-  {
+  // int t;
+  // cin >> t;
+  // while (t--)
+  // {
 
-    ll n;
+  int n;
     cin >> n;
-    vector<int> main;
-    vector<bool> arr(n + 1, 0);
-int k;
-    for (ll i = 1; i <= n; i++)
-    {
-      /* code */
-      if (arr[i])
-        continue;
-
-       k = i;
-      
-      while (k <= n && arr[k] == false)
-      {
-        arr[k] = true;
-
-        main.push_back(k);
-        
-        k *= 2;
-      }
+    vector<int> v(n);
+    int sum = 0;
+    for(int i = 0; i < n; i++)  {
+        cin >> v[i];
+        sum += v[i];
     }
+    int mid = (sum + 1) / 2;
 
-    for (auto val : main)
-    {
-      cout << val << " ";
-    }
+    cout<<mid<<endl;  
+    for(int i = 0; i < n; i++) {
+        if(v[i] < mid) {
+            mid -= v[i];
+        } else {
+            cout << i + 1 <<" " << mid << endl;
+            break;
+        }
+    }  
 
-    cout << endl;
-  }
+  
+  
+  // }
 
   return 0;
 }
