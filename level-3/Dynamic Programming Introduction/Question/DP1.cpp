@@ -240,15 +240,24 @@ signed main()
     }
     int mid = (sum + 1) / 2;
 
+      vector<ll> ans;
+
     cout<<mid<<endl;  
     for(int i = 0; i < n; i++) {
         if(v[i] < mid) {
             mid -= v[i];
+            ans.pb(v[i]);
         } else {
             cout << i + 1 <<" " << mid << endl;
             break;
         }
-    }  
+    }
+
+    // for(auto it:ans){
+    //   cout<<it<<" ";
+    // }  
+
+    // cout<<endl;
 
   
   
