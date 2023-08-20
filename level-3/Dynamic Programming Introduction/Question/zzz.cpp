@@ -228,16 +228,7 @@ int main()
   while (t--)
   {
 
-    ll a,b,c,m,n,d;cin>>n>>m>>d;
-
-
-   vector<ll> arr(n);
-
-   for (ll i = 0; i < n; i++)
-   {
-    /* code */
-    cin>>arr[i];
-   }
+    ll n,m;cin>>n>>m;
    
     
 
