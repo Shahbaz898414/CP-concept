@@ -215,6 +215,9 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+
+
+
 int main()
 {
   ios::sync_with_stdio(false);

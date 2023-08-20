@@ -215,11 +215,7 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-/*
-give Q queries for every query given n and r. Print Cnr.
-1<=r<=n<=1e5 and q<=1e5
 
-*/
 
 signed main()
 {

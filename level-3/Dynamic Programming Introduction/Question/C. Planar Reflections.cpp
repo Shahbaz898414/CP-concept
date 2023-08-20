@@ -232,6 +232,7 @@ int main()
 
     while (--k)
     {
+      
       for (auto &it : walls)
         ans = (ans + it) % mod;
 
