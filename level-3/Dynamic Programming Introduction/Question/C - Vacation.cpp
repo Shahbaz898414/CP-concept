@@ -215,11 +215,7 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-/*
-give Q queries for every query given n and r. Print Cnr.
-1<=r<=n<=1e5 and q<=1e5
 
-*/
 
 signed main()
 {
@@ -232,18 +228,33 @@ signed main()
   // {
 
   int n, k;
-  cin >> n >> k;
-  vector<int> v(n);
-  // int sum = 0;
-  for (int i = 0; i < n; i++)
+  cin >> n ;
+  vector<vector<int>> point(n,vector<int>(n)); 
+
+  for (ll i = 0; i < n; i++)
   {
-    cin >> v[i];
-    // sum += v[i];
+    /* code */
+    for (ll j = 0; j < 3; j++)
+    {
+      /* code */
+      cin>>point[i][j];
+    }
   }
 
-  vector<ll> dp(n + 1, -1);
 
-  dp[0] = 0;
+  // for (ll i = 0; i < n; i++)
+  // {
+  //   /* code */
+  //   for (ll j = 0; j < 3; j++)
+  //   {
+  //     /* code */
+  //     cout<<point[i][j]<<" ";
+  //   }
+  //   cout<<endl;
+  // }
+  
+
+
 
  
   return 0;
