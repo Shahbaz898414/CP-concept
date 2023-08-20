@@ -227,8 +227,47 @@ signed main()
   // while (t--)
   // {
 
-  int n, w;
-  cin >> n >> w;
+
+
+  ll n, w; cin >> n >> w;
+
+  vector<ll> v(n);
+
+  vector<ll>  wt(n);
+
+  for (ll i = 0; i < n; i++) {
+    cin>>wt[i]>>v[i];
+  }
+  
+
+  vector<vector<int>> dp(n,vector<int>(w+1,0));
+
+  for (ll i=wt[0]; i <=w; i++) {
+    dp[0][i]=v[0];
+  }
+
+  for (ll i = 1; i <n; i++) {
+    for (ll j = 0; j <=w; j++) {
+      int notTaken=0+dp[i-1][j];
+
+      int taken=INT_MIN;
+      if(wt[i]<=j){
+        taken=v[i]+dp[i-1][j-wt[j]];
+      }
+
+       dp[i][j] = max(notTaken, taken);
+    }
+    
+  }
+  
+
+
+
+
+cout<<dp[n-1][w];
+
+
+
    
 // }
   return 0;
