@@ -276,8 +276,7 @@ signed main()
 
 
 #include<bits/stdc++.h>
-// #include<ext/pb_ds/assoc_container.hpp>
-// #include<ext/pb_ds/tree_policy.hpp>
+
 
 #define fast ios_base::sync_with_stdio(false);cin.tie(0);
 #define int long long 
@@ -285,14 +284,12 @@ signed main()
 #define endl '\n'
 
 using namespace std;
-// using namespace __gnu_pbds;
-// typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update>pbds;
+
 
 const int mod=1e9+7;
 
 int binExp( int x, int y){
-	// x%=mod;
-	// y%=mod;
+	
 	int res=1;
 	while(y){
 		if(y&1)
@@ -323,8 +320,7 @@ int modDiv(int x,int y){
 	return z;
 }
 bool cmp(pair<int,int>&a,pair<int,int>&b){
-	// if(a.first==b.first)
-	// 	return a.second<b.second;
+	
 	return a.second<b.second;
 }
 int factorial(int n){
@@ -354,17 +350,7 @@ int helper(int i,int n,int w,vector<pair<int,int>>&v,vector<vector<int>>&dp){
 	return dp[i][w]=max(nt,t);
 }
 signed main(){
-// #ifndef ONLINE_JUDGE
-// 	//file input.txt is opened in reading mode 
-//     freopen("inputf.in","r",stdin);
-//     //file output.txt is opened in writing mode 
-//     freopen("outputf.out","w",stdout); 
-// #endif
-/* Two type of operations mainly perform in ordered set:-
-	1)- find_by_order(x) finding the element present at the xth index in the set(it return a iterator)
-	2)- order_of_key(x) finding number of element smaller than x in the set
 
-*/ 
 	fast;
 	int n,w;
 	cin>>n>>w;
