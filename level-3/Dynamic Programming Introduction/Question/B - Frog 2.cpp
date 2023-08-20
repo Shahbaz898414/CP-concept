@@ -225,6 +225,8 @@ signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
+
+  
   // int t;
   // cin >> t;
   // while (t--)
@@ -237,7 +239,7 @@ signed main()
   for (int i = 0; i < n; i++)
   {
     cin >> v[i];
-    sum += v[i];
+    // sum += v[i];
   }
 
   vector<ll> dp(n + 1, -1);
@@ -263,9 +265,16 @@ signed main()
     dp[i] = mm;
   }
 
+
+
+
+
   cout << dp[n - 1];
 
+
   // }
+
+
 
   return 0;
 }
