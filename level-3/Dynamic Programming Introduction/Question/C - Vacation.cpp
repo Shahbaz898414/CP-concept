@@ -217,74 +217,32 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
 
 
 
-signed main()
-{
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-
-  // int t;
-  // cin >> t;
-  // while (t--)
-  // {
-
-  int n, k;
-  cin >> n ;
-  vector<vector<int>> points(n,vector<int>(n)); 
-
-  for (ll i = 0; i < n; i++)
-  {
-    /* code */
-    for (ll j = 0; j < 3; j++)
-    {
-      /* code */
-      cin>>points[i][j];
+int maxPoints(int a[], int b[], int c[], int N){
+    int dpa[N], dpb[N], dpc[N];
+ 
+    dpa[0] = a[0];
+    dpb[0] = b[0];
+    dpc[0] = c[0];
+ 
+    for(int i = 1; i < N; i++){
+        dpa[i] = a[i] + max(dpb[i-1], dpc[i-1]);
+        dpb[i] = b[i] + max(dpa[i-1], dpc[i-1]);
+        dpc[i] = c[i] + max(dpa[i-1], dpb[i-1]);
     }
-  }
-
-  vector < int > prev(4, 0);
-
-  prev[0] = max(points[0][1], points[0][2]);
-
-  prev[1] = max(points[0][0], points[0][2]);
-
-  prev[2] = max(points[0][0], points[0][1]);
-
-  prev[3] = max(points[0][0], max(points[0][1], points[0][2]));
-
-
-  // for (ll i = 0; i < n; i++)
-  // {
-  //   /* code */
-  //   for (ll j = 0; j < 3; j++)
-  //   {
-  //     /* code */
-  //     cout<<point[i][j]<<" ";
-  //   }
-  //   cout<<endl;
-  // }
-
-
-  for (int day = 1; day < n; day++) {
-
-    vector < int > temp(4, 0);
-    
-    for(int last = 0; last < 4; last++) {
-      temp[last] = 0;
-
-      for (int task = 0; task <= 2; task++) {
-        if (task != last) {
-
-          temp[last] = max(temp[last], points[day][task] + prev[task]);
-        }
-      }
+ 
+    return max(dpa[N-1], max(dpb[N-1], dpc[N-1]));
+}
+ 
+int main(){
+    int N;
+    cin >> N;
+ 
+    int a[N], b[N], c[N];
+    for(int i = 0; i < N; i++){
+        cin >> a[i] >> b[i] >> c[i];
     }
-    prev = temp;
-
-  }
-
-
-
-  cout<< prev[3];
-   
-  return 0;
+ 
+    cout << maxPoints(a, b, c, N) << "\n";
+ 
+    return 0;
 }
