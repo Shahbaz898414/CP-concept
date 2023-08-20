@@ -230,47 +230,41 @@ signed main()
   // while (t--)
   // {
 
-    int n,k;
-    cin >> n>>k;
-    vector<int> v(n);
-    int sum = 0;
-    for(int i = 0; i < n; i++)  {
-        cin >> v[i];
-        sum += v[i];
-    }
+  int n, k;
+  cin >> n >> k;
+  vector<int> v(n);
+  int sum = 0;
+  for (int i = 0; i < n; i++)
+  {
+    cin >> v[i];
+    sum += v[i];
+  }
 
-    vector<ll>  dp(n+1,-1);
+  vector<ll> dp(n + 1, -1);
 
+  dp[0] = 0;
 
-    dp[0]=0;
+  for (ll i = 1; i < n; i++)
+  {
 
-    for (ll i = 1; i <n; i++)
+    int mm = INT_MAX;
+
+    for (ll j = 1; j <= k; j++)
     {
-     
-      int mm=INT_MAX;
 
-      for (ll j =1; j <=k; j++)
+      if (i - j >= 0)
       {
-        /* code */
-        if(i-j>=0){
-          int jump=dp[i-j]+abs(v[i]-v[i-j]);
+        int jump = dp[i - j] + abs(v[i] - v[i - j]);
 
-          mm=min(jump,mm);
-        }
+        mm = min(jump, mm);
       }
-
-      dp[i]=mm;
-      
-
     }
 
-    cout<< dp[n-1];
-    
+    dp[i] = mm;
+  }
 
-   
+  cout << dp[n - 1];
 
-  
-  
   // }
 
   return 0;
