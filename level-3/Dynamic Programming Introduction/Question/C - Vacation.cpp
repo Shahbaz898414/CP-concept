@@ -245,38 +245,6 @@ signed main()
 
   dp[0] = 0;
 
- vector< pair<int,int>> pq;
-
-  for (ll i = 1; i < n; i++)
-  {
-
-    int mm = INT_MAX;
-
-    for (ll j = 1; j <= k; j++) {
-      if (i - j >= 0) {
-          pq.push_back({i,j});
-       
-        int jump = dp[i - j] + abs(v[i] - v[i - j]);
-
-        mm = min(jump, mm);
-      }
-
-    }
-
-     pq.push_back({0,0});
-     pq.push_back({0,0});
-
-    dp[i] = mm;
-  }
-
-  cout << dp[n - 1]<<endl;
-
-
-  for(auto it:pq){
-    cout<<it.first<<" "<<it.second<<endl;
-  }
-
-  
-
+ 
   return 0;
 }
