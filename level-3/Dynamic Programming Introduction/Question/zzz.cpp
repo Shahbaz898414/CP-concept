@@ -226,11 +226,9 @@ int main()
   ll t = 1;
   cin>>t;
   while (t--) {
-
     ll n,m;cin>>n>>m;
    
     
-
 
 
   }
