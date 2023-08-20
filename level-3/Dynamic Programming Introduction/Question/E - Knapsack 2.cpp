@@ -1,3 +1,5 @@
+/*
+
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
@@ -267,3 +269,113 @@ signed main()
 }
 
 
+*/
+
+
+
+
+
+#include<bits/stdc++.h>
+// #include<ext/pb_ds/assoc_container.hpp>
+// #include<ext/pb_ds/tree_policy.hpp>
+
+#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define int long long 
+#define pb push_back
+#define endl '\n'
+
+using namespace std;
+// using namespace __gnu_pbds;
+// typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update>pbds;
+
+const int mod=1e9+7;
+
+int binExp( int x, int y){
+	// x%=mod;
+	// y%=mod;
+	int res=1;
+	while(y){
+		if(y&1)
+			res=(res*x);
+		y>>=1;
+		x=(x*x);
+	}
+	return res;
+}
+int modAdd(int x,int y){
+	x%=mod;
+	y%=mod;
+	return (x+y)%mod;
+}
+int modSub(int x,int y){
+	x%=mod;
+	y%=mod;
+	return (x-y+mod)%mod;
+}
+int modMul(int x,int y){
+	x%=mod;
+	y%=mod;
+	return (x*y)%mod;
+}
+int modDiv(int x,int y){
+	y=binExp(y,mod-2);
+	int z=modMul(x,y);
+	return z;
+}
+bool cmp(pair<int,int>&a,pair<int,int>&b){
+	// if(a.first==b.first)
+	// 	return a.second<b.second;
+	return a.second<b.second;
+}
+int factorial(int n){
+	int fact=1;
+	for(int i=1;i<=n;i++){
+		fact*=i;
+	}
+	return fact;
+}
+int gcd(int a, int b){
+    if (b == 0)
+        return a;
+    return gcd(b,a%b);
+}
+int helper(int i,int n,int w,vector<pair<int,int>>&v,vector<vector<int>>&dp){
+	if(i==n){
+		return 0;
+	}
+	if(dp[i][w]!=-1){
+		return dp[i][w];
+	}
+	int nt=0,t=0;
+	nt=helper(i+1,n,w,v,dp);
+	if(v[i].first<=w){
+		t=v[i].second+helper(i+1,n,w-v[i].first,v,dp);
+	}
+	return dp[i][w]=max(nt,t);
+}
+signed main(){
+// #ifndef ONLINE_JUDGE
+// 	//file input.txt is opened in reading mode 
+//     freopen("inputf.in","r",stdin);
+//     //file output.txt is opened in writing mode 
+//     freopen("outputf.out","w",stdout); 
+// #endif
+/* Two type of operations mainly perform in ordered set:-
+	1)- find_by_order(x) finding the element present at the xth index in the set(it return a iterator)
+	2)- order_of_key(x) finding number of element smaller than x in the set
+
+*/ 
+	fast;
+	int n,w;
+	cin>>n>>w;
+	vector<pair<int,int>>v;
+	for(int i=0;i<n;i++)
+	{
+		int x,y;
+		cin>>x>>y;
+		v.pb({x,y});
+	}
+	vector<vector<int>>dp(n,vector<int>(w+1,-1));
+	cout<<helper(0,n,w,v,dp);
+	return 0;
+}
