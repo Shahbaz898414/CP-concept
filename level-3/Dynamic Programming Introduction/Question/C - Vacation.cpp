@@ -215,34 +215,40 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+int maxPoints(int a[], int b[], int c[], int N)
+{
+  int dpa[N], dpb[N], dpc[N];
 
+  dpa[0] = a[0];
+  dpb[0] = b[0];
+  dpc[0] = c[0];
 
-int maxPoints(int a[], int b[], int c[], int N){
-    int dpa[N], dpb[N], dpc[N];
- 
-    dpa[0] = a[0];
-    dpb[0] = b[0];
-    dpc[0] = c[0];
- 
-    for(int i = 1; i < N; i++){
-        dpa[i] = a[i] + max(dpb[i-1], dpc[i-1]);
-        dpb[i] = b[i] + max(dpa[i-1], dpc[i-1]);
-        dpc[i] = c[i] + max(dpa[i-1], dpb[i-1]);
-    }
- 
-    return max(dpa[N-1], max(dpb[N-1], dpc[N-1]));
+  for (int i = 1; i < N; i++)
+  {
+    dpa[i] = a[i] + max(dpb[i - 1], dpc[i - 1]);
+    dpb[i] = b[i] + max(dpa[i - 1], dpc[i - 1]);
+    dpc[i] = c[i] + max(dpa[i - 1], dpb[i - 1]);
+  }
+
+  // for(int i=0;i<N;i++) {
+  //   cout<<dpa[i]<<" "<<dpb[i]<<" "<<dpc[i]<<endl;
+  // }
+
+  return max(dpa[N - 1], max(dpb[N - 1], dpc[N - 1]));
 }
- 
-int main(){
-    int N;
-    cin >> N;
- 
-    int a[N], b[N], c[N];
-    for(int i = 0; i < N; i++){
-        cin >> a[i] >> b[i] >> c[i];
-    }
- 
-    cout << maxPoints(a, b, c, N) << "\n";
- 
-    return 0;
+
+int main()
+{
+  int N;
+  cin >> N;
+
+  int a[N], b[N], c[N];
+  for (int i = 0; i < N; i++)
+  {
+    cin >> a[i] >> b[i] >> c[i];
+  }
+
+  cout << maxPoints(a, b, c, N) << "\n";
+
+  return 0;
 }
