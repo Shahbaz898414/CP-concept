@@ -223,16 +223,41 @@ int main()
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  ll t = 1;
-  cin>>t;
-  while (t--) {
-    ll n,m;cin>>n>>m;
+  // ll t = 1;
+  // cin>>t;
+  // while (t--) {
+  //   ll n,m;cin>>n>>m;
    
     
 
 
-  }
+  // }
+
+  cout<<float(75+75);
   return 0;
 }
 
 
+
+
+/*
+
+
+Dear Shivam Singh,
+
+My name is Shahbaz, and I am a final-year BTech undergraduate from Mumbai, India. I am reaching out to you to inquire about potential Job opportunities within Stripe.
+
+Throughout my academic journey, I have gained valuable experience as a tech consultant, working on various web development projects for clients. Additionally, I have completed internships at reputable companies such as NULL CLASS, TLE, where I developed my skills in software development. I am now seeking a Job opportunity in Stripe to further enhance my skills and gain industry experience.
+
+I noticed a job opening on the Stripe career page, (https://stripe.com/jobs/listing/software-engineering-new-grad/5306085?utm_source=talentbattle&utm_medium=social&utm_campaign=aug), for a Software Engineering position, which I believe aligns with my skills and experience.
+
+Please find my resume and GitHub for your review.
+I would be grateful if you could refer me to the hiring manager or provide any relevant information about the opening.
+
+Thank you for considering my request. I look forward to the possibility of contributing to Stripe and being a part of the team. If there is any additional information or documentation required, please let me know.
+
+Best regards,
+Shahbaz Khan
+
+
+*/
