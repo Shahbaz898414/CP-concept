@@ -321,11 +321,15 @@ int modDiv(int x, int y)
   int z = modMul(x, y);
   return z;
 }
+
+
 bool cmp(pair<int, int> &a, pair<int, int> &b)
 {
 
   return a.second < b.second;
 }
+
+
 int factorial(int n)
 {
   int fact = 1;
@@ -335,12 +339,15 @@ int factorial(int n)
   }
   return fact;
 }
+
 int gcd(int a, int b)
 {
   if (b == 0)
     return a;
   return gcd(b, a % b);
 }
+
+
 int helper(int i, int n, int w, vector<pair<int, int>> &v, vector<vector<int>> &dp)
 {
   if (i == n)
@@ -359,6 +366,8 @@ int helper(int i, int n, int w, vector<pair<int, int>> &v, vector<vector<int>> &
   }
   return dp[i][w] = max(nt, t);
 }
+
+
 signed main()
 {
 
@@ -376,3 +385,5 @@ signed main()
   cout << helper(0, n, w, v, dp);
   return 0;
 }
+
+
