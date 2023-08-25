@@ -299,12 +299,14 @@ int main()
     dp[0] = 0;
 
     for(ll i=0;i<n;i++)
-    {
+    
         for(ll j=max_val-value[i];j>=0;j--)
-        {
+        
             dp[j+value[i]] = min(dp[j+value[i]], dp[j]+weight[i]);
-        }
-    }
+        
+    
+
+
     ll ans = INT_MIN;
     for(ll i=0;i<=max_val;i++)
     {
