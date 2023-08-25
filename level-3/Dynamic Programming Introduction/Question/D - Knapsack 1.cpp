@@ -231,14 +231,13 @@ signed main()
 
   int n, w;
   cin >> n >> w;
-   
+
 
   return 0;
 }
 
 
 */
-
 
 #include <bits/stdc++.h>
 
@@ -291,13 +290,11 @@ int modDiv(int x, int y)
   return z;
 }
 
-
 bool cmp(pair<int, int> &a, pair<int, int> &b)
 {
 
   return a.second < b.second;
 }
-
 
 int factorial(int n)
 {
@@ -315,7 +312,6 @@ int gcd(int a, int b)
     return a;
   return gcd(b, a % b);
 }
-
 
 int helper(int i, int n, int w, vector<pair<int, int>> &v, vector<vector<int>> &dp)
 {
@@ -336,7 +332,6 @@ int helper(int i, int n, int w, vector<pair<int, int>> &v, vector<vector<int>> &
   return dp[i][w] = max(nt, t);
 }
 
-
 signed main()
 {
 
@@ -354,9 +349,6 @@ signed main()
   cout << helper(0, n, w, v, dp);
   return 0;
 }
-
-
-
 
 /*
 
