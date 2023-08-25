@@ -41,7 +41,7 @@ void _print(T t)
 {
   cerr << t;
 }
-
+ 
 template <class T, class V>
 void _print(pair<T, V> p)
 {
@@ -51,7 +51,7 @@ void _print(pair<T, V> p)
   _print(p.ss);
   cerr << "}";
 }
-
+ 
 template <class T>
 void _print(vector<T> v)
 {
@@ -63,7 +63,7 @@ void _print(vector<T> v)
   }
   cerr << "]";
 }
-
+ 
 template <class T>
 void _print(vector<vector<T>> v)
 {
@@ -78,7 +78,7 @@ void _print(vector<vector<T>> v)
   }
   cerr << "]";
 }
-
+ 
 template <class T, class V>
 void _print(map<T, V> v)
 {
@@ -90,7 +90,7 @@ void _print(map<T, V> v)
   }
   cerr << "]";
 }
-
+ 
 template <class T>
 void _print(set<T> v)
 {
@@ -102,11 +102,11 @@ void _print(set<T> v)
   }
   cerr << "]";
 }
-
+ 
 // const long long inf = 1e18;
 // const int MOD = 998244353;
 // const int MAX = 1e6;
-
+ 
 bool isValid(string s)
 {
   int len = s.size();
@@ -117,7 +117,7 @@ bool isValid(string s)
   }
   return true;
 }
-
+ 
 void rotateMatrix(vector<vector<int>> &v, int n)
 {
   for (int i = 0; i < n / 2; i++)
@@ -132,9 +132,9 @@ void rotateMatrix(vector<vector<int>> &v, int n)
     }
   }
 }
-
+ 
 ll m = 998244353;
-
+ 
 long long erfd(long long a, long long b)
 {
   if (b == 0)
@@ -145,28 +145,28 @@ long long erfd(long long a, long long b)
   else
     return ans % m * ans % m;
 }
-
+ 
 const ll N = 1e5;
 ll fact[N + 1];
-
+ 
 void precomp()
 {
   fact[0] = 1;
-
+ 
   for (ll i = 0; i <= N; i++)
   {
-
+ 
     fact[i] = (fact[i] * i) % mod;
   }
 }
-
+ 
 ll power(ll base, ll x)
 {
   if (x < 0)
   {
     return 0;
   }
-
+ 
   ll ans = 1;
   while (x)
   {
@@ -181,22 +181,22 @@ ll power(ll base, ll x)
       x--;
     }
   }
-
+ 
   return ans;
 }
-
+ 
 ll ncr(ll n, ll r)
 {
   if (r > n)
     return 0;
-
+ 
   ll numo = fact[n];
   ll demo = (fact[r] * fact[n - r]) % mod;
   ll ans = (numo * power(demo, mod - 2)) % mod;
-
+ 
   return ans;
 }
-
+ 
 int f(int d)
 {
   for (int j = 2; j <= sqrt(d); j++)
@@ -204,49 +204,42 @@ int f(int d)
     if (d % j == 0)
       d = f(d + 1);
   }
-
+ 
   return d;
 }
-
+ 
 unsigned long long gcd(unsigned long long x, unsigned long long y)
 {
   if (y == 0)
     return x;
   return gcd(y, x % y);
 }
-
-int main()
+ 
+signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-
+ 
   ll t = 1;
   // cin>>t;
   while (t--)
   {
-
+ 
     ll n,x; cin >> n>>x;
     vector<ll> vec(n);
     vector<int> page(n),price(n);
-    // ll mx = -1;
-
-    // int a,b;
-
-    for (ll i = 0; i < n; i++)
-    {
-      /* code */
-      cin>>price[i]>>page[i];
-    }
-    
-
-    // for(int&i : price)
-    // cin>>i;
-
-    // for(int&i : page)
-    // cin>>i;
-
+    ll mx = -1;
+ 
+    int a,b;
+ 
+    for(int&i : price)
+    cin>>i;
+ 
+    for(int&i : page)
+    cin>>i;
+ 
     vector<vector<int>> dp(n+1,vector<int>(x+1,0));
-
+ 
      for(int i=1;i<=n;i++)
     {
         for(int j=0;j<=x;j++)
@@ -263,15 +256,13 @@ int main()
             }
         }
     }
-
+ 
     cout<< dp[n][x] <<endl;
-
-
-
-
+ 
+ 
+ 
+ 
   }
-
+ 
   return 0;
 }
-
-

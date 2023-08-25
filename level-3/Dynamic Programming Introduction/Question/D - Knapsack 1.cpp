@@ -326,9 +326,8 @@ int helper(int i, int n, int w, vector<pair<int, int>> &v, vector<vector<int>> &
   int nt = 0, t = 0;
   nt = helper(i + 1, n, w, v, dp);
   if (v[i].first <= w)
-  {
     t = v[i].second + helper(i + 1, n, w - v[i].first, v, dp);
-  }
+  
   return dp[i][w] = max(nt, t);
 }
 

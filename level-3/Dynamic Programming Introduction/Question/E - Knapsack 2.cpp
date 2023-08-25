@@ -1,4 +1,4 @@
-/*
+
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -227,64 +227,7 @@ signed main()
   // while (t--)
   // {
 
-  ll n, w;
-  cin >> n >> w;
-
-  vector<ll> v(n);
-
-  vector<ll> wt(n);
-
-  for (ll i = 0; i < n; i++)
-  {
-    cin >> wt[i] >> v[i];
-  }
-
-  vector<vector<int>> dp(n, vector<int>(w + 1, 0));
-
-  for (ll i = wt[0]; i <= w; i++)
-  {
-    dp[0][i] = v[0];
-  }
-
-  for (ll i = 1; i < n; i++)
-  {
-    for (ll j = 0; j <= w; j++)
-    {
-      int notTaken = 0 + dp[i - 1][j];
-
-      int taken = INT_MIN;
-      if (wt[i] <= j)
-      {
-        taken = v[i] + dp[i - 1][j - wt[i]];
-      }
-
-      dp[i][j] = max(notTaken, taken);
-    }
-  }
-
-  cout << dp[n - 1][w];
-
-  // }
-  return 0;
-}
-
-
-*/
-
-
-
-#include <bits/stdc++.h> 
-#define ll long long
-#define ull unsigned long long
-#define endl '\n'
-#define pb push_back
-#define mp make_pair
-#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-using namespace std;
-
-int main()
-{
-    ll n,w;
+ ll n,w;
     cin>>n>>w;
 
     vector<ll> weight(n),value(n);
@@ -302,8 +245,6 @@ int main()
         for(ll j=max_val-value[i];j>=0;j--)
             dp[j+value[i]] = min(dp[j+value[i]], dp[j]+weight[i]);
         
-    
-
 
     ll ans = INT_MIN;
     for(ll i=0;i<=max_val;i++)
@@ -313,8 +254,62 @@ int main()
     }
 
     cout<<ans<<endl;
-    return 0;
+
+
+  // }
+  return 0;
 }
+
+
+
+
+
+
+// #include <bits/stdc++.h> 
+// #define ll long long
+// #define ull unsigned long long
+// #define endl '\n'
+// #define pb push_back
+// #define mp make_pair
+// #define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+// using namespace std;
+
+// int main()
+// {
+//     ll n,w;
+//     cin>>n>>w;
+
+//     vector<ll> weight(n),value(n);
+//     for(ll i=0;i<n;i++)
+//     cin>>weight[i]>>value[i];
+
+//     ll max_val = 0;
+//     for(ll&x : value)
+//     max_val += x;
+
+//     vector<ll> dp(max_val+1,INT_MAX);
+//     dp[0] = 0;
+
+//     for(ll i=0;i<n;i++)
+//         for(ll j=max_val-value[i];j>=0;j--)
+//             dp[j+value[i]] = min(dp[j+value[i]], dp[j]+weight[i]);
+        
+    
+
+
+//     ll ans = INT_MIN;
+//     for(ll i=0;i<=max_val;i++)
+//     {
+//         if(dp[i] <= w)
+//         ans = max(ans, i);
+//     }
+
+//     cout<<ans<<endl;
+
+
+
+//     return 0;
+// }
 
 
 
