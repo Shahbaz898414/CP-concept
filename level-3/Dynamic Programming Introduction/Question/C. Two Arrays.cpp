@@ -41,7 +41,7 @@ void _print(T t)
 {
   cerr << t;
 }
- 
+
 template <class T, class V>
 void _print(pair<T, V> p)
 {
@@ -51,7 +51,7 @@ void _print(pair<T, V> p)
   _print(p.ss);
   cerr << "}";
 }
- 
+
 template <class T>
 void _print(vector<T> v)
 {
@@ -63,7 +63,7 @@ void _print(vector<T> v)
   }
   cerr << "]";
 }
- 
+
 template <class T>
 void _print(vector<vector<T>> v)
 {
@@ -78,7 +78,7 @@ void _print(vector<vector<T>> v)
   }
   cerr << "]";
 }
- 
+
 template <class T, class V>
 void _print(map<T, V> v)
 {
@@ -90,7 +90,7 @@ void _print(map<T, V> v)
   }
   cerr << "]";
 }
- 
+
 template <class T>
 void _print(set<T> v)
 {
@@ -102,11 +102,11 @@ void _print(set<T> v)
   }
   cerr << "]";
 }
- 
+
 // const long long inf = 1e18;
 // const int MOD = 998244353;
 // const int MAX = 1e6;
- 
+
 bool isValid(string s)
 {
   int len = s.size();
@@ -117,7 +117,7 @@ bool isValid(string s)
   }
   return true;
 }
- 
+
 void rotateMatrix(vector<vector<int>> &v, int n)
 {
   for (int i = 0; i < n / 2; i++)
@@ -132,9 +132,9 @@ void rotateMatrix(vector<vector<int>> &v, int n)
     }
   }
 }
- 
+
 ll m = 998244353;
- 
+
 long long erfd(long long a, long long b)
 {
   if (b == 0)
@@ -145,28 +145,28 @@ long long erfd(long long a, long long b)
   else
     return ans % m * ans % m;
 }
- 
+
 const ll N = 1e5;
 ll fact[N + 1];
- 
+
 void precomp()
 {
   fact[0] = 1;
- 
+
   for (ll i = 0; i <= N; i++)
   {
- 
+
     fact[i] = (fact[i] * i) % mod;
   }
 }
- 
+
 ll power(ll base, ll x)
 {
   if (x < 0)
   {
     return 0;
   }
- 
+
   ll ans = 1;
   while (x)
   {
@@ -181,22 +181,22 @@ ll power(ll base, ll x)
       x--;
     }
   }
- 
+
   return ans;
 }
- 
+
 ll ncr(ll n, ll r)
 {
   if (r > n)
     return 0;
- 
+
   ll numo = fact[n];
   ll demo = (fact[r] * fact[n - r]) % mod;
   ll ans = (numo * power(demo, mod - 2)) % mod;
- 
+
   return ans;
 }
- 
+
 int f(int d)
 {
   for (int j = 2; j <= sqrt(d); j++)
@@ -204,40 +204,52 @@ int f(int d)
     if (d % j == 0)
       d = f(d + 1);
   }
- 
+
   return d;
 }
- 
+
 unsigned long long gcd(unsigned long long x, unsigned long long y)
 {
   if (y == 0)
     return x;
   return gcd(y, x % y);
 }
- 
+
 signed main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
- 
-  ll t = 1;
-  // cin>>t;
-  while (t--)
-  {
- 
-    ll n,x; cin >> n>>x;
-   
- 
- 
- 
- 
-  }
- 
+
+  // ll t = 1;
+  // // cin>>t;
+  // while (t--)
+  // {
+
+    ll dp[25][1005];
+
+    ll n, m, ans;
+    cin >> n >> m;
+
+    for (ll i = 1; i <= m + m; i++)
+    {
+      /* code */
+      dp[i][1] = 1;
+      for (int j = 2; j <= n; j++)
+        dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % mod;
+      
+    }
+
+
+
+    for (int i = 1; i <= n; i++)
+       ans = (ans + dp[m + m][i]) % mod;
+
+
+    cout << ans << endl;
+  // }
+
   return 0;
 }
-
-
-
 
 /*
 
@@ -246,19 +258,19 @@ signed main()
 using namespace std;
 int main()
 {
-	int m,n;
-	cin>>m>>n;
-	int k=2*n+1;
-	int a[k*2][m + 5];
-	for(int i=0;i<m;i++)a[0][i]=1;
-	for(int i=1;i<k;i++)
-	{
-		a[i][0]=1;
-		for(int j=1;j<m;j++)
-		a[i][j]=(a[i-1][j]+a[i][j-1])%1000000007;
-	}
-	cout<<a[k-1][m-1];
-	return 0;
+  int m,n;
+  cin>>m>>n;
+  int k=2*n+1;
+  int a[k*2][m + 5];
+  for(int i=0;i<m;i++)a[0][i]=1;
+  for(int i=1;i<k;i++)
+  {
+    a[i][0]=1;
+    for(int j=1;j<m;j++)
+    a[i][j]=(a[i-1][j]+a[i][j-1])%1000000007;
+  }
+  cout<<a[k-1][m-1];
+  return 0;
 }
 
 
@@ -273,11 +285,11 @@ using namespace std;
 const int skc=1e9+7;
 int n,m,i,j,k,ans,f[2001][2001];
 int main(){
-	scanf("%d%d",&n,&m);swap(n,m);n<<=1;
-	f[0][1]=1;
-	for(i=1;i<=n;i++)for(j=1;j<=m;j++)for(k=1;k<=j;k++)f[i][j]=(f[i][j]+f[i-1][k])%skc;
-	for(i=1;i<=m;i++)ans=(ans+f[n][i])%skc;
-	printf("%d\n",ans);
+  scanf("%d%d",&n,&m);swap(n,m);n<<=1;
+  f[0][1]=1;
+  for(i=1;i<=n;i++)for(j=1;j<=m;j++)for(k=1;k<=j;k++)f[i][j]=(f[i][j]+f[i-1][k])%skc;
+  for(i=1;i<=m;i++)ans=(ans+f[n][i])%skc;
+  printf("%d\n",ans);
 }
 
 
@@ -294,16 +306,16 @@ const int mod=1e9+7;
 int n,m,ans,dp[25][1005];
 signed main()
 {
-	scanf("%d%d",&n,&m);
-	for(int i=1;i<=m+m;i++){
-		dp[i][1]=1;
-		for(int j=2;j<=n;j++){
-			dp[i][j]=(dp[i-1][j]+dp[i][j-1])%mod;
-		}
-	}
-	for(int i=1;i<=n;i++)ans=(ans+dp[m+m][i])%mod;
-	printf("%d",ans);
-	return 0;
+  scanf("%d%d",&n,&m);
+  for(int i=1;i<=m+m;i++){
+    dp[i][1]=1;
+    for(int j=2;j<=n;j++){
+      dp[i][j]=(dp[i-1][j]+dp[i][j-1])%mod;
+    }
+  }
+  for(int i=1;i<=n;i++)ans=(ans+dp[m+m][i])%mod;
+  printf("%d",ans);
+  return 0;
 }
 
 
