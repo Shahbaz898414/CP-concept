@@ -133,7 +133,7 @@ void rotateMatrix(vector<vector<int>> &v, int n)
   }
 }
 
-ll m = 998244353;
+ll ml = 998244353;
 
 long long erfd(long long a, long long b)
 {
@@ -141,9 +141,9 @@ long long erfd(long long a, long long b)
     return 1;
   long long ans = erfd(a, b / 2);
   if (b % 2)
-    return (ans % m * ans % m * a) % m;
+    return (ans % ml * ans % ml * a) % ml;
   else
-    return ans % m * ans % m;
+    return ans % ml * ans % ml;
 }
 
 const ll N = 1e5;
@@ -215,6 +215,29 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+
+  ll n, m, ans;
+ll dp[25][1005];
+
+
+
+int sol(int idx,int pre) {
+  if(idx==2*m+1)  return 1;
+  int ans=0;
+  if(dp[idx][pre]!=-1)  return dp[idx][pre];
+
+  for (ll i = pre; i <=n; i++)
+  {
+    /* code */
+    ans=(ans+sol(idx+1,i))%mod;
+  }
+  
+
+  return dp[idx][pre]=ans;
+
+}
+
+
 signed main()
 {
   ios::sync_with_stdio(false);
@@ -225,100 +248,21 @@ signed main()
   // while (t--)
   // {
 
-    ll dp[25][1005];
+   
 
-    ll n, m, ans;
+   memset(dp,-1,sizeof dp);
+  
     cin >> n >> m;
 
-    for (ll i = 1; i <= m + m; i++)
-    {
-      /* code */
-      dp[i][1] = 1;
-      for (int j = 2; j <= n; j++)
-        dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % mod;
-      
-    }
+    cout<<sol(1,1)<<endl;
+
+   
+
+   
 
 
-
-    for (int i = 1; i <= n; i++)
-       ans = (ans + dp[m + m][i]) % mod;
-
-
-    cout << ans << endl;
   // }
 
   return 0;
 }
 
-/*
-
-
-#include<iostream>
-using namespace std;
-int main()
-{
-  int m,n;
-  cin>>m>>n;
-  int k=2*n+1;
-  int a[k*2][m + 5];
-  for(int i=0;i<m;i++)a[0][i]=1;
-  for(int i=1;i<k;i++)
-  {
-    a[i][0]=1;
-    for(int j=1;j<m;j++)
-    a[i][j]=(a[i-1][j]+a[i][j-1])%1000000007;
-  }
-  cout<<a[k-1][m-1];
-  return 0;
-}
-
-
-
-
-
-
-
-#include<cstdio>
-#include<iostream>
-using namespace std;
-const int skc=1e9+7;
-int n,m,i,j,k,ans,f[2001][2001];
-int main(){
-  scanf("%d%d",&n,&m);swap(n,m);n<<=1;
-  f[0][1]=1;
-  for(i=1;i<=n;i++)for(j=1;j<=m;j++)for(k=1;k<=j;k++)f[i][j]=(f[i][j]+f[i-1][k])%skc;
-  for(i=1;i<=m;i++)ans=(ans+f[n][i])%skc;
-  printf("%d\n",ans);
-}
-
-
-
-
-
-
-
-
-
-#include<bits/stdc++.h>
-using namespace std;
-const int mod=1e9+7;
-int n,m,ans,dp[25][1005];
-signed main()
-{
-  scanf("%d%d",&n,&m);
-  for(int i=1;i<=m+m;i++){
-    dp[i][1]=1;
-    for(int j=2;j<=n;j++){
-      dp[i][j]=(dp[i-1][j]+dp[i][j-1])%mod;
-    }
-  }
-  for(int i=1;i<=n;i++)ans=(ans+dp[m+m][i])%mod;
-  printf("%d",ans);
-  return 0;
-}
-
-
-
-
-*/
