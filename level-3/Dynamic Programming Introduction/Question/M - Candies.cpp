@@ -215,86 +215,55 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+int dp[100][100001];
 
-  
-
-
-signed main()
+void solve()
 {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+  int n, k;
+  cin >> n >> k;
+  int a[n];
 
-  // ll t = 1;
-  // // cin>>t;
-  // while (t--)
-  // {
-
-   
-
-  ll n,m;cin>>n>>m;
-
-  vector<ll> arr(n+1);
-
-  ll dp[n+1][m+1];
-
-  for (ll i = 1; i <=n; i++)  
-    cin>>arr[i];
-
-  dp[0][0]=1;
-
-  for (ll i = 1; i <=m; i++) {
-    dp[0][i]=0;
-  }
-
-
-  for (ll i = 1; i <=n; i++)
+  // int mod = 1e9 + 7;
+  for (int i = 0; i < n; i++)
+    cin >> a[i];
+  for (int i = 0; i <= a[0]; i++)
+    dp[0][i] = 1;
+  int MOD = 1e9 + 7;
+  for (int i = 1; i < n; i++)
   {
-    /* code */
-    vector<int>  sum(m+1);
-    sum[0]=dp[i-1][0];
-    for (ll j =1; j <=m; j++)
+    int pre[k + 1];
+    memset(pre, 0, sizeof(pre));
+    pre[0] = dp[i - 1][0];
+    for (int j = 1; j <= k; j++)
     {
-      /* code */
-      sum[j]=(sum[j-1]+dp[i-1][j])%mod;
+      pre[j] = pre[j - 1] + dp[i - 1][j];
     }
-    
-
-    for (int j = 0; j <=m; j++)
-      /* code */
-      sum[j]=(sum[j-1]+dp[i-1][j])%mod;
-    
-    for (int j = 0; j <=m; j++)
+    for (int j = 0; j <= k; j++)
     {
-      /* code */
-      if(j<=arr[i]) dp[i][j]=sum[j];
-      else {
-        int non=j-arr[i]-1;
-
-        dp[i][j]=(sum[j]-sum[non]+mod)%mod;
+      if (j > a[i])
+      {
+        dp[i][j] = pre[j] - pre[j - a[i] - 1];
+        if (dp[i][j] < 0)
+          dp[i][j] += MOD;
+        dp[i][j] %= MOD;
+      }
+      else
+      {
+        dp[i][j] = pre[j] % MOD;
       }
     }
-    
-    sum.clear();
   }
-
-
-  cout<<dp[n+1][m+1]<<endl;
-  
-  
-
-
-    
-
-   
-
-   
-
-
-  // }
-
-  return 0;
+  cout << dp[n - 1][k];
 }
 
-
-
-
+int32_t main()
+{
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  int t = 1;
+  // cin >> t;
+  while (t--)
+  {
+    solve();
+  }
+}
