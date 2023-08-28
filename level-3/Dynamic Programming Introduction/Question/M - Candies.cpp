@@ -228,16 +228,22 @@ void solve()
     cin >> a[i];
   for (int i = 0; i <= a[0]; i++)
     dp[0][i] = 1;
+
+
   int MOD = 1e9 + 7;
+
+
+
   for (int i = 1; i < n; i++)
   {
     int pre[k + 1];
+
     memset(pre, 0, sizeof(pre));
+
     pre[0] = dp[i - 1][0];
     for (int j = 1; j <= k; j++)
-    {
       pre[j] = pre[j - 1] + dp[i - 1][j];
-    }
+    
     for (int j = 0; j <= k; j++)
     {
       if (j > a[i])
@@ -248,9 +254,9 @@ void solve()
         dp[i][j] %= MOD;
       }
       else
-      {
+      
         dp[i][j] = pre[j] % MOD;
-      }
+      
     }
   }
   cout << dp[n - 1][k];
