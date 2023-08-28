@@ -269,11 +269,16 @@ signed main()
       if(j<=arr[i]) dp[i][j]=sum[j];
       else {
         int non=j-arr[i]-1;
+
+        dp[i][j]=(sum[j]-sum[non]+mod)%mod;
       }
     }
     
-    
+    sum.clear();
   }
+
+
+  cout<<dp[n+1][m+1]<<endl;
   
   
 
