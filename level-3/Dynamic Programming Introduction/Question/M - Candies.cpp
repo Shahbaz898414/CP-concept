@@ -259,6 +259,8 @@ void solve()
       
     }
   }
+
+
   cout << dp[n - 1][k];
 }
 
@@ -269,7 +271,9 @@ int32_t main()
   int t = 1;
   // cin >> t;
   while (t--)
-  {
+  
     solve();
-  }
+  
+
+  
 }
