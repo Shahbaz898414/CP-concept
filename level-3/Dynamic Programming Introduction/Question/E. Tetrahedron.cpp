@@ -220,48 +220,21 @@ int dp[100][100001];
 void solve()
 {
   int n, k;
-  cin >> n >> k;
-  int a[n];
+  cin >> n;
 
-  // int mod = 1e9 + 7;
-  for (int i = 0; i < n; i++)
-    cin >> a[i];
-  for (int i = 0; i <= a[0]; i++)
-    dp[0][i] = 1;
+  int x = -1;
 
+  long long ans = 1;
 
-  int MOD = 1e9 + 7;
-
-
-
-  for (int i = 1; i < n; i++)
+  while (n--)
   {
-    int pre[k + 1];
+    ans = (ans + x) * 3;
+    ans %= mod;
 
-    memset(pre, 0, sizeof(pre));
-
-    pre[0] = dp[i - 1][0];
-    for (int j = 1; j <= k; j++)
-      pre[j] = pre[j - 1] + dp[i - 1][j];
-    
-    for (int j = 0; j <= k; j++)
-    {
-      if (j > a[i])
-      {
-        dp[i][j] = pre[j] - pre[j - a[i] - 1];
-        if (dp[i][j] < 0)
-          dp[i][j] += MOD;
-        dp[i][j] %= MOD;
-      }
-      else
-      
-        dp[i][j] = pre[j] % MOD;
-      
-    }
+    x = -x;
   }
 
-
-  cout << dp[n - 1][k];
+  cout << ans << endl;
 }
 
 int32_t main()
@@ -272,7 +245,4 @@ int32_t main()
   // cin >> t;
   while (t--)
     solve();
-  
-
-
 }
