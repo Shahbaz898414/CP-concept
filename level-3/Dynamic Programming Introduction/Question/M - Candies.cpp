@@ -233,10 +233,48 @@ signed main()
 
   ll n,m;cin>>n>>m;
 
-  vector<ll> arr(n);
+  vector<ll> arr(n+1);
 
-  for (ll i = 0; i < n; i++)  
+  ll dp[n+1][m+1];
+
+  for (ll i = 1; i <=n; i++)  
     cin>>arr[i];
+
+  dp[0][0]=1;
+
+  for (ll i = 1; i <=m; i++) {
+    dp[0][i]=0;
+  }
+
+
+  for (ll i = 1; i <=n; i++)
+  {
+    /* code */
+    vector<int>  sum(m+1);
+    sum[0]=dp[i-1][0];
+    for (ll j =1; j <=m; j++)
+    {
+      /* code */
+      sum[j]=(sum[j-1]+dp[i-1][j])%mod;
+    }
+    
+
+    for (int j = 0; j <=m; j++)
+      /* code */
+      sum[j]=(sum[j-1]+dp[i-1][j])%mod;
+    
+    for (int j = 0; j <=m; j++)
+    {
+      /* code */
+      if(j<=arr[i]) dp[i][j]=sum[j];
+      else {
+        int non=j-arr[i]-1;
+      }
+    }
+    
+    
+  }
+  
   
 
 
@@ -253,16 +291,5 @@ signed main()
 }
 
 
-/*
 
-
-Atlassian is Hiring Women in Tech !!
-
-Role: Software Engineer Intern
-
-
-Apply here- https://flows.beamery.com/atlassian/women-in-tech-3-0-qvmvsejhw
-
-
-*/
 
