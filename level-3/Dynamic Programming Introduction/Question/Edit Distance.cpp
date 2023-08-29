@@ -231,11 +231,11 @@ signed main() {
         {
             if(i == 0)
               dp[i][j] = j; 
-              //when s1 is empty, we just have to copy j elements of string s2
+              // when s1 is empty, we just have to copy j elements of string s2
 
             else if(j == 0)
               dp[i][j] = i; 
-              // when s2 is empty, we just have to remove i elements present in s1.
+              //  when s2 is empty, we just have to remove i elements present in s1.
 
             else if(s1[i-1] == s2[j-1])
               dp[i][j] = dp[i-1][j-1]; 
