@@ -242,19 +242,32 @@ signed main() {
               // if the last element is same in both s1 & s2, just copy the previous dp value. No more changes needed
 
             else
-            
                 dp[i][j] = 1 + min(dp[i][j-1], min(dp[i-1][j], dp[i-1][j-1]));
                 //case1 = dp[i][j-1] = when we insert an element in s1. 
-                //After insertion, we calculate the dp[for the rest of s1(i)][for the rest of s2 other than the last element which is inserted in s1(j-1)].
+                // After insertion, we calculate the dp[for the rest of s1(i)][for the rest of s2 other than the last element which is inserted in s1(j-1)].
 
-                //case2 = dp[i-1][j] = when we remove element from s1. We calculate dp[rest of s1(i-1)][rest of s2(j)]
+                // case2 = dp[i-1][j] = when we remove element from s1. We calculate dp[rest of s1(i-1)][rest of s2(j)]
 
-                //case3 = dp[i-1][j-1] = when element of s1 is replaced. 
+                // case3 = dp[i-1][j-1] = when element of s1 is replaced. 
 
-                //calculate min of the three. 1 is added as each case counts to 1 operation
+                // calculate min of the three. 1 is added as each case counts to 1 operation
             
         }
     }
+
+    for (int i = 0; i <len_s1; i++)
+    {
+      /* code */
+      for (int j = 0; j < len_s2; j++)
+      {
+        /* code */
+
+        cout<<dp[i][j]<<" ";
+      }
+      cout<<endl;
+      
+    }
+    
 
     cout<<dp[len_s1][len_s2]<<endl;
 
