@@ -218,8 +218,8 @@ signed main() {
   cin.tie(nullptr);
  
 
-  string s1,s2;
-    cin>>s1>>s2; //taking input
+  string s1,s2;cin>>s1>>s2;
+   //taking input
 
     int len_s1 = s1.size();
     int len_s2 = s2.size();
@@ -230,10 +230,12 @@ signed main() {
         for(int j=0;j<=len_s2;j++)
         {
             if(i == 0)
-            dp[i][j] = j; //when s1 is empty, we just have to copy j elements of string s2
+            dp[i][j] = j; 
+            //when s1 is empty, we just have to copy j elements of string s2
 
             else if(j == 0)
-            dp[i][j] = i; // when s2 is empty, we just have to remove i elements present in s1.
+            dp[i][j] = i; 
+            // when s2 is empty, we just have to remove i elements present in s1.
 
             else if(s1[i-1] == s2[j-1])
             dp[i][j] = dp[i-1][j-1]; // if the last element is same in both s1 & s2, just copy the previous dp value. No more changes needed
