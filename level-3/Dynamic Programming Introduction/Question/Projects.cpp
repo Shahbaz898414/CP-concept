@@ -146,7 +146,7 @@ long long erfd(long long a, long long b)
     return ans % ml * ans % ml;
 }
 
-const ll N = 1e5;
+const ll N = 4e5 + 5;
 ll fact[N + 1];
 
 void precomp()
@@ -215,52 +215,50 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+int s[N], e[N], cost[N];
+
 // int dp[100][100001];
 
 void solve()
 {
-  int n, k;
+  ll n;
   cin >> n;
 
-  int dp[10000005][4]={0};
+  pair<int, pair<int, int>> arr[n];
 
-  dp[0][0]=1;
-  dp[0][1]=dp[0][2]=dp[0][3]=0;
-
-  for (int i = 0; i <n; i++)
+  for (ll i = 0; i < n; i++)
   {
-    /* code */
+    int l, r, p;
 
-    (dp[i+1][1]+=dp[i][0])%=mod;
-    (dp[i+1][2]+=dp[i][0])%=mod;
-    (dp[i+1][3]+=dp[i][0])%=mod;
+    cin >> l >> r >> p;
 
-
-
-
-    (dp[i+1][0]+=dp[i][1])%=mod;
-    (dp[i+1][2]+=dp[i][1])%=mod;
-    (dp[i+1][3]+=dp[i][1])%=mod;
-
-
-    (dp[i+1][1]+=dp[i][2])%=mod;
-    (dp[i+1][0]+=dp[i][2])%=mod;
-    (dp[i+1][3]+=dp[i][2])%=mod;
-
-
-    (dp[i+1][1]+=dp[i][3])%=mod;
-    (dp[i+1][2]+=dp[i][3])%=mod;
-    (dp[i+1][0]+=dp[i][3])%=mod;
-
-
-
+    arr[i] = make_pair(l, make_pair(r, p));
   }
 
-  cout<<dp[n][0]<<" ";
-  
+  sort(arr, arr + n);
 
+  int dp[n + 1];
 
+  for (ll i = n; i >= 0; i--)
+  {
 
+    if (i == n)
+    {
+      dp[i] = 0;
+    }
+    else
+    {
+
+      dp[i] = dp[i + 1];
+      int next = arr[i].second.first;
+
+      auto it = upper_bound(arr, arr + n, make_pair(next, make_pair(1e9, 1e9))) - arr;
+
+      dp[i] = max(dp[i], arr[i].second.second + dp[it]);
+    }
+  }
+
+  cout << dp[0] << endl;
 }
 
 int32_t main()
