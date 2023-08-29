@@ -255,13 +255,9 @@ signed main() {
         }
     }
 
-    for (int i = 0; i <len_s1; i++)
-    {
-      /* code */
-      for (int j = 0; j < len_s2; j++)
-      {
-        /* code */
-
+    for (int i = 0; i <len_s1; i++){
+      
+      for (int j = 0; j < len_s2; j++) {
         cout<<dp[i][j]<<" ";
       }
       cout<<endl;
