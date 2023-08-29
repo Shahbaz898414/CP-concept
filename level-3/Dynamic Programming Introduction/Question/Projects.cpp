@@ -6,8 +6,8 @@ using namespace std;
 int main()
 {
   
-  int n;
-  cin >> n;
+  int n; cin >> n;
+  
   vector<tuple<ll, ll, ll>> projects(n);
   for (int i = 0; i < n; i++)
   {
@@ -44,7 +44,7 @@ int main()
 
   cout << bestTotalReward;
 
-  
+
 
   return 0;
 }
