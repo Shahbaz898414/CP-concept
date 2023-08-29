@@ -22,16 +22,29 @@ int main()
   for (auto project : projects)
   {
     ll start, end, reward;
+
+
     tie(end, start, reward) = project;
 
     auto it = dp.lower_bound(start);
+
+
+
     it--;
+
+
     ll totalReward = it->second + reward;
+
+
     bestTotalReward = max(bestTotalReward, totalReward);
+
+
     dp[end] = bestTotalReward;
   }
 
   cout << bestTotalReward;
+
+  
 
   return 0;
 }
