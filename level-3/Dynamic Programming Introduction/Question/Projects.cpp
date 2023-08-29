@@ -235,6 +235,8 @@ void solve()
     arr[i] = make_pair(l, make_pair(r, p));
   }
 
+
+
   sort(arr, arr + n);
 
   int dp[n + 1];
