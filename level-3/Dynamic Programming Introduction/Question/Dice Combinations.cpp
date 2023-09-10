@@ -29,7 +29,7 @@ int main()
         //  cout<<dp[i]<<" "<<dp[i-j]<<endl;
       }
 
-      cout<<endl;
+      // cout<<endl;
     }
 
     cout << dp[n] % mod<<endl;
