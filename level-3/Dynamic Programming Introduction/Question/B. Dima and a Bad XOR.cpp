@@ -66,7 +66,7 @@ int main()
 
 
 
-
+	cout<<endl;
 	cout<<"NIE"<<endl;
 
 
