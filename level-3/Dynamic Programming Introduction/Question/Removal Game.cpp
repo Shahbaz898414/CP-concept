@@ -4,6 +4,8 @@ typedef long long ll;
 ll inf = 1e18;
 
 
+
+
 int main() {
 
 
@@ -13,6 +15,10 @@ int main() {
   for (int i = 0; i < n; i++) cin >> arr[i];
   
   
+  
+
+
+
 
 
 
@@ -20,5 +26,6 @@ int main() {
 
 
 }
+
 
 
