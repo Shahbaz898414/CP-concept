@@ -38,8 +38,10 @@ int main()
   {
     /* code */
     cin>>ar[i];
+
+    // cout<<ar[i]<<" ";
   }
-  
+  // cout<<endl;
 
 
    
