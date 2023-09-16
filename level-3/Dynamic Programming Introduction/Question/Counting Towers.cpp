@@ -13,6 +13,12 @@ const ll mod = (10e8) + 7;
 int main() {
   ios_base::sync_with_stdio(0);
   cin.tie(0);
+
+  ll t;cin>>t;
+
+  while(t--) {
+    
+  }
   
   
 
@@ -70,20 +76,6 @@ int main() {
 
     }
   }
-
-  for (ll i = 0; i <n; i++)
-  {
-    /* code */
-    for (ll j = 0; j <=m; j++)
-    {
-      /* code */
-      cout<<num[i][j]<<" ";
-    }
-
-    cout<<endl;
-    
-  }
-  
 
   ll ans=0;
 
