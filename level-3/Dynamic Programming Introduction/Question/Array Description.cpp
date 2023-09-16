@@ -71,18 +71,18 @@ int main() {
     }
   }
 
-  for (ll i = 0; i <n; i++)
-  {
-    /* code */
-    for (ll j = 0; j <=m; j++)
-    {
-      /* code */
-      cout<<num[i][j]<<" ";
-    }
+  // for (ll i = 0; i <n; i++)
+  // {
+  //   /* code */
+  //   for (ll j = 0; j <=m; j++)
+  //   {
+  //     /* code */
+  //     cout<<num[i][j]<<" ";
+  //   }
 
-    cout<<endl;
+  //   cout<<endl;
     
-  }
+  // }
   
 
   ll ans=0;
