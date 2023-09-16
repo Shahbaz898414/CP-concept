@@ -1,52 +1,47 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
+
 typedef long long ll;
-#define s 5005
-ll inf = 1e18;
+#define pb push_back
+#define pi pair<int, int>
+#define f first
+#define mp make_pair
+#define s second
 
-ll dp[509][509];
-
-int n,m;
-int arr[509][509];
-
-int ar[509];
-void print(int id,int x){
-		cout<<"TAK"<<endl;
-		for(int i=0;i<n;i++){
-			if(i == id) cout<<x<<" ";
-			else cout<<1<<" ";
+ll dp[100001][101];
+const ll MOD = (10e8) + 7;
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	int n, m;
+	cin >> n >> m;
+	int arr[n];
+	for (int i = 0; i < n; i++) { cin >> arr[i]; }
+	if (arr[0] == 0) {
+		fill(dp[0], dp[0] + 101, 1);
+	} else {
+		dp[0][arr[0]] = 1;
+	}
+	for (int i = 1; i < n; i++) {
+		if (arr[i] == 0) {
+			for (int j = 1; j <= m; j++) {
+				dp[i][j] += dp[i - 1][j];
+				if (j - 1 > 0) dp[i][j] += dp[i - 1][j - 1];
+				if (j + 1 <= m) dp[i][j] += dp[i - 1][j + 1];
+				dp[i][j] %= MOD;
+			}
+		} else {
+			dp[i][arr[i]] += dp[i - 1][arr[i]];
+			if (arr[i] - 1 > 0) dp[i][arr[i]] += dp[i - 1][arr[i] - 1];
+			if (arr[i] + 1 <= m) dp[i][arr[i]] += dp[i - 1][arr[i] + 1];
+			dp[i][arr[i]] %= MOD;
 		}
-		cout<<endl; 
-		exit(0);
+	}
+	ll ans = 0;
+	for (int i = 1; i <= m; i++) {
+		ans += dp[n - 1][i];
+		ans %= MOD;
+	}
+	cout << ans;
 }
-
-
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-
-    // ll n,m;
-    // cin>>n>>m;
-
-    // for //
-
-	cin>>n>>m;
-
-	for (int i = 0; i < n; i++)
-  {
-    /* code */
-    cin>>ar[i];
-
-    // cout<<ar[i]<<" ";
-  }
-  // cout<<endl;
-
-
-   
-    return 0;
-
-}
-
-
