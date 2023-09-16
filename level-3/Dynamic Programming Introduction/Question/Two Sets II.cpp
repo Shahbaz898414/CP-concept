@@ -25,6 +25,27 @@ int main()
     ll n, m;
     cin >> n ;
 
+    // cout<<n*n<<endl;
+
+    ll sum;
+
+    sum=(n*(n+1))/2;
+
+    sum=sum/4;
+
+    // for(int i=1;i<=n;i++){
+
+    //   // if()
+    //   for (int j = 1; j <=n; j++)
+    //   {
+    //     /* code */
+    //     if(i!=j){
+
+    //     }
+    //   }
+      
+    // }
+
     
 
 
