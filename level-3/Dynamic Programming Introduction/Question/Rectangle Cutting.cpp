@@ -57,12 +57,12 @@ int main() {
     for(int i=1;i<=n;i++) {
       for(int j=1;j<=m;j++) {
 
-        for(int z=1;z<i;z++) {
-          dp[i][j]=min(dp[i][j],dp[z][j]+dp[i-z][j]+1);
+        for(int z=1; z<i; z++) {
+          dp[i][j]=min( dp[i][j], dp[z][j]+dp[i-z][j]+1);
         }
 
         for(int z=1;z<j;z++) {
-          dp[i][j]=min(dp[i][j],dp[i][z]+dp[i][j-z]+1);
+          dp[i][j]= min( dp[i][j], dp[i][z]+dp[i][j-z]+1);
         }
 
       }
