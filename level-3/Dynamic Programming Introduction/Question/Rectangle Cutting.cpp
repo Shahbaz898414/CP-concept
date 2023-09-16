@@ -79,7 +79,7 @@ int main()
           dp[i][j] = min(dp[i][j], dp[z][j] + dp[i - z][j] + 1);
 
         for (int z = 1; z < j; z++) 
-          dp[i][j] = min(dp[i][j], dp[i][z] + dp[i][j - z] + 1);
+            dp[i][j] = min(dp[i][j], dp[i][z] + dp[i][j - z] + 1);
         
       }
     }
