@@ -61,11 +61,9 @@ int main()
 
     cnt[0] = 1;
 
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++) {
 
-      for (int j = sum; j >= i; j--)
-      {
+      for (int j = sum; j >= i; j--) {
         cnt[j] = (cnt[j] + cnt[j - i]) % mod;
       }
     }
@@ -77,3 +75,5 @@ int main()
 
   return 0;
 }
+
+// sha
