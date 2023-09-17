@@ -8,6 +8,11 @@ typedef long long ll;
 const ll nax = 505;
 const ll mod = (10e8) + 7;
 
+
+
+
+
+
 ll modInverse(ll base, ll exp)
 {
   if (exp == 0)
@@ -30,8 +35,7 @@ ll modInverse(ll base, ll exp)
 
 int dp[nax][nax];
 
-int main()
-{
+int main() {
   ios_base::sync_with_stdio(0);
   cin.tie(0);
 
@@ -41,8 +45,7 @@ int main()
   while (t--)
   {
 
-    ll n, m;
-    cin >> n;
+    ll n, m; cin >> n;
 
     // cout<<n*n<<endl;
 
@@ -62,18 +65,33 @@ int main()
     cnt[0] = 1;
 
     for (int i = 1; i <= n; i++) {
-
       for (int j = sum; j >= i; j--) {
         cnt[j] = (cnt[j] + cnt[j - i]) % mod;
       }
     }
 
-    // cout<<cnt[sum]<<endl;
+
+
+    cout<<cnt[sum]<<endl;
+
+    for(auto it:cnt) {
+      cout<<it<<" ";
+    }
+
+    cout<<endl;
 
     cout << (cnt[sum] * modInverse(2, mod - 2)) % mod << endl;
-  }
 
+
+  }
   return 0;
 }
 
-// sha
+
+
+
+
+
+
+
+
