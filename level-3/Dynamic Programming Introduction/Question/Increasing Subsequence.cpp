@@ -51,7 +51,9 @@ int main() {
 
     ll sum;
 
-    vector<ll> sub;
+    vector<ll> sub,che;
+
+  
 
     for (ll i = 0; i < n; i++)
     {
@@ -61,12 +63,30 @@ int main() {
 
       ll idx=lower_bound(sub.begin(),sub.end(),x)-sub.begin();
 
-      if(idx==sub.size()){
+      // cout<<idx<<endl;
+
+      if(idx==sub.size()) {
+        // che.push_back(idx);
+
         sub.push_back(x);
       }else {
         sub[idx]=x;
       }
+
     }
+
+  //  for(auto it:che){
+  //   cout<<it<<" ";
+  //  }
+
+
+    
+
+    // for(auto it:sub) {
+    //   cout<<it<<" ";
+    // }
+
+    // cout<<endl;
 
 
     cout<<sub.size()<<endl;
@@ -74,12 +94,4 @@ int main() {
   }
   return 0;
 }
-
-
-
-
-
-
-
-
 
