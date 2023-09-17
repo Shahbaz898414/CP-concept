@@ -51,7 +51,25 @@ int main() {
 
     ll sum;
 
-   
+    vector<ll> sub;
+
+    for (ll i = 0; i < n; i++)
+    {
+      /* code */
+
+      ll x;cin>>x;
+
+      ll idx=lower_bound(sub.begin(),sub.end(),x)-sub.begin();
+
+      if(idx==sub.size()){
+        sub.push_back(x);
+      }else {
+        sub[idx]=x;
+      }
+    }
+
+
+    cout<<sub.size()<<endl;
 
   }
   return 0;
