@@ -47,41 +47,11 @@ int main() {
 
     ll n, m; cin >> n;
 
-    // cout<<n*n<<endl;
+   
 
     ll sum;
 
-    sum = (n * (n + 1)) / 2;
-    if (sum % 2)
-    {
-      cout << 0 << endl;
-      return 0;
-    }
-
-    sum = sum / 2;
-
-    vector<ll> cnt(sum + 1);
-
-    cnt[0] = 1;
-
-    for (int i = 1; i <= n; i++) {
-      for (int j = sum; j >= i; j--) {
-        cnt[j] = (cnt[j] + cnt[j - i]) % mod;
-      }
-    }
-
-
-
-    // cout<<cnt[sum]<<endl;
-
-    // for(auto it:cnt) {
-    //   cout<<it<<" ";
-    // }
-
-    // cout<<endl;
-
-    cout << (cnt[sum] * modInverse(2, mod - 2)) % mod << endl;
-
+   
 
   }
   return 0;

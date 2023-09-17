@@ -50,12 +50,11 @@ int main() {
     // cout<<n*n<<endl;
 
     ll sum;
-
     sum = (n * (n + 1)) / 2;
-    if (sum % 2)
-    {
-      cout << 0 << endl;
-      return 0;
+
+
+    if (sum % 2) {
+      cout << 0 << endl; return 0;
     }
 
     sum = sum / 2;
@@ -79,6 +78,8 @@ int main() {
     // }
 
     // cout<<endl;
+
+
 
     cout << (cnt[sum] * modInverse(2, mod - 2)) % mod << endl;
 
