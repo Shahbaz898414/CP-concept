@@ -48,9 +48,9 @@ int main()
     for (int i = 0; i < n; i++)
       cin >> people[i];
 
-    // use bit-masking to compute the dp table
+   
     int limit = (1 << n);
-    vector<pair<ll, ll>> dp(limit); // (numberOfRides, totalWeightOfLastRide)
+    vector<pair<ll, ll>> dp(limit); 
     dp[0] = {1, 0};
 
     for (int mask = 1; mask < limit; mask++)
@@ -78,6 +78,10 @@ int main()
       }
 
       dp[mask] = bestResult;
+    }
+
+    for(auto it:dp){
+      cout<<it.first<<" "<<it.second<<endl;
     }
 
     cout << dp[limit - 1].first;
