@@ -51,7 +51,16 @@ int main() {
 
     ll sum;
 
-    vector<ll> sub,che;
+    vector<ll> sub,che,ar(n+1);
+
+    for (ll i = 0; i < n; i++)
+    {
+      /* code */
+      cin>>ar[i];
+    }
+    
+
+
 
   
 
