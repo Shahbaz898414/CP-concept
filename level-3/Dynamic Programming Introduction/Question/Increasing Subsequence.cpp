@@ -51,7 +51,7 @@ int main() {
 
     ll sum;
 
-    vector<ll> sub,che;
+    vector<ll> sub,che,f,s;
 
   
 
@@ -66,20 +66,26 @@ int main() {
       // cout<<idx<<endl;
 
       if(idx==sub.size()) {
-        // che.push_back(idx);
+        che.push_back(idx);
 
         sub.push_back(x);
+        cout<<x<<" ";
       }else {
         sub[idx]=x;
+        s.push_back(x);
       }
 
     }
 
-  //  for(auto it:che){
-  //   cout<<it<<" ";
-  //  }
 
+//     cout<<endl;
+    cout<<endl;
 
+   for(auto it:s){
+    cout<<it<<" ";
+   }
+
+cout<<endl;
     
 
     // for(auto it:sub) {
