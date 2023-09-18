@@ -80,9 +80,9 @@ int main()
       dp[mask] = bestResult;
     }
 
-    for(auto it:dp){
-      cout<<it.first<<" "<<it.second<<endl;
-    }
+    // for(auto it:dp){
+    //   cout<<it.first<<" "<<it.second<<endl;
+    // }
 
     cout << dp[limit - 1].first;
   }
