@@ -8,11 +8,6 @@ typedef long long ll;
 const ll nax = 505;
 const ll mod = (10e8) + 7;
 
-
-
-
-
-
 ll modInverse(ll base, ll exp)
 {
   if (exp == 0)
@@ -35,7 +30,8 @@ ll modInverse(ll base, ll exp)
 
 int dp[nax][nax];
 
-int main() {
+int main()
+{
   ios_base::sync_with_stdio(0);
   cin.tie(0);
 
@@ -45,28 +41,31 @@ int main() {
   while (t--)
   {
 
-    ll n, m; cin >> n>>m;
-
-   
+    ll n, m;
+    cin >> n >> m;
 
     ll sum;
 
-    vector<ll> sub,che,ar(n+1);
+    vector<ll> sub, che, ar(n + 1);
 
     for (ll i = 0; i < n; i++)
     {
       /* code */
-      cin>>ar[i];
+      cin >> ar[i];
     }
-    
 
+    ll limit = (1 << n);
 
+    vector<pair<ll, ll>> dp(limit);
 
-  
+    dp[0] = {1, 0};
 
-  
+    for (ll i = 1; i < limit; i++)
+    {
+      /* code */
 
+      pair<ll, ll> result = {INT_MAX, INT_MAX};
+    }
   }
   return 0;
 }
-
