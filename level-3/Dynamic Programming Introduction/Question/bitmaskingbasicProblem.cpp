@@ -1,4 +1,6 @@
 #include<bits/stdc++.h>
+
+
 #define ll long long
 #define pb push_back
 #define fr(a,b) for(int i = a; i < b; i++)
@@ -34,6 +36,8 @@ int solve(int i, int mask, int& n)
 
     return dp[i][mask] = answer;
 }
+
+
 
 
 
