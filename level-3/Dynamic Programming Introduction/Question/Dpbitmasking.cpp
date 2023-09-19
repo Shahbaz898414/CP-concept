@@ -38,7 +38,7 @@ int main()
   add(n,4);
   add(n,6);
   remove(n,6);
-  // remove(n,1);
+  remove(n,1);
 
 
 
