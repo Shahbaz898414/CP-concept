@@ -34,7 +34,9 @@ int main()
   ll n;cin>>n;
 
   add(n,5);
-  add(n,5);
+  // add(n,5);
+  add(n,4);
+  add(n,6);
 
 
 
