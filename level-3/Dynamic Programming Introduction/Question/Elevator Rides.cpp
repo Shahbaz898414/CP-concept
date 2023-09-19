@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -48,9 +47,8 @@ int main()
     for (int i = 0; i < n; i++)
       cin >> people[i];
 
-   
     int limit = (1 << n);
-    vector<pair<ll, ll>> dp(limit); 
+    vector<pair<ll, ll>> dp(limit);
     dp[0] = {1, 0};
 
     for (int mask = 1; mask < limit; mask++)
@@ -88,3 +86,6 @@ int main()
   }
   return 0;
 }
+
+
+
