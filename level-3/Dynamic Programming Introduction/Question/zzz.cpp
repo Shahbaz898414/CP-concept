@@ -1,142 +1,281 @@
 #include <bits/stdc++.h>
-#define ll long long int
 using namespace std;
-
-void solve(ll n)
+#define ll long long
+#define mod 1000000007
+#define Time cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl;
+#define pb push_back
+#define mp make_pair
+#define line cout << endl;
+#define ff first
+#define ss second
+#define vi vector<int>
+#define no cout << "NO" << endl;
+#define yes cout << "YES" << endl;
+#define printv(v)                      \
+  for (int i = 0; i < (v.size()); i++) \
+  {                                    \
+    cout << v[i] << " ";               \
+  }                                    \
+  line;
+#define onesbits(x) __builtin_popcountll(x)
+#define zerobits(x) __builtin_ctzll(x)
+#define sp(x, y) fixed << setprecision(y) << x
+#define w(x) \
+  int x;     \
+  cin >> x;  \
+  while (x--)
+#define tk(x) \
+  int x;      \
+  cin >> x;
+#define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
+#ifndef ONLINE_JUDGE
+#define debug(x)     \
+  cerr << #x << " "; \
+  _print(x);         \
+  cerr << endl;
+#else
+#define debug(x)
+#endif
+template <class T>
+void _print(T t)
 {
-  ll temp = (n * (n + 1) / 2);
-  if (temp % 2 == 1)
+  cerr << t;
+}
+
+template <class T, class V>
+void _print(pair<T, V> p)
+{
+  cerr << "{";
+  _print(p.ff);
+  cerr << ",";
+  _print(p.ss);
+  cerr << "}";
+}
+
+template <class T>
+void _print(vector<T> v)
+{
+  cerr << "[ ";
+  for (T i : v)
   {
-    cout << "NO\n";
-    return;
+    _print(i);
+    cerr << " ";
   }
-  cout << "YES\n";
-  ll target = temp / 2;
-  ll sum = 0;
-  ll i = n;
-  unordered_set<ll> s;
-  s.reserve(n);
-  while (sum < target)
+  cerr << "]";
+}
+
+template <class T>
+void _print(vector<vector<T>> v)
+{
+  cerr << "[\n";
+  for (int l = 0; l < v.size(); l++)
   {
-    s.insert(i);
-    sum += i;
-    /* cout << "Inserting " << i << " sum = " << sum << endl; */
-    i--;
-  }
-  if (sum > target)
-  {
-    sum -= (i + 1);
-    assert(sum < target);
-    s.erase(s.find(i + 1));
-    /* cout << "Removing " << i + 1 << " sum = " << sum << endl; */
-    s.insert(target - sum);
-    /* cout << "Inserting " << target - sum  << " sum = " << sum << endl; */
-  }
-  cout << s.size() << "\n";
-  for (auto element : s)
-  {
-    cout << element << " ";
-  }
-  cout << "\n";
-  cout << n - s.size() << "\n";
-  for (int j = 1; j <= n; j++)
-  {
-    if (s.find(j) == s.end())
     {
-      cout << j << " ";
+      for (int k = 0; k < v[l].size(); k++)
+        cerr << v[l][k] << " ";
+    }
+    cerr << "\n";
+  }
+  cerr << "]";
+}
+
+template <class T, class V>
+void _print(map<T, V> v)
+{
+  cerr << "[ ";
+  for (auto i : v)
+  {
+    _print(i);
+    cerr << " ";
+  }
+  cerr << "]";
+}
+
+template <class T>
+void _print(set<T> v)
+{
+  cerr << "[ ";
+  for (T i : v)
+  {
+    _print(i);
+    cerr << " ";
+  }
+  cerr << "]";
+}
+
+// const long long inf = 1e18;
+// const int MOD = 998244353;
+// const int MAX = 1e6;
+
+bool isValid(string s)
+{
+  int len = s.size();
+  for (int i = 0; i < len / 2; i++)
+  {
+    if (s[i] != s[len - 1 - i])
+      return false;
+  }
+  return true;
+}
+
+void rotateMatrix(vector<vector<int>> &v, int n)
+{
+  for (int i = 0; i < n / 2; i++)
+  {
+    for (int j = i; j < n - i - 1; j++)
+    {
+      int ptr = v[i][j];
+      v[i][j] = v[n - 1 - j][i];
+      v[n - 1 - j][i] = v[n - 1 - i][n - 1 - j];
+      v[n - 1 - i][n - 1 - j] = v[j][n - 1 - i];
+      v[j][n - 1 - i] = ptr;
     }
   }
-  cout << "\n";
 }
+
+ll md = 998244353;
+
+long long erfd(long long a, long long b)
+{
+  if (b == 0)
+    return 1;
+  long long ans = erfd(a, b / 2);
+  if (b % 2)
+    return (ans % md * ans % md * a) % md;
+  else
+    return ans % md * ans % md;
+}
+
+const ll N = 1e5;
+ll fact[N + 1];
+
+void precomp()
+{
+  fact[0] = 1;
+
+  for (ll i = 0; i <= N; i++)
+  {
+
+    fact[i] = (fact[i] * i) % mod;
+  }
+}
+
+ll power(ll base, ll x)
+{
+  if (x < 0)
+  {
+    return 0;
+  }
+
+  ll ans = 1;
+  while (x)
+  {
+    if (x % 2 == 0)
+    {
+      base = (base * base) % mod;
+      x = x / 2;
+    }
+    else
+    {
+      ans = (ans * base) % mod;
+      x--;
+    }
+  }
+
+  return ans;
+}
+
+ll ncr(ll n, ll r)
+{
+  if (r > n)
+    return 0;
+
+  ll numo = fact[n];
+  ll demo = (fact[r] * fact[n - r]) % mod;
+  ll ans = (numo * power(demo, mod - 2)) % mod;
+
+  return ans;
+}
+
+int f(int d)
+{
+  for (int j = 2; j <= sqrt(d); j++)
+  {
+    if (d % j == 0)
+      d = f(d + 1);
+  }
+
+  return d;
+}
+
+unsigned long long gcd(unsigned long long x, unsigned long long y)
+{
+  if (y == 0)
+    return x;
+  return gcd(y, x % y);
+}
+
+
+
+
 
 int main()
 {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-  ios_base::sync_with_stdio(false);
-  cin.tie(0);
-  cout.tie(0);
-  ll n, sum = 0;
-  cin >> n;
+  ll t = 1;
+  cin >> t;
+  while (t--)
+  {
 
-  solve(n);
+    ll n, h;
+    cin >> n >> h;
 
-  // ll a[n+1];
-  // a[0]=0;
+   
 
-  // for (int i = 1; i <=n; i++) {
-  //   a[i]=i;
-  //   sum+=i;
-  // }
 
-  // string ans="";
-  // vector<int> v1,v2;
-
-  // // cout<<sum<<endl;
-
-  // if(sum%2==0){
-  //   if(n%4==0){
-  //     ans="YES";
-  //     for (int i =1; i <n/4; i++) {
-  //         v1.push_back(i);
-  //     }
-
-  //     for (int i = 0; i < n/4; i++)
-  //     {
-  //       /* code */
-  //       v1.push_back(a[n-i]);
-  //     }
-  //     for (int i =n/4+1; i <v1[v1.size()-1]; i++)
-  //     {
-  //       /* code */
-  //       v2.push_back(i);
-  //     }
-
-  //   }
-  //     else if (n%4==3){
-  //       vector<int> v;
-  //       ans="YES";
-  //       for (int i = 4; i <n+1; i++)
-  //       {
-  //         v.push_back(i);
-  //       }
-  //       v1.push_back(1);v1.push_back(2);
-  //       v2.push_back(3);
-  //       for (int i = 0; i <(n-3)/4; i++)
-  //       {
-  //         /* code */
-  //         v1.push_back(v[i]);
-  //         v1.push_back(v[v.size()-1-i]);
-  //       }
-  //       for (int i = 4+(n-3)/4; i <=n-(n-3)/4; i++)
-  //       {
-  //         /* code */
-  //         v2.push_back(i);
-  //       }
-
-  //     }else{
-  //       ans="NO";
-  //     }
-  // }else{
-  //   ans="NO";
-  // }
-
-  // if(ans=="YES"){
-  //   cout<<ans<<"\n";
-  //   cout<<v1.size()<<endl;
-  //   for (int i = 0; i <v1.size(); i++)
-  //   {
-  //     cout<<v1[0]<<" ";
-  //   }
-  //   cout<<endl;
-  //   cout<<v2.size()<<endl;
-  //   for (int i = 0; i < v2.size(); i++)
-  //   {
-  //     cout<<v2[i]<<" ";
-  //   }
-
-  // }else if(ans=="NO"){
-  //   cout<<ans;
-  // }
+  }
 
   return 0;
 }
+
+
+/*
+
+
+MOD 109 + 7
+
+def f(A):
+
+    if len(A) == 1:
+
+      return A
+
+    else:
+
+       N = len(A)
+
+        mid = N // 2
+
+        A1 = A[:mid]
+
+        A2 = A[mid:]
+
+        return f(A1) + f(A2)
+
+def main():
+      T = int(input()) 
+      for in range(T):
+          N, L, R = map(int, input().split())
+          A = list(range(1, 2**N + 1))
+          B = f(A)
+          result = sum(B[L 1:R]) X MOD
+          print(result)
+
+if __name__== "  main  ";
+     main()
+
+
+
+*/
