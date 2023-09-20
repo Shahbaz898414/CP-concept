@@ -4,6 +4,8 @@ using namespace std;
 
 typedef long long ll;
 
+
+
 void add(ll &subset, ll x)
 {
   subset = (subset ^ (1 << (x - 1)));
