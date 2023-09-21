@@ -35,12 +35,13 @@ int main()
       for (ll j = 0; j <= k - 2 * i; j++)
       {
         /* code */
-        val += arr[i];
-        mx = max(mx, arr[i] + arr[i + 1]);
+        val += arr[j];
+        mx = max(mx, arr[j] + arr[j + 1]);
       }
 
       ans = max(ans, val + i * mx);
     }
+
 
     cout << ans << endl;
   }
