@@ -215,10 +215,6 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-
-
-
-
 int main()
 {
   ios::sync_with_stdio(false);
@@ -229,53 +225,9 @@ int main()
   while (t--)
   {
 
-    ll n, h;
-    cin >> n >> h;
-
-   
-
-
+    ll n,l,r;cin>>n>>l>>r;
   }
 
   return 0;
 }
 
-
-/*
-
-
-MOD 109 + 7
-
-def f(A):
-
-    if len(A) == 1:
-
-      return A
-
-    else:
-
-       N = len(A)
-
-        mid = N // 2
-
-        A1 = A[:mid]
-
-        A2 = A[mid:]
-
-        return f(A1) + f(A2)
-
-def main():
-      T = int(input()) 
-      for in range(T):
-          N, L, R = map(int, input().split())
-          A = list(range(1, 2**N + 1))
-          B = f(A)
-          result = sum(B[L 1:R]) X MOD
-          print(result)
-
-if __name__== "  main  ";
-     main()
-
-
-
-*/

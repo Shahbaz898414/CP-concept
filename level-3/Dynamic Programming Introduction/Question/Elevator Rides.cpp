@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -72,7 +71,7 @@ int main()
           res.second = people[i];
         }
 
-        bestResult = min(bestResult, res);
+        bestResult = min(bestResult,res);
       }
 
       dp[mask] = bestResult;
@@ -83,6 +82,8 @@ int main()
     // }
 
     cout << dp[limit - 1].first;
+
+
   }
   return 0;
 }
