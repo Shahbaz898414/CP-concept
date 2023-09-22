@@ -46,61 +46,57 @@ int main()
       }
     }
 
-    for (int i =1; i <=n; i++)
+    for (int i = 1; i <= n; i++)
     {
-      
-      for (int j = 0; j <=m; j++)
+
+      for (int j = 0; j <= m; j++)
       {
-        
-        cin>>cost[i][j];
+
+        cin >> cost[i][j];
       }
-      
     }
 
-    if(c[1]==0){
-      for (int i = 1; i <=m; i++)
-      {
-        
-        dp[1][1][i]=cost[1][i];
-      }
-      
-    }else {
-      dp[1][1][c[1]]=0;
-    }
-    
-
-    for (int i = 2; i <=n; i++)
+    if (c[1] == 0)
     {
-      
-      for (int j =1; j <=k; j++)
+      for (int i = 1; i <= m; i++)
       {
-        if(c[i] == 0)
-			{
-				for(int a = 1; a <= m; a++)
-				{
-					dp[i][j][a] = min(dp[i][j][a], dp[i-1][j][a] + cost[i][a]);
-					for(int b = 1; b <= m; b++)
-					{
-						if(b != a) dp[i][j][a] = min(dp[i][j][a], dp[i-1][j-1][b] + cost[i][a]);
-					}
-				}
-			}
-			else
-			{
-				dp[i][j][c[i]] = min(dp[i][j][c[i]], dp[i-1][j][c[i]]);
-				for(int b = 1; b <= m; b++)
-				{
-					if(b != c[i]) dp[i][j][c[i]] = min(dp[i][j][c[i]], dp[i-1][j-1][b]);
-				}
-				//cout << i << ' ' << j << ' ' << c[i] << ' ' << dp[i][j][c[i]] << '\n';
-			}
+
+        dp[1][1][i] = cost[1][i];
       }
-      
     }
-    
+    else
+    {
+      dp[1][1][c[1]] = 0;
+    }
 
+    for (int i = 2; i <= n; i++)
+    {
 
-
-
+      for (int j = 1; j <= k; j++)
+      {
+        if (c[i] == 0)
+        {
+          for (int a = 1; a <= m; a++)
+          {
+            dp[i][j][a] = min(dp[i][j][a], dp[i - 1][j][a] + cost[i][a]);
+            for (int b = 1; b <= m; b++)
+            {
+              if (b != a)
+                dp[i][j][a] = min(dp[i][j][a], dp[i - 1][j - 1][b] + cost[i][a]);
+            }
+          }
+        }
+        else
+        {
+          dp[i][j][c[i]] = min(dp[i][j][c[i]], dp[i - 1][j][c[i]]);
+          for (int b = 1; b <= m; b++)
+          {
+            if (b != c[i])
+              dp[i][j][c[i]] = min(dp[i][j][c[i]], dp[i - 1][j - 1][b]);
+          }
+          // cout << i << ' ' << j << ' ' << c[i] << ' ' << dp[i][j][c[i]] << '\n';
+        }
+      }
+    }
   }
 }
