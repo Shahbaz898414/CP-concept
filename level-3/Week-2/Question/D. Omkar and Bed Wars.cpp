@@ -14,7 +14,7 @@ int main()
   while (t--)
   {
 
-    ll n, k, z;
+    ll n,  z;
     cin >> n;
 
     string s;
@@ -39,20 +39,50 @@ int main()
 
       if (i == 0)
       {
+
+        cout<<1<<endl;
         k = n - 1;
 
-        while (k > i and !vis[k] and s[k] == s[i])
-        {
+        while (k > i and !vis[k] and s[k] == s[i]) {
           vis[k--] = 1;
           cnt++;
         }
       }
 
+      cout<<cnt<<" cnt"<<endl;
+
       ans += (cnt + 2 * (cnt == n)) / 3;
 
       i = j;
+
+
     }
 
+
+
+
+
     cout << ans << endl;
+
+
+
+
+
   }
 }
+
+
+
+/*
+
+
+Hi,
+
+I hope this message finds you well! I came across the Servicenow Intern (https://airtable.com/appWUzBuE7uhXshqJ/shrDZGwztjlex8Jdb?prefill_Tacnique%20Form=1&hide_Tacnique%20Form=true&prefill_Referred%20By=LinkedIn%20Recruiter&prefill_Applying%20for=recvjFCQrIA6TiEDP) at Servicenow. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
+
+Best regards,
+Shahbaz Khan
+
+
+
+*/
