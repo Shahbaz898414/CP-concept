@@ -32,17 +32,13 @@ int main()
       int j, k, cnt = 0;
 
       j = i;
-      while (s[j] == s[i] and j < n)
-      {
+      while (s[j] == s[i] and j < n) {
         vis[j++] = 1, cnt += 1;
       }
 
-      if (i == 0)
-      {
-
-        cout<<1<<endl;
+      if (i == 0) {
+        // cout<<1<<endl;
         k = n - 1;
-
         while (k > i and !vis[k] and s[k] == s[i]) {
           vis[k--] = 1;
           cnt++;
@@ -58,15 +54,7 @@ int main()
 
     }
 
-
-
-
-
     cout << ans << endl;
-
-
-
-
 
   }
 }
