@@ -49,7 +49,7 @@ int main()
         }
       }
 
-      cout<<cnt<<" cnt"<<endl;
+      // cout<<cnt<<" cnt"<<endl;
 
       ans += (cnt + 2 * (cnt == n)) / 3;
 
@@ -73,16 +73,3 @@ int main()
 
 
 
-/*
-
-
-Hi,
-
-I hope this message finds you well! I came across the Servicenow Intern (https://airtable.com/appWUzBuE7uhXshqJ/shrDZGwztjlex8Jdb?prefill_Tacnique%20Form=1&hide_Tacnique%20Form=true&prefill_Referred%20By=LinkedIn%20Recruiter&prefill_Applying%20for=recvjFCQrIA6TiEDP) at Servicenow. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
-
-Best regards,
-Shahbaz Khan
-
-
-
-*/
