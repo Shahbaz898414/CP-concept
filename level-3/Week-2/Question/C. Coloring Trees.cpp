@@ -98,5 +98,14 @@ int main()
         }
       }
     }
+
+    ll ans = INF;
+    for (int i = 1; i <= m; i++)
+    {
+      ans = min(ans, dp[n][k][i]);
+    }
+    if (ans >= INF)
+      ans = -1;
+    cout << ans;
   }
 }
