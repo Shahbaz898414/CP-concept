@@ -25,7 +25,7 @@ int main()
 
     // string s;
     // cin >> s;
-    ll ans = 0;
+    // ll ans = 0;
 
     // vector<ll> arr(n+1);
 
@@ -49,7 +49,7 @@ int main()
     for (int i = 1; i <= n; i++)
     {
 
-      for (int j = 0; j <= m; j++)
+      for (int j = 1; j <= m; j++)
       {
 
         cin >> cost[i][j];
@@ -60,10 +60,10 @@ int main()
     {
       for (int i = 1; i <= m; i++)
       {
-
         dp[1][1][i] = cost[1][i];
       }
     }
+
     else
     {
       dp[1][1][c[1]] = 0;
@@ -71,7 +71,6 @@ int main()
 
     for (int i = 2; i <= n; i++)
     {
-
       for (int j = 1; j <= k; j++)
       {
         if (c[i] == 0)
@@ -100,12 +99,19 @@ int main()
     }
 
     ll ans = INF;
-    for (int i = 1; i <= m; i++)
-    {
-      ans = min(ans, dp[n][k][i]);
-    }
+
+    // for (int i = 1; i <= m; i++)
+    // {
+    //   ans = min(ans, dp[n][k][i]);
+
+    //   cout<<dp[n][k][i]<<" ";
+    // }
+
+    // cout<<endl;
+
     if (ans >= INF)
       ans = -1;
+
     cout << ans;
   }
 }
