@@ -85,7 +85,7 @@ int main()
             }
           }
         }
-        else
+        else 
         {
           dp[i][j][c[i]] = min(dp[i][j][c[i]], dp[i - 1][j][c[i]]);
           for (int b = 1; b <= m; b++)
@@ -100,12 +100,11 @@ int main()
 
     ll ans = INF;
 
-    // for (int i = 1; i <= m; i++)
-    // {
-    //   ans = min(ans, dp[n][k][i]);
+    for (int i = 1; i <= m; i++)  {
+      ans = min(ans, dp[n][k][i]);
 
-    //   cout<<dp[n][k][i]<<" ";
-    // }
+      // cout<<dp[n][k][i]<<" ";
+    }
 
     // cout<<endl;
 
@@ -113,5 +112,6 @@ int main()
       ans = -1;
 
     cout << ans;
+    
   }
 }
