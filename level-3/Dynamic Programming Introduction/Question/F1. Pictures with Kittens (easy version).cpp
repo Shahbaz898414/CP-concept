@@ -38,58 +38,49 @@ int main()
 
   while (t--)
   {
+    ll n, k, x;
+    cin >> n >> k >> x;
+    vector<int> arr(n);
 
-    ll n,k,x;cin>>n>>k>>x;
-
-    vector<int>  arr(n);
-
-    for (ll i = 0; i < n; i++) {
-      cin>>arr[i];
+    for (ll i = 0; i < n; i++)
+    {
+      cin >> arr[i];
     }
 
+    vector<vector<ll>> dp(n + 1, vector<ll>(x + 1, -1e18));
 
-    vector<vector<ll>>  dp(n+1,vector<ll>(x+1,-1e18));
+    dp[0][x] = 0;
 
-    dp[0][x]=0;
-
-    for (ll i =1; i <=n; i++)
+    for (ll i = 1; i <= n; i++)
     {
-      
       for (ll j = 0; j < x; j++)
       {
-        
-        for (ll p =1; p <=k; p++)
+        for (ll p = 1; p <= k; p++)
         {
-          
-            if(i-p<0)  break;
-            if(dp[i-p][j+1]==-1e18) continue;
+          if (i - p < 0)
+            break;
+          if (dp[i - p][j + 1] == -1e18)
+            continue;
 
-            dp[i][j]=max(dp[i][j],dp[i-p][j+1]+arr[i-1]);
-
+          dp[i][j] = max(dp[i][j], dp[i - p][j + 1] + arr[i - 1]);
         }
-        
       }
-      
     }
 
-    ll ans=-1e18;
+    ll ans = -1e18;
 
-    for (ll i = n-k+1; i <=n; i++)
+    for (ll i = n - k + 1; i <= n; i++)
     {
-      
-      ans=max(ans,*max_element(dp[i].begin(),dp[i].end()));
+
+      ans = max(ans, *max_element(dp[i].begin(), dp[i].end()));
     }
 
-
-    if(ans==-1e18) {
-      ans=-1;
+    if (ans == -1e18)
+    {
+      ans = -1;
     }
 
-    cout<<ans<<endl;
-
+    cout << ans << endl;
   }
   return 0;
 }
-
-
-
