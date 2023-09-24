@@ -31,8 +31,8 @@ int main()
   while (t--)
   {
 
-    ll n,  z; ll m,k;
-    cin >> n>>m;
+    ll n,  z; ll m,k,x;
+    cin >> n>>k>>x;
 
 
 
@@ -49,30 +49,7 @@ int main()
       cin>>arr[i];
     }
 
-    if(check(arr,arr[0])) {
-        cout<<arr[0]<<endl;
-        continue;
-    }
-
-
-    for (int i = 0; i <m; i++)
-    {
-      for (int k = 0; k < 26; k++)
-      {
-
-        string s=arr[0];
-        s[i]=('a'+k);
-
-        if(check(arr,s))  ans=s;
-      }
-      
-    }
-
-
-
-
-    cout<<((ans=="")?"-1":ans)<<endl;
-        
+    
 
   }
 }
