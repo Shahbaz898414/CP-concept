@@ -36,14 +36,12 @@ int main()
   ll t = 1;
   // cin >> t;
 
-  while (t--)
-  {
+  while (t--) {
     ll n, k, x;
     cin >> n >> k >> x;
     vector<int> arr(n);
 
-    for (ll i = 0; i < n; i++)
-    {
+    for (ll i = 0; i < n; i++) {
       cin >> arr[i];
     }
 
@@ -67,20 +65,30 @@ int main()
       }
     }
 
+    for (ll i = 0; i <=n; i++) {
+      for (ll j = 0; j <=x; j++) {
+        cout<<dp[i][j]<<" ";
+      }
+        cout<<endl;
+    }
+
+    cout<<endl;
+    
+
     ll ans = -1e18;
 
-    for (ll i = n - k + 1; i <= n; i++)
-    {
-
+    for (ll i = n - k + 1; i <= n; i++) {
       ans = max(ans, *max_element(dp[i].begin(), dp[i].end()));
     }
 
-    if (ans == -1e18)
-    {
+    if (ans == -1e18) {
       ans = -1;
     }
 
+
+
     cout << ans << endl;
+
   }
   return 0;
 }
