@@ -65,6 +65,8 @@ int main()
       }
     }
 
+
+
     // for (ll i = 0; i <=n; i++) {
     //   for (ll j = 0; j <=x; j++) {
     //     cout<<dp[i][j]<<" ";
@@ -84,8 +86,6 @@ int main()
     if (ans == -1) {
       ans = -1;
     }
-
-
 
     cout << ans << endl;
 
