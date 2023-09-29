@@ -28,6 +28,11 @@ ll modInverse(ll base, ll exp)
 
 int dp[nax][nax];
 
+
+
+// 
+
+
 int main()
 {
   ios_base::sync_with_stdio(0);
@@ -67,14 +72,7 @@ int main()
 
 
 
-    // for (ll i = 0; i <=n; i++) {
-    //   for (ll j = 0; j <=x; j++) {
-    //     cout<<dp[i][j]<<" ";
-    //   }
-    //     cout<<endl;
-    // }
-
-    // cout<<endl;
+   
     
 
     ll ans = -1;
@@ -92,3 +90,11 @@ int main()
   }
   return 0;
 }
+
+
+/*
+
+
+
+
+*/
