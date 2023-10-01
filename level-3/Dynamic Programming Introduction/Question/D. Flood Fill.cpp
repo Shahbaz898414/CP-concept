@@ -26,7 +26,7 @@ ll modInverse(ll base, ll exp)
 
 #define INF 1e9;
 
-int dp[nax][nax];
+// int dp[nax][nax];
 
 const int N = 5002;
 
@@ -40,19 +40,27 @@ int f(int i, int j, int k)
   if (i == 1 || j == n)
     return 0;
 
+
   if (i < 1 || j > n)
     return INF;
+
 
   if (dp[i][j][k] != -1)
     return dp[i][j][k];
 
+
   int curcol = (k == 0 ? arr[i] : arr[j]);
+
 
   int ans = INF;
 
+
   ans = min(ans, f(i - 1, j, 0) + (arr[i - 1] != curcol));
 
+
+
   ans = min(ans, f(i, j + 1, 1) + (arr[j + 1] != curcol));
+
 
   return dp[i][j][k] = ans;
 }
@@ -62,21 +70,21 @@ int main()
   ios_base::sync_with_stdio(0);
   cin.tie(0);
 
-  ll t = 1;
-  // cin >> t;
+  // ll t = 1;
+  // // cin >> t;
 
-  while (t--)
-  {
+  // while (t--)
+  // {
 
     memset(dp, -1, sizeof dp);
     cin >> n;
-    for (ll i = 1; i <= n; i++)
-    {
-      /* code */
+    for (ll i = 1; i <= n; i++) { 
       cin >> arr[i];
     }
 
+
     int ans = INF;
+
 
     for (ll j = 1; j <= n; j++)
     {
@@ -84,9 +92,15 @@ int main()
     }
 
     cout << ans << endl;
-  }
+
+
+  // }
   return 0;
 }
+
+
+
+
 
 /*
 
