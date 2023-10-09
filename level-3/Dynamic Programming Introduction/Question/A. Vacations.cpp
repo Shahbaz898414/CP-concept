@@ -215,14 +215,29 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-double calculateDistance(int x1, int y1, int x2, int y2) {
+ll dp[100002][9];
 
-   
+ll rec(string &s, string &t, int i, int j)
+{
+  if (dp[i][j] != -1)
+  {
+    return dp[i][j];
+  }
 
-    int mf=0;
-    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2))+mf;
+  if (j == 8)
+    return dp[i][j] = 1;
+  if (i == s.size())
+    return dp[i][j] = 0;
+
+  ll ans = rec(s, t, i + 1, j);
+
+  if (s[i] == t[j])
+  {
+    ans = (ans + rec(s, t, i + 1, j + 1)) % mod;
+  }
+
+  return dp[i][j] = ans;
 }
-
 
 int main()
 {
@@ -230,43 +245,45 @@ int main()
   cin.tie(nullptr);
 
   ll t = 1;
-  cin >> t;
+  // cin >> t;
   while (t--)
   {
 
-    int x, y, a1, a2, b1, b2;
-    cin >> x >> y >> a1 >> a2 >> b1 >> b2;
-
-    int mf=-1,cnt=1,ans=0;
-
-    double dist1 = calculateDistance(x, y, a1, a2);
-    
-    double dist2 = calculateDistance(x, y, b1, b2);
-    double dist3 = calculateDistance(0, 0, a1, a2);
-    double dist4 = calculateDistance(0, 0, b1, b2);
-    double dist5 = calculateDistance(a1, a2, b1, b2);
-
-    double fgf = max(min(dist1, dist2), min(dist3, dist4));
-    if (min(dist1, dist2) == dist1 && min(dist3, dist4) == dist3) {
-        // Do something if necessary
-
-        ans+=cnt*576*mf;
-    } else if (min(dist1, dist2) == dist2 && min(dist3, dist4) == dist4) {
-        // Do something if necessary
-          ans+=cnt*N*mf;
-    } else {
-        if (dist5 > 2 * fgf) {
-            fgf = dist5 / 2;
+    int n, p, a, c=0;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+      cin >> a;
+      if (a == 0)
+      {
+        c++;
+        p = 0;
+      }
+      else if (p == 0)
+      {
+        if (a == 1) p = 1;
+        else if (a == 2) p = 2;
+      }
+      else if (p == 1) {
+        if(a == 1) {
+          p = 0;
+          c++;
         }
+        else p = 2;
+      }
+      else
+      {
+        if (a == 2) {
+          p = 0;
+          c++;
+        }
+        else
+          p = 1;
+      }
     }
-
-    cout << setprecision(11);
-     
-    cout << (fgf)<< endl;
+    cout << c<<endl;
 
     
   }
-
   return 0;
 }
-

@@ -215,13 +215,29 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-double calculateDistance(int x1, int y1, int x2, int y2) {
+ll dp[100002][9];
 
-   
+ll rec(string &s,string &t,int i,int j){
+  if(dp[i][j]!=-1){
+    return dp[i][j];
+  }
 
-    int mf=0;
-    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2))+mf;
+  if(j==8)  return dp[i][j]=1;
+  if(i==s.size())  return dp[i][j]=0;
+
+  ll ans = rec(s,t,i+1,j);
+
+  if(s[i]==t[j]){
+    ans = (ans+rec(s,t,i+1,j+1)) % mod;
+  }
+
+
+  return dp[i][j]=ans;
+
+
 }
+
+
 
 
 int main()
@@ -230,43 +246,75 @@ int main()
   cin.tie(nullptr);
 
   ll t = 1;
-  cin >> t;
-  while (t--)
-  {
+  // cin >> t;
+  while (t--) {
 
-    int x, y, a1, a2, b1, b2;
-    cin >> x >> y >> a1 >> a2 >> b1 >> b2;
+    string s;cin>>s;
 
-    int mf=-1,cnt=1,ans=0;
+    string d="chokudai";
 
-    double dist1 = calculateDistance(x, y, a1, a2);
+    int n=s.size();
+
+    for (int i = 0; i <=n; i++) {  
+      for (int j = 0; j <=8; j++) {
+        dp[i][j]=-1;
+      }
+    }
+  
+
+
+    // cout<<rec(s,d,0,0)<<endl;
     
-    double dist2 = calculateDistance(x, y, b1, b2);
-    double dist3 = calculateDistance(0, 0, a1, a2);
-    double dist4 = calculateDistance(0, 0, b1, b2);
-    double dist5 = calculateDistance(a1, a2, b1, b2);
+    // Tabulation
+    // Base case
 
-    double fgf = max(min(dist1, dist2), min(dist3, dist4));
-    if (min(dist1, dist2) == dist1 && min(dist3, dist4) == dist3) {
-        // Do something if necessary
-
-        ans+=cnt*576*mf;
-    } else if (min(dist1, dist2) == dist2 && min(dist3, dist4) == dist4) {
-        // Do something if necessary
-          ans+=cnt*N*mf;
-    } else {
-        if (dist5 > 2 * fgf) {
-            fgf = dist5 / 2;
-        }
+    for(int j=0;j<=8;j++){
+      dp[n][j]=0;
     }
 
-    cout << setprecision(11);
-     
-    cout << (fgf)<< endl;
+    for (int i = 0; i <s.size(); i++)
+    {
+      /* code */
+      dp[i][8]=1;
+    }
+
+
+
+    for (int i = 0; i <n; i++)
+    {
+      /* code */
+      for (int j = 0; j <8; j++)
+      {
+        /* code */
+        if(s[i]==d[j]){
+          dp[i][j]=(dp[i+1][j]+dp[i+1][j+1])%mod;
+        }else {
+          dp[i][j] = dp[i+1][j];
+        }
+      }
+    }
+
+
+    // for (int i = 0; i <n; i++)
+    // {
+    //   /* code */
+    //   for (int j = 0; j <=7; j++)
+    //   {
+    //     cout<<dp[i][j]<<" ";
+    //   }
+
+    //   cout<<endl;
+    // }
+
+    cout<<dp[n][8]<<" ";
+    // 
+    
+
 
     
   }
-
   return 0;
 }
+
+
 

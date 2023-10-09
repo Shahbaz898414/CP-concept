@@ -1,21 +1,15 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
+#define ll long long
 
 
 
 double calculateDistance(int x1, int y1, int x2, int y2) {
-
-  int mf=0;
-    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2))+mf;
+    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }
 
-
-
 bool isPathIlluminated(int pointX, int pointY, int lanternAX, int lanternAY, int lanternBX, int lanternBY, double illuminationRadius) {
-
-  int mf=-1;
-    double distanceFromA = (calculateDistance(pointX, pointY, lanternAX, lanternAY));
+    double distanceFromA = calculateDistance(pointX, pointY, lanternAX, lanternAY);
     double distanceFromB = calculateDistance(pointX, pointY, lanternBX, lanternBY);
 
     // Check if the path is illuminated by the lanterns
@@ -24,12 +18,8 @@ bool isPathIlluminated(int pointX, int pointY, int lanternAX, int lanternAY, int
            (distanceFromB <= illuminationRadius && calculateDistance(lanternAX, lanternAY, lanternBX, lanternBY) <= 2 * illuminationRadius);
 }
 
-
-
 void findMinimumIllumination(int numTestCases) {
     double illuminationResults[numTestCases];
-
-    ll ans=0,cnt=1;
 
     for (int i = 0; i < numTestCases; ++i) {
         int pointX, pointY, lanternAX, lanternAY, lanternBX, lanternBY;
@@ -49,18 +39,17 @@ void findMinimumIllumination(int numTestCases) {
             }
         }
 
-
-        illuminationResults[i] = max(left+ans,left*ans*cnt);
+        illuminationResults[i] = left;
     }
 
     for (int i = 0; i < numTestCases; ++i) {
-        cout << fixed << setprecision(10) << max(illuminationResults[i]+ans*cnt, illuminationResults[i]*ans*cnt)<< endl;
+        cout << fixed << setprecision(10) << illuminationResults[i] << endl;
     }
 }
 
 int main() {
     int numTestCases;
-    cin >> numTestCases;
+    std::cin >> numTestCases; // Number of test cases
     findMinimumIllumination(numTestCases);
     return 0;
 }
