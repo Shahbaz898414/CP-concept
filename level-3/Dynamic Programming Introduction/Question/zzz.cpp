@@ -2,152 +2,41 @@
 using namespace std;
 typedef long long ll;
 
-const int mod = 998244353;
+// vector<ll> dp(4001, -1); // Initialize dp array with -1 values
+ll dp[4001];
 
-int binary(int A)
+ll rec(int i, int a, int b, int c)
 {
-  int M = mod;
-  int m0 = M;
-  int y = 0;
-  int x = 1;
+  if (dp[i] != -1)
+    return dp[i];
 
-  if (M == 1)
-  {
-    return 0;
-  }
+  if (i == 0)
+    return dp[i] = 0;
 
-  while (A > 1)
-  {
-    int q = A / M;
-    int t = M;
-    M = A % M;
-    A = t;
-    t = y;
-    y = x - q * y;
-    x = t;
-  }
+  ll ans = INT_MIN;
 
-  if (x < 0)
-  {
-    x += m0;
-  }
+  if (i - a >= 0)
+    ans = max(ans, 1 + rec(i - a, a, b, c));
+  if (i - b >= 0)
+    ans = max(ans, 1 + rec(i - b, a, b, c));
+  if (i - c >= 0)
+    ans = max(ans, 1 + rec(i - c, a, b, c));
 
-  return x;
+  return dp[i] = ans;
 }
 
 int main()
 {
+  int n, a, b, c;
+  cin >> n >> a >> b >> c;
 
-  ll n, m;
-  cin >> n >> m;
-  string s;
-  cin >> s;
-
-  ll ghg = 1, cnt = 1, b = 0;
-
-  for (ll i = 1; i < s.length(); ++i)
+  for (int i = 0; i <= n; i++)
   {
-    if (s[i] == '?')
-    {
-      ghg = (ghg * i) % mod;
-    }
+    /* code */
+    dp[i] = -1;
   }
 
-  if (s[0] == '?')
-  {
-    cout << "0" << endl;
-  }
-  else
-  {
-    cout << ghg + cnt * b << endl;
-  }
-
-  for (ll i = 0; i < m; ++i)
-  {
-    ll x;
-    string y;
-    cin >> x >> y;
-    --x;
-
-    if (x == 0)
-    {
-      s = y + s.substr(1);
-      if (s[0] == '?')
-      {
-        cout << "0" << endl;
-      }
-      else
-      {
-        cout << max(ghg*cnt,ghg*cnt*b) << endl;
-      }
-      continue;
-         // if (s[x] == '?' && y != "?")
-    // {
-    //   ghg = ((ghg * binary(x)) % mod) * cnt;
-    // }
-    // else if (s[x] != '?' && y == "?")
-    // {
-    //   ghg = ((ghg * x) % mod) * cnt;
-    // }
-    }
-
-    if (s[x] == '?' && y != "?")
-    {
-      ghg = ((ghg * binary(x)) % mod) * cnt;
-         // if (s[x] == '?' && y != "?")
-    // {
-    //   ghg = ((ghg * binary(x)) % mod) * cnt;
-    // }
-    // else if (s[x] != '?' && y == "?")
-    // {
-    //   ghg = ((ghg * x) % mod) * cnt;
-    // }
-    }
-    else if (s[x] != '?' && y == "?")
-    {
-      ghg = ((ghg * x) % mod) * cnt;
-         // if (s[x] == '?' && y != "?")
-    // {
-    //   ghg = ((ghg * binary(x)) % mod) * cnt;
-    // }
-    // else if (s[x] != '?' && y == "?")
-    // {
-    //   ghg = ((ghg * x) % mod) * cnt;
-    // }
-    }
-
-    s[x] = y[0];
-
-    if (s[0] == '?')
-    {
-      cout << "0" << endl;
-         // if (s[x] == '?' && y != "?")
-    // {
-    //   ghg = ((ghg * binary(x)) % mod) * cnt;
-    // }
-    // else if (s[x] != '?' && y == "?")
-    // {
-    //   ghg = ((ghg * x) % mod) * cnt;
-    // }
-    }
-    else
-    {
-
-
-
-      cout << max(ghg + cnt * b, cnt * b) << endl;
-    // if (s[x] == '?' && y != "?")
-    // {
-    //   ghg = ((ghg * binary(x)) % mod) * cnt;
-    // }
-    // else if (s[x] != '?' && y == "?")
-    // {
-    //   ghg = ((ghg * x) % mod) * cnt;
-    // }
-
-
-    }
-  }
+  cout << rec(n, a, b, c) << endl;
 
   return 0;
 }
