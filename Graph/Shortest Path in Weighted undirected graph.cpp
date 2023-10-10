@@ -56,6 +56,12 @@ class Solution {
 
          if(dist[n]==1e9)  return {-1};
 
+         for(auto it:parent){
+            cout<<it<<" ";
+         }
+
+         cout<<endl;
+
 
 
             vector<int> path;

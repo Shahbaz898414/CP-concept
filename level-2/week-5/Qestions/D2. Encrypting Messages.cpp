@@ -11,6 +11,8 @@ const int mod=1000;
 
 
 int main( ) {
+
+  
   int n, m,c;cin >> n >> m>>c;
   ll a[n],b[m];
 
