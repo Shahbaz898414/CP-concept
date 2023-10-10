@@ -215,42 +215,30 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
-
-
-ll dp[4001];
-
-ll rec(int i, int a, int b, int c)
-{
-  if (dp[i] != -1)
-    return dp[i];
-
-  if (i == 0)
-    return dp[i] = 0;
-
-  ll ans = INT_MIN;
-
-  if (i - a >= 0)
-    ans = max(ans, 1 + rec(i - a, a, b, c));
-  if (i - b >= 0)
-    ans = max(ans, 1 + rec(i - b, a, b, c));
-  if (i - c >= 0)
-    ans = max(ans, 1 + rec(i - c, a, b, c));
-
-  return dp[i] = ans;
-}
-
 int main()
 {
-  int n, a, b, c;
-  cin >> n >> a >> b >> c;
+  string s;
+  cin >> s;
 
-  for (int i = 0; i <= n; i++)
+  ll n = s.size();
+  ll cnt = 0;
+
+  for (ll i = 0; i < n; i++)
   {
     /* code */
-    dp[i] = -1;
+    int d = s[i] - '0';
+
+    if (d % 4 == 0)
+      cnt++;
+    if (i)
+    {
+      int pre = s[i - 1] - '0';
+      if ((pre * 10 + d) % 4 == 0)
+        cnt += i;
+    }
   }
 
-  cout << rec(n, a, b, c) << endl;
+  cout << cnt << endl;
 
   return 0;
 }
