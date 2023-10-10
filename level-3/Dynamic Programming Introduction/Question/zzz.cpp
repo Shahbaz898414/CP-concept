@@ -132,8 +132,11 @@ int main()
     }
     else
     {
+
+
+
       cout << max(ghg + cnt * b, cnt * b) << endl;
-         // if (s[x] == '?' && y != "?")
+    // if (s[x] == '?' && y != "?")
     // {
     //   ghg = ((ghg * binary(x)) % mod) * cnt;
     // }
@@ -141,6 +144,8 @@ int main()
     // {
     //   ghg = ((ghg * x) % mod) * cnt;
     // }
+
+
     }
   }
 
