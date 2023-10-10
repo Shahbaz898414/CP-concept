@@ -215,31 +215,99 @@ unsigned long long gcd(unsigned long long x, unsigned long long y)
   return gcd(y, x % y);
 }
 
+ll dp[300001];
+
+ll rec(string &s, int i, int n)
+{
+  if (dp[i] != -1)
+    return dp[i];
+
+  if (i == n)
+    return dp[i] = 0;
+
+  ll ans = rec(s, i + 1, n);
+
+  if (stoi(s.substr(i, 1)) % 4 == 0)
+  {
+    ans++;
+  }
+
+  if (i > 0 and stoi(s.substr(i - 1, 2)) % 4 == 0)
+  {
+    ans += i;
+  }
+
+  return dp[i] = ans;
+}
+
 int main()
 {
+
   string s;
   cin >> s;
 
   ll n = s.size();
-  ll cnt = 0;
-
-  for (ll i = 0; i < n; i++)
+  for (int i = 0; i <= n; i++)
   {
-    
-    int d = s[i] - '0';
-
-    if (d % 4 == 0)
-      cnt++;
-    if (i)
-    {
-      int pre = s[i - 1] - '0';
-      if ((pre * 10 + d) % 4 == 0)
-        cnt += i;
-    }
-    
+    /* code */
+    dp[i] = -1;
   }
 
-  cout << cnt << endl;
+  // cout<<rec(s,0,n)<<endl;
+
+  // Tabulation
+
+  for (int i = 0; i <= n; i++)
+  {
+    /* code */
+    dp[i] = 0;
+  }
+
+  dp[n] = 0;
+
+  for (int i = n - 1; i >= 0; i--)
+  {
+    /* code */
+    dp[i] = dp[i + 1];
+
+    if (stoi(s.substr(i, 1)) % 4 == 0)
+    {
+      dp[i]++;
+    }
+
+    if (i > 0 and stoi(s.substr(i - 1, 2)) % 4 == 0)
+    {
+      dp[i] += i;
+    }
+  }
+
+  cout << dp[0] << endl;
+
+  // string s;
+  // cin >> s;
+
+  // ll n = s.size();
+  // ll cnt = 0;
+
+  // int p=0;
+
+  // for (ll i = 0; i < n; i++) {
+
+  //   int d = s[i] - '0';
+
+  //   if (d % 4 == 0)
+  //     cnt++,p++;
+
+  //   if (i) {
+  //     int pre = s[i - 1] - '0';
+  //     if ((pre * 10 + d) % 4 == 0) cnt += i;
+  //   }
+
+  // }
+
+  // cout<<p<<endl;
+
+  // cout << cnt << endl;
 
   return 0;
 }
