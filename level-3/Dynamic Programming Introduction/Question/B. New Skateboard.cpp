@@ -225,7 +225,7 @@ int main()
 
   for (ll i = 0; i < n; i++)
   {
-    /* code */
+    
     int d = s[i] - '0';
 
     if (d % 4 == 0)
@@ -236,6 +236,7 @@ int main()
       if ((pre * 10 + d) % 4 == 0)
         cnt += i;
     }
+    
   }
 
   cout << cnt << endl;
