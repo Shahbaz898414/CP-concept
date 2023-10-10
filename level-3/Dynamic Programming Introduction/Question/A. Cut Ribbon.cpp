@@ -240,54 +240,19 @@ ll rec(string &s, string &t, int i, int j)
 }
 
 
-int n, p, a, c=0;
+
 int main()
 {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  
+
 
   ll t = 1;
   // cin >> t;
-  while (t--)
-  {
-
+  while (t--) {
     
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-      cin >> a;
-      if (a == 0)
-      {
-        c++;
-        p = 0;
-      }
-      else if (p == 0)
-      {
-        if (a == 1) p = 1;
-        else if (a == 2) p = 2;
-      }
-      else if (p == 1) {
-        if(a == 1) {
-          p = 0;
-          c++;
-        }
-        else p = 2;
-      }
-      else
-      {
-        if (a == 2) {
-          p = 0;
-          c++;
-        }
-        else
-          p = 1;
-      }
-    }
-
-
-    cout << c<<endl;
+   ll n,a,b,c;cin>>n>>a>>b>>c;
 
     
   }
