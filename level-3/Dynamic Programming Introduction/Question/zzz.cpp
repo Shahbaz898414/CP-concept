@@ -1,42 +1,70 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
 
-// vector<ll> dp(4001, -1); // Initialize dp array with -1 values
-ll dp[4001];
+#define ll long long
 
-ll rec(int i, int a, int b, int c)
+#define allElements(p) p.begin(), p.end()
+
+#define fastIO()                    \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(NULL);                    \
+	cout.tie(NULL)
+
+int32_t main()
 {
-  if (dp[i] != -1)
-    return dp[i];
+	fastIO();
 
-  if (i == 0)
-    return dp[i] = 0;
+	int testCases;
+	cin >> testCases;
+	while (testCases--)
+	{
+		ll n, k;
+		cin >> n >> k;
 
-  ll ans = INT_MIN;
+		string s;
+		cin >> s;
 
-  if (i - a >= 0)
-    ans = max(ans, 1 + rec(i - a, a, b, c));
-  if (i - b >= 0)
-    ans = max(ans, 1 + rec(i - b, a, b, c));
-  if (i - c >= 0)
-    ans = max(ans, 1 + rec(i - c, a, b, c));
+		// cout<<s<<" "<<k<<" "<<n<<endl;
+		ll cnt = 0;
+		for (int i = 0; i < (n - k); i++)
+		{
+			/* code */
 
-  return dp[i] = ans;
-}
+			// cout<<i<<" ";
+			if (s[i] != s[i + k] and i + k < n)
+			{
+				cnt += 1;
+				s[i] = '1';
+				s[i + k] = '1';
+			}
+		}
 
-int main()
-{
-  int n, a, b, c;
-  cin >> n >> a >> b >> c;
+		ll o = 0;
+		ll ze = 0;
 
-  for (int i = 0; i <= n; i++)
-  {
-    /* code */
-    dp[i] = -1;
-  }
+		// for (int i = 0; i < n; i++)
+		// {
+		// 	if (s[i] == '0')
+		// 		ze++;
+		// 	else
+		// 		o++;
+		// }
 
-  cout << rec(n, a, b, c) << endl;
+		// if (o == 0 || ze == 0)
+		// {
+		// 	cout << cnt << endl;
+		// }
+		// else
+		// {
+		// 	// o = o % 2 + o / 2;
 
-  return 0;
+		// 	// ze = ze % 2 + ze / 2;
+
+		// 	// cout<<endl;
+		// 	// cout<<s<<endl;
+		// 	cout << ze + cnt << endl;
+		// }
+	}
+
+	return 0;
 }
