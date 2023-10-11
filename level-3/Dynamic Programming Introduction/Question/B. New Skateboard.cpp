@@ -265,23 +265,26 @@ int main()
 
   dp[n] = 0;
 
-  for (int i = n - 1; i >= 0; i--)
-  {
-    /* code */
+  for (int i = n - 1; i >= 0; i--) {
     dp[i] = dp[i + 1];
 
-    if (stoi(s.substr(i, 1)) % 4 == 0)
-    {
+    if (stoi(s.substr(i, 1)) % 4 == 0) {
       dp[i]++;
     }
 
-    if (i > 0 and stoi(s.substr(i - 1, 2)) % 4 == 0)
-    {
+    if (i > 0 and stoi(s.substr(i - 1, 2)) % 4 == 0) {
       dp[i] += i;
     }
+
+
   }
 
+
+
   cout << dp[0] << endl;
+
+
+
 
   // string s;
   // cin >> s;
@@ -302,7 +305,6 @@ int main()
   //     int pre = s[i - 1] - '0';
   //     if ((pre * 10 + d) % 4 == 0) cnt += i;
   //   }
-
   // }
 
   // cout<<p<<endl;
