@@ -204,14 +204,3 @@ int32_t main() {
 
 
 
-/*
-
-
-Why?
-
-Keep Going!
-Not because you want to,
-but because you deserve to know what
-it feels like to never give up.
-
-*/

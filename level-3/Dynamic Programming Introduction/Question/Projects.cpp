@@ -3,47 +3,76 @@ using namespace std;
 
 #define ll long long
 
+
+const int N=5002;
+int n,arr[N];
+
+
+int f(int i,int j,int k){
+  // cin>>n;
+
+
+  if(i==1 and j==n)  return n;
+
+
+  if(i>1 || j>n)  return INT_MAX;
+
+
+  int curCol = (k==0 ? arr[i]:arr[j]);
+
+
+  int ans=INT_MAX;
+
+
+
+  ans=min(ans,f(i-1,j,0))+(arr[i-1]!=curCol);
+  ans=min(ans,f(i,j+1,0))+(arr[j-1]!=curCol);
+
+
+
+  return ans;
+
+
+}
+
+
+
+int solve(){
+
+
+  cin>>n;
+
+  for (int i = 1; i <=n; i++) {
+    cin>>arr[i];
+  }
+
+  
+
+  int ans=INT_MAX;
+
+  for (int i =1; i <=n; i++) {
+    ans=min(ans,f(i,i,0));
+  }
+  
+
+  cout<<ans<<endl;
+  
+
+}
+
+
 int main()
 {
   
-  int n; cin >> n;
+
+  int t=1;
+
+  // cin>>t;
+
+  while(t--) {
+    solve();
+  }
   
-  vector<tuple<ll, ll, ll>> projects(n);
-  for (int i = 0; i < n; i++)
-  {
-    ll start, end, reward; cin >> start >> end >> reward;
-    projects[i] = {end, start, reward};
-  }
-  sort(projects.begin(), projects.end());
-
-  ll bestTotalReward = 0;
-  map<ll, ll> dp;
-  dp[0] = 0;
-  for (auto project : projects)
-  {
-    ll start, end, reward;
-
-
-    tie(end, start, reward) = project;
-
-    auto it = dp.lower_bound(start);
-
-
-
-    it--;
-
-
-    ll totalReward = it->second + reward;
-
-
-    bestTotalReward = max(bestTotalReward, totalReward);
-
-
-    dp[end] = bestTotalReward;
-  }
-
-  cout << bestTotalReward;
-
 
 
   return 0;

@@ -51,34 +51,3 @@ int main() {
 
 
 
-/*
-
-#include<bits/stdc++.h>
-#define N 5010
-using namespace std;
-int n,dp[N][N],x[N];
-int main(){
-	cin>>n;
-	for(int i=1,a;i<=n;i++){
-		cin>>x[i];
-		if(x[i]==x[i-1]) --i,--n;
-	}
-	for(int l=1;l<=n;l++)
-		for(int i=1;i+l<=n;i++) {
-			int j=i+l;
-			if(x[i]==x[j]) dp[i][j]=dp[i+1][j-1]+1;
-			else dp[i][j]=min(dp[i+1][j],dp[i][j-1])+1;
-		}
-
-
-	cout<<dp[1][n];
-
-
-	return 0;
-
-
-}
-
-
-
-*/
