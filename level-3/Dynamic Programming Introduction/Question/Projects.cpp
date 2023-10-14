@@ -1,79 +1,78 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ll long long
+#define int long long
 
 
-const int N=5002;
-int n,arr[N];
+#define  all(x)  x.begin(), x.end()
 
 
-int f(int i,int j,int k){
-  // cin>>n;
+const int N=4e5+5;
+
+int a[N],b[N],c[N],dp[N];
+
+vector<pair<int,int>>  start[N];
 
 
-  if(i==1 and j==n)  return n;
+vector<int>  temp;
 
 
-  if(i>1 || j>n)  return INT_MAX;
+int idx(int val) {
+  return  (lower_bound(all(temp),val)-temp.begin()+1);
+}
 
 
-  int curCol = (k==0 ? arr[i]:arr[j]);
-
-
-  int ans=INT_MAX;
-
-
-
-  ans=min(ans,f(i-1,j,0))+(arr[i-1]!=curCol);
-  ans=min(ans,f(i,j+1,0))+(arr[j-1]!=curCol);
-
-
-
-  return ans;
-
-
+int sol(int idx) {
+  if(idx==0)  return 0;
+  if(dp[idx]!=-1)  return dp[idx];
+  int ans=sol(idx-1);
 }
 
 
 
-int solve(){
+void sol() {
+  memset(dp,-1,sizeof dp);
+  int n;cin>>n;
 
 
-  cin>>n;
+  for (int i = 0; i < n; i++)
+  {
+    /* code */
+    cin>>a[i]>>b[i]>>c[i];
 
-  for (int i = 1; i <=n; i++) {
-    cin>>arr[i];
+    temp.push_back(a[i]);
+    temp.push_back(b[i]);
   }
 
-  
 
-  int ans=INT_MAX;
+  sort(all(temp));
 
-  for (int i =1; i <=n; i++) {
-    ans=min(ans,f(i,i,0));
+  temp.erase(unique(all(temp)),temp.end());
+
+
+  for (int i = 0; i < n; i++)
+  {
+    /* code */
+    a[i]=idx(a[i]);
+    b[i]=idx(b[i]);
+
+    start[b[i]].push_back({a[i],c[i]});
   }
-  
 
-  cout<<ans<<endl;
-  
 
+
+
+  
+  
 }
 
 
-int main()
-{
-  
 
+
+int main() {
   int t=1;
-
   // cin>>t;
-
   while(t--) {
-    solve();
+    sol();
   }
-  
-
-
-  return 0;
 }

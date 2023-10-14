@@ -114,26 +114,3 @@ class Solution {
 */
 
 
-/*
-
-
-Today was my 7th day out of the 100 days  hard challenge.
-
-So today, I solved 5 problems .
-
-1. D. Kefa and Dishes (https://codeforces.com/contest/580/problem/D)
-
-
-2. ASSIGN - Assignments (https://www.spoj.com/problems/ASSIGN/)
-
-
-3. COURIER - The Courier (https://www.spoj.com/problems/COURIER/)
-
-
-4. A. Short Sort (https://codeforces.com/contest/1873/problem/A)
-
-
-5. B. Good Kid (https://codeforces.com/contest/1873/problem/B)
-
-
-*/
