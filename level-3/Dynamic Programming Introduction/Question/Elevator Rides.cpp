@@ -70,14 +70,14 @@ int main()
         }
 
 
+
         bestResult = min(bestResult,res);
       }
 
 
-
-
-
       dp[mask] = bestResult;
+
+      
     }
 
 
