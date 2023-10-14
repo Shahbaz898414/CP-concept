@@ -10,61 +10,104 @@ using namespace std;
 	cin.tie(NULL);                    \
 	cout.tie(NULL)
 
-int32_t main()
+/*
+
+
+
+	 vector<string> ans;
+
+    for (int i = 1; i < n; ++i) {
+        
+        if (groups[i] != groups[i - 1] && words[i].size() == words[i - 1].size()) {
+            int fd = 0;
+            for (size_t j = 0; j < words[i].size(); ++j) {
+                if (words[i][j] != words[i - 1][j]) {
+                    fd++;
+                }
+            }
+            if (fd == 1) {
+                ans.push_back(words[i]);
+            }
+        }
+    }
+
+
+    ans.insert(ans.begin(), words[0]);
+
+
+
+*/
+
+vector<string> getsInLongestSubsequence(int n, vector<string> &s, vector<int> &vec)
 {
-	fastIO();
+	vector<string> ans;
+	vector<string> main;
 
-	int testCases;
-	cin >> testCases;
-	while (testCases--)
+	int fg = 0, sum = 0, a = 0, b = 0;
+
+	for (int i = 1; i < n; ++i)
 	{
-		ll n, k;
-		cin >> n >> k;
 
-		string s;
-		cin >> s;
-
-		// cout<<s<<" "<<k<<" "<<n<<endl;
-		ll cnt = 0;
-		for (int i = 0; i < (n - k); i++)
+		if (vec[i] != vec[i - 1] && s[i].size() == s[i - 1].size())
 		{
-			/* code */
+			fg = 0,b=0;
 
-			// cout<<i<<" ";
-			if (s[i] != s[i + k] and i + k < n)
+			sum += abs(vec[i] - vec[i - 1]);
+
+			for (int j = 0; j < s[i].size(); ++j)
 			{
-				cnt += 1;
-				s[i] = '1';
-				s[i + k] = '1';
+				if (s[i][j] != s[i - 1][j])
+				{
+					fg++;
+				}else {
+
+					b++;
+				}
+			}
+			if (fg == 1)
+			{
+				ans.push_back(s[i]);
+
+				a++;
+
+				main.push_back(s[i]);
 			}
 		}
 
-		ll o = 0;
-		ll ze = 0;
-
-		// for (int i = 0; i < n; i++)
-		// {
-		// 	if (s[i] == '0')
-		// 		ze++;
-		// 	else
-		// 		o++;
-		// }
-
-		// if (o == 0 || ze == 0)
-		// {
-		// 	cout << cnt << endl;
-		// }
-		// else
-		// {
-		// 	// o = o % 2 + o / 2;
-
-		// 	// ze = ze % 2 + ze / 2;
-
-		// 	// cout<<endl;
-		// 	// cout<<s<<endl;
-		// 	cout << ze + cnt << endl;
-		// }
+		if (a > fg || b>fg) {
+			sum = sum / 2;
+		}
 	}
+
+
+
+	ans.insert(ans.begin(), s[0]);
+
+	main.insert(main.begin(),s[0]);
+
+	if(ans.size()<=0)  return main;
+
+	return ans;
+
+
+}
+
+int32_t main()
+{
+	// fastIO();
+
+	int n;
+	cin >> n;
+	vector<string> ss(n);
+
+	for (int i = 0; i < n; i++)
+	{
+		string s;
+		cin >> s;
+		ss.push_back(s);
+	}
+
+	// lastVisitedIntegers(ss);
 
 	return 0;
 }
