@@ -1,20 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 typedef long long ll;
 
 
 #define INF 1e9;
 
 
+int main() {
 
-int main()
-{
  
   ll t = 1;
+
+
   // cin >> t;
 
+
   while (t--) {
+
 
     int n; ll maxWeight; cin >> n >> maxWeight;
 
@@ -35,7 +39,6 @@ int main()
 
 
 
-
     for (int mask = 1; mask < limit; mask++) {
 
 
@@ -50,7 +53,6 @@ int main()
 
 
         auto res = dp[(1 << i) ^ mask];
-
 
 
         if (res.second + people[i] <= maxWeight) {
@@ -87,10 +89,9 @@ int main()
 
 
   }
+
+
   return 0;
+
+
 }
-
-
-
-
-
