@@ -36,15 +36,15 @@ int main()
   ll t = 1;
   // cin >> t;
 
-  while (t--)
-  {
+  while (t--) {
 
-    int n;
-    ll maxWeight;
+    int n; ll maxWeight;
     cin >> n >> maxWeight;
+
+
     vector<ll> people(n);
-    for (int i = 0; i < n; i++)
-      cin >> people[i];
+
+    for (int i = 0; i < n; i++) cin >> people[i];
 
     int limit = (1 << n);
     vector<pair<ll, ll>> dp(limit);
@@ -61,25 +61,29 @@ int main()
 
         auto res = dp[(1 << i) ^ mask];
 
-        if (res.second + people[i] <= maxWeight)
-        {
+        if (res.second + people[i] <= maxWeight) {
           res.second += people[i];
         }
-        else
-        {
+        else {
           res.first += 1;
           res.second = people[i];
         }
 
+
         bestResult = min(bestResult,res);
       }
+
+
 
       dp[mask] = bestResult;
     }
 
-    // for(auto it:dp){
+
+    // for(auto it:dp) {
     //   cout<<it.first<<" "<<it.second<<endl;
     // }
+
+    // cout<<endl<<"ans"<<endl;
 
     cout << dp[limit - 1].first;
 

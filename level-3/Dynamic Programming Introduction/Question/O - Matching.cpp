@@ -77,18 +77,42 @@ int main()
 {
   fast_io;
 
-  ll n;
-  int t;
-  cin >> t;
+  // ll n;
+  int t=1;
+  // cin >> t;
 
   while (t--)
   {
 
-    cin >> n;
-    memset(people, 0, sizeof people);
-    memset(dp, -1, sizeof dp);
-    in(n);
-    cout << solve(1, 0, n) << '\n';
+    // cin >> n;
+    // memset(people, 0, sizeof people);
+    // memset(dp, -1, sizeof dp);
+    // in(n);
+    // cout << solve(1, 0, n) << '\n';
+    string s;
+    getline(cin,s);
+
+    vector<string>  vec;
+    string d="";
+    for(int i=0;i<s.size();i++) {
+        // string d;
+        if(s[i]==' '){
+            vec.push_back(d);
+            d="";
+        }
+        d+=s[i];
+        
+    }
+
+    vec.push_back(d);
+
+    for(auto it:vec){
+      cout<<it<<" ";
+    }
+
+    cout<<endl;
+
+    cout<<s<<endl;
   }
 
   return 0;
