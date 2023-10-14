@@ -76,11 +76,15 @@ int main()
 
   while (t--)
   {
+
+
     cin >> n;
     memset(people, 0, sizeof people);
     memset(dp, -1, sizeof dp);
     in(n);
     cout << solve(1, 0, n) << '\n';
+
+    
   }
 
   return 0;
