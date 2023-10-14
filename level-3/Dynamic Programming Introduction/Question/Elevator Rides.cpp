@@ -72,12 +72,16 @@ int main()
 
 
         bestResult = min(bestResult,res);
+
+        // for(auto it:dp) {
+    //   cout<<it.first<<" "<<it.second<<endl;
+    // }
       }
 
 
       dp[mask] = bestResult;
 
-      
+
     }
 
 
