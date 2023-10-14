@@ -47,7 +47,9 @@ ll solve(int shirt, int mask, int n)
 
   if (dp[shirt][mask] != -1)
     return dp[shirt][mask];
+
   ll ans = 0;
+
   for (int i = 1; i <= n; i++)
   {
     if ((mask & (1 << (i - 1))) != 0)
