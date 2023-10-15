@@ -16,61 +16,14 @@ using namespace std;
 
 #define mod 1000000007
 
-bool people[11][101];
-void in(int n)
-{
-  string s;
-  cin.ignore();
-  for (int i = 0; i < n; i++)
-  {
-    getline(cin, s);
-    stringstream in(s);
-    int a;
-    while (in >> a)
-    {
-      people[i + 1][a] = 1;
-    }
-  }
+
+
+void add_self(ll& a,ll b) {
+  a+=b;
+  if(a>=mod){
+    a-=mod;
+   }
 }
-
-
-
-ll dp[101][1025];
-string s1, s2;
-
-
-
-ll solve(int shirt, int mask, int n)
-{
-
-  if (mask == ((1 << n) - 1))
-    return 1;
-
-  if (shirt > 100)
-    return 0;
-
-  if (dp[shirt][mask] != -1)
-    return dp[shirt][mask];
-
-  ll ans = 0;
-
-  for (int i = 1; i <= n; i++) {
-    if ((mask & (1 << (i - 1))) != 0)
-      continue;
-    if (people[i][shirt]) {
-      int temp_msk = (mask | (1 << (i - 1)));
-      ans = (ans + solve(shirt + 1, temp_msk, n)) % mod;
-    }
-  }
-
-
-  ans = (ans + solve(shirt + 1, mask, n)) % mod;
-
-  
-
-  return dp[shirt][mask] = ans;
-}
-
 
 
 int main()
@@ -84,36 +37,79 @@ int main()
   while (t--)
   {
 
-    // cin >> n;
-    // memset(people, 0, sizeof people);
-    // memset(dp, -1, sizeof dp);
-    // in(n);
-    // cout << solve(1, 0, n) << '\n';
-    string s;
-    getline(cin,s);
+    ll n;cin>>n;
 
-    vector<string>  vec;
-    string d="";
-    for(int i=0;i<s.size();i++) {
-        // string d;
-        if(s[i]==' '){
-            vec.push_back(d);
-            d="";
-        }
-        d+=s[i];
+    vector<vector<ll>>  can(n,vector<ll>(n));
+
+    for (ll i = 0; i <n; i++) {
+      for (ll j = 0; j <n; j++) {
         
+        cin>>can[i][j];
+      }
+      
     }
 
-    vec.push_back(d);
 
-    for(auto it:vec){
-      cout<<it<<" ";
-    }
+    vector<ll>  dp(1<<n);
 
-    cout<<endl;
+    dp[0]=1;
 
-    cout<<s<<endl;
+    // for (int a = 0; a < n; a++)
+    // {
+      /* code */
+      for (int mask = 0; mask < (1<<n)-1; mask++)
+      {
+        /* code */
+
+        int a=__builtin_popcount(mask);
+        for (ll b = 0; b < n; b++)
+        {
+          /* code */
+          if(can[a][b] and !(mask & (1<<b))){
+            int m2=mask^(1<<b);
+
+            add_self(dp[m2],dp[mask]);
+          }
+        }
+        
+      }
+      
+    // }
+
+    cout<<dp[(1<<n)-1]<<endl;
+    
+    
   }
 
   return 0;
 }
+
+
+/*
+
+
+
+
+const int MOD = 1e9 + 7;
+
+int countValidPairings(vector<vector<int>>& compatibility) {
+    int N = compatibility.size();
+    vector<int> dp(1 << N, 0);
+    dp[0] = 1;
+
+    for (int mask = 1; mask < (1 << N); ++mask) {
+        int menCount = __builtin_popcount(mask); // Count number of set bits (men paired in this mask)
+        for (int i = 0; i < N; ++i) {
+            if ((mask & (1 << i)) && compatibility[menCount - 1][i]) {
+                dp[mask] = (dp[mask] + dp[mask ^ (1 << i)]) % MOD;
+            }
+        }
+    }
+
+    return dp[(1 << N) - 1];
+}
+
+
+
+
+*/

@@ -45,7 +45,6 @@ int main() {
       pair<ll, ll> bestResult = {INT_MAX, INT_MAX};
 
 
-
       for (int i = 0; i < n; i++) {
 
 
@@ -95,3 +94,5 @@ int main() {
 
 
 }
+
+
