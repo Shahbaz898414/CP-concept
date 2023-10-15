@@ -25,17 +25,22 @@ using namespace std;
 //   }
 // }
 
-int main()
-{
+int main() {
+
+
   fast_io;
+
 
   vector<ll>  cur(1<<19),z(1<<19);
 
-  vector<int>  primes={2,3,5,7,11,17,13,19,13,29,31,37,41,43,47,53,59,61,67};
+
+  vector<int> primes={2,3,5,7,11,17,13,19,13,29,31,37,41,43,47,53,59,61,67};
+
 
   // ll n;
   // int t = 1;
   // cin >> t;
+
 
   // while (t--) {
 
@@ -65,20 +70,26 @@ int main()
 
    for (int i = 1; i <=70; i++)
    {
-    
+
+
     if(cnt[i]) {
 
+
       ll int mo = 1;
+
 
       for (int j = 0; j < cnt[i]-1; j++) {  
 
 
         mo = 2 * mo % mod;
 
-        
+
       }
 
+
+
       for (int j = 0; j < z.size(); j++) {
+
 
         z[j]=0;
 
@@ -93,7 +104,7 @@ int main()
       {
 
 
-        if(i%primes[j]==0)  tmp^=(1<<j);
+        if((i%primes[j]) == 0)  tmp ^= (1<<j);
 
 
       }
