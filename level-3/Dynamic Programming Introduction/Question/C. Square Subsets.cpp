@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 #define ll long long
 #define pb push_back
 #define fr(a, b) for (int i = a; i < b; i++)
@@ -14,6 +13,8 @@
   cin.tie(NULL)
 using namespace std;
 
+
+
 // #define mo 1000000007
 
 // void add_self(ll &a, ll b)
@@ -24,6 +25,9 @@ using namespace std;
 //     a -= mo;
 //   }
 // }
+
+
+
 
 int main() {
 
@@ -51,9 +55,9 @@ int main() {
 
    for (ll i = 0; i < n; i++) {
 
-    // cin>>arr[i];
 
     ll x;cin>>x;
+
 
     for(int i:primes){
       while((x%(i*i)==0))  x/=(i*i);
