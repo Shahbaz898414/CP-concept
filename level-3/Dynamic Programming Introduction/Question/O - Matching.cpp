@@ -85,6 +85,24 @@ int main()
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 
 
@@ -113,3 +131,14 @@ int countValidPairings(vector<vector<int>>& compatibility) {
 
 
 */
+
+
+
+
+
+
+
+
+
+
+
