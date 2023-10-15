@@ -38,54 +38,7 @@ int main()
 
     ll mod = 1e9 + 7;
 
-    /*
 
-
-
-     ll n;cin>>n;
-
-        vector<vector<ll>>  can(n,vector<ll>(n));
-
-        for (ll i = 0; i <n; i++) {
-          for (ll j = 0; j <n; j++) {
-
-            cin>>can[i][j];
-          }
-
-        }
-
-
-        vector<ll>  dp(1<<n);
-
-        dp[0]=1;
-
-        // for (int a = 0; a < n; a++)
-        // {
-
-          for (int mask = 0; mask < (1<<n)-1; mask++)
-          {
-
-
-            int a=__builtin_popcount(mask);
-            for (ll b = 0; b < n; b++)
-            {
-
-              if(can[a][b] and !(mask & (1<<b))){
-                int m2=mask^(1<<b);
-
-                add_self(dp[m2],dp[mask]);
-              }
-            }
-
-          }
-
-        // }
-
-        cout<<dp[(1<<n)-1]<<endl;
-
-
-
-    */
 
     ll n;
     cin >> n;
@@ -137,3 +90,54 @@ int main()
 
   return 0;
 }
+
+
+
+
+
+    /*
+
+     ll n;cin>>n;
+
+        vector<vector<ll>>  can(n,vector<ll>(n));
+
+        for (ll i = 0; i <n; i++) {
+          for (ll j = 0; j <n; j++) {
+
+            cin>>can[i][j];
+          }
+
+        }
+
+
+        vector<ll>  dp(1<<n);
+
+        dp[0]=1;
+
+        // for (int a = 0; a < n; a++)
+        // {
+
+          for (int mask = 0; mask < (1<<n)-1; mask++)
+          {
+
+
+            int a=__builtin_popcount(mask);
+            for (ll b = 0; b < n; b++)
+            {
+
+              if(can[a][b] and !(mask & (1<<b))){
+                int m2=mask^(1<<b);
+
+                add_self(dp[m2],dp[mask]);
+              }
+            }
+
+          }
+
+        // }
+
+        cout<<dp[(1<<n)-1]<<endl;
+
+
+
+    */
