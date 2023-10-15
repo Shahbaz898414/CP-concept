@@ -38,7 +38,7 @@ int main() {
   vector<ll>  cur(1<<19),z(1<<19);
 
 
-  vector<int> primes={2,3,5,7,11,17,13,19,13,29,31,37,41,43,47,53,59,61,67};
+  vector<int> primes={2,3,5,7,11,17,13,19,23,29,31,37,41,43,47,53,59,61,67};
 
 
   // ll n;
@@ -60,13 +60,26 @@ int main() {
 
 
     for(int i:primes){
-      while((x%(i*i)==0))  x/=(i*i);
+      while((x%(i*i)==0))  x/=(i*i),cout<<x<<" ";
+
     }
+ 
 
 
     cnt[x]++;
 
    }
+
+   cout<<endl;
+   
+   for (int i = 0; i <=71; i++)
+   {
+    /* code */
+    cout<<cnt[i]<< " ";
+
+   }
+   cout<<endl;
+   
 
 
    cur[0]=1;
