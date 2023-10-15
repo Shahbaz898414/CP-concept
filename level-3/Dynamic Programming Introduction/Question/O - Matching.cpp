@@ -37,7 +37,12 @@ int main()
   while (t--)
   {
 
-    ll n;cin>>n;
+
+/*
+
+
+
+ ll n;cin>>n;
 
     vector<vector<ll>>  can(n,vector<ll>(n));
 
@@ -56,15 +61,15 @@ int main()
 
     // for (int a = 0; a < n; a++)
     // {
-      /* code */
+     
       for (int mask = 0; mask < (1<<n)-1; mask++)
       {
-        /* code */
+       
 
         int a=__builtin_popcount(mask);
         for (ll b = 0; b < n; b++)
         {
-          /* code */
+         
           if(can[a][b] and !(mask & (1<<b))){
             int m2=mask^(1<<b);
 
@@ -77,6 +82,67 @@ int main()
     // }
 
     cout<<dp[(1<<n)-1]<<endl;
+
+
+
+*/
+
+
+
+
+    ll n;cin>>n;
+
+    vector<vector<ll>>  can(n,vector<ll>(n));
+
+    for (ll i = 0; i <n; i++) {
+      for (ll j = 0; j <n; j++) {
+        
+        cin>>can[i][j];
+      }
+      
+    }
+
+
+    vector<vector<int>>  dp(n,vector<int>((1<<n),-1));
+
+    function<int(int,int)> solve = [&] (int i,int mask){
+
+      if(mask+1==(1<<n)) return 1;
+
+
+      if(i>=n)  return 0;
+       
+
+       if(dp[i][mask]!=-1)  return dp[i][mask];
+
+
+       dp[i][mask]=0;
+
+
+       for (int j = 0; j < n; j++) {
+
+
+        if((mask&(1<<j))>0)continue;
+
+
+        if(can[i][j]==1)  {
+
+
+          (dp[i][mask]+=solve(i+1,mask|(1<<j)))%=mod;
+
+
+        }
+
+
+       }
+
+
+       return dp[i][mask];
+       
+
+    };
+
+    cout<<solve(0,0)<<endl;  
     
     
   }
@@ -92,45 +158,6 @@ int main()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-
-const int MOD = 1e9 + 7;
-
-int countValidPairings(vector<vector<int>>& compatibility) {
-    int N = compatibility.size();
-    vector<int> dp(1 << N, 0);
-    dp[0] = 1;
-
-    for (int mask = 1; mask < (1 << N); ++mask) {
-        int menCount = __builtin_popcount(mask); // Count number of set bits (men paired in this mask)
-        for (int i = 0; i < N; ++i) {
-            if ((mask & (1 << i)) && compatibility[menCount - 1][i]) {
-                dp[mask] = (dp[mask] + dp[mask ^ (1 << i)]) % MOD;
-            }
-        }
-    }
-
-    return dp[(1 << N) - 1];
-}
-
-
-
-
-*/
 
 
 
