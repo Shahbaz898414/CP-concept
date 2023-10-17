@@ -114,10 +114,3 @@ int main() {
 }
 
 
-/*
-
-
-Sometimes, I think I'm just a normal human being with normal abilities. When I was a kid, I convinced myself that I was genius. No, I guess I thought that until 10th grade. Actually, I still kind of think that way now. I am confident in my skills, but I am not the number one at anything at any point. That's not a good reason for me to give up. It's not a good excuse. Honestly, I never even think about it most of the time. But once every few months, when my confidence takes a nosedive and I'm engulfed in negativity, when I think I am nothing but average. And then I think, Hey, Mr. Average, do you really have time to think about all this? If I keep trying until I can do it, then I can do it.
-
-
-*/
