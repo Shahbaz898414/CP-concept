@@ -1,4 +1,4 @@
-/* Priyansh Agarwal*/
+
 #pragma GCC optimize("O3,unroll-loops")
 
 #include<bits/stdc++.h>
@@ -126,7 +126,11 @@ void solve(){
     st.insert(x);
   }
   
-  cout<<ans<<endl;
+  for(auto it:ans){
+    cout<<ans[it]<<" ";
+  }
+
+  cout<<endl;
 
    
 }
