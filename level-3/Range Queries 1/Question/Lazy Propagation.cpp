@@ -100,15 +100,86 @@ const int n=100000;
 int lazy[8*n];
 int tr[4*n];
 
+// range max queries, range increment updates
 
-void  update(ll v,ll t1,ll tr,ll l,ll r,ll x){
+ll query(ll v,ll tl,ll tr,ll l, ll r){
+   if(lazy[v]>0) {
+
+    tr[v]+=lazy[v];
+
+
+    // if(tl!=tr){
+    //    lazy[2*v]+=lazy[v];
+
+    // lazy[2*v+1]+=lazy[v];
+    // }
+
+    lazy[2*v]+=lazy[v];
+
+    lazy[2*v+1]+=lazy[v];
+
+    lazy[v]=0;
+
+  }
+
+  if(l>r)   return 0;
+  if(tr<l or tl>r)   return 0;
+
+  if(tl>=l and tr<=r)  {
+    return tr[v];
+  }else {
+
+     ll tm=(tl+tr)/2;
+
+
+     max(update(2*v,l,tm,l,r),update(2*v+1,tm+1,tr,l,r));
+
+
+  }
+}
+
+
+void  update(ll v,ll tl,ll tr,ll l,ll r,ll x){
+
+
   // apply the update that lazy[v]  holds and
   // push the update to both it's children
 
 
-  if(lazy[v]>0){
+  if(lazy[v]>0) {
+
     tr[v]+=lazy[v];
-    
+
+      // if(tl!=tr){
+    //    lazy[2*v]+=lazy[v];
+
+    // lazy[2*v+1]+=lazy[v];
+    // }
+
+    lazy[2*v]+=lazy[v];
+
+    lazy[2*v+1]+=lazy[v];
+
+    lazy[v]=0;
+
+  }
+
+  if(tr<l or tl>r)  return ;
+
+
+  if(tl>=l and tr<=r){
+    tr[v]+=x;
+
+    lazy[2*v]+=x;
+
+    lazy[2*v+1]+=x;
+
+    return ;
+  }else{
+    ll tm=(tl+tr)/2;
+    update(2*v,l,tm,l,r,x);
+
+    update(2*v+1,tm+1,tr,l,r,x);
   }
 
 

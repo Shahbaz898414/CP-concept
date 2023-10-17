@@ -94,35 +94,7 @@ void dfs(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& c
     }
 }
 void solve(){
-    // int n, m;
-    // cin >> n >> m;
-    // vector<vector<int>> edges(n, vector<int>());
-    // vector<vector<int>> edgesT(n, vector<int>());
-    // vector<int> topoSort(n, -1);
-    // vector<bool> vis1(n), vis2(n);
-    // for(int i = 0; i < m; i++){
-    //     int a, b;
-    //     cin >> a >> b;
-    //     edges[a - 1].push_back(b - 1);
-    //     edgesT[b - 1].push_back(a - 1);
-    // }
-    // int inserted = 0;
-    // for(int i = 0; i < n; i++){
-    //     if(!vis1[i]){
-    //         topo_sort(i, edges, vis1, topoSort, inserted);
-    //     }
-    // }
-    // debug(topoSort)
-    // vector<vector<int>> components;
-    // for(int i = 0; i < n; i++){
-    //     int node = topoSort[i];
-    //     if(!vis2[node]){
-    //         vector<int> comp;
-    //         dfs(node, edgesT, vis2, comp);
-    //         components.push_back(comp);
-    //     }
-    // }
-    // debug(components)
+   
 
     cout<<1<<endl;
 }
