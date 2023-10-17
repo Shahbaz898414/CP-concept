@@ -132,7 +132,7 @@ ll query(ll v,ll tl,ll tr,ll l, ll r){
      ll tm=(tl+tr)/2;
 
 
-     max(update(2*v,l,tm,l,r),update(2*v+1,tm+1,tr,l,r));
+     max(query(2*v,l,tm,l,r),query(2*v+1,tm+1,tr,l,r));
 
 
   }
