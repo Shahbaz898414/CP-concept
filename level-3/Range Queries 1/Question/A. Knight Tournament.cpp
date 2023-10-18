@@ -53,6 +53,7 @@ template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_prin
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
+
 // void _print(pbds v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
@@ -95,7 +96,7 @@ void dfs(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& c
 }
 
 
-void solve(){
+void solve() {
    
   ll n,m;cin>>n>>m;
 
@@ -105,18 +106,28 @@ void solve(){
     st.insert(i);
   }
 
+//   for(auto it:st) {
+//     cout<<it<<" ";
+//   }
+
+//  cout<<endl;
+
+
   vector<int>  ans(n,0);
 
 
-  for (int i = 0; i < m; i++)
-  {
-    /* code */
+  for (int i = 0; i < m; i++) {
+
     int l,r,x;cin>>l>>r>>x;
 
     l--;r--;x--;
 
-    while(st.lower_bound(l)!=st.end() and *st.lower_bound(l)<=r){
+
+    while(st.lower_bound(l)!=st.end() and *st.lower_bound(l)<=r) {
+
       ans[*st.lower_bound(l)]=x+1;
+
+      // cout<<x+1<<" x+1  "<<*st.lower_bound(l)<<endl;
 
       st.erase(st.lower_bound(l));
     }
@@ -125,9 +136,11 @@ void solve(){
 
     st.insert(x);
   }
+
+  cout<<endl;
   
   for(auto it:ans){
-    cout<<ans[it]<<" ";
+    cout<<it<<" ";
   }
 
   cout<<endl;
@@ -148,7 +161,4 @@ int main() {
     cerr << "Time: " << duration . count() / 1000 << " ms" << endl;
 #endif
 }
-
-
-
 

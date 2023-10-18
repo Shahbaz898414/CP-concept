@@ -36,5 +36,7 @@ int main() {
     st.insert(x);
   }
   
-  cout<<ans<<endl;
+  for(auto it:ans){
+    cout<<it<<" ";
+  }
 }
