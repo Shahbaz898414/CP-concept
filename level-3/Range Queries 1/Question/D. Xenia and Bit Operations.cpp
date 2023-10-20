@@ -180,7 +180,7 @@ void solve() {
 
         p++;
 
-        
+
     }
 
 
@@ -233,10 +233,10 @@ void solve() {
             if(j%2==0){
 
 
-              if(lvl[j]%2==0) val[par[j]]=(val[j]|val[j+1]);
+              if(lvl[j]%2==0) val[par[j]]=(val[j] | val[j+1]);
 
 
-              if(lvl[j]%2==1) val[par[j]]=(val[j]^val[j+1]);
+              if(lvl[j]%2==1) val[par[j]]=(val[j] ^ val[j+1]);
 
 
             }else {
@@ -250,12 +250,17 @@ void solve() {
 
             }
 
+
+
             j=par[j];
 
 
         }
 
+
         cout<<val[j]<<endl;
+
+        
     }
     
     
@@ -278,5 +283,7 @@ int main() {
     cerr << "Time: " << duration . count() / 1000 << " ms" << endl;
 #endif
 }
+
+
 
 
