@@ -72,6 +72,7 @@ ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) %
 ll mod_div(ll a, ll b, ll m) {a = a % m; b = b % m; return (mod_mul(a, mminvprime(b, m), m) + m) % m;}  //only for prime m
 ll phin(ll n) {ll number = n; if (n % 2 == 0) {number /= 2; while (n % 2 == 0) n /= 2;} for (ll i = 3; i <= sqrt(n); i += 2) {if (n % i == 0) {while (n % i == 0)n /= i; number = (number / i * (i - 1));}} if (n > 1)number = (number / n * (n - 1)) ; return number;} //O(sqrt(N))
 ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);} 
+
 /*--------------------------------------------------------------------------------------------------------------------------*/
 void topo_sort(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& topoSort, int &inserted){
     vis[curr] = true;
@@ -117,9 +118,18 @@ void solve(){
         val[i]=a[i];
     }
 
-    for (int i = 0;; i+=2)
-    {
-        /* code */
+
+    cout<<" val "<<endl;
+
+    for(auto it:val){
+        cout<<it<<" ";
+    }
+
+    nline;
+
+    cout<<"val"<<endl;
+
+    for (int i = 0;; i+=2) {
 
         if(i+1==p) break;
 
@@ -136,6 +146,25 @@ void solve(){
 
         p++;
     }
+
+    for(auto it:val){
+        cout<<it<< " ";
+    }
+
+    cout<<endl;
+
+    for(auto it:par){
+        cout<<it<< " ";
+    }
+
+    cout<<endl;
+
+    for(auto it:lvl){
+        cout<<it<< " ";
+    }
+
+    cout<<endl;
+
     
     
     for (int i = 0; i < m; i++) {
