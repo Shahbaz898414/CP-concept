@@ -119,11 +119,18 @@ void solve() {
 
     }
 
+
     vector<int>  par(2*N+2,-1);
+
+
     vector<int>  lvl(2*N+2,0);
+
+
     vector<int>  val(2*N+2);
 
+
     int p=N;
+
 
     for (int i = 0; i < N; i++) {
         val[i]=a[i];
