@@ -96,16 +96,27 @@ void dfs(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& c
 }
 
 
-void solve(){
+void solve() {
+
+
     int n,m;cin>>n>>m;
+
+
 
     int N=1<<n;
 
+
+
     vector<int>  a(N);
 
+
+
     for (int i = 0; i < N; i++) {
-        
+
+
         cin>>a[i];
+
+
     }
 
     vector<int>  par(2*N+2,-1);
