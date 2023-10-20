@@ -119,15 +119,15 @@ void solve(){
     }
 
 
-    cout<<" val "<<endl;
+    // cout<<" val "<<endl;
 
-    for(auto it:val){
-        cout<<it<<" ";
-    }
+    // for(auto it:val){
+    //     cout<<it<<" ";
+    // }
 
-    nline;
+    // nline;
 
-    cout<<"val"<<endl;
+    // cout<<"val"<<endl;
 
     for (int i = 0;; i+=2) {
 
@@ -147,46 +147,76 @@ void solve(){
         p++;
     }
 
-    for(auto it:val){
-        cout<<it<< " ";
-    }
 
-    cout<<endl;
 
-    for(auto it:par){
-        cout<<it<< " ";
-    }
+    // for(auto it:val){
+    //     cout<<it<< " ";
+    // }
 
-    cout<<endl;
 
-    for(auto it:lvl){
-        cout<<it<< " ";
-    }
 
-    cout<<endl;
+    // cout<<endl;
+
+
+
+    // for(auto it:par){
+    //     cout<<it<< " ";
+    // }
+
+
+
+    // cout<<endl;
+
+
+
+    // for(auto it:lvl){
+    //     cout<<it<< " ";
+    // }
+
+
+
+    // cout<<endl;
 
     
     
     for (int i = 0; i < m; i++) {
 
+
         int j,x;cin>>j>>x;
+
 
         j--;
 
+
         val[j]=x;
 
+
         while(par[j]!=-1){
+
+
             if(j%2==0){
+
+
               if(lvl[j]%2==0) val[par[j]]=(val[j]|val[j+1]);
+
+
               if(lvl[j]%2==1) val[par[j]]=(val[j]^val[j+1]);
 
+
             }else {
+
+
               if(lvl[j]%2==0) val[par[j]]=(val[j-1]|val[j]);
+
+
               if(lvl[j]%2==1) val[par[j]]=(val[j-1]^val[j]);
+
 
             }
 
             j=par[j];
+
+
         }
 
         cout<<val[j]<<endl;
