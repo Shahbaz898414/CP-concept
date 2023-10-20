@@ -103,23 +103,77 @@ void solve(){
     vector<int>  a(N);
 
     for (int i = 0; i < N; i++) {
-        /* code */
+        
         cin>>a[i];
     }
 
     vector<int>  par(2*N+2,-1);
-    vector<int>  par(2*N+2,-1);
-    vector<int>  par(2*N+2,-1);
+    vector<int>  lvl(2*N+2,0);
+    vector<int>  val(2*N+2);
+
+    int p=N;
+
+    for (int i = 0; i < N; i++) {
+        val[i]=a[i];
+    }
+
+    for (int i = 0;; i+=2)
+    {
+        /* code */
+
+        if(i+1==p) break;
+
+        par[i]=par[i+1]=p;
+
+        lvl[p] = 1+lvl[i];
+
+
+        if(lvl[i] % 2==0){
+            val[p]=(val[i]|val[i+1]);
+        }else {
+            val[p]=(val[i]^val[i+1]);
+        }
+
+        p++;
+    }
+    
+    
+    for (int i = 0; i < m; i++) {
+
+        int j,x;cin>>j>>x;
+
+        j--;
+
+        val[j]=x;
+
+        while(par[j]!=-1){
+            if(j%2==0){
+              if(lvl[j]%2==0) val[par[j]]=(val[j]|val[j+1]);
+              if(lvl[j]%2==1) val[par[j]]=(val[j]^val[j+1]);
+
+            }else {
+              if(lvl[j]%2==0) val[par[j]]=(val[j-1]|val[j]);
+              if(lvl[j]%2==1) val[par[j]]=(val[j-1]^val[j]);
+
+            }
+
+            j=par[j];
+        }
+
+        cout<<val[j]<<endl;
+    }
     
     
 
    
 }
 
+
+
 int main() {
-#ifdef Priyansh31dec
-    freopen("Error.txt", "w", stderr);
-#endif
+// #ifdef Priyansh31dec
+//     freopen("Error.txt", "w", stderr);
+// #endif
     fastio();
     auto start1 = high_resolution_clock::now();
     solve();
