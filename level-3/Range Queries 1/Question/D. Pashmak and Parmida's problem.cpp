@@ -137,7 +137,7 @@ void solve() {
 
         val[i]=a[i];
 
-
+        
     }
 
 
@@ -153,34 +153,20 @@ void solve() {
 
     for (int i = 0;; i+=2) {
 
-
         if(i+1==p) break;
 
-
         par[i]=par[i+1]=p;
-
 
         lvl[p] = 1+lvl[i];
 
 
         if(lvl[i] % 2==0){
-
-
             val[p]=(val[i]|val[i+1]);
-
-
         }else {
-
-
             val[p]=(val[i]^val[i+1]);
-
-
         }
 
-
         p++;
-
-        
     }
 
 
