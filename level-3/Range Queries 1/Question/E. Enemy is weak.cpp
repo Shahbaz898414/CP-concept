@@ -173,40 +173,7 @@ void solve() {
     
    }
 
-   vector<int>  x(n);
-
-   map<int,int> cnt;
-
-   for (int i = n-1; i >=0; i--)
-   {
-    /* code */
-    cnt[arr[i]]++;
-    x[i]=cnt[arr[i]];
-   }
-
-   vector<int>  v(n+1);
-
-   for(auto it:x){
-      v[it]++;
-   }
-
-   SegTree sgt(v,n+1);
- 
-   cnt.clear();
-
-   ll  ans=0;
-
-   for (int i = 0; i < n; i++)
-   {
-    /* code */
-    cnt[arr[i]]++;
-    v[x[i]]--;
-    sgt.update(x[i],v[x[i]]);
-    ans+=sgt.getSum(1,cnt[arr[i]]);
-   }
-
-   cout<<ans<<endl;
-   
+     
    
    
 
@@ -236,3 +203,16 @@ int main() {
 }
 
 
+
+
+/*
+
+
+Geek is playing a game with N levels. Each level, denoted as the level, requires energyArr[i] energy to complete. Geek begins with K energy and can rest at levels that require zero energy to regain K energy. When at level i, they can move to level i+1 only after expending energyArr[i] energy. Geek possesses a power-up that allows them to start the game from any level, but it can be used only once.
+
+
+Find the level number from which to start in order to guarantee a win. If multiple such levels are possible. return the largest level number. If there is no level that ensures victory, return -1.
+
+
+
+*/

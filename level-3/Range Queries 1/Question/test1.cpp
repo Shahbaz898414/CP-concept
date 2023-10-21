@@ -1,4 +1,3 @@
-
 #pragma GCC optimize("O3,unroll-loops")
 
 #include<bits/stdc++.h>
@@ -164,6 +163,7 @@ void solve() {
 
 
    ll n;cin>>n;
+  //  cout<<n;
 
    vector<ll>  arr(n);
 
@@ -191,7 +191,7 @@ void solve() {
    }
 
    SegTree sgt(v,n+1);
- 
+
    cnt.clear();
 
    ll  ans=0;
@@ -220,19 +220,18 @@ int main() {
 //     freopen("Error.txt", "w", stderr);
 // #endif
 
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    freopen("error.txt", "w", stderr);
+    #endif
 
     fastio();
     auto start1 = high_resolution_clock::now();
-
-    int t=1;
-    // cin>>t;
-    while(t--)
-      solve();
+    solve();
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
 #ifdef Priyansh31dec
     cerr << "Time: " << duration . count() / 1000 << " ms" << endl;
 #endif
 }
-
-
