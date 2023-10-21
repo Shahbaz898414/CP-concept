@@ -95,11 +95,120 @@ void dfs(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& c
     }
 }
 
+class SegTree
+{
+    public:
+    const int N = 5000005;
+ 
+    int n;  // array size
+    ll int  *sum_tree;
+    ll int res = 0;
+ 
+    SegTree(vector<int> &arr, int n)
+    {
+        sum_tree = new ll int[N];
+        this->n = n;
+        build(arr);
+    }
+ 
+    void build(vector<int> &arr)
+    {
+        for (int i = 0; i < n; ++i)
+        {
+            sum_tree[n+i]=arr[i];
+        }
+ 
+        for (int i = n - 1; i > 0; --i)
+        {
+            sum_tree[i] = sum_tree[i<<1] + sum_tree[i<<1|1];
+        }
+    }
+ 
+    void result(int l, int r)
+    {
+        for (l += n, r += n; l < r; l >>= 1, r >>= 1)
+        {
+            if (l&1)
+            {
+                res = res + sum_tree[l++];
+            }
+ 
+            if (r&1)
+            {
+                res = res + sum_tree[--r];
+            }
+        }
+    }
+ 
+    ll int getSum(int l, int r)
+    {
+        if(l > r)       return 0;
+        res = 0;
+        result(l, r);
+ 
+        return res;
+    }
+ 
+    void update(int p, ll int value)
+    {   // set value at position p
+        for(sum_tree[p += n] = value; p > 1; p >>= 1)
+        {
+            sum_tree[p>>1] = (sum_tree[p] + sum_tree[p^1]);
+        }
+    }
+};
+ 
+
 
 void solve() {
 
 
    ll n;cin>>n;
+
+   vector<ll>  arr(n);
+
+   for (ll i = 0; i <n; i++) {
+
+      cin>>arr[i];
+    
+   }
+
+   vector<int>  x(n);
+
+   map<int,int> cnt;
+
+   for (int i = n-1; i >=0; i--)
+   {
+    /* code */
+    cnt[arr[i]]++;
+    x[i]=cnt[arr[i]];
+   }
+
+   vector<int>  v(n+1);
+
+   for(auto it:x){
+      v[it]++;
+   }
+
+//    SegTree sgt(v,n+1);
+
+   cnt.clear();
+
+   ll  ans=0;
+
+   for (int i = 0; i < n; i++)
+   {
+    /* code */
+    cnt[arr[i]]++;
+    v[x[i]]--;
+    sgt.update(x[i],v[x[i]]);
+    ans+=sgt.getSum(1,cnt[arr[i]]);
+   }
+
+   cout<<ans<<endl;
+   
+   
+   
 
    
 }
@@ -110,6 +219,8 @@ int main() {
 // #ifdef Priyansh31dec
 //     freopen("Error.txt", "w", stderr);
 // #endif
+
+
     fastio();
     auto start1 = high_resolution_clock::now();
     solve();
