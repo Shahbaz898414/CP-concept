@@ -291,7 +291,7 @@ void solve() {
 
     for (ll i = 1; i <= cnt; i++ ) {
         
-        cout << "-1";
+        cout << "-1 ";
     }
 
     cout << endl;
@@ -318,22 +318,7 @@ int main()
 /*
 
 
-Today was my 17th day out of the 100 days  hard challenge.
-
-So today, I solved 5 problems .
-
-1. Dice Combinations (https://lnkd.in/d2Pfv-TQ)
-
-
-2. Minimizing Coins (https://lnkd.in/dY2tp2fV)
-
-
-3. Coin Combinations I (https://lnkd.in/dgpfF86S)
-
-
-4. Coin Combinations II (https://lnkd.in/ds8JKivy)
-
-5. Removing Digits (https://lnkd.in/ddK355PJ)
+Create a page and route to reset the password using email or phone number.  
 
 
 */
