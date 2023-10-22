@@ -1,3 +1,4 @@
+
 #pragma GCC optimize("O3,unroll-loops")
 
 #include <bits/stdc++.h>
@@ -20,9 +21,6 @@ using namespace __gnu_pbds;
 #define ppb pop_back
 #define mp make_pair
 #define ff first
-#define  yes cout<<"YES"<<endl;
-#define  no cout<<"NO"<<endl;
-
 #define ss second
 #define PI 3.141592653589793238462
 #define set_bits(x) __builtin_popcountll(x)
@@ -114,6 +112,7 @@ void _print(map<T, V> v)
     }
     cerr << "]";
 }
+
 // void _print(pbds v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
@@ -233,7 +232,6 @@ ll phin(ll n)
     return number;
 } // O(sqrt(N))
 ll getRandomNumber(ll l, ll r) { return uniform_int_distribution<ll>(l, r)(rng); }
-
 /*--------------------------------------------------------------------------------------------------------------------------*/
 void topo_sort(int curr, vector<vector<int>> &edges, vector<bool> &vis, vector<int> &topoSort, int &inserted)
 {
@@ -262,138 +260,41 @@ void dfs(int curr, vector<vector<int>> &edges, vector<bool> &vis, vector<int> &c
     }
 }
 
-class SegTree
-{
-public:
-    const int N = 5000005;
+void solve() {
 
-    int n; // array size
-    ll *sum_tree;
-    ll res = 0;
 
-    SegTree(vector<int> &arr, int n)
-    {
-        sum_tree = new ll[N];
-        this->n = n;
-        build(arr);
-    }
 
-    void build(vector<int> &arr)
-    {
-        for (int i = 0; i < n; ++i)
-        {
-            sum_tree[n + i] = arr[i];
-        }
+    ll n; cin >> n;
 
-        for (int i = n - 1; i > 0; --i)
-        {
-            sum_tree[i] = sum_tree[i << 1] + sum_tree[i << 1 | 1];
-        }
-    }
 
-    void result(int l, int r)
-    {
-        for (l += n, r += n; l < r; l >>= 1, r >>= 1)
-        {
-            if (l & 1)
-            {
-                res = res + sum_tree[l++];
-            }
+    string s; cin >> s;
 
-            if (r & 1)
-            {
-                res = res + sum_tree[--r];
-            }
+
+    s = " " + s;
+
+
+    ll cnt = 0;
+
+
+    ll ans = 0;
+
+
+    for (int i = n; i >= 1; i--) {
+        if (s[i] == '1')
+            cnt++;
+        else {
+            ans += cnt;
+            cout << ans << " ";
         }
     }
 
-    ll getSum(int l, int r)
-    {
-        if (l > r)
-            return 0;
-        res = 0;
-        result(l, r);
 
-        return res;
-    }
-
-    void update(int p, ll value)
-    { // set value at position p
-        for (sum_tree[p += n] = value; p > 1; p >>= 1)
-        {
-            sum_tree[p >> 1] = (sum_tree[p] + sum_tree[p ^ 1]);
-        }
-    }
-};
-
-int digitSum(int num)
-{
-    int sum = 0;
-    while (num > 0)
-    {
-        sum += num % 10;
-        num /= 10;
-    }
-    return sum;
-}
-
-int fgf(int x, int k)
-{
-    while (true)
-    {
-        if (digitSum(x) % k == 0)
-        {
-            return x;
-        }
-        x++;
-    }
-}
-
-void solve()
-{
-
-   ll n,k;cin>>n>>k;
-
-   vector<ll>  arr(n);
-
-   ll pro=1;
-
-   for (int i = 0; i < n; i++)
-   {
-    /* code */
-    cin>>arr[i];
-
-    pro*=arr[i];
-   }
-
-   ll sum=0;
-
-   
-
-   
-
-   if(k==3){
-
-    if(pro%3==0){
-        cout<<0<<endl;
-    }else {
+    for (ll i = 1; i <= cnt; i++ ) {
         
-        while(pro>0){
-            sum+=(pro%10);
-            pro=pro/10;
-        }
-
-        if(sum%3==0){
-            
-        }
+        cout << "-1";
     }
 
-   }
-
-
-   
-    
-
+    cout << endl;
 }
 
 int main()
@@ -401,13 +302,6 @@ int main()
     // #ifdef Priyansh31dec
     //     freopen("Error.txt", "w", stderr);
     // #endif
-
-    // #ifndef ONLINE_JUDGE
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    // freopen("error.txt", "w", stderr);
-    // #endif
-
     fastio();
     auto start1 = high_resolution_clock::now();
     int t;
@@ -420,3 +314,26 @@ int main()
     cerr << "Time: " << duration.count() / 1000 << " ms" << endl;
 #endif
 }
+
+/*
+
+
+Today was my 17th day out of the 100 days  hard challenge.
+
+So today, I solved 5 problems .
+
+1. Dice Combinations (https://lnkd.in/d2Pfv-TQ)
+
+
+2. Minimizing Coins (https://lnkd.in/dY2tp2fV)
+
+
+3. Coin Combinations I (https://lnkd.in/dgpfF86S)
+
+
+4. Coin Combinations II (https://lnkd.in/ds8JKivy)
+
+5. Removing Digits (https://lnkd.in/ddK355PJ)
+
+
+*/
