@@ -315,10 +315,3 @@ int main()
 #endif
 }
 
-/*
-
-
-Create a page and route to reset the password using email or phone number.  
-
-
-*/
