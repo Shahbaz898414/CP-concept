@@ -215,58 +215,16 @@ private:
 void solve() {
 
 
-  int n;
-	cin >> n;
-	vector<int> arr(n);
-	vector<pii> element_and_ind; 
-	for (int j = 0; j < n; j ++) {
-	    cin >> arr[j];
-	    element_and_ind.push_back({arr[j], j});
-	}
-	
-	sort (element_and_ind.begin(), element_and_ind.end());
+  ll n;cin>>n;
 
-    for(auto it:element_and_ind){
-        cout<<it.F<<" "<<it.S<<endl;
-    }
-	map<int, int> position;
-	for (int j = 0; j < n; j ++) {
-	    position[element_and_ind[j].F] = j;
-        cout<<element_and_ind[j].F<<" ";
-	}
+  vector<ll>  arr(n);
 
-    cout<<endl;
-
-    cout<<"map"<<endl;
-
-    for(auto it:position){
-        cout<<it.F<<" "<<it.S<<endl;
-    }
-
-    cout<<endl;
-	
-	SegTree tree(n);
-	ll result = 0;
-	
-	for (int j = 0; j < n; j ++) {
-	    int pos = position[arr[j]];   
- 
-	    ll greater_in_left = tree.query (pos+1, n-1);
-	    ll smaller_in_left = j - greater_in_left;
- 
-	    ll smaller_in_right = pos - smaller_in_left;
-	    ll greater_in_right = (n - pos - 1) - greater_in_left;
- 
-        result += greater_in_left * smaller_in_right;
- 
-	    tree.update(pos, 1);
-	}
- 
-    cout << result;
-
-     
-   
-   
+  for (ll i = 0; i < n; i++)
+  {
+    /* code */
+    cin>>arr[i];
+  }
+  
 
    
 }

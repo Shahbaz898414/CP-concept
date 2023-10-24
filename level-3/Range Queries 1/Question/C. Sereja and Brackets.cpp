@@ -16,6 +16,9 @@ using namespace __gnu_pbds;
 #define nline "\n"
 #define pb push_back
 #define ppb pop_back
+#define pii pair<int, int>
+#define F first
+#define S second
 #define mp make_pair
 #define ff first
 #define ss second
@@ -157,13 +160,140 @@ class SegTree
         }
     }
 };
+
+
+// struct SegTree {
+// public:
+ 
+//     SegTree (int _n) : n (_n) {
+//         tree.resize(4*n, 0);
+//     }
+    
+//     int query (int x, int y) {
+//         return query (x, y, 0, n-1, 0);
+//     }
+    
+//     void update (int ind, int val) {
+//         update (ind, val, 0, n-1, 0);
+//     }
+ 
+// private:
+    
+//     vector<int> tree;
+//     int n;
+    
+//     int query (int x, int y, int l, int r, int i) {
+//         if (r < x || l > y) return 0;
+//         if (l >= x && r <= y) return tree[i];
+        
+//         int m = (l+r) >> 1;
+//         return (
+//             query (x, y, l, m, i*2+1) +
+//             query (x, y, m+1, r, i*2+2)
+//         );
+//     }
+    
+//     void update (int ind, int val, int l, int r, int i) {
+//         if (l == r) {
+//             tree[i] += val;
+//             return;
+//         }
+        
+//         int m = (l+r) >> 1;
+//         if (m >= ind) update (ind, val, l, m, i*2+1);
+//         else update (ind, val, m+1, r, i*2+2);
+        
+//         tree[i] = tree[i*2+1] + tree[i*2+2];
+//     }
+// };
+
+
+
  
 
 
 void solve() {
 
-   ll n,m;cin>>n>>m;
-   
+
+ string s;cin >> s;
+
+    int n = s.size();
+
+    vector<int> closing(n, -1);
+    set<int> open;
+    vector<int> vals(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == '(')
+        {
+            open.insert(i);
+        }
+        else
+        {
+            if (open.size())
+            {
+                closing[*open.rbegin()] = i;
+                open.erase(*open.rbegin());
+                vals[i] = 1;
+            }
+        }
+    }
+
+    SegTree sgt(vals, n);
+
+    int q;
+    cin >> q;
+
+    vector<vector<pair<int, int>>> queries(n);
+
+    for (int i = 0; i < q; i++)
+    {
+        ll l, r;
+        cin >> l >> r;
+        l--;
+        r--;
+        queries[l].pb({r, i});
+    }
+
+    vector<int> ans(q);
+
+    for (ll l = 0; l < n; l++)
+    {
+        for (auto [r, k] : queries[l])
+        {
+            ans[k] = 2 * sgt.getSum(l, r + 1);
+        }
+
+        if (s[l] == '(')
+        {
+            if (*open.begin() == l)
+                open.erase(l);
+
+            if (closing[l] != -1)
+            {
+                if (!open.size() || *open.begin() > closing[l])
+                {
+                    vals[closing[l]] = 0;
+                    sgt.update(closing[l], 0);
+                }
+                else
+                {
+                    int i = *(--open.lower_bound(closing[l]));
+                    open.erase(i);
+                    closing[i] = closing[l];
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < q; ++i)
+    {
+        cout << ans[i] << endl;
+    }
+  
+ 
+  
 
    
 }
@@ -183,15 +313,174 @@ int main() {
     // cin>>t;
     while(t--)
       solve();
-
-
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
-
-
 #ifdef Priyansh31dec
     cerr << "Time: " << duration . count() / 1000 << " ms" << endl;
 #endif
 }
 
 
+
+
+
+
+
+/*
+
+
+
+
+
+class SegTree
+{
+    public:
+    const int N = 5000005;
+ 
+    int n;  // array size
+    ll   *sum_tree;
+    ll  res = 0;
+ 
+    SegTree(vector<int> &arr, int n)
+    {
+        sum_tree = new ll [N];
+        this->n = n;
+        build(arr);
+    }
+ 
+    void build(vector<int> &arr)
+    {
+        for (int i = 0; i < n; ++i)
+        {
+            sum_tree[n+i]=arr[i];
+        }
+ 
+        for (int i = n - 1; i > 0; --i)
+        {
+            sum_tree[i] = sum_tree[i<<1] + sum_tree[i<<1|1];
+        }
+    }
+ 
+    void result(int l, int r)
+    {
+        for (l += n, r += n; l < r; l >>= 1, r >>= 1)
+        {
+            if (l&1)
+            {
+                res = res + sum_tree[l++];
+            }
+ 
+            if (r&1)
+            {
+                res = res + sum_tree[--r];
+            }
+        }
+    }
+ 
+    ll  getSum(int l, int r)
+    {
+        if(l > r)       return 0;
+        res = 0;
+        result(l, r);
+ 
+        return res;
+    }
+ 
+    void update(int p, ll  value)
+    {   // set value at position p
+        for(sum_tree[p += n] = value; p > 1; p >>= 1)
+        {
+            sum_tree[p>>1] = (sum_tree[p] + sum_tree[p^1]);
+        }
+    }
+};
+
+
+
+void solve() {
+
+
+  string s;cin>>s;
+
+  int n=s.size();
+
+  vector<int> closeing(n,-1);
+
+  set<int> open;
+
+  vector<int>  vals(n);
+
+  for (int i = 0; i < n; i++) {
+    if(s[i]=='('){
+      open.insert(i);
+    }else {
+      if(open.size()){
+        closeing[*open.rbegin()]=i;
+        open.erase(*open.rbegin());
+
+        vals[i]=1;
+      }
+    }
+  }
+
+  SegTree sgt(vals,n);
+
+
+  vector<vector<pair<int,int>>> queries(n);
+
+  int q;cin>>q;
+
+
+  for (int i = 0; i <q; i++)
+  {
+    
+
+    ll l,r;cin>>l>>r;
+
+    l--;r--;
+    queries[l].pb({r,i});
+  }
+
+
+  vector<int>  ans(q);
+
+  for (ll l = 0; l < n; l++)
+  {
+   
+    for(auto [r,k]:queries[l]){
+      ans[k]=2*sgt.getSum(l,r+1);
+    }
+
+
+    if(s[l]=='('){
+      if(*open.begin()==l)  open.erase(l);
+
+      if(closeing[l]!=-1){
+        if(!open.size() ||*open.begin()>closeing[l]){
+          vals[closeing[l]]=0;
+          sgt.update(closeing[l],0);
+        }else {
+          int i=*(--open.lower_bound(closeing[l]));
+
+          open.erase(i);
+
+          closeing[i]=closeing[l];
+        }
+      }
+    }
+  }
+
+
+  cout<<ans<<endl;
+  
+  
+ 
+  
+
+   
+}
+
+
+
+
+*/

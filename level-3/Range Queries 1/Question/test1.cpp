@@ -260,41 +260,39 @@ void dfs(int curr, vector<vector<int>> &edges, vector<bool> &vis, vector<int> &c
     }
 }
 
-void solve() {
+int gcd(int a, int b)
+{
+    // Everything divides 0
+    if (a == 0)
+        return b;
+    if (b == 0)
+        return a;
 
+    // Base case
+    if (a == b)
+        return a;
 
+    // a is greater
+    if (a > b)
+        return gcd(a - b, b);
+    return gcd(a, b - a);
+}
 
-    ll n; cin >> n;
+void solve()
+{
 
-
-    string s; cin >> s;
-
-
-    s = " " + s;
-
-
-    ll cnt = 0;
-
-
-    ll ans = 0;
-
-
-    for (int i = n; i >= 1; i--) {
-        if (s[i] == '1')
-            cnt++;
-        else {
-            ans += cnt;
-            cout << ans << " ";
-        }
+    long long int x, y;
+    cin >> x >> y;
+    long long int res = x * y - x - y;
+    if (res > 0)
+    {
+        cout << res << endl;
     }
+    else
+    {
 
-
-    for (ll i = 1; i <= cnt; i++ ) {
-        
-        cout << "-1 ";
+        cout << 9 * x * y - x - y << endl;
     }
-
-    cout << endl;
 }
 
 int main()
@@ -314,4 +312,3 @@ int main()
     cerr << "Time: " << duration.count() / 1000 << " ms" << endl;
 #endif
 }
-
