@@ -330,156 +330,23 @@ int main() {
 
 
 
+Today was my 20th day out of the 100 days  hard challenge.
+
+So today, I solved 5 problems .
+
+1. Apple Division  (https://cses.fi/problemset/task/1623)
 
 
-class SegTree
-{
-    public:
-    const int N = 5000005;
- 
-    int n;  // array size
-    ll   *sum_tree;
-    ll  res = 0;
- 
-    SegTree(vector<int> &arr, int n)
-    {
-        sum_tree = new ll [N];
-        this->n = n;
-        build(arr);
-    }
- 
-    void build(vector<int> &arr)
-    {
-        for (int i = 0; i < n; ++i)
-        {
-            sum_tree[n+i]=arr[i];
-        }
- 
-        for (int i = n - 1; i > 0; --i)
-        {
-            sum_tree[i] = sum_tree[i<<1] + sum_tree[i<<1|1];
-        }
-    }
- 
-    void result(int l, int r)
-    {
-        for (l += n, r += n; l < r; l >>= 1, r >>= 1)
-        {
-            if (l&1)
-            {
-                res = res + sum_tree[l++];
-            }
- 
-            if (r&1)
-            {
-                res = res + sum_tree[--r];
-            }
-        }
-    }
- 
-    ll  getSum(int l, int r)
-    {
-        if(l > r)       return 0;
-        res = 0;
-        result(l, r);
- 
-        return res;
-    }
- 
-    void update(int p, ll  value)
-    {   // set value at position p
-        for(sum_tree[p += n] = value; p > 1; p >>= 1)
-        {
-            sum_tree[p>>1] = (sum_tree[p] + sum_tree[p^1]);
-        }
-    }
-};
+2. Josephus Problem II (https://cses.fi/problemset/task/2163)
 
 
-
-void solve() {
-
-
-  string s;cin>>s;
-
-  int n=s.size();
-
-  vector<int> closeing(n,-1);
-
-  set<int> open;
-
-  vector<int>  vals(n);
-
-  for (int i = 0; i < n; i++) {
-    if(s[i]=='('){
-      open.insert(i);
-    }else {
-      if(open.size()){
-        closeing[*open.rbegin()]=i;
-        open.erase(*open.rbegin());
-
-        vals[i]=1;
-      }
-    }
-  }
-
-  SegTree sgt(vals,n);
+3. Sum of Three Values (https://cses.fi/problemset/task/1641)
 
 
-  vector<vector<pair<int,int>>> queries(n);
-
-  int q;cin>>q;
+4. Towers (https://cses.fi/problemset/task/1073)
 
 
-  for (int i = 0; i <q; i++)
-  {
-    
-
-    ll l,r;cin>>l>>r;
-
-    l--;r--;
-    queries[l].pb({r,i});
-  }
-
-
-  vector<int>  ans(q);
-
-  for (ll l = 0; l < n; l++)
-  {
-   
-    for(auto [r,k]:queries[l]){
-      ans[k]=2*sgt.getSum(l,r+1);
-    }
-
-
-    if(s[l]=='('){
-      if(*open.begin()==l)  open.erase(l);
-
-      if(closeing[l]!=-1){
-        if(!open.size() ||*open.begin()>closeing[l]){
-          vals[closeing[l]]=0;
-          sgt.update(closeing[l],0);
-        }else {
-          int i=*(--open.lower_bound(closeing[l]));
-
-          open.erase(i);
-
-          closeing[i]=closeing[l];
-        }
-      }
-    }
-  }
-
-
-  cout<<ans<<endl;
-  
-  
- 
-  
-
-   
-}
-
+5. Movie Festival (https://cses.fi/problemset/task/1629)
 
 
 

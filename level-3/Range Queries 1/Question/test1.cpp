@@ -280,19 +280,171 @@ int gcd(int a, int b)
 
 void solve()
 {
+  ll n, p, q;
+        cin >> n >> p >> q;
+        vector<ll> numbers(n);
 
-    long long int x, y;
-    cin >> x >> y;
-    long long int res = x * y - x - y;
-    if (res > 0)
-    {
-        cout << res << endl;
-    }
-    else
-    {
+        ll sum=0;
 
-        cout << 9 * x * y - x - y << endl;
-    }
+        vector<ll>  arr;
+
+        for (ll i = 0; i < n; i++) {
+            cin >> numbers[i];
+
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            sum+=numbers[i];
+        }
+
+        // if(sum<0)  return ;
+
+        sort(numbers.begin(), numbers.end());
+
+        ll m=0;
+
+
+
+        while (numbers.size() > 2 && p > 0 && numbers[numbers.size() - 2] > 0) {
+            ll x = numbers.back();
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            numbers.pop_back();
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            ll y = numbers.back();
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            numbers.pop_back();
+
+            arr.push_back(x+y);
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            numbers.push_back(x + y);
+            p--;
+        }
+
+
+
+        reverse(numbers.begin(), numbers.end());
+         // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+
+        while (numbers.size() > 2 && p > 0 && numbers[numbers.size() - 2] < 0) {
+            ll x = numbers.back();
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            numbers.pop_back();
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            ll y = numbers.back();
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            numbers.pop_back();
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            numbers.push_back(x + y);
+            arr.push_back(x-y);
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            p--;
+        }
+
+        reverse(numbers.begin(), numbers.end());
+         // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+
+        while (numbers.size() > 2 && q > 0 && numbers[numbers.size() - 2] > 0) {
+            numbers[0] -= numbers[numbers.size() - 2];
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            numbers.erase(numbers.end() - 2);
+             // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            q--;
+        }
+
+        reverse(numbers.begin(), numbers.end());
+
+        while (numbers.size() > 2 && q > 0 && numbers[numbers.size() - 2] < 0) {
+            numbers[0] -= numbers[numbers.size() - 2];
+
+            // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // arr[0]-=numbers[numbers.size() - 2];
+            // p--;
+            numbers.erase(numbers.end() - 2);
+            // arr.erase(numbers.end() - 2);
+
+            // ll x = numbers.back();
+            // numbers.pop_back();
+            // ll y = numbers.back();
+            // numbers.pop_back();
+            // numbers.push_back(x + y);
+            // p--;
+            q--;
+        }
+
+        cout << numbers[0] - numbers[numbers.size() - 1] +sum*m << endl;
+    
 }
 
 int main()
@@ -304,11 +456,54 @@ int main()
     auto start1 = high_resolution_clock::now();
     int t;
     cin >> t;
-    while (t--)
+    while (t--){
         solve();
+    }
+       
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
 #ifdef Priyansh31dec
     cerr << "Time: " << duration.count() / 1000 << " ms" << endl;
 #endif
 }
+
+
+
+
+/*
+
+
+
+Chadda and his Wizard friend PSC were exploring the enchanted forest on Halloween, when Chadda stumbled upon an array  A of  N magical numbers which took him into a different world.
+ 
+ 
+Chadda remembered that PSC gave him two integers P and Q for such a situation.
+Using these integers, Chadda can modify the array A as follows:
+
+At most P times, perform the following operation: Pick two elements x and y from A, delete them both from A, and insert   (x+y) into A. This operation can be performed only if A has at least two elements.
+
+At most Q times, perform the following operation:
+
+Pick two elements x and  y from A, delete them both from A, and insert (x−y) into A. This operation can also be performed only if  A has at least two elements. Note that each operation reduces the size of  A by one. The two types of operations (addition and subtraction) can be performed in any order, as long as at most  P addition operations and Q subtraction operations are made.
+
+Let   B denote the final array obtained after performing some (possibly, zero) operations. To return to his original world, Chadda has to find the maximum possible value of max(B)−min(B)
+
+
+*/
+
+
+
+/*
+
+
+
+Once upon a time, in a distant land, a mischievous witch spied on a group of people who were enjoying their time together.
+
+Enveloped by a dark desire, she resolved to put an end to their merry gatherings and kill all  N people.  There are N people, and the witch knows that the i-th of them has a strength of   Ai . The witch also knows of M friendships, each between two people. 
+
+Friendship is transitive, that is, if X and Y are friends and Y and Z are friends, then X and   Z are also friends.
+The witch wants to kill all these people in a particular sequence known as a spooky sequence.  A sequence   S is called a spooky sequence if it satisfies the following properties:   S contains   N distinct integers, each between  1 1 and   N. That is,   S is a linear order of the   N people. For any  1 ≤  <  ≤  1≤i<j≤N, if    S  i ​   and    S  j ​   are friends, then     ≤    A  S  i ​   ​  ≤A  S  j ​   ​   should hold. That is, for any two friends, one with strictly higher strength cannot appear earlier in the sequence than the other. Find the total number of spooky sequences. The answer can be large, so print it modulo  10^9 + 7.  Input Format The first line of input will contain a single integer   T, denoting the number of test cases. Each test case consists of multiple lines of input. The first line of each test case contains two space-separated integers   N and   M — the number of people and number of friendships, respectively. The next   M lines describe the friendships. The   i-th of these   M lines contains two space-separated integers    u  i ​   and    v  i ​  , denoting a friendship between    u  i ​   and    v  i ​  . The last line contains   N space-separated integers   1 ,  2 , … ,   A  1 ​  ,A  2 ​  ,…,A  N ​   — the strengths of the people. 
+
+
+
+*/
