@@ -326,28 +326,3 @@ int main() {
 
 
 
-/*
-
-
-
-Today was my 20th day out of the 100 days  hard challenge.
-
-So today, I solved 5 problems .
-
-1. Apple Division  (https://cses.fi/problemset/task/1623)
-
-
-2. Josephus Problem II (https://cses.fi/problemset/task/2163)
-
-
-3. Sum of Three Values (https://cses.fi/problemset/task/1641)
-
-
-4. Towers (https://cses.fi/problemset/task/1073)
-
-
-5. Movie Festival (https://cses.fi/problemset/task/1629)
-
-
-
-*/
