@@ -1,61 +1,40 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+#include<bits/stdc++.h>
 using namespace std;
 
+int q[21][1123456];
+
 int main() {
-    long long testCases;
-    cin >> testCases;
+    string s;
+    cin >> s;
+    int l = s.length();
 
-    while (testCases--) {
-        long long n, p, q;
-        cin >> n >> p >> q;
-        vector<long long> numbers(n);
+    for(int i = 0; i < l; i++) {
+        q[0][i + 1] = q[0][i] + (s[i] == '(' ? 1 : -1);
+    }
 
-        for (long long i = 0; i < n; i++) {
-            cin >> numbers[i];
+    for(int j = 0; j < 20; j++) {
+        for(int i = 0; i <= l; i++) {
+            q[j + 1][i] = min(q[j][i], q[j][i + (1 << j)]);
+        }
+    }
+
+    int m, L, R;
+
+
+    scanf("%d", &m);
+
+    
+    for(int i = 0; i < m; i++) {
+        scanf("%d%d", &L, &R);
+        L--;
+
+        int j = 0;
+        while((1 << (j + 1)) <= R - L) {
+            j++;
         }
 
-        sort(numbers.begin(), numbers.end());
-
-        while (numbers.size() > 2 && p > 0 && numbers[numbers.size() - 2] > 0) {
-            long long x = numbers.back();
-            numbers.pop_back();
-            long long y = numbers.back();
-            numbers.pop_back();
-            numbers.push_back(x + y);
-            p--;
-        }
-
-        reverse(numbers.begin(), numbers.end());
-
-        while (numbers.size() > 2 && p > 0 && numbers[numbers.size() - 2] < 0) {
-            long long x = numbers.back();
-            numbers.pop_back();
-            long long y = numbers.back();
-            numbers.pop_back();
-            numbers.push_back(x + y);
-            p--;
-        }
-
-        reverse(numbers.begin(), numbers.end());
-
-        while (numbers.size() > 2 && q > 0 && numbers[numbers.size() - 2] > 0) {
-            numbers[0] -= numbers[numbers.size() - 2];
-            numbers.erase(numbers.end() - 2);
-            q--;
-        }
-
-        reverse(numbers.begin(), numbers.end());
-
-        while (numbers.size() > 2 && q > 0 && numbers[numbers.size() - 2] < 0) {
-            numbers[0] -= numbers[numbers.size() - 2];
-            numbers.erase(numbers.end() - 2);
-            q--;
-        }
-
-        cout << numbers[0] - numbers[numbers.size() - 1] << endl;
+        int qq = min(q[j][L], q[j][R - (1 << j) + 1]);
+        printf("%d\n", R - L - (q[0][L] + q[0][R] - 2 * qq));
     }
 
     return 0;
