@@ -67,86 +67,32 @@ public:
     }
 };
 
-void solve()
-{
-    string s;
-    cin >> s;
+void solve() {
 
-    int n = s.size();
 
-    vector<int> closing(n, -1);
-    set<int> open;
-    vector<int> vals(n);
+   ll n;cin>>n;
 
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == '(')
-        {
-            open.insert(i);
-        }
-        else
-        {
-            if (open.size())
-            {
-                closing[*open.rbegin()] = i;
-                open.erase(*open.rbegin());
-                vals[i] = 1;
-            }
-        }
-    }
+   ll sum=0;
 
-    SegTree sgt(vals, n);
+   vector<ll>  arr(n);
 
-    int q;
-    cin >> q;
+   for (ll i = 0; i < n; i++) {
+      cin>>arr[i];
 
-    vector<vector<pair<int, int>>> queries(n);
+      sum+=arr[i];
+   }
+   if(n==2)  cout<<"YES"<<endl;
+   else {
 
-    for (int i = 0; i < q; i++)
-    {
-        ll l, r;
-        cin >> l >> r;
-        l--;
-        r--;
-        queries[l].pb({r, i});
-    }
-
-    vector<int> ans(q);
-
-    for (ll l = 0; l < n; l++)
-    {
-        for (auto [r , k] : queries[l])
-        {
-            ans[k] = 2 * sgt.getSum(l, r + 1);
-        }
-
-        if (s[l] == '(')
-        {
-            if (*open.begin() == l)
-                open.erase(l);
-
-            if (closing[l] != -1)
-            {
-                if (!open.size() || *open.begin() > closing[l])
-                {
-                    vals[closing[l]] = 0;
-                    sgt.update(closing[l], 0);
-                }
-                else
-                {
-                    int i = *(--open.lower_bound(closing[l]));
-                    open.erase(i);
-                    closing[i] = closing[l];
-                }
-            }
-        }
+    if(sum%2==0){
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
     }
 
 
-
-    for (int i = 0; i < q; ++i) {
-        cout << ans[i] << endl;
-    }
+   }
+   
 
 
 }

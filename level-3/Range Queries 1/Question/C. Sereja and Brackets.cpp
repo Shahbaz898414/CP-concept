@@ -264,7 +264,7 @@ void solve() {
         {
             ans[k] = 2 * sgt.getSum(l, r + 1);
         }
-
+  
         if (s[l] == '(')
         {
             if (*open.begin() == l)
