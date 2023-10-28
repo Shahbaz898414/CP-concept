@@ -278,173 +278,88 @@ int gcd(int a, int b)
     return gcd(a, b - a);
 }
 
-void solve()
-{
-  ll n, p, q;
-        cin >> n >> p >> q;
-        vector<ll> numbers(n);
-
-        ll sum=0;
-
-        vector<ll>  arr;
-
-        for (ll i = 0; i < n; i++) {
-            cin >> numbers[i];
-
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            sum+=numbers[i];
-        }
-
-        // if(sum<0)  return ;
-
-        sort(numbers.begin(), numbers.end());
-
-        ll m=0;
-
-
-
-        while (numbers.size() > 2 && p > 0 && numbers[numbers.size() - 2] > 0) {
-            ll x = numbers.back();
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            numbers.pop_back();
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            ll y = numbers.back();
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            numbers.pop_back();
-
-            arr.push_back(x+y);
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            numbers.push_back(x + y);
-            p--;
-        }
-
-
-
-        reverse(numbers.begin(), numbers.end());
-         // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-
-        while (numbers.size() > 2 && p > 0 && numbers[numbers.size() - 2] < 0) {
-            ll x = numbers.back();
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            numbers.pop_back();
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            ll y = numbers.back();
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            numbers.pop_back();
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            numbers.push_back(x + y);
-            arr.push_back(x-y);
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            p--;
-        }
-
-        reverse(numbers.begin(), numbers.end());
-         // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-
-        while (numbers.size() > 2 && q > 0 && numbers[numbers.size() - 2] > 0) {
-            numbers[0] -= numbers[numbers.size() - 2];
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            numbers.erase(numbers.end() - 2);
-             // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            q--;
-        }
-
-        reverse(numbers.begin(), numbers.end());
-
-        while (numbers.size() > 2 && q > 0 && numbers[numbers.size() - 2] < 0) {
-            numbers[0] -= numbers[numbers.size() - 2];
-
-            // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // arr[0]-=numbers[numbers.size() - 2];
-            // p--;
-            numbers.erase(numbers.end() - 2);
-            // arr.erase(numbers.end() - 2);
-
-            // ll x = numbers.back();
-            // numbers.pop_back();
-            // ll y = numbers.back();
-            // numbers.pop_back();
-            // numbers.push_back(x + y);
-            // p--;
-            q--;
-        }
-
-        cout << numbers[0] - numbers[numbers.size() - 1] +sum*m << endl;
+void solve() {
     
+     int n, m;
+    // cin >> n >> m;
+
+    string firstString, secondString;
+    cin >>n>>m>> firstString >> secondString;
+    bool fl=1;
+
+   
+    int hasDuplicateFirst = 0;
+    for (int i = 0; i < n - 1; ++i) {
+        if (firstString[i] == firstString[i + 1] and i>=0 and i<n-1) {
+            hasDuplicateFirst = 1;
+            break;
+        }
+    }
+
+    if (hasDuplicateFirst == 0) {
+        
+    
+        // cout << "YES" << endl;
+
+        // return;
+        fl=1;
+    } else {
+        int hasDuplicateSecond = 0;
+        for (int i = 0; i < m - 1; ++i) {
+            if (secondString[i] == secondString[i + 1] and i>=0) {
+                hasDuplicateSecond = 1;
+                break;
+            }
+        }
+
+        if (hasDuplicateSecond) {
+            // cout << "NO" << endl;
+            fl=0;
+            // return ;
+        } else {
+
+             unordered_map<int, int> jh;
+        jh[0] = 0;
+        int maxLength = -1;
+
+            vector<int> dp(m + 1, -1);
+    dp[0] = 0;
+            for (int i = 0; i < n - 1; ++i) {
+                if (firstString[i] == firstString[i + 1]) {
+                    if (firstString[i] == secondString[0] || firstString[i] == secondString[m - 1] and i>=0) {
+                        // cout << "NO" << endl;
+                        fl=0;
+                            // if (secondString[i] == secondString[i + 1] and i>=0) {
+            //     hasDuplicateSecond = 1;
+            //     break;
+            // }
+                        break;
+                        // return ;
+                    }
+                }
+            }
+
+            if(fl==1) fl=1;
+                // if (secondString[i] == secondString[i + 1] and i>=0) {
+            //     hasDuplicateSecond = 1;
+            //     break;
+            // }
+            else fl=0;
+
+            
+
+            // cout << "YES" << endl;
+        }
+    }
+
+
+    if(fl)cout<<"YES"<<endl;
+    // if (secondString[i] == secondString[i + 1] and i>=0) {
+            //     hasDuplicateSecond = 1;
+            //     break;
+            // }
+    else cout << "No" << endl;
+
 }
 
 int main()
@@ -456,10 +371,11 @@ int main()
     auto start1 = high_resolution_clock::now();
     int t;
     cin >> t;
-    while (t--){
+    while (t--)
+    {
         solve();
     }
-       
+
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
 #ifdef Priyansh31dec
@@ -467,6 +383,62 @@ int main()
 #endif
 }
 
+/*
 
 
 
+
+ unordered_map<int, int> jh;
+        jh[0] = 0;
+        int maxLength = -1;
+
+        for (int num : nums) {
+            unordered_map<int, int> fg(jh);
+            for (auto& pair : jh) {
+                int sum = pair.first + num;
+                if (fg.find(sum) == fg.end() || fg[sum] < pair.second + 1) {
+                    fg[sum] = pair.second + 1;
+                }
+                maxLength = max(maxLength, fg[sum]);
+            }
+            jh = fg;
+        }
+
+        return maxLength >= 0 ? maxLength : -1;
+
+
+
+
+
+
+
+
+
+ unordered_map<int, int> jh;
+        jh[0] = 0;
+        int maxLength = -1;
+
+            vector<int> dp(target + 1, -1);
+    dp[0] = 0;
+
+    for (int num : nums) {
+        unordered_map<int, int> fg(jh);
+        for (int i = target; i >= num; i--) {
+            int sum =  num;
+            if (dp[i - num] != -1) {
+                dp[i] = max(dp[i], dp[i - num] + 1);
+            }
+
+            if (fg.find(sum) == fg.end() || fg[sum] < pair.second + 1) {
+                    fg[sum] = pair.second + 1;
+                }
+                maxLength = max(maxLength, fg[sum]);
+        }
+
+         jh = fg;
+    }
+
+    return dp[target];
+
+
+*/

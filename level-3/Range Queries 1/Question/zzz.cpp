@@ -74,25 +74,17 @@ void solve() {
 
    ll sum=0;
 
+   ll x=0;
+
    vector<ll>  arr(n);
 
+
+
    for (ll i = 0; i < n; i++) {
-      cin>>arr[i];
-
-      sum+=arr[i];
-   }
-   if(n==2)  cout<<"YES"<<endl;
-   else {
-
-    if(sum%2==0){
-        cout<<"YES"<<endl;
-    }else{
-        cout<<"NO"<<endl;
-    }
-
+      cin>>x;
 
    }
-   
+  
 
 
 }
