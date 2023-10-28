@@ -42,28 +42,5 @@ int main() {
 
 
 
-/*
-
-
-Today was my 21th day out of the 100 days  hard challenge.
-
-So today, I solved 5 problems .
-
-1. F - LCS  (https://atcoder.jp/contests/dp/tasks/dp_f)
-
-
-2. G - Longest Path  (https://atcoder.jp/contests/dp/tasks/dp_g)
-
-
-3. H - Grid 1 (https://atcoder.jp/contests/dp/tasks/dp_h)
-
-
-4. M - Candies (https://atcoder.jp/contests/dp/tasks/dp_m)
-
-
-5. J - Sushi (https://atcoder.jp/contests/dp/tasks/dp_j)
-
-
-*/
 
 
