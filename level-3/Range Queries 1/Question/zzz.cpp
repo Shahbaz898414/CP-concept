@@ -100,3 +100,66 @@ int main()
     solve();
     return 0;
 }
+
+
+
+
+/*
+
+
+Today was my 24th day out of the 100 days  hard challenge.
+
+So today, I solved 5 problems .
+
+1. Binary Substitution  (https://www.codechef.com/problems/SUBSBIN)
+
+
+2. Sum of Goodness  (https://www.codechef.com/problems/SEQGOODNESS)
+
+
+3. Xor Equation (https://www.codechef.com/problems/XOREQN)
+
+
+4. Dividing into Groups (https://www.codechef.com/problems/DIVIDE_GROUP)
+
+
+5. Cherry and Bits (https://www.codechef.com/problems/CENS20A)
+
+
+
+
+
+ int cnt1 = 0, cnt2 = 0, ze = 0, ze2 = 0;
+
+       
+        for (int num : nums1) {
+            cnt1 += num;
+            if (num == 0) ze++;
+        }
+        for (int num : nums2) {
+            cnt2 += num;
+            if (num == 0) ze2++;
+        }
+
+        
+        if (cnt1 == cnt2) return cnt1;
+
+        
+        if ((cnt1 + cnt2) % 2 != 0 || (ze + ze2) == 0) return -1;
+
+      
+        int sum = (cnt1 + cnt2) / 2;
+
+   
+        if (sum < max(cnt1 - ze, cnt2 - ze2)) return -1;
+
+       
+        int diff = sum - max(cnt1 - ze, cnt2 - ze2);
+
+       
+        if (diff <= ze + ze2) return sum;
+
+        
+        return -1;
+
+*/
