@@ -258,3 +258,33 @@ int main() {
 
 
 
+
+
+
+
+/*
+
+
+
+Today was my 25th day out of the 100 days  hard challenge.
+
+So today, I solved 5 problems .
+
+1. Rock Paper Scissors  (https://www.codechef.com/problems/ROPASCI)
+
+
+2. Alternative Sufferings (https://www.codechef.com/problems/ALTSUFF)
+
+
+3. Winter (https://www.codechef.com/problems/ELWINTER)
+
+
+4. Chef and Secret Password (https://www.codechef.com/problems/SECPASS)
+
+
+5. Maximum Factors Problem  (https://www.codechef.com/problems/MXFACS)
+
+
+
+
+*/
