@@ -280,85 +280,17 @@ int gcd(int a, int b)
 
 void solve() {
     
-     int n, m;
-    // cin >> n >> m;
+    ll n;cin>>n;
 
-    string firstString, secondString;
-    cin >>n>>m>> firstString >> secondString;
-    bool fl=1;
+    vector<ll>  arr(n);
 
-   
-    int hasDuplicateFirst = 0;
-    for (int i = 0; i < n - 1; ++i) {
-        if (firstString[i] == firstString[i + 1] and i>=0 and i<n-1) {
-            hasDuplicateFirst = 1;
-            break;
-        }
-    }
 
-    if (hasDuplicateFirst == 0) {
+    for (ll i = 0; i < n; i++)
+    {
         
-    
-        // cout << "YES" << endl;
-
-        // return;
-        fl=1;
-    } else {
-        int hasDuplicateSecond = 0;
-        for (int i = 0; i < m - 1; ++i) {
-            if (secondString[i] == secondString[i + 1] and i>=0) {
-                hasDuplicateSecond = 1;
-                break;
-            }
-        }
-
-        if (hasDuplicateSecond) {
-            // cout << "NO" << endl;
-            fl=0;
-            // return ;
-        } else {
-
-             unordered_map<int, int> jh;
-        jh[0] = 0;
-        int maxLength = -1;
-
-            vector<int> dp(m + 1, -1);
-    dp[0] = 0;
-            for (int i = 0; i < n - 1; ++i) {
-                if (firstString[i] == firstString[i + 1]) {
-                    if (firstString[i] == secondString[0] || firstString[i] == secondString[m - 1] and i>=0) {
-                        // cout << "NO" << endl;
-                        fl=0;
-                            // if (secondString[i] == secondString[i + 1] and i>=0) {
-            //     hasDuplicateSecond = 1;
-            //     break;
-            // }
-                        break;
-                        // return ;
-                    }
-                }
-            }
-
-            if(fl==1) fl=1;
-                // if (secondString[i] == secondString[i + 1] and i>=0) {
-            //     hasDuplicateSecond = 1;
-            //     break;
-            // }
-            else fl=0;
-
-            
-
-            // cout << "YES" << endl;
-        }
+        cin>>arr[i];
     }
-
-
-    if(fl)cout<<"YES"<<endl;
-    // if (secondString[i] == secondString[i + 1] and i>=0) {
-            //     hasDuplicateSecond = 1;
-            //     break;
-            // }
-    else cout << "No" << endl;
+    
 
 }
 
