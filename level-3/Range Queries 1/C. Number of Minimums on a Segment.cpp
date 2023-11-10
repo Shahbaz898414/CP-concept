@@ -85,8 +85,11 @@ ll count_mini(ll int ss, ll int se, ll int qs, ll int qe, ll num, ll int index)
       return 0;
   }
   ll int mid = (ss + se) / 2;
+
   ll left = count_mini(ss, mid, qs, qe, num, 2 * index);
+
   ll right = count_mini(mid + 1, se, qs, qe, num, 2 * index + 1);
+
   return left + right;
 }
 
@@ -102,7 +105,9 @@ void solve()
   build_tree(a, 0, n - 1, 1);
 
   // for(int i=1;i<=4*n;i++)
-  // cout<<tree[i]<<endl;
+  //   cout<<tree[i].ff<<" "<<tree[i].ss<<endl;
+  //   cout<<endl;
+
   while (q--)
   {
     ll num, l, r;
@@ -118,6 +123,7 @@ void solve()
     }
   }
 }
+
 int main()
 {
   ios_base::sync_with_stdio(false);
