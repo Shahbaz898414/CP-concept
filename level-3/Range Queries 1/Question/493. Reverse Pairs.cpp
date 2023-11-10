@@ -1,4 +1,5 @@
-/* Priyansh Agarwal*/
+
+
 #pragma GCC optimize("O3,unroll-loops")
 
 #include<bits/stdc++.h>
@@ -16,6 +17,9 @@ using namespace __gnu_pbds;
 #define nline "\n"
 #define pb push_back
 #define ppb pop_back
+#define pii pair<int, int>
+#define F first
+#define S second
 #define mp make_pair
 #define ff first
 #define ss second
@@ -72,6 +76,7 @@ ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) %
 ll mod_div(ll a, ll b, ll m) {a = a % m; b = b % m; return (mod_mul(a, mminvprime(b, m), m) + m) % m;}  //only for prime m
 ll phin(ll n) {ll number = n; if (n % 2 == 0) {number /= 2; while (n % 2 == 0) n /= 2;} for (ll i = 3; i <= sqrt(n); i += 2) {if (n % i == 0) {while (n % i == 0)n /= i; number = (number / i * (i - 1));}} if (n > 1)number = (number / n * (n - 1)) ; return number;} //O(sqrt(N))
 ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);} 
+
 /*--------------------------------------------------------------------------------------------------------------------------*/
 void topo_sort(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& topoSort, int &inserted){
     vis[curr] = true;
@@ -94,175 +99,198 @@ void dfs(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& c
     }
 }
 
-
-
-template<typename Node, typename Update>
-struct SegTree {
-	vector<Node> tree;
-	vector<ll> arr; // type may change
-	int n;
-	int s;
-	SegTree(int a_len, vector<ll> &a) { // change if type updated
-		arr = a;
-		n = a_len;
-		s = 1;
-		while(s < 2 * n){
-			s = s << 1;
-		}
-		tree.resize(s); fill(all(tree), Node());
-		build(0, n - 1, 1);
-	}
-	void build(int start, int end, int index)  // Never change this
-	{
-		if (start == end)	{
-			tree[index] = Node(arr[start]);
-			return;
-		}
-		int mid = (start + end) / 2;
-		build(start, mid, 2 * index);
-		build(mid + 1, end, 2 * index + 1);
-		tree[index].merge(tree[2 * index], tree[2 * index + 1]);
-	}
-	void update(int start, int end, int index, int query_index, Update &u)  // Never Change this
-	{
-		if (start == end) {
-			u.apply(tree[index]);
-			return;
-		}
-		int mid = (start + end) / 2;
-		if (mid >= query_index)
-			update(start, mid, 2 * index, query_index, u);
-		else
-			update(mid + 1, end, 2 * index + 1, query_index, u);
-		tree[index].merge(tree[2 * index], tree[2 * index + 1]);
-	}
-	Node query(int start, int end, int index, int left, int right) { // Never change this
-		if (start > right || end < left)
-			return Node();
-		if (start >= left && end <= right)
-			return tree[index];
-		int mid = (start + end) / 2;
-		Node l, r, ans;
-		l = query(start, mid, 2 * index, left, right);
-		r = query(mid + 1, end, 2 * index + 1, left, right);
-		ans.merge(l, r);
-		return ans;
-	}
-	void make_update(int index, ll val) {  // pass in as many parameters as required
-		Update new_update = Update(val); // may change
-		update(0, n - 1, 1, index, new_update);
-	}
-	Node make_query(int left, int right) {
-		return query(0, n - 1, 1, left, right);
-	}
-};
-
-struct Node1 {
-	ll val; // may change
-	Node1() { // Identity element
-		val = 0;	// may change
-	}
-	Node1(ll p1) {  // Actual Node
-		val = p1; // may change
-	}
-	void merge(Node1 &l, Node1 &r) { // Merge two child nodes
-		val = l.val ^ r.val;  // may change
-	}
-};
-
-struct Update1 {
-	ll val; // may change
-	Update1(ll p1) { // Actual Update
-		val = p1; // may change
-	}
-	void apply(Node1 &a) { // apply update to given node
-		a.val = val; // may change
-	}
-};
-
-template <class T> struct Seg {
-
-	int n;
-	T ID = 0;
-	vector<T> seg;
-	T comb(T a, T b) { return a + b; }
-
-
-	void init(int _n) {
-		n = _n;
-		seg.assign(n * 2, ID);
-	}
-
-
-	void pull(int p) { seg[p] = comb(seg[p * 2], seg[p * 2 + 1]); }
-	void upd(int i, T val) {
-		seg[i += n] += val;
-		for (i /= 2; i; i /= 2) { pull(i); }
-	}
-	T query(int l, int r) {
-		T ra = ID, rb = ID;
-		for (l += n, r += n + 1; l < r; l /= 2, r /= 2) {
-			if (l & 1) ra = comb(ra, seg[l++]);
-			if (r & 1) rb = comb(rb, seg[--r]);
-		}
-		return comb(ra, rb);
-	}
+class SegTree
+{
+    public:
+    const int N = 5000005;
+ 
+    int n;  // array size
+    ll   *sum_tree;
+    ll  res = 0;
+ 
+    SegTree(vector<int> &arr, int n)
+    {
+        sum_tree = new ll [N];
+        this->n = n;
+        build(arr);
+    }
+ 
+    void build(vector<int> &arr)
+    {
+        for (int i = 0; i < n; ++i)
+        {
+            sum_tree[n+i]=arr[i];
+        }
+ 
+        for (int i = n - 1; i > 0; --i)
+        {
+            sum_tree[i] = sum_tree[i<<1] + sum_tree[i<<1|1];
+        }
+    }
+ 
+    void result(int l, int r)
+    {
+        for (l += n, r += n; l < r; l >>= 1, r >>= 1)
+        {
+            if (l&1)
+            {
+                res = res + sum_tree[l++];
+            }
+ 
+            if (r&1)
+            {
+                res = res + sum_tree[--r];
+            }
+        }
+    }
+ 
+    ll  getSum(int l, int r)
+    {
+        if(l > r)       return 0;
+        res = 0;
+        result(l, r);
+ 
+        return res;
+    }
+ 
+    void update(int p, ll  value)
+    {   // set value at position p
+        for(sum_tree[p += n] = value; p > 1; p >>= 1)
+        {
+            sum_tree[p>>1] = (sum_tree[p] + sum_tree[p^1]);
+        }
+    }
 
 
 };
 
 
+ int ans=0;
 
 
-void solve(){
+vector<long long>merge(vector<long long>&v1, vector<long long>&v2){
+        long long l1=v1.size();
+        long long l2=v2.size();
+        vector<long long>v;
+        long long pt1=0,pt2=0;
+        while(pt1<l1 && pt2<l2){
+            if(v1[pt1]<=v2[pt2]){
+                v.push_back(v1[pt1]);
+                pt1++;
+            }else{
+                v.push_back(v2[pt2]);
+                pt2++;
+            }
+        }
+        while(pt1<l1){
+            v.push_back(v1[pt1]);
+            pt1++;
+        }
+        while(pt2<l2){
+            v.push_back(v2[pt2]);
+            pt2++;
+        }
+        cout<<"merge ";
+        for(auto it:v){
+          cout<<it<<" ";
+        }
+
+        cout<<endl;
+        return v;
+}
 
 
-  ll n,q;cin>>n>>q;
 
-	Seg<ll> sgt;
-	sgt.init(n + 1);
+vector<long long> mergeSort(int l,int h,vector<int>& nums){
 
-  vector<ll>  arr(n+1,0);
+        if(l==h)return {nums[l]};
 
-	
+        long long m=(l+h)/2;
 
-  for (ll i =1; i <=n; i++) {
-    cin>>arr[i];
-		sgt.upd(i, arr[i] - arr[i - 1]);
-  }
+        vector<long long>v1 = mergeSort(l,m,nums);
 
-	
+        vector<long long>v2 = mergeSort(m+1,h,nums);
 
-	while(q--){
-		ll t;
-		cin >> t;
-		if (t == 1) {
-			ll a, b;
-			ll val;
-			cin >> a >> b >> val;
-			sgt.upd(a, val);
-			sgt.upd(b + 1, -val);
-		} else {
-			ll k; 
-			cin >> k;
-			cout << sgt.query(1, k) << '\n';
-		}
-	}
-  
+
+        long long l1=v1.size(), l2=v2.size();
+        long long p1=0,p2=0;
+        while(p1<l1 && p2<l2){
+             if(v1[p1] <= 2*v2[p2]){
+                 p1++;
+             }else{
+                 ans+=l1-p1;
+                 p2++;
+             }
+        }
+
+        for(auto it:v1){
+          cout<<it<<" ";
+        }
+
+        cout<<" >> v1 and v2 << ";
+        for(auto it:v2){
+          cout<<it<<" ";
+        }
+
+        cout<<endl;
+        return merge(v1,v2);
+}
+
+
+
+
+void solve() {
+
+
+   int n;cin>>n;
+
+
+   vector<int>  arr(n);
+
+
+    for (int i = 0; i < n; i++) {
+        cin>>arr[i];
+    }
+
+   vector<long long> v=mergeSort(0,n-1,arr);
+
+
+
+        cout<<ans;
+
+        
+    cout<<endl;
+    
 
 
 }
 
+
+
 int main() {
-#ifdef Priyansh31dec
-    freopen("Error.txt", "w", stderr);
-#endif
+// #ifdef Priyansh31dec
+//     freopen("Error.txt", "w", stderr);
+// #endif
+
+
     fastio();
     auto start1 = high_resolution_clock::now();
-    solve();
+
+    int t=1;
+    // cin>>t;
+    while(t--)
+      solve();
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
 #ifdef Priyansh31dec
     cerr << "Time: " << duration . count() / 1000 << " ms" << endl;
 #endif
 }
+
+
+
+
+
+
+
+

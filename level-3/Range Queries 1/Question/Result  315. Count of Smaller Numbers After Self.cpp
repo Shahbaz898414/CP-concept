@@ -325,61 +325,126 @@ class SegTree
 //     }
 // };
 
+    int a[100005];
+    vector<int> seg[4 * 100005];
+
+    vector<int> mergeTwoSortedArrays(vector<int>& v1, vector<int>& v2)
+    {
+        vector<int> v;
+        int i = 0, j = 0;
+        while (i < v1.size() && j < v2.size()) {
+            if (v1[i] < v2[j]) {
+                v.push_back(v1[i]);
+                i++;
+            } else {
+                v.push_back(v2[j]);
+                j++;
+            }
+        }
+        while (i < v1.size()) {
+            v.push_back(v1[i]);
+            i++;
+        }
+        while (j < v2.size()) {
+            v.push_back(v2[j]);
+            j++;
+        }
+
+        for(auto it:v){
+            cout<<it<<" ";
+        }
+
+        cout<<endl<<endl;
+
+        return v;
+    }
+
+
+    // T.C. --> O(n log n)
+
+
+    // S.C. --> O(n log n)
+
+    
+    void build(int i, int lo, int hi)
+    {
+        if (lo == hi) {
+            seg[i].push_back(a[lo]);
+            return;
+        }
+        int mid = lo + (hi - lo) / 2;
+        build(2 * i + 1, lo, mid);
+        build(2 * i + 2, mid + 1, hi);
+        seg[i] = mergeTwoSortedArrays(seg[2 * i + 1], seg[2 * i + 2]);   
+    }
+
+    // T.C. --> O((log n)^2)
+    int queryMergeSortTree(int i, int lo, int hi, int l, int r, int k)
+    {
+        if (lo > r || hi < l)
+            return 0;
+
+        if (lo >= l && hi <= r)
+            return lower_bound(seg[i].begin(), seg[i].end(), k) - seg[i].begin();
+
+        int mid = lo + (hi - lo) / 2;
+
+        int left = queryMergeSortTree(2 * i + 1, lo, mid, l, r, k);
+
+        int right = queryMergeSortTree(2 * i + 2, mid + 1, hi, l, r, k);
+
+        return left + right;
+    }
+
 
 
 
 void solve() {
 
 
-  ll n;cin>>n;
-
-  vector<int>  a(n);
-
-  for (ll i = 0; i < n; i++)
-  {
-    /* code */
-    cin>>a[i];
-  }
-
-  for (ll i = 0; i < a.size(); i++)
-  {
-    /* code */
-    a[i]+=1e4;
-
-  }
-
-  int N=2e4+5;
-
-  vector<int>  cnt(N);
-  
-  for(auto it:a){
-    cnt[it]++;
-  }
+   ll n;cin>>n;
 
 
-  SegTree sgt(cnt,n);
+   vector<ll>  arr(n);
 
 
-  vector<int> ans(a.size());
+    for (ll i = 0; i < n; i++) {
+        cin>>arr[i];
+    }
 
-  for(int i=0;i<a.size();i++){
-    cnt[a[i]]--;
-
-    sgt.update(a[i],cnt[a[i]]);
-
-    ans[i]=sgt.getSum(0,a[i]);
-  }
+    for(int i=0; i<n; i++) {
+         a[i] = arr[i];
+    }
 
 
-  for(auto it:ans){
-    cout<<it<<" ";
-  }
 
-  cout<<endl;
+    build(0, 0, n-1);
 
-  
 
+    for(int i=0;i<n;i++)  cout<<a[i]<<" ";
+
+    cout<<endl;
    
+
+    vector<int> counts(n, 0);
+
+
+    for (int i=0; i<n; i++) {
+        counts[i] = queryMergeSortTree(0, 0, n-1, i+1, n-1, arr[i]);
+    }
+
+
+
+    for(auto it:counts){
+        cout<<it<<" ";
+    }
+
+
+
+    cout<<endl;
+    
+
+
 }
 
 
@@ -411,28 +476,3 @@ int main() {
 
 
 
-
-
-/*
-
-
-1.background mai music
-2.bottom right mai logo
-3. tansition in slide 
-4. speecher and slide are paraller
-5. bottom right logo get biger and pop up
-6. animation of heart
-7. transition effect on  text of heading
-8. backgroud image 
-9. slide and specker in frame
-
-
-*/
-
-
-/*
-
-
-
-
-*/

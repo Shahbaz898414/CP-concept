@@ -95,161 +95,98 @@ void dfs(int curr, vector<vector<int>>& edges, vector<bool>& vis, vector<int>& c
 }
 
 
-
-template<typename Node, typename Update>
-struct SegTree {
-	vector<Node> tree;
-	vector<ll> arr; // type may change
-	int n;
-	int s;
-	SegTree(int a_len, vector<ll> &a) { // change if type updated
-		arr = a;
-		n = a_len;
-		s = 1;
-		while(s < 2 * n){
-			s = s << 1;
-		}
-		tree.resize(s); fill(all(tree), Node());
-		build(0, n - 1, 1);
-	}
-	void build(int start, int end, int index)  // Never change this
-	{
-		if (start == end)	{
-			tree[index] = Node(arr[start]);
-			return;
-		}
-		int mid = (start + end) / 2;
-		build(start, mid, 2 * index);
-		build(mid + 1, end, 2 * index + 1);
-		tree[index].merge(tree[2 * index], tree[2 * index + 1]);
-	}
-	void update(int start, int end, int index, int query_index, Update &u)  // Never Change this
-	{
-		if (start == end) {
-			u.apply(tree[index]);
-			return;
-		}
-		int mid = (start + end) / 2;
-		if (mid >= query_index)
-			update(start, mid, 2 * index, query_index, u);
-		else
-			update(mid + 1, end, 2 * index + 1, query_index, u);
-		tree[index].merge(tree[2 * index], tree[2 * index + 1]);
-	}
-	Node query(int start, int end, int index, int left, int right) { // Never change this
-		if (start > right || end < left)
-			return Node();
-		if (start >= left && end <= right)
-			return tree[index];
-		int mid = (start + end) / 2;
-		Node l, r, ans;
-		l = query(start, mid, 2 * index, left, right);
-		r = query(mid + 1, end, 2 * index + 1, left, right);
-		ans.merge(l, r);
-		return ans;
-	}
-	void make_update(int index, ll val) {  // pass in as many parameters as required
-		Update new_update = Update(val); // may change
-		update(0, n - 1, 1, index, new_update);
-	}
-	Node make_query(int left, int right) {
-		return query(0, n - 1, 1, left, right);
-	}
-};
-
-struct Node1 {
-	ll val; // may change
-	Node1() { // Identity element
-		val = 0;	// may change
-	}
-	Node1(ll p1) {  // Actual Node
-		val = p1; // may change
-	}
-	void merge(Node1 &l, Node1 &r) { // Merge two child nodes
-		val = l.val ^ r.val;  // may change
-	}
-};
-
-struct Update1 {
-	ll val; // may change
-	Update1(ll p1) { // Actual Update
-		val = p1; // may change
-	}
-	void apply(Node1 &a) { // apply update to given node
-		a.val = val; // may change
-	}
-};
-
-template <class T> struct Seg {
-
-	int n;
-	T ID = 0;
-	vector<T> seg;
-	T comb(T a, T b) { return a + b; }
+struct  segTree {
+  int size;
+  vector<long long> sums;
 
 
-	void init(int _n) {
-		n = _n;
-		seg.assign(n * 2, ID);
-	}
+  void init(int n) {
+    size=1;
+    while(size<n)  size*=2;
+    sums.assign(2*size,0LL);
+  }
 
 
-	void pull(int p) { seg[p] = comb(seg[p * 2], seg[p * 2 + 1]); }
-	void upd(int i, T val) {
-		seg[i += n] += val;
-		for (i /= 2; i; i /= 2) { pull(i); }
-	}
-	T query(int l, int r) {
-		T ra = ID, rb = ID;
-		for (l += n, r += n + 1; l < r; l /= 2, r /= 2) {
-			if (l & 1) ra = comb(ra, seg[l++]);
-			if (r & 1) rb = comb(rb, seg[--r]);
-		}
-		return comb(ra, rb);
-	}
+  void set(int i,int v,int x,int lx,int rx){
+    if(rx-lx==1){
+      sums[x]=v;
+      return ;
+    }
+
+    int m=(lx+rx)/2;
+    if(i<m){
+      set(i,v,2*x+1,lx,m);
+    }else{
+      set(i,v,2*x+1,m,rx);
+    }
+
+    sums[x]=sums[2*x+1]+sums[2*x+2];
+  }
+
+
+  void set(int i,int v){
+    set(i,v,0,0,size);
+  }
+
+  long long sum(int l,int r,int x,int lx,int rx){
+    if(lx>=r || l>=rx)  return 0;
+    if(lx>= l and rx<=r)  return sums[x];
+
+    int m=(lx+rx)/2;
+
+    long long s1=sum(l,r,2*x+1,lx,m);
+    long long s2=sum(l,r,2*x+2,m,rx);
+
+
+    return s1+s2;
+  }
+
+  long long sum(int l,int r){
+    return sum(l,r,0,0,size);
+  }
 
 
 };
+
+
+
+
 
 
 
 
 void solve(){
 
+    int n,m;cin>>n>>m;
 
-  ll n,q;cin>>n>>q;
+    segTree st;
 
-	Seg<ll> sgt;
-	sgt.init(n + 1);
 
-  vector<ll>  arr(n+1,0);
+    st.init(n);
 
-	
 
-  for (ll i =1; i <=n; i++) {
-    cin>>arr[i];
-		sgt.upd(i, arr[i] - arr[i - 1]);
-  }
+    for (int i = 0; i < n; i++)
+    {
+      
+      int v;cin>>v;
+      st.set(i,v);
+    }
 
-	
 
-	while(q--){
-		ll t;
-		cin >> t;
-		if (t == 1) {
-			ll a, b;
-			ll val;
-			cin >> a >> b >> val;
-			sgt.upd(a, val);
-			sgt.upd(b + 1, -val);
-		} else {
-			ll k; 
-			cin >> k;
-			cout << sgt.query(1, k) << '\n';
-		}
-	}
+    while(m--){
+      int op;cin>>op;
+
+      if(op==1){
+        int i,v;cin>>i>>v;
+        st.set(i,v);
+      }else {
+        int l,r;cin>>l>>r;
+        cout<<st.sum(l,r)<<endl;
+
+      }
+    }
+
   
-
 
 }
 
