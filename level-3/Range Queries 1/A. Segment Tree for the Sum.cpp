@@ -17,6 +17,8 @@ void build_tree(ll int *a, ll int s,ll int e, ll int *tree, ll int index)
 
 	build_tree(a,mid+1,e,tree,2*index+1);
 
+	//  first change will be here
+
 	tree[index] = min(tree[2*index],tree[2*index+1]);
 	return;
 }
@@ -37,6 +39,8 @@ ll query(ll *tree,ll ss,ll se,ll qs,ll qe ,ll index)
 	ll int mid = (ss + se)/2;
 	ll int left = query(tree,ss,mid,qs,qe,2*index);
 	ll int right = query(tree,mid+1,se,qs,qe,2*index+1);
+
+	// second will be here
 	return min(left,right);
 }
 
@@ -53,6 +57,8 @@ void point_update(ll  *tree, ll ss,ll se, ll i,ll inc,ll index)
 	ll int mid = (ss + se)/2;
 	point_update(tree,ss,mid,i,inc,2*index);
 	point_update(tree,mid+1,se,i,inc,2*index+1);
+
+	// third will be here
 	tree[index] = min(tree[2*index],tree[2*index+1]);
 	return;
 }
