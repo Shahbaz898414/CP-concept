@@ -12,9 +12,12 @@ void build_tree(ll int *a, ll int s,ll int e, ll int *tree, ll int index)
 		return;
 	}
 	ll int mid = (s+e)/2;
+
 	build_tree(a,s,mid,tree,2*index);
+
 	build_tree(a,mid+1,e,tree,2*index+1);
-	tree[index] += tree[2*index]+tree[2*index+1];
+
+	tree[index] = min(tree[2*index],tree[2*index+1]);
 	return;
 }
 
@@ -28,13 +31,13 @@ ll query(ll *tree,ll ss,ll se,ll qs,ll qe ,ll index)
 	}
 	//No Overlap
 	if(qe<ss || qs>se)
-	return 0;
+      	return INT_MAX;
 
 	//partial overlap
 	ll int mid = (ss + se)/2;
 	ll int left = query(tree,ss,mid,qs,qe,2*index);
 	ll int right = query(tree,mid+1,se,qs,qe,2*index+1);
-	return left+right;
+	return min(left,right);
 }
 
 //point update
@@ -50,7 +53,7 @@ void point_update(ll  *tree, ll ss,ll se, ll i,ll inc,ll index)
 	ll int mid = (ss + se)/2;
 	point_update(tree,ss,mid,i,inc,2*index);
 	point_update(tree,mid+1,se,i,inc,2*index+1);
-	tree[index] = tree[2*index]+tree[2*index+1];
+	tree[index] = min(tree[2*index],tree[2*index+1]);
 	return;
 }
 
@@ -81,10 +84,9 @@ int main()
     	cin.tie(NULL);
   
     ll int t=1;
-	 // cin>>t;
-	while(t--)
-	{  
-      solve();
+	 
+    while(t--) {  
+        solve();
     }
 
 	return 0;
