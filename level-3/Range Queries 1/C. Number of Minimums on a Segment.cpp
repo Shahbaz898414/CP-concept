@@ -1,11 +1,21 @@
 // This is AC solution
 #include <bits/stdc++.h>
 using namespace std;
+
+
 #define ll long long
+
+
 #define ff first
+
+
 #define ss second
 
+
+
 vector<pair<ll, ll>> tree(400001);
+
+
 void build_tree(ll int *a, ll int s, ll int e, ll int index)
 {
   if (s == e)
@@ -25,6 +35,8 @@ void build_tree(ll int *a, ll int s, ll int e, ll int index)
     tree[index] = {tree[2 * index].ff, tree[2 * index].ss + tree[2 * index + 1].ss};
   return;
 }
+
+
 ll query(ll int ss, ll int se, ll int qs, ll int qe, ll int index)
 {
   // complete overlap
