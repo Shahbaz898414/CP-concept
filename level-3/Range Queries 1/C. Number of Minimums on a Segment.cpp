@@ -84,15 +84,19 @@ ll count_mini(ll int ss, ll int se, ll int qs, ll int qe, ll num, ll int index)
     else
       return 0;
   }
-  
+
+
   ll int mid = (ss + se) / 2;
+
 
   ll left = count_mini(ss, mid, qs, qe, num, 2 * index);
 
+
   ll right = count_mini(mid + 1, se, qs, qe, num, 2 * index + 1);
 
-  return left + right;
 
+  return left + right;
+ 
 }
 
 void solve()
