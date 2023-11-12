@@ -3,16 +3,21 @@
 using namespace std;
 #define 		ll long long
 #define         max3(a, b, c) max(max(a, b), c)
-struct tre
-{
+
+
+struct tre {
 	ll suf,pref,seg,sum;
 };
+
+
 vector<tre>tree(400001); 
 tre merge(tre a,tre b)
 {
 	tre t={max(b.suf,b.sum+a.suf),max(a.pref,a.sum+b.pref),max3(a.seg,b.seg,a.suf+b.pref),a.sum+b.sum};
 	return t;
 }
+
+
 void build_tree(ll int *a, ll int s,ll int e, ll int index)
 {
 	if(s==e)
@@ -30,7 +35,10 @@ void build_tree(ll int *a, ll int s,ll int e, ll int index)
 	return;
 }
 
-//point update
+
+//  point update
+
+
 void point_update(ll int ss,ll int se, ll i,ll int inc,ll int index)
 {
 	if(i>se || i<ss)
@@ -64,16 +72,19 @@ void solve()
 	build_tree(a,0,n-1,1);
 	// for(int i=1;i<=4*n;i++)
 	// cout<<tree[i]<<endl;
+
 	cout<<tree[1].seg<<endl;
 	
-	while(q--)
-	{
+	while(q--) {
 		ll num,l;
 		cin>>num>>l;
+
 		point_update(0,n-1,num,l,1);
+        
 		cout<<tree[1].seg<<endl;
 		a[num] = l;
 	}
+
 
 }
 int main()
