@@ -21,25 +21,33 @@ void build_tree(ll int *a, ll int s,ll int e, ll int *tree, ll int index)
 ll query(ll *tree,ll ss,ll se,ll & k ,ll index)
 {
 	if(glb!=-1||tree[index]==0)
-	return INT_MAX;
+	  return INT_MAX;
 
 	if(tree[index]<k)
 	{
 		k -= tree[index];
 		return INT_MAX;
 	}
+
+
 	if(ss == se)
 	{
 		glb = ss;
 		return ss;
 	}
+
+
 	//partial overlap
 	ll int mid = (ss + se)/2;
 	ll int left = query(tree,ss,mid,k,2*index);
 	ll int right = query(tree,mid+1,se,k,2*index+1);
 	return min(left,right);
 }
-//point update
+
+
+//  point update
+
+
 void point_update(ll  *tree, ll ss,ll se, ll i,ll inc,ll index)
 {
 	if(i>se || i<ss)
@@ -55,6 +63,9 @@ void point_update(ll  *tree, ll ss,ll se, ll i,ll inc,ll index)
 	tree[index] = tree[2*index]+tree[2*index+1];
 	return;
 }
+
+
+
 void solve()
 {
 	int n,q;cin>>n>>q;
