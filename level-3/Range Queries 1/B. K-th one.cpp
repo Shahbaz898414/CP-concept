@@ -1,7 +1,7 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
+
 
 ll glb;
 void build_tree(ll int *a, ll int s,ll int e, ll int *tree, ll int index)
@@ -57,8 +57,7 @@ void point_update(ll  *tree, ll ss,ll se, ll i,ll inc,ll index)
 }
 void solve()
 {
-	int n,q;
-	cin>>n>>q;
+	int n,q;cin>>n>>q;
 	
 	ll a[n];
 	for(int i=0;i<n;i++)
@@ -81,26 +80,28 @@ void solve()
 		}
 		else
 		{
-		l++;
-		glb=-1;
-		ll x = query(tree,0,n-1,l,1);
-		cout<<x<<endl;
+      l++;
+      glb=-1;
+      ll x = query(tree,0,n-1,l,1);
+      cout<<x<<endl;
 		}
 		
 	}
 
 }
+
+
 int main()
 {
 	ios_base::sync_with_stdio(false); 
     	cin.tie(NULL); 
 	
   
-    ll int t=1;
+  ll int t=1;
 	 // cin>>t;
 	while(t--) {  
       solve();
-    }
+  }
 
 return 0;
 }
