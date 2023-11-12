@@ -17,13 +17,13 @@ void build_tree(ll int *a, ll int s,ll int e, ll int *tree, ll int index)
 	tree[index] = max(tree[2*index],tree[2*index+1]);
 	return;
 }
-void query(ll int *tree,ll int ss,ll int se,ll x ,ll int index)
+void query(ll int *tree,ll int ss,ll int se,ll x ,ll l ,ll int index)
 {
 	//complete overlap
 	
 	if(tree[index]<x)
 	return;
-	if(gb>=0)
+	if(gb>=0||se<l)   // just add one extra condition as compare to "First element at least X" (previous problem)
 	return;
 	if(ss==se)
 	{
@@ -32,8 +32,8 @@ void query(ll int *tree,ll int ss,ll int se,ll x ,ll int index)
 		return;
 	}
 	ll int mid = (ss + se)/2;
-	 query(tree,ss,mid,x,2*index);
-	 query(tree,mid+1,se,x,2*index+1);
+	 query(tree,ss,mid,x,l,2*index);
+	 query(tree,mid+1,se,x,l,2*index+1);
 	 return;
 
 }
@@ -65,43 +65,32 @@ void solve()
 	ll tree[4*n+1]={0};
 	build_tree(a,0,n-1,tree,1);
 
-	while(q--) {
-
-		ll num;cin>>num;
-
-		if(num==1) {
-			ll l,r; cin>>l>>r;
-
+	while(q--)
+	{
+		ll num,l,r;
+		cin>>num>>l>>r;
+		if(num==1)
+		{
 			point_update(tree,0,n-1,l,r,1);
 			
-		}else {
-
-
-			ll x;cin>>x;
-
-
+		}
+		else
+		{
 			gb=-1;
-
-
-			query(tree,0,n-1,x,1);
-
-
+			query(tree,0,n-1,l,r,1);
 			cout<<gb<<endl;
-
-
 		}
 		
 	}
 
 }
-
-
-
-
 int main()
 {
 	ios_base::sync_with_stdio(false); 
     	cin.tie(NULL); 
+	
+    // int src[101]={0};
+    // int dest[101]={0};
   
     ll int t=1;
 	 // cin>>t;
@@ -110,5 +99,5 @@ int main()
       solve();
     }
 
-	return 0;
+return 0;
 }
