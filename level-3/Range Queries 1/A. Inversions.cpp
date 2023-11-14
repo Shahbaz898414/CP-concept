@@ -77,4 +77,31 @@ int main()
 
 
 
+/*
 
+
+
+Today was my 40th day out of the 100 days  hard challenge.
+So today, I solved 5 problems .
+
+
+1. Word Combinations (https://cses.fi/problemset/task/1731).
+
+
+2. String Matching (https://cses.fi/problemset/task/1753).
+
+
+3. Finding Borders (https://cses.fi/problemset/task/1732)
+
+
+4. Finding Periods (https://cses.fi/problemset/task/1733).
+
+
+5. Minimal Rotation (https://cses.fi/problemset/task/1110).
+
+
+#100dayschallenge #challenge #consistency #SegmentTree #lessons
+#learning
+
+
+*/
