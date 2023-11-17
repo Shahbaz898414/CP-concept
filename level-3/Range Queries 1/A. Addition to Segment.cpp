@@ -3,95 +3,76 @@
 using namespace std;
 #define ll long long
 
-ll gb=-1;
-void build_tree(ll int *a, ll int s,ll int e, ll int *tree, ll int index)
-{
-	if(s==e)
-	{
-		tree[index] = a[s];
-		return;
-	}
-	ll int mid = (s+e)/2;
-	build_tree(a,s,mid,tree,2*index);
-	build_tree(a,mid+1,e,tree,2*index+1);
-	tree[index] = max(tree[2*index],tree[2*index+1]);
-	return;
-}
-void query(ll int *tree,ll int ss,ll int se,ll x ,ll int index)
-{
-	//complete overlap
-	
-	if(tree[index]<x)
-	return;
-	if(gb>=0)
-	return;
-	if(ss==se)
-	{
-		if(tree[index]>=x)
-		gb=ss;
-		return;
-	}
-	ll int mid = (ss + se)/2;
-	 query(tree,ss,mid,x,2*index);
-	 query(tree,mid+1,se,x,2*index+1);
-	 return;
 
-}
-//point update
-void point_update(ll int *tree, ll int ss,ll int se, ll int i,ll int inc,ll int index)
-{
-	if(i>se || i<ss)
-	return;
-	if(ss == se)
-	{
-		tree[index] = inc;
-		return;
-	}
-	ll int mid = (ss + se)/2;
-	point_update(tree,ss,mid,i,inc,2*index);
-	point_update(tree,mid+1,se,i,inc,2*index+1);
-	tree[index] = max(tree[2*index],tree[2*index+1]);
-	return;
-}
+
+
+struct segtree {
+    int size;
+    vector<ll> tree;
+
+    void build(int n) {
+        size = 1;
+        while (size < n) size *= 2;
+        tree.assign(2*size, 0);
+    }
+
+    void add(int l, int r, int v) {
+        add(l, r, v, 0, 0, size);
+    }
+
+    void add(int l, int r, int v, int x, int lx, int rx) {
+        if (lx >= r) return;
+        if (rx <= l) return;
+        if (lx >= l && rx <= r) {
+            tree[x] += v;
+            return;
+        }
+
+        int m = (lx + rx) / 2;
+        add(l, r, v, 2*x+1, lx, m);
+        add(l, r, v, 2*x+2, m, rx);
+    }
+
+    ll get(int idx) {
+        return get(idx, 0, 0, size);
+    }
+
+    ll get(int idx, int x, int lx, int rx) {
+        if (rx == lx + 1) {
+            return tree[x];
+        }
+
+        int m = (lx + rx) / 2;
+        if (idx < m)
+            return get(idx, 2*x+1, lx, m) + tree[x];
+        else
+            return get(idx, 2*x+2, m, rx) + tree[x];
+    }
+};
+
+
 
 void solve()
 {
-	int n,q;
-	cin>>n>>q;
-	
-	ll a[n];
-	for(int i=0;i<n;i++)
-	cin>>a[i];
-	ll tree[4*n+1]={0};
-	build_tree(a,0,n-1,tree,1);
+	int n, m;
+    cin >> n >> m;
 
-	while(q--) {
+    segtree st;
+    st.build(n);
 
-		ll num;cin>>num;
-
-		if(num==1) {
-			ll l,r; cin>>l>>r;
-
-			point_update(tree,0,n-1,l,r,1);
-			
-		}else {
-
-
-			ll x;cin>>x;
-
-
-			gb=-1;
-
-
-			query(tree,0,n-1,x,1);
-
-
-			cout<<gb<<endl;
-
-
-		}
-		
-	}
+    int cmd;
+    while (m--) {
+        cin >> cmd;
+        if (cmd == 1) {
+            int l, r, v;
+            cin >> l >> r >> v;
+            st.add(l, r, v);
+        } else {
+            int i;
+            cin >> i;
+            cout << st.get(i) << endl;
+        }
+    }
 
 }
 
@@ -112,3 +93,18 @@ int main()
 
 	return 0;
 }
+
+
+
+/*
+
+
+Hi,
+
+I hope this message finds you well! I came across the Software Development Engineer I - Frontend Technologies (https://bookmyshow.hire.trakstar.com/jobs/fk03w8x/) at CERIDIAN. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
+
+Best regards,
+Shahbaz Khan
+
+
+*/
