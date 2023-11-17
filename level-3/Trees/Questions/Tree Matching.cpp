@@ -71,9 +71,76 @@ int main () {
 
 /*
 
-2 3 
-4 
-5
+testcasse
+10
+8 9
+10 9
+1 4
+7 1
+8 3
+10 5
+4 2
+3 7
+6 4
+
+
+10
+10 9
+3 6
+5 10
+10 3
+1 3
+3 2
+4 2
+7 10
+8 3
+
+
+
+*/
+
+
+
+/*
+
+
+You are given a tree consisting of n nodes. A matching is a set of edges where each node is an endpoint of at most one edge. What is the maximum number of edges in a matching?  
+
+Input The first input line contains an integer n: the number of nodes. The nodes are numbered  1,2,…,n.  Then there are n−1 lines describing the edges. Each line contains two integers a and b: there is an edge between nodes a and b. 
+
+Output
+Print one integer: the maximum number of pairs.  
+Constraints
+1≤n≤2⋅10 ^5 .
+1≤a,b≤n
+
+
+
+
+
+
+
+Today was my 41th day out of the 100 days  hard challenge.
+So today, I solved 5 problems .
+
+
+1. Tree Matching (https://cses.fi/problemset/task/1130).
+
+
+2. Subordinates (https://cses.fi/problemset/task/1674).
+
+
+3. Range Xor Queries (https://cses.fi/problemset/task/1650)
+
+
+4. Josephus Queries (https://cses.fi/problemset/task/2164).
+
+
+5. Counting Rooms (https://cses.fi/problemset/task/1192).
+
+
+#100dayschallenge #challenge #consistency #SegmentTree #lessons
+#learning
 
 
 
