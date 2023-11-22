@@ -21,16 +21,25 @@ struct segtree {
     }
 
     void add(int l, int r, int v, int x, int lx, int rx) {
-        if (lx >= r) return;
-        if (rx <= l) return;
+        
+        if (lx >= r)  return;
+        if (rx <= l)  return;
         if (lx >= l && rx <= r) {
             tree[x] += v;
             return;
         }
 
+
         int m = (lx + rx) / 2;
+
+
         add(l, r, v, 2*x+1, lx, m);
+
+
         add(l, r, v, 2*x+2, m, rx);
+
+
+
     }
 
     ll get(int idx) {
@@ -96,15 +105,3 @@ int main()
 
 
 
-/*
-
-
-Hi,
-
-I hope this message finds you well! I came across the Software Development Engineer I - Frontend Technologies (https://bookmyshow.hire.trakstar.com/jobs/fk03w8x/) at CERIDIAN. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
-
-Best regards,
-Shahbaz Khan
-
-
-*/
