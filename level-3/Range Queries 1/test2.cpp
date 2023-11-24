@@ -139,7 +139,26 @@ Consider an array A of size N: A1 ,A2 ,…,AN ​  , where N is even. The AlterE
 
 
 
+Today was my 49th day out of the 100 days  hard challenge.
+So today, I solved 5 problems .
 
+
+1. Alter Ego (https://www.codechef.com/problems/ALT).
+
+
+2. Minimum XOR (https://www.codechef.com/problems/MINMXOR).
+
+
+3. Best of N Sets (https://www.codechef.com/problems/BESTOFTENNIS)
+
+
+4. B. Applying MAX to Segment (https://codeforces.com/edu/course/2/lesson/5/1/practice/contest/279634/problem/B).
+
+
+5. C. Assignment to Segment (https://codeforces.com/edu/course/2/lesson/5/1/practice/contest/279634/problem/C).
+
+
+#100dayschallenge #challenge #consistency #Cp #lessons  #learning
 
 
 
