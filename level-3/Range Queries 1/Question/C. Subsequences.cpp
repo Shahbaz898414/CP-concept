@@ -29,8 +29,6 @@ long long get(int j, int v) {
 }
 
 
-
-
 void add(int j, int u, long long value) {
 
 
@@ -42,9 +40,12 @@ void add(int j, int u, long long value) {
 
     u = u | (u + 1);
 
+    cout<<a[j][u]<<" ";
+
 
   }
 
+  cout<<endl<<"end"<<endl;
 
 }
 
@@ -81,3 +82,6 @@ int main() {
 
   return 0;
 }
+
+
+
