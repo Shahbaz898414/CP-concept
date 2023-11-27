@@ -25,7 +25,7 @@ int main() {
     // Lambda function
     function<void(int, int)> dfs = [&](int node, int parent) -> void {
         sizes[node] = 1;
-        sum[node] = 1;
+        sum[node] = 0;
 
         int mx = 0;
 
@@ -41,14 +41,16 @@ int main() {
 
 
 
-    auto change = [&] (int node,int child){
+    auto change = [&] (int node,int child) {
+
         sum[node]-=sum[child]+sizes[child];
 
         sizes[node]-=sizes[child];
-        
-        sizes[node]+=sizes[node];
+
+        sizes[child]+=sizes[node];
 
         sum[child] += sum[node]+sizes[node];
+
     };
 
 
