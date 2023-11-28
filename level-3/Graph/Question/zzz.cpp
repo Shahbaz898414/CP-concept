@@ -86,3 +86,16 @@ int main() {
 }
 
 
+/*
+
+
+
+Hi,
+
+I hope this message finds you well! I came across the Software Development Intern (https://docs.google.com/forms/d/e/1FAIpQLSelAjzPgaV9mNsNtN2okz78E2HVrqhWcj5Gin9RT5YxpfRMhw/viewform) at Zeta. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
+
+Best regards,
+Shahbaz Khan
+
+
+*/
