@@ -5,6 +5,8 @@ using namespace std;
 #define ll long long
 #define MAXN 202020
 
+
+
 int main() {
     int n;
     cin >> n;
