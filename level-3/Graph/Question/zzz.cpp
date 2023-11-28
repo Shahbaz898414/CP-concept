@@ -1,101 +1,28 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
-#define ll long long
-#define MAXN 202020
-
-
-
-int main() {
-    int n;
-    cin >> n;
-
-    vector<int> adj[n + 1];
-
-    for (int i = 0; i <n-1; i++) {
-        int u, v;
-        cin >> u >> v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-
-    vector<ll> sizes(n + 1, 0);
-    vector<ll> sum(n + 1, 0);
-    vector<ll> ans(n + 1, 0);
-
-    // Lambda function
-    function<void(int, int)> dfs = [&](int node, int parent) -> void {
-        sizes[node] = 1;
-        sum[node] = 0;
-
-        // int mx = 0;
-
-        for (int child : adj[node]) {
-            if (child != parent) {
-                dfs(child, node);
-
-               sizes[node]+=sizes[child];
-               sum[node]+=sum[child]+sizes[child];
-            }
-        }
-    };
-
-
-
-    auto change = [&] (int node,int child) {
-
-        sum[node]-=sum[child]+sizes[child];
-
-        sizes[node]-=sizes[child];
-
-        sizes[child]+=sizes[node];
-
-        sum[child] += sum[node]+sizes[node];
-
-    };
-
-
-
-    function<void(int,int)> reroot=[&] (int node,int parent){
-        ans[node] = sum[node];
-
-        for(int child:adj[node])
-            if(child!=parent){
-                change(node,child);
-                reroot(child,node);
-                change(child,node);
-            }
-    };
-
-
-
-    dfs(1, 0);
-
-
-    reroot(1,0);
-
-
-    for(int i=1;i<=n;i++){
-        cout<<ans[i]<<" ";
-    }
-
-   
-
-    return 0;
+long long n, x, y, z;
+vector<int> g[1000100];
+void dfs(int v, int f)
+{
+  z = 1 - z;
+  z ? x++ : y++;
+  for (auto it : g[v])
+  {
+    if (it != f)
+      dfs(it, v);
+  }
+  z = 1 - z;
 }
-
-
-/*
-
-
-
-Hi,
-
-I hope this message finds you well! I came across the Software Development Intern (https://docs.google.com/forms/d/e/1FAIpQLSelAjzPgaV9mNsNtN2okz78E2HVrqhWcj5Gin9RT5YxpfRMhw/viewform) at Zeta. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
-
-Best regards,
-Shahbaz Khan
-
-
-*/
+int main()
+{
+  cin >> n;
+  for (int i = 1; i < n; i++)
+  {
+    int a, b;
+    cin >> a >> b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+  dfs(1, 0);
+  cout << ((x * y) - n + 1);
+}
