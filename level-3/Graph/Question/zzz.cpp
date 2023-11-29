@@ -26,3 +26,18 @@ int main()
   dfs(1, 0);
   cout << ((x * y) - n + 1);
 }
+
+
+
+/*
+
+Hi,
+
+I hope this message finds you well! I came across Software Engineer I (https://alliance.wd3.myworkdayjobs.com/en-US/nissanjobs/job/software-engineer-i_r00151957-1) at Walmart. As an aspiring Nissan, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
+
+Best regards,
+Shahbaz Khan
+
+
+
+*/
