@@ -211,25 +211,26 @@ int main() {
 /*
 
 
-Dear Aniket Bajpa,
+Today was my 56th day out of the 100 days  hard challenge.
+So today, I solved 5 problems .
 
-I hope this message finds you well. My name is shahbaz khan, and I am writing to you as a candidate who has recently qualified for the next round in the LimeChat Front-End Developer hiring process.
 
-Firstly, I want to express my gratitude for the opportunity to progress in the selection process. I am enthusiastic about the prospect of contributing to LimeChat's dynamic team and innovative projects.
+1. 1727. Largest Submatrix With Rearrangements (https://leetcode.com/problems/largest-submatrix-with-rearrangements/description/?envType=daily-question&envId=2023-11-26).
 
-I have received communication regarding the assessment test scheduled for tomorrow, November 29, 2023, from 8:00 PM to 9:00 PM IST. However, I have not yet received the link to access the test. I understand the importance of this phase in the hiring process and am keen to participate.
 
-Could you kindly provide me with the necessary link or guide me on the next steps to ensure I can take the assessment tomorrow as scheduled?
+2. T191. Number of 1 Bits (https://leetcode.com/problems/number-of-1-bits/description/?envType=daily-question&envId=2023-11-29).
 
-I appreciate your attention to this matter and am looking forward to the opportunity to demonstrate my skills and passion for contributing to LimeChat's success.
 
-Thank you for your time and consideration.
+3.143. Reorder List (https://leetcode.com/problems/reorder-list/description/)
 
-Warm regards,
 
-Shahbaz Khan
-7710968756
-shahbaz898khan@gmail.com
+4. 160. Intersection of Two Linked Lists (https://leetcode.com/problems/intersection-of-two-linked-lists/description/).
+
+
+5. 25. Reverse Nodes in k-Group (https://leetcode.com/problems/reverse-nodes-in-k-group/description/).
+
+
+#100dayschallenge #challenge #consistency #Cp #lessons  #learning #setmentTree
 
 
 */
