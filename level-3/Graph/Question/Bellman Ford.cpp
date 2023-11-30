@@ -21,7 +21,9 @@ using namespace std;
 
 #define INF  INT_MAX
 
-
+// Question -> You have been given a graph
+// You have to find the shortest distance for every node from some source node
+// You should be able to find the shortest path
 
 vector<int>  bellmanFord(int n,int src,vector<vector<int>>  &edges) {
 
@@ -51,11 +53,33 @@ vector<int>  bellmanFord(int n,int src,vector<vector<int>>  &edges) {
 
 
         dist[u]=min(dist[v],dist[u]+wt);
+
+
         from[v]=u;
+
+
         x=v; 
+
+
       }
+
+
     }
+
+
   }
+
+  int node=n-1;
+
+  vector<int> path={node};
+
+  while(node!=src) {
+    node=from[node];
+    path.push_back(node);
+  }
+
+  reverse(path.begin(),path.end());
+
 
 
   if(x != -1){
@@ -63,69 +87,15 @@ vector<int>  bellmanFord(int n,int src,vector<vector<int>>  &edges) {
   }
 
 
+
   return dist;
   
 }
 
 
-void  printPath(int dest,int src ,vector<int>& parent){
-  
-  
-  vector<int> path;
-
-
-  while(dest!=src) {
-
-
-    path.push_back(dest);
-
-
-    dest=parent[dest];
-
-
-  }
-
-
-  path.push_back(dest);
-
-
-  reverse(path.begin(),path.end());
-
-
-}
 
 
 
-// O(VlogV + ElogV)
-// Single Source Shortest Path
-
-void Dijkstra(int s, int n, vector<ll> &dist, vector<int> &parent, vector<pair<int, ll>> *adj) {
-	dist.assign(n, INF);
-	parent.assign(n, -1);
-	dist[s] = 0;
-	priority_queue <pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> q;
-
-
-	q.push({0, s});
-	while (!q.empty()) {
-		pair<ll, int> here = q.top();
-		q.pop();
-		int v = here.ss;
-		ll d_v = here.ff;
-		if (d_v != dist[v])
-			continue;
-		for (auto edge : adj[v]) {
-			if (dist[v] + edge.ss < dist[edge.ff]) {
-				dist[edge.ff] = dist[v] + edge.ss;
-				parent[edge.ff] = v;
-				q.push({dist[edge.ff], edge.ff});
-
-        parent[edge.ff]=v;
-
-			}
-		}
-	}
-}
 
 
 
@@ -208,29 +178,3 @@ int main() {
 }
 
 
-/*
-
-
-Today was my 56th day out of the 100 days  hard challenge.
-So today, I solved 5 problems .
-
-
-1. 1727. Largest Submatrix With Rearrangements (https://leetcode.com/problems/largest-submatrix-with-rearrangements/description/?envType=daily-question&envId=2023-11-26).
-
-
-2. T191. Number of 1 Bits (https://leetcode.com/problems/number-of-1-bits/description/?envType=daily-question&envId=2023-11-29).
-
-
-3.143. Reorder List (https://leetcode.com/problems/reorder-list/description/)
-
-
-4. 160. Intersection of Two Linked Lists (https://leetcode.com/problems/intersection-of-two-linked-lists/description/).
-
-
-5. 25. Reverse Nodes in k-Group (https://leetcode.com/problems/reverse-nodes-in-k-group/description/).
-
-
-#100dayschallenge #challenge #consistency #Cp #lessons  #learning #setmentTree
-
-
-*/
