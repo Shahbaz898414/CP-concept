@@ -1,0 +1,4 @@
+https://github.com/Priyansh19077/CP-Templates/blob/master/Range%20Queries/Segment_tree.cpp
+
+https://github.com/sharmaharisam/Generic_all_purpose_segtree/blob/main/Segtree.cpp
+

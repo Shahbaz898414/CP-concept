@@ -18,9 +18,9 @@ int main() {
         adj[v].push_back(u);
     }
 
-    vector<int> sizes(n + 1, 0);
-    vector<int> sum(n + 1, 0);
-    vector<int> ans(n + 1, 0);
+    vector<ll> sizes(n + 1, 0);
+    vector<ll> sum(n + 1, 0);
+    vector<ll> ans(n + 1, 0);
 
     // Lambda function
     function<void(int, int)> dfs = [&](int node, int parent) -> void {

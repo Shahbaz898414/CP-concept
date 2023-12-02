@@ -1,33 +1,71 @@
 #include <iostream>
 #include <vector>
-#include <bits/stdc++.h>
 #include <algorithm>
+#include <set>
 
 using namespace std;
 
-int maxLengthNonDecreasing(vector<int>& nums) {
-    int n = nums.size();
-    vector<int> dp(n + 1, 1e9 + 7);
-    dp[0] = 0;
-    int maxlen = 0;
+ int minimumCoins(vector<int>& A) {
 
-    for (int& num : nums) {
-        *upper_bound(dp.begin(), dp.end(), num) = num;
-        maxlen = max(maxlen, int(upper_bound(dp.begin(), dp.end(), num) - dp.begin()));
+
+        int N = A.size();
+        
+       
+        vector<int> dp(N + 5, 1e9); 
+        
+
+        dp[0] = 0; 
+        
+       
+        for(int i = 1; i <= N; i++) {
+
+
+            int sdp = dp[i - 1] + A[i - 1]; 
+            
+
+            for(int j = 0; j <= i; j++) {
+                
+
+                dp[min(N, i + j)] = min(dp[min(N, i + j)], sdp);
+
+
+                cout<<dp[min(N, i + j)]<<" ";
+
+
+            }
+
+            cout<<endl;
+
+
+        }
+        
+
+        return dp[N]; 
+
+
     }
 
-    return maxlen;
-}
+
+
+
 
 int main() {
-    vector<int> nums = {5, 2, 2};
-    cout << maxLengthNonDecreasing(nums) << endl;   // Output: 1
+   
 
-    nums = {1, 2, 3, 4};
-    cout << maxLengthNonDecreasing(nums) << endl;   // Output: 4
+    int n;
+    // cout << "Enter the size of the array: ";
+    cin >> n;
 
-    nums = {4, 3, 2, 6};
-    cout << maxLengthNonDecreasing(nums) << endl;   // Output: 3
+    vector<int> originalArray(n);
+
+    // cout << "Enter the elements of the array: ";
+    for (int i = 0; i < n; i++) {
+        cin >> originalArray[i];
+    }
+
+
+    cout<< minimumCoins(originalArray)<<endl;
+    
 
     return 0;
 }
@@ -37,67 +75,91 @@ int main() {
 /*
 
 
-int mainGFD(vector<int>&arr) 
-    { 
-        int n = arr.size(); 
-        unordered_set<int> cnt; 
-        int main = 0; 
-        for (int i = 0; i < n; i++) 
-            cnt.insert(arr[i]); 
-
-             long long maxHGap = arr[0] - 1;
-    for (int i = 1; i < arr.size(); ++i) {
-        maxHGap = max(maxHGap, (long long)(arr[i] - arr[i - 1] - 1));
+    int dp[1001] = {};
+    int solve(vector<int>& prices, int i){
+        if(i >= prices.size()) return 0;
+        if(dp[i]) return dp[i];
+        int res = INT_MAX;
+        for(int j = i+1; j <= 2*i + 2; ++j){
+            res = min(res, solve(prices, j));
+        }
+        return dp[i] = res + prices[i];
     }
-    maxHGap = max(maxHGap, (long long)(n - arr.back()));
-        for (int i = 0; i < n; i++) { 
-            if (cnt.find(arr[i] - 1) != cnt.end()) { 
-                continue; 
-            } 
-            else { 
-                int j = arr[i]; 
-                while (cnt.find(j) != cnt.end()) 
-                    j++; 
-                main = max(main, j - arr[i]); 
-            } 
-        } 
-        return main; 
-    } 
-     
-     
-    int maximizeSquareHoleArea(int n, int m, vector<int>& hBars, vector<int>& vBars) { 
-        int x= mainGFD(hBars); 
 
-         int a ,b,g=-1; 
-
-             long long maxHGap = hBars[0] - 1;
-        int y= mainGFD(vBars); 
-       long long maxVGap = vBars[0] - 1;
-        if(x==1 || y==1){ 
-            return 4; 
-        } 
-
-         sort(hBars.begin(), hBars.end());
-    sort(vBars.begin(), vBars.end());
-
- 
-    for (int i = 1; i < hBars.size(); ++i) {
-        maxHGap = max(maxHGap, (long long)(hBars[i] - hBars[i - 1] - 1));
+    int minimumCoins(vector<int>& prices) {
+        return solve(prices, 0);
     }
-    maxHGap = max(maxHGap, (long long)(n - hBars.back()));
 
-    // Calculate the maximum gap between vertical bars
+
+
+      int minimumCoins(vector<int>& prices) {
+        int n=prices.size();
+        vector<int> dp(n,1000000000);
+        dp[0]=prices[0];
+        for(int i=1;i<n;i++){
+            if(i==1){
+                dp[1]=dp[0];
+                continue;
+            }
+            int minn=100000000;
+            for(int j=i;j>=0;j--){
+                if(2*j+1>=i && j-1>=0 && prices[j]+dp[j-1]<=minn){
+                    minn=prices[j]+dp[j-1];
+                    dp[i]=min(dp[i],minn);
+                }
+            }
+        }
+        return dp[n-1];
+    }
+
+
+
+
     
-    for (int i = 1; i < vBars.size(); ++i) {
-        maxVGap = max(maxVGap, (long long)(vBars[i] - vBars[i - 1] - 1));
-    }
-    maxVGap = max(maxVGap, (long long)(m - vBars.back()));
+
+class Solution {
+public:
 
 
-    int f= (maxHGap + 1) * (maxVGap + 1)*g;
-        return max( min(x+1,y+1)* min(x+1,y+1),f); 
-         
+   
+
+
+    int minimumCoins(vector<int>& A) {
+
+
+        int N = A.size();
+        
+       
+        vector<int> dp(N + 5, 1e9); 
+        
+
+        dp[0] = 0; 
+        
+       
+        for(int i = 1; i <= N; i++) {
+
+
+            int sdp = dp[i - 1] + A[i - 1]; 
+            
+
+            for(int j = 0; j <= i; j++) {
+                
+
+                dp[min(N, i + j)] = min(dp[min(N, i + j)], sdp);
+
+
+            }
+
+
+        }
+        
+
+        return dp[N]; 
+
+
     }
+};
+
 
 
 */

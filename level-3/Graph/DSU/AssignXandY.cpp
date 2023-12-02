@@ -39,7 +39,7 @@ void  connectXY(int x,int y,vector<int>&leader,vector<int>&teamSize,vector<vecto
     swap(x,y);
   }
 
-  if(teamSize[x]>teamSize[y]){
+  // if(teamSize[x]>teamSize[y]){
     for(auto elements:components[y]) {
 
       leader[elements]=x;
@@ -47,7 +47,18 @@ void  connectXY(int x,int y,vector<int>&leader,vector<int>&teamSize,vector<vecto
     }
     teamSize[x]+=teamSize[y];
     components[y].clear();
-  }
+  // }
+
+
+}
+
+int getTeamSize(int x,vector<int> &leader,vector<int> &teamSize) {
+
+
+  x=leader[x];
+
+
+  return teamSize[x];
 
 
 }
