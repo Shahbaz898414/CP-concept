@@ -5,34 +5,37 @@ using namespace std;
 
 typedef long long ll;
 
-
-
 const ll mod = (10e8) + 7;
 
-
-int main() {
+int main()
+{
   ios_base::sync_with_stdio(0);
   cin.tie(0);
-  
-  
 
- ll k,a,b;cin>>k>>a>>b;
+  ll k, a, b;
+  cin >> k >> a >> b;
 
- string s;cin>>s;
+  string s;
+  cin >> s;
 
- ll len=s.size();
+  ll len = s.size();
 
- if(len<k*a || len>b*k){
-  cout << "No solution";
- }else {
-
- }
-
+  if (len < k * a || len > b * k)
+  {
+    cout << "No solution";
+  }
+  else
+  {
+    int l = 0, r = 0;
+    while (k != 0)
+    {
+      r = (s.size() - l) / k;
+      cout << s.substr(l, r) << endl;
+      l += r;
+      k--;
+    }
+  }
 }
-
-
-
-
 
 /*
 
@@ -42,15 +45,15 @@ using namespace std;
 int k,a,b,l,r,len;
 string s;
 int main(){
-	cin >> k >> a >> b >> s;
-	len=s.size();
-	if (s.size()<(k*a) || s.size()>(k*b))
-		return cout << "No solution",0;
-	for(;k>0;k--){
-		r=(s.size()-l)/k;
-		cout << s.substr(l,r) << endl;
-		l+=r;
-	}
+  cin >> k >> a >> b >> s;
+  len=s.size();
+  if (s.size()<(k*a) || s.size()>(k*b))
+    return cout << "No solution",0;
+  for(;k>0;k--){
+    r=(s.size()-l)/k;
+    cout << s.substr(l,r) << endl;
+    l+=r;
+  }
 }
 
 
