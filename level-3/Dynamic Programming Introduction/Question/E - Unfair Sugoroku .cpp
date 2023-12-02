@@ -110,3 +110,17 @@ int main()
 
   return 0;
 }
+
+
+/*
+
+
+Hi,
+
+I hope this message finds you well! I came across Software Engineering Intern (https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/India-Pune/Software-Engineering-Intern_JR1974418) at Nvidia. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
+
+Best regards,
+Shahbaz Khan
+
+
+*/
