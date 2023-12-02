@@ -40,9 +40,10 @@ int main()
       dp[i] = (dp[i] + dp[i - 2]) % mod;
     }
   }
+  
   cout << dp[n] << endl;
 
-  
+
 }
 
 // ouuokarinn
