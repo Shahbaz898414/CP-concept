@@ -39,24 +39,35 @@ int main() {
 
     for (int i = 0; i < N; i++) {
 
+
         for (int j = X - 1; j >= 0; j--) {
+
 
             if (dp[j]) {
               cout<<j<<" ";
 
+
                 for (int k = 1; k <= B[i]; k++) {
+
 
                     if (j + A[i] * k > X) break;
 
+
                     dp[j + A[i] * k] = true;
 
+
                 }
-                
+
+
             }
+
 
         }
 
+
+
         cout<<endl;
+
 
     }
 
