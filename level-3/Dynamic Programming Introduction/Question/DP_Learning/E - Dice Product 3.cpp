@@ -6,65 +6,82 @@ using namespace std;
 typedef long long ll;
 
 const ll mod = 998244353;
+
+ll binExp(ll a, ll b)
+{
+  ll temp = 1;
+
+  while (b > 0)
+  {
+    if (b & 1)
+      temp = (temp * a) % mod;
+    a = (a * a) % mod;
+
+    b >>= 1;
+  }
+
+  return temp % mod;
+}
+
+ll inv(ll n)
+{
+  return binExp(n, mod - 2) % mod;
+}
+
 ll n;
 
-map<ll,ll> mp;
+map<ll, ll> mp;
 // ll   f[2][100001],a[2][100001];
 
-ll f(ll i){
-  if(i==n)  return 1;
-  if(i>n)  return n;
+ll f(ll i)
+{
+  if (i == n)
+    return 1;
+  if (i > n)
+    return n;
 
-  if(mp.find(i)!=mp.end()){
+  if (mp.find(i) != mp.end())
+  {
     return mp[i];
   }
 
-  ll ans=0;
+  ll ans = 0;
 
-  for (ll x = 2; x <=6; x++)
+  for (ll x = 2; x <= 6; x++)
   {
     /* code */
-    ans=(ans+f(x*i)*inv(5))%mod;
+    ans = (ans + f(x * i) * inv(5)) % mod;
   }
 
-  mp[i]=ans;
+  mp[i] = ans;
 
-  return mp[i]%mod;
-  
+  return mp[i] % mod;
 }
 
-
-void solve(){
-  cin>>n;
-  cout<<f(1)<<endl;
+void solve()
+{
+  cin >> n;
+  cout << f(1) << endl;
 }
 
-int main() {
-
+int main()
+{
 
   ios_base::sync_with_stdio(0);
   cin.tie(0);
 
-
-
   solve();
-
-
 }
-
-
-
-
 
 /*
 
 
-Problem Statement 
+Problem Statement
 You have an integer  1 and a die that shows integers between  1 and  6 (inclusive) with equal probability. You repeat the following operation while your integer is strictly less than  N:  Cast a die. If it shows  x, multiply your integer by  x. Find the probability, modulo  998244353, that your integer ends up being  N.  How to find a probability modulo  998244353? We can prove that the sought probability is always rational. Additionally, under the constraints of this problem, when that value is represented as  Q P ​   with two coprime integers  P and  Q, we can prove that there is a unique integer  R such that  R×Q≡P(mod998244353) and  0≤R<998244353. Find this  R.
 
 
 Constraints
-2≤N≤10^18   
+2≤N≤10^18
 N is an integer.
 
 
