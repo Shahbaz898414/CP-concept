@@ -72,15 +72,100 @@ int main()
   int n, k;
   cin >> n;
   cin >> k;
+
+  vector<vector<char>> grid(n,vector<char>(k,0));
+
+
+  for (ll i = 0; i < n; i++) {
+    
+
+    for (ll j = 0; j < k; j++){
+      
+
+      cin>>grid[i][j];
+
+
+      // cout<<grid[i][j];
+
+
+    }
+
+    // cout<<endl;
+
+  }
+
+  if(grid[0][0]=='#') {
+    cout<<0;
+
+    return 0;
+  }
+
+  vector<vector<ll>> dp(n,vector<ll>(k,-1));
+
+  dp[0][0]=1;
+
+  ll res=1;
+
+  for (int i = 1; i < k; i++)
+  {
+    /* code */
+    if(grid[0][i]=='#') break;
+    dp[0][i]=dp[0][i-1]+1;
+
+    res=max(res,dp[0][i]);
+  }
+  
+
+  for (ll i = 1; i < n; i++)
+  {
+    /* code */
+    if(grid[i][0]=='#'){
+      break;
+    }
+
+    dp[i][0]=dp[i-1][0]+1;
+    res=max(res,dp[i][0]);
+  }
+
+
+
+  for (ll i = 1; i < n; i++)
+  {
+    
+    for (ll j = 1; j <k; j++)
+    {
+      
+      if(grid[i][j]=='.') {
+
+
+        if(grid[i-1][j]=='.' and dp[i-1][j]!=-1){
+          dp[i][j]=dp[i-1][j]+1;
+        }
+
+
+        if(grid[i][j-1]=='.' and dp[i][j-1]!=-1){
+          dp[i][j] = dp[i][j-1]+1;
+        }
+
+
+        res=max(res,dp[i][j]);
+
+
+      }
+    }
+    
+  }
+  
+
+
+cout<<res<<endl;
+  
+  
+
+
   
 }
 
 
 
 
-/*
-
-
-
-
-*/
