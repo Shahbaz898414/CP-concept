@@ -13,14 +13,15 @@ ll binExp(ll a, ll b)
 
   while (b > 0)
   {
-    if (b & 1)
-      temp = (temp * a) % mod;
-    a = (a * a) % mod;
+    if (b & 1) temp = (temp *1LL* a) % mod;
+    a = (a *1LL* a) % mod;
 
     b >>= 1;
   }
 
   return temp % mod;
+
+
 }
 
 ll inv(ll n)
@@ -28,21 +29,25 @@ ll inv(ll n)
   return binExp(n, mod - 2) % mod;
 }
 
+
+
 ll n;
 
-map<ll, ll> mp;
-// ll   f[2][100001],a[2][100001];
+
+map<ll, ll> dp;
+
+
 
 ll f(ll i)
 {
   if (i == n)
     return 1;
   if (i > n)
-    return n;
+    return 0;
 
-  if (mp.find(i) != mp.end())
+  if (dp.find(i) != dp.end())
   {
-    return mp[i];
+    return dp[i];
   }
 
   ll ans = 0;
@@ -53,9 +58,9 @@ ll f(ll i)
     ans = (ans + f(x * i) * inv(5)) % mod;
   }
 
-  mp[i] = ans;
+  dp[i] = ans;
 
-  return mp[i] % mod;
+  return dp[i] % mod;
 }
 
 void solve()
