@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define ll long long
+
 #ifndef ONLINE_JUDGE
 // #include "algo/debug.h"
 #else
@@ -9,31 +11,45 @@ using namespace std;
 #define crndl ;
 #endif
 
-void solve()
-{
+void solve() {
 
-  int n, k, mn = -1, i;
-  cin >> n;
-  int arr[n + 1];
-  for (i = 1; i <= n; i++)
-    cin >> arr[i];
-  for (i = 1; i <= n; i++)
+
+  ll n,k;cin>>n>>k;
+  ll ans=0;
+
+  vector<ll>  adj[n+1],hasCat(n+1);
+
+  for (ll i = 1; i <=n; i++)
   {
-    int j = i;
-    k = 1;
-    while (arr[j] != -1)
-    {
+    /* code */
+    cin>>hasCat[i];
+  }
+  
 
-      // cout<<1<<" ";
-      j = arr[j];
-      k++;
-    }
-
-    // cout<<endl;
-    mn = max(k, mn);
+  for (ll i = 1; i <n; i++) {
+  
+    int x,y;cin>>x>>y;
+    adj[x].push_back(y);
+    adj[y].push_back(x);
   }
 
-  cout << mn << endl;
+  function<void(int,int,int)>  dfs=[&](int node,int parent,int cats){
+    cats=(hasCat[node]?1+cats:0);
+    if(cats>k) return;
+
+    for(auto &i:adj[node]){
+      if(i!=parent)  dfs(i,node,cats);
+    }
+
+    ans+=(adj[node].size()==1 and adj[node][0]==parent);
+  };
+
+  dfs(1,1,0);
+  
+  cout<<ans<<endl;
+  
+
+  
 }
 
 int32_t main()
@@ -63,4 +79,7 @@ int32_t main()
 
   return 0;
 }
+
+
+
 

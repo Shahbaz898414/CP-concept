@@ -24,11 +24,11 @@ void fun(int p, int cnt)
     Max = max(Max, cnt);
 }
 
-int main()
-{
+
+int main() {
+  
     int m,n,k;
-    while(cin>>n)
-    {
+    while(cin>>n) {
         memset(c, 0, sizeof(c));
         memset(w, 0, sizeof(w));
         for(int i = 1; i <= n; i++)
@@ -44,7 +44,10 @@ int main()
                 c[x][w[x]++] = i;
             }
         }
+
+
         fun(0, 0);
+
         printf("%d\n", Max);
     }
     return 0;
