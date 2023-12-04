@@ -43,11 +43,13 @@ int32_t main()
   cin.tie(NULL);
   cout.tie(NULL);
 
+
 // #ifndef ONLINE_JUDGE
 //   freopen("io/input.txt", "r", stdin);
 //   freopen("io/output.txt", "w", stdout);
 //   freopen("io/error.txt", "w", stderr);
 // #endif
+
 
   int t = 1;
   // cin >> t;
