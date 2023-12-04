@@ -28,34 +28,7 @@ ll inv(ll n)
   return binExp(n, mod - 2) % mod;
 }
 
-ll n;
 
-map<ll, ll> dp;
-
-ll f(ll i)
-{
-  if (i == n)
-    return 1;
-  if (i > n)
-    return 0;
-
-  if (dp.find(i) != dp.end())
-  {
-    return dp[i];
-  }
-
-  ll ans = 0;
-
-  for (ll x = 2; x <= 6; x++)
-  {
-    /* code */
-    ans = (ans + f(x * i) * inv(5)) % mod;
-  }
-
-  dp[i] = ans;
-
-  return dp[i] % mod;
-}
 
 // void solve()
 // {
@@ -83,7 +56,7 @@ int main()
   int m;cin>>m;
 
 
-  vector<int>  brr(n+1);
+  vector<int>  brr(m+1);
 
 
 
@@ -92,6 +65,7 @@ int main()
     cin>>brr[i];
     
   }
+
 
   int x;cin>>x;
 
@@ -110,11 +84,11 @@ int main()
   for (int i = 0; i <=x; i++)
   {
     /* code */
-    if(dp[i]) continue;
+    if(!dp[i]) continue;
     for (int j =1; j <=n; j++)
     {
       /* code */
-      int next=i+arr[i];
+      int next=i+arr[j];
       if(next<=x and !trap[next]){
         dp[next]=1;
       }
@@ -125,7 +99,7 @@ int main()
 
   cout<<(dp[x]==1?"Yes":"No")<<endl;
   
-  
+
   
 }
 
