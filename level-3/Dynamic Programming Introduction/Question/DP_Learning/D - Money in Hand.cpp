@@ -44,7 +44,9 @@ int main() {
 
 
             if (dp[j]) {
-              cout<<j<<" ";
+
+
+              cout<<j<<" "<<A[i]<<endl;
 
 
                 for (int k = 1; k <= B[i]; k++) {
@@ -54,6 +56,8 @@ int main() {
 
 
                     dp[j + A[i] * k] = true;
+
+                    cout<<j + A[i] * k<<" ";
 
 
                 }
@@ -81,6 +85,7 @@ int main() {
 
 
 }
+
 
 
 
