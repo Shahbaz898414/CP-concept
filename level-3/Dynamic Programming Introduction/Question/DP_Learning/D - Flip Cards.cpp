@@ -43,39 +43,6 @@ int main()
   int n;
   cin >> n;
 
-  vector<int> arr(n + 1);
-
-  for (int i = 1; i <= n; i++)
-  {
-
-    cin >> arr[i];
-  }
-
-
-  vector<vector<ll>> dp(n + 1, vector<ll>(10, 0));
-
-
-  dp[1][arr[1]] = 1;
-
-
-  for (int i = 1; i <= n - 1; i++) {
-    for (int j = 0; j < 10; j++) {
-
-
-      dp[i + 1][(j + arr[i + 1]) % 10] += dp[i][j];
-      dp[i + 1][(j * arr[i + 1]) % 10] += dp[i][j];
-
-
-      dp[i + 1][(j + arr[i + 1]) % 10] %= mod;
-      dp[i + 1][(j * arr[i + 1]) % 10] %= mod;
-
-
-    }
-  }
-
-
-
-  for (int k = 0; k < 10; k++)
-    cout << dp[n][k] << endl;
+  
   
 }

@@ -83,11 +83,11 @@ int main()
 
   for (int i = 0; i <=x; i++)
   {
-    /* code */
+    
     if(!dp[i]) continue;
     for (int j =1; j <=n; j++)
     {
-      /* code */
+     
       int next=i+arr[j];
       if(next<=x and !trap[next]){
         dp[next]=1;
