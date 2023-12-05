@@ -40,15 +40,16 @@ int main()
   ios_base::sync_with_stdio(0);
   cin.tie(0);
 
-  int n;
-  cin >> n;
+  int n;cin >> n;
+
 
   vector<int> arr(n + 1);
 
-  for (int i = 1; i <= n; i++)
-  {
+
+  for (int i = 1; i <= n; i++) {
 
     cin >> arr[i];
+
   }
 
 
@@ -59,18 +60,26 @@ int main()
 
 
   for (int i = 1; i <= n - 1; i++) {
+
+
     for (int j = 0; j < 10; j++) {
 
 
       dp[i + 1][(j + arr[i + 1]) % 10] += dp[i][j];
+
+
       dp[i + 1][(j * arr[i + 1]) % 10] += dp[i][j];
 
 
       dp[i + 1][(j + arr[i + 1]) % 10] %= mod;
+
+
       dp[i + 1][(j * arr[i + 1]) % 10] %= mod;
 
 
     }
+
+
   }
 
 
