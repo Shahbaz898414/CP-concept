@@ -82,9 +82,42 @@ int main()
 
   }
 
+  for (int i =1; i <=n; i++)
+  {
+    /* code */
+    for (int j = 0; j <10; j++)
+    {
+      /* code */
+      cout<<dp[i][j]<<" ";
+    }
 
+    cout<<endl;
+    
+  }
+
+
+
+  cout<<endl;
+  
 
   for (int k = 0; k < 10; k++)
     cout << dp[n][k] << endl;
   
 }
+
+
+
+/*
+
+
+
+Hi,
+
+I hope this message finds you well! I came across this post of (https://www.linkedin.com/posts/sanialdas_jobalert-softwareengineering-sde-activity-7137421350884818944-PJko?utm_source=share&utm_medium=member_desktop) Software Engineering at Media.net. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!
+
+Best regards,
+Shahbaz Khan
+
+
+
+*/

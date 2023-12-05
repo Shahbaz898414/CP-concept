@@ -17,21 +17,27 @@ void solve() {
         u--;
         v--;
 
+
         graph[u].insert(v);
         graph[v].insert(u);
         connect[v]++;
         connect[u]++;
     }
 
+
     set<pair<int, int>> s;
+
 
     for (int i = 0; i < n; i++) {
         s.insert({connect[i], i});
     }
 
+
     int left = n;
 
+
     vector<ll> v;
+
 
     while (left and k--) {
 
@@ -47,23 +53,30 @@ void solve() {
         left -= v.size();
 
         for (auto u : v) {
-          // 
+            // 
             s.erase(s.find({connect[u], u}));
             // 
             connect[u]--;
 
             for (auto v : graph[u]) {
+
                 s.erase(s.find({connect[v], v}));
+
                 connect[v]--;
 
                 s.insert({connect[v], v});
 
-                graph[v].erase(u);
+                graph[v].erase(graph[v].find(u));
+
             }
+
         }
     }
 
+
     cout << left << endl;
+
+
 }
 
 int main() {
@@ -75,3 +88,14 @@ while(t--)
 
     return 0;
 }
+
+
+
+/*
+1 2
+2 1
+3 5
+4 3
+5 3
+
+*/
