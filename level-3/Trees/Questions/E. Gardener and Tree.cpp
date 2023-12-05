@@ -49,6 +49,7 @@ void solve() {
         for (auto u : v) {
           // 
             s.erase(s.find({connect[u], u}));
+            // 
             connect[u]--;
 
             for (auto v : graph[u]) {
