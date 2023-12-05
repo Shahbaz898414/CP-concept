@@ -1,48 +1,96 @@
-#include <iostream>
-#include <vector>
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+#define ll long long
 
-const ll mod = 998244353;
+#define mod 998244353
 
-ll binExp(ll a, ll b)
-{
-  ll temp = 1;
 
-  while (b > 0)
-  {
-    if (b & 1)
-      temp = (temp * 1LL * a) % mod;
-    a = (a * 1LL * a) % mod;
+ll dp[200001][2];
 
-    b >>= 1;
+ll rec(ll i,bool j,vector<vector<ll>> &a) {
+  // memoization
+  if(dp[i][j]!=-1){
+    return dp[i][j];
   }
 
-  return temp % mod;
+  // Base Case
+  if(i==0)  return dp[i][j]=1;
+
+  // transition
+  ll ans=0;
+
+  if(a[i][j]!=a[i-1][0]){
+    ans=(ans+rec(i-1,0,a))%mod;
+  }
+
+  if(a[i][j]!=a[i-1][1]){
+    ans=(ans+rec(i-1,1,a))%mod;
+  }
+
+
+  return dp[i][j]=ans;
 }
 
-ll inv(ll n)
-{
-  return binExp(n, mod - 2) % mod;
+void solve() {
+   
+   ll n;cin>>n;
+
+   vector<vector<ll>> arr(n+1,vector<ll>(2,-1));
+
+   for (ll i = 0; i < n; i++)
+   {
+    /* code */
+    cin>>arr[i][0]>>arr[i][1];
+   }
+
+   cout<<rec(n,0,arr)<<endl;
+   
+
+
+   
+
+
 }
 
-// void solve()
-// {
-//   cin >> n;
-//   cout << f(1) << endl;
-// }
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+int t=1;
+// cin>>t;
+while(t--)
+    solve();
 
-int main()
-{
-
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-
-  int n;
-  cin >> n;
-
-  
-  
+    return 0;
 }
+
+
+
+/*
+
+1 2
+4 2
+3 4
+
+1
+
+2 1
+4 2
+3 4
+
+2
+
+1 2
+2 4
+3 4
+
+3
+1 2
+2 4
+4 3
+
+4
+
+
+
+*/
