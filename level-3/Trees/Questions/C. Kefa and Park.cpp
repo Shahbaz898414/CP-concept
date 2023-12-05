@@ -42,6 +42,8 @@ void solve() {
     }
 
     ans+=(adj[node].size()==1 and adj[node][0]==parent);
+
+    
   };
 
 
