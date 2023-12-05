@@ -44,12 +44,13 @@ void solve() {
     ans+=(adj[node].size()==1 and adj[node][0]==parent);
   };
 
+
   dfs(1,1,0);
   
+
   cout<<ans<<endl;
   
 
-  
 }
 
 int32_t main()
