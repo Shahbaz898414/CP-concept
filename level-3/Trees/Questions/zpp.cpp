@@ -1,57 +1,153 @@
 #include <iostream>
-#include <stdio.h>
-#include <algorithm>
-#include <cstring> 
-#include <set>
-#include <vector>
-#include <cmath>
-#include <map>
+#include <bits/stdc++.h>
+
 using namespace std;
+#define ll long long
 
-
-
-int c[2020][2020] = {0};
-int w[2020] = {0};
-
-int Max;
-
-void fun(int p, int cnt)
+long long gcd(long long a, long long b)
 {
-    for(int i = 0; i < w[p]; i++)
+    while (b != 0)
     {
-        fun(c[p][i], cnt + 1);
+        long long temp = b;
+        b = a % b;
+        a = temp;
     }
-    Max = max(Max, cnt);
+    return a;
 }
 
+long long lcm(long long a, long long b)
+{
+    return (a / gcd(a, b)) * b;
+}
 
-int main() {
-  
-    int m,n,k;
-    while(cin>>n) {
-        memset(c, 0, sizeof(c));
-        memset(w, 0, sizeof(w));
-        for(int i = 1; i <= n; i++)
+bool findABC(ll N)
+{
+    // If N is divisible by 3, A and B can be N/3 and C can be set to 1, satisfying the equation.
+    int a, b, c;
+    if (N % 3 == 0)
+    {
+
+        //   if(N%2==0){
+        //     cout << N / 3 << " " << N / 3 << " " << 2 << "\n";
+        //   }else
+        //     cout << N / 3 << " " << N / 3 << " " << 1 << "\n";
+
+        return 1;
+    }
+    else
+    {
+        // If N is not divisible by 3, there is no possible solution as per the trick used.
+        return 1;
+    }
+}
+
+int main()
+{
+    int testCases;
+    cin >> testCases;
+
+    for (int t = 0; t < testCases; ++t)
+    {
+        ll arraySize;
+        cin >> arraySize;
+
+        ll a, b, c;
+
+        a = arraySize / 3;
+        b = arraySize / 3;
+        c = 1;
+
+        bool fl = false;
+
+        if (arraySize % 3 == 0)
         {
-            int x;
-            cin>>x;
-            Max = 0;
-            if(x == -1)
-            {
-                c[0][w[0]++] = i;
-            }else
-            {
-                c[x][w[x]++] = i;
-            }
+
+            // if (arraySize % 2 == 0)
+            // {
+            // cout << arraySize / 3 << " " << arraySize / 3 << " " << 2 << "\n";
+            fl = true;
+            // }
+            // else
+
+            // cout << arraySize / 3 << " " << arraySize / 3 << " " << 1 << "\n";
+        }
+        else
+        {
+            // If N is not divisible by 3, there is no possible solution as per the trick used.
+            //    return 0;
+            fl = false;
         }
 
+        ll cnt = 0, g = 0;
 
-        fun(0, 0);
+        // ll lc=lcm(a,b);
 
-        printf("%d\n", Max);
+        ll i = 1;
+
+
+
+        vector<ll> arr, brr;
+
+        ll sum = 0;
+        while (i < arraySize - 1 and findABC(i))
+        {
+
+            ll k;
+            ll j = i;
+
+            // findABC(j);
+
+            if (arraySize % 3 == 0)
+            {
+                brr.push_back(arraySize / 3);
+                brr.push_back(arraySize / 3);
+                brr.push_back(1);
+            }
+
+            while (j < arraySize - 1  and k >= 0)
+            {
+                if (!(((arraySize - i+ sum*g)) % (2 * j) ))
+                {
+
+                    arr.push_back(1);
+
+                    arr.push_back(i);
+
+                    arr.push_back((j * (arraySize - i)) / (2 * j));
+
+                    cnt = 1;
+
+                    break;
+                }
+
+                if(cnt==1) break;
+                j = 2 * j;
+
+                brr.pop_back();
+
+                k = abs(j - i);
+            }
+            i = i * 2;
+
+            sum += abs(2 * j - i + k)*g;
+
+            if(cnt==1) break;
+        }
+
+        if (cnt == 0)
+            cout << -1 << endl;
+        else
+        {
+            for (auto it : arr)
+            {
+                cout << it + sum * g << " ";
+
+                sum = sum / 2;
+            }
+
+            cout << endl;
+        }
     }
+
     return 0;
 }
-
-
-
