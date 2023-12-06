@@ -151,3 +151,64 @@ int main()
 
     return 0;
 }
+
+
+
+/*
+
+
+10 kg aata
+5 packet tel
+1kg tuwal dal
+2kg chana dal
+1/2kg laal masur ki dal
+1/2 kg chana and vatana
+1/4 jira
+1 packet namak
+chura and biscut
+
+wheem bar soup
+
+sarafXL 
+
+khajur
+
+
+
+
+*/
+
+
+/*
+
+
+Today was my 63th day out of the 100 days  hard challenge.
+So today, I solved 5 problems .
+
+
+1. 404 Not Found (https://www.codechef.com/problems/ERROR404).
+
+
+2. Exams  (https://www.codechef.com/problems/EXAMCHEF).
+
+
+3. Reach Codetown (https://www.codechef.com/problems/CODETOWN)
+
+
+4. Beautiful Strings (https://www.codechef.com/problems/BEAUTYSTR).
+
+
+5. Prefixing  (https://www.codechef.com/problems/FIX).
+
+
+6. LCM Mania  (https://www.codechef.com/problems/LCMMANIA).
+
+
+
+
+
+#100dayschallenge #challenge #consistency #Cp #lessons #learning
+#competitiveprogramming
+
+
+*/
