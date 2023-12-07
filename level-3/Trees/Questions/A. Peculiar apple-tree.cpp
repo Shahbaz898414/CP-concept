@@ -3,83 +3,96 @@ using namespace std;
 
 #define ll long long
 
-
-#ifndef ONLINE_JUDGE
+// #ifndef ONLINE_JUDGE
 // #include "algo/debug.h"
-#else
-#define dbg(...) ; 
-#define debug(...) ; 
-#define crndl ; 
-#endif
+// #else
+// #define dbg(...) ;
+// #define debug(...) ;
+// #define crndl ;
+// #endif
 
-const long long N=(long long)(1e5+5);
-const long long inf=(long long)(1e18);
-
+const long long N = (long long)(1e5 + 5);
+const long long inf = (long long)(1e18);
 
 vector<ll> adj[N];
 bool vis[N];
 ll d[N];
-ll maxd=0;
+ll maxd = 0;
 
-
-
-void dfs(ll nd,ll cur){
-	vis[nd]=true;
-	d[cur]++;
-	maxd=max(maxd,cur);
-	for(auto it:adj[nd]){
-		if(!vis[it]){
-			dfs(it,cur+1);
-		}
-	}
-	
-}
-void solve(int tc)
+void dfs(vector<vector<ll>> &al, vector<ll> &ac, ll a, ll depth)
 {
-	ll n;
-	cin>>n;
-	ll a[n+1];
-	for(int i=2;i<=n;i++){
-		cin>>a[i];
-		adj[a[i]].push_back(i);
-		adj[i].push_back(a[i]);
-	}
-	ll cur=0;
-	dfs(1,cur);
-	ll ans=0;
-	for(ll i=0;i<=maxd;i++){
-		ans+=(d[i]%2);
-	}
-	cout<<ans;
-	
-	//Nodes at same depth will contribute either 0 or 1 depending on parity
-	//Editorial approach
-	
-}
+  ac[depth]++;
 
+  // cout<<depth<<" ";
 
-int32_t main() {
-    ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-	#ifndef ONLINE_JUDGE
-    freopen("io/input.txt", "r", stdin);
-    freopen("io/output.txt", "w", stdout);
-    freopen("io/error.txt", "w", stderr);
-    #endif
-	
-	int t = 1;
-	cin >> t;
-	
-	for(int _t = 1; _t <= t; _t++) {
-		// debug(Testcase, _t);
-		solve(t);
-		// crndl;
-	}
-	
-	return 0;
+  for (auto u : al[a])
+  {
+    // cout<<depth<<endl;
+    dfs(al, ac, u, depth + 1);
+    cout<<depth<<endl;
+  }
 }
 
 
 
+void solve() {
+
+  ll n;
+  cin >> n;
+
+  vector<vector<ll>> al(n + 1);
+  vector<ll> ac(n + 1);
+
+  for (ll i = 2; i <= n; i++)
+  {
+    /* code */
+    ll a;
+    cin >> a;
+
+    al[a].push_back(i);
+  }
+
+  dfs(al, ac, 1, 1);
+
+  cout<<endl<<"end"<<endl;
+
+  int ans = 0;
+  for (int i = 0; i <= n; i++)
+  {
+    /* code */
+    cout<<ac[i]<<" ";
+    ans += (ac[i] % 2);
+  }
+
+  cout<<endl;
+
+  cout << ans << endl;
+}
+
+int32_t main()
+{
+
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  // #ifndef ONLINE_JUDGE
+  //   freopen("io/input.txt", "r", stdin);
+  //   freopen("io/output.txt", "w", stdout);
+  //   freopen("io/error.txt", "w", stderr);
+  // #endif
+
+  int t = 1;
+  // cin >> t;
+
+  for (int _t = 1; _t <= t; _t++)
+  {
+    // debug(Testcase, _t);
+    solve();
+    // crndl;
+  }
+
+  return 0;
+}
 
 /*
 
@@ -150,7 +163,7 @@ Now, let's dry run the provided testcase:
          16 17
             |
            18
-  
+
 
        1
       / \
@@ -173,6 +186,10 @@ Now, let's dry run the provided testcase:
 
 
 
+
+ 1 0
+ 2 0
+ 3 0
 
 
 */
