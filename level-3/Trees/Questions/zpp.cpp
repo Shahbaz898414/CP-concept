@@ -138,3 +138,34 @@ signed main()
     }
     return 0;
 }
+
+
+
+/*
+
+
+
+Today was my 66th day out of the 100 days  hard challenge.
+So today, I solved 5 problems .
+
+
+1. Find Common Elements Between Two Arrays (https://leetcode.com/contest/biweekly-contest-119/problems/find-common-elements-between-two-arrays/).
+
+
+2.  Remove Adjacent Almost-Equal Characters  (https://leetcode.com/contest/biweekly-contest-119/problems/remove-adjacent-almost-equal-characters/).
+
+
+3. Length of Longest Subarray With at Most K Frequency (https://leetcode.com/contest/biweekly-contest-119/problems/length-of-longest-subarray-with-at-most-k-frequency/)
+
+
+4. Number of Possible Sets of Closing Branches (https://leetcode.com/contest/biweekly-contest-119/problems/number-of-possible-sets-of-closing-branches/).
+
+
+5. A. Forked! (https://codeforces.com/contest/1904/problem/A).
+
+6. B. Collecting Game (https://codeforces.com/contest/1904/problem/B).
+
+7. C. Array Game (https://codeforces.com/contest/1904/problem/C).
+
+
+*/
