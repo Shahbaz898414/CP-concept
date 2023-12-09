@@ -1,214 +1,140 @@
-#include <iostream>
 #include <bits/stdc++.h>
-
 using namespace std;
-#define ll long long
 
-long long gcd(long long a, long long b)
+#define int long long
+
+typedef long long LL;
+#define PB push_back
+#define F first
+#define S second
+#define ALL(a) a.begin(), a.end()
+#define SET(a, b) memset(a, b, sizeof(a))
+#define SZ(a) (int)(a.size())
+#define FOR(i, a, b) for (int i = (a); i < (int)(b); ++i)
+#define fast_io                       \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
+#define deb(a) cerr << #a << " = " << (a) << endl;
+#define deb1(a)                                    \
+    cerr << #a << " = [ ";                         \
+    for (auto it = a.begin(); it != a.end(); it++) \
+        cerr << *it << " ";                        \
+    cerr << "]\n";
+#define endl "\n"
+const long long mod = 1e9 + 7;
+
+auto find(vector<int> arr)
 {
-    while (b != 0)
+    sort(arr.begin(), arr.end());
+    int ans = arr[1] - arr[0];
+    for (int i = 1; i < arr.size(); i++)
     {
-        long long temp = b;
-        b = a % b;
-        a = temp;
+        ans = min(ans, arr[i] - arr[i - 1]);
     }
-    return a;
+    return ans;
 }
 
-long long lcm(long long a, long long b)
+signed main()
 {
-    return (a / gcd(a, b)) * b;
-}
-
-bool findABC(ll N)
-{
-    // If N is divisible by 3, A and B can be N/3 and C can be set to 1, satisfying the equation.
-    int a, b, c;
-    if (N % 3 == 0)
+    fast_io;
+   
+    int t = 1;
+    cin >> t;
+   while(t--)
     {
+        
 
-        //   if(N%2==0){
-        //     cout << N / 3 << " " << N / 3 << " " << 2 << "\n";
-        //   }else
-        //     cout << N / 3 << " " << N / 3 << " " << 1 << "\n";
-
-        return 1;
-    }
-    else
-    {
-        // If N is not divisible by 3, there is no possible solution as per the trick used.
-        return 1;
-    }
-}
-
-int main()
-{
-    int testCases;
-    cin >> testCases;
-
-    for (int t = 0; t < testCases; ++t)
-    {
-        ll arraySize;
-        cin >> arraySize;
-
-        ll a, b, c;
-
-        a = arraySize / 3;
-        b = arraySize / 3;
-        c = 1;
-
-        bool fl = false;
-
-        if (arraySize % 3 == 0)
+        int n,h=0;
+        cin >> n;
+        int k;
+        cin >> k;
+        vector<int> re(n);
+        for (int i = 0; i < n; i++)
         {
-
-            // if (arraySize % 2 == 0)
-            // {
-            // cout << arraySize / 3 << " " << arraySize / 3 << " " << 2 << "\n";
-            fl = true;
-            // }
-            // else
-
-            // cout << arraySize / 3 << " " << arraySize / 3 << " " << 1 << "\n";
+            cin >> re.at(i);
         }
+
+        if (k >= 3)
+        {
+            cout << 0 << endl;
+            continue;
+        }
+
+        int ans = find(re);
+
+        vector<int> dr(n,INT_MAX);
+
+        sort(re.begin(), re.end());
+
+        if (k == 1)
+            cout << min({re[0], find(re)}) << endl;
         else
         {
-            // If N is not divisible by 3, there is no possible solution as per the trick used.
-            //    return 0;
-            fl = false;
-        }
 
-        ll cnt = 0, g = 0;
+            int y = n;
 
-        // ll lc=lcm(a,b);
-
-        ll i = 1;
-
-
-
-        vector<ll> arr, brr;
-
-        ll sum = 0;
-        while (i < arraySize - 1 and findABC(i))
-        {
-
-            ll k;
-            ll j = i;
-
-            // findABC(j);
-
-            if (arraySize % 3 == 0)
+            for (int operation = 0; operation < k; ++operation)
             {
-                brr.push_back(arraySize / 3);
-                brr.push_back(arraySize / 3);
-                brr.push_back(1);
+
+                auto maxElem = max_element(re.begin(), re.end());
+
+                long long diff = *maxElem - accumulate(re.begin(), re.end(), 0LL) / y;
+
+                dr.push_back(diff);
+
+                y++;
             }
 
-            while (j < arraySize - 1  and k >= 0)
+            int ans1 = find(re),ans2=y;
+
+
+
+            sort(dr.begin(), dr.end());
+             // if (ind < n && ind >= 0){
+                    //     ans2 = min(ans2, abs(dr[ind] - gf));
+                    //     ans1 = min(ans1, abs(re[ind] - main));
+                    // }
+                    // ind--;
+                    // if (ind < n && ind >= 0){
+                    //     ans2 = min(ans2, abs(dr[ind] - gf));
+                    //     ans1 = min(ans1, abs(re[ind] - main));
+                    // }
+            sort(re.begin(), re.end());
+            for (int i = 0; i < n; i++)
             {
-                if (!(((arraySize - i+ sum*g)) % (2 * j) ))
+                FOR(j, i + 1, n)
                 {
 
-                    arr.push_back(1);
+                    int gf=abs(dr[i] - dr[j]);
+                     // if (ind < n && ind >= 0){
+                    //     ans2 = min(ans2, abs(dr[ind] - gf));
+                    //     ans1 = min(ans1, abs(re[ind] - main));
+                    // }
+                    // ind--;
+                    // if (ind < n && ind >= 0){
+                    //     ans2 = min(ans2, abs(dr[ind] - gf));
+                    //     ans1 = min(ans1, abs(re[ind] - main));
+                    // }
+                    
 
-                    arr.push_back(i);
+                    int main = abs(re[i] - re[j]);
 
-                    arr.push_back((j * (arraySize - i)) / (2 * j));
-
-                    cnt = 1;
-
-                    break;
+                    int ind = lower_bound(re.begin(), re.end(), main) - re.begin();
+                    // int idx=lower_bound(dr.begin(), dr.end(), gf) - re.begin();
+                    if (ind < n && ind >= 0){
+                        ans2 = min(ans2, abs(dr[ind] - gf));
+                        ans1 = min(ans1, abs(re[ind] - main));
+                    }
+                    ind--;
+                    if (ind < n && ind >= 0){
+                        ans2 = min(ans2, abs(dr[ind] - gf));
+                        ans1 = min(ans1, abs(re[ind] - main));
+                    }
                 }
-
-                if(cnt==1) break;
-                j = 2 * j;
-
-                brr.pop_back();
-
-                k = abs(j - i);
-            }
-            i = i * 2;
-
-            sum += abs(2 * j - i + k)*g;
-
-            if(cnt==1) break;
-        }
-
-        if (cnt == 0)
-            cout << -1 << endl;
-        else
-        {
-            for (auto it : arr)
-            {
-                cout << it + sum * g << " ";
-
-                sum = sum / 2;
             }
 
-            cout << endl;
+            cout << max(ans1 ,ans2*h)<< endl;
         }
     }
-
     return 0;
 }
-
-
-
-/*
-
-
-10 kg aata
-5 packet tel
-1kg tuwal dal
-2kg chana dal
-1/2kg laal masur ki dal
-1/2 kg chana and vatana
-1/4 jira
-1 packet namak
-chura and biscut
-
-wheem bar soup
-
-sarafXL 
-
-khajur
-
-
-
-
-*/
-
-
-/*
-
-
-Today was my 63th day out of the 100 days  hard challenge.
-So today, I solved 5 problems .
-
-
-1. 404 Not Found (https://www.codechef.com/problems/ERROR404).
-
-
-2. Exams  (https://www.codechef.com/problems/EXAMCHEF).
-
-
-3. Reach Codetown (https://www.codechef.com/problems/CODETOWN)
-
-
-4. Beautiful Strings (https://www.codechef.com/problems/BEAUTYSTR).
-
-
-5. Prefixing  (https://www.codechef.com/problems/FIX).
-
-
-6. LCM Mania  (https://www.codechef.com/problems/LCMMANIA).
-
-
-
-
-
-#100dayschallenge #challenge #consistency #Cp #lessons #learning
-#competitiveprogramming
-
-
-*/
