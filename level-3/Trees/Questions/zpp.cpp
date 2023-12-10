@@ -349,3 +349,16 @@ Shahbaz Khan
 
 
 */
+
+
+/*
+
+Amazon logo
+AmazonAmazon
+7 yrs 5 mos7 yrs 5 mos
+Software Development EngineerSoftware Development Engineer
+Full-timeFull-time
+Aug 2022 - Present · 1 yr 5 mosAug 2022 - Present · 1 yr 5 mos
+Greater Seattle Area
+
+*/
