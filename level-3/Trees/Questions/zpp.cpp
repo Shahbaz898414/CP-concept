@@ -306,10 +306,46 @@ int main()
 /*
 Hi,
 
-I hope this message finds you well! I came across the Software Engineering intern (https://jobs.careers.microsoft.com/us/en/job/1577325/Software-Engineering---Internship-Opportunities?jobsource=linkedin) at Microsoft. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!.
+I hope this message finds you well! I came across the Backend Engineer Intern (Node.js) (https://openinapp.freshteam.com/jobs/K3IvDym3XQpD/backend-engineer-intern-node-js?ft_source=6000312750&ft_medium=6000257244) at OpeninApp. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!.
 
 Best regards,
 Shahbaz Khan
+
+
+
+
+*/
+
+
+/*
+
+ rakshittiwari02@gmail.com
+
+Subject: Application for Full-Time Internship - MERN Stack Skills
+
+Dear Rakshit,
+
+I hope this message finds you well. My name is shahbaz, and I am writing to express my enthusiastic interest in the Full-Time Intern position with a duration of 3-6 months, as advertised. The prospect of contributing to innovative projects remotely aligns perfectly with my skills and aspirations.
+
+About Me:
+I am a dedicated and detail-oriented individual with a strong foundation in MERN stack development. Having successfully completed coursework in Object-Oriented Programming, Open Source Software Engineering, and hands-on projects like project Fair, I am excited about the opportunity to apply my skills in a real-world setting.
+
+Why I'm a Great Fit:
+
+MERN Stack Proficiency: My coursework and practical experience have equipped me with a solid understanding of MongoDB, Express.js, React.js, and Node.js.
+Enthusiastic Learner: I thrive on new challenges and am eager to expand my knowledge in a professional environment. The dynamic nature of your projects resonates with my enthusiasm for continuous learning.
+Team Player Attitude: I understand the importance of collaboration and effective communication in a remote work setup. My experience as Null Class and TLE has honed my ability to work seamlessly within a team.
+Duration and Budget:
+The prospect of a 3-6 month internship, with the potential for a PPO in the future, is an exciting opportunity for me to contribute meaningfully to your team. The budget range of ₹5000 - ₹10,000 per month is reasonable and aligns with my expectations.
+
+Ready to Dive In:
+Enclosed is my resume that provides additional details about my educational background, skills, and relevant experiences. I am eager to discuss how my skills and passion for MERN stack development can contribute to the success of The Internet Folks.
+
+Thank you for considering my application. I have sent my resume and a brief introduction to rakshittiwari02@gmail.com as per your instructions. I look forward to the possibility of creating something amazing together.
+
+Best Regards,
+Shahbaz Khan
+7710968756
 
 
 */
