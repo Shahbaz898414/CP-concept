@@ -2,6 +2,7 @@
 using namespace std;
 #define ll long long
 vector<ll> a1, b1;
+
 ll si;
 ll bs(ll l, ll h, ll k)
 {
@@ -37,6 +38,8 @@ ll bs(ll l, ll h, ll k)
         return -1;
     }
 }
+
+
 void dfs(ll i, ll a[], ll b[], ll ans[], vector<ll> adj[], bool v[])
 {
     v[i] = true;
@@ -69,6 +72,8 @@ void dfs(ll i, ll a[], ll b[], ll ans[], vector<ll> adj[], bool v[])
     b1.pop_back();
     si--;
 }
+
+
 int main()
 {
     ios_base::sync_with_stdio(false);
