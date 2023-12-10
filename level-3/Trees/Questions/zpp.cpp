@@ -1,150 +1,316 @@
+#include <iostream>
+#include <vector>
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
 
-typedef long long LL;
-#define PB push_back
-#define F first
-#define S second
-#define ALL(a) a.begin(), a.end()
-#define SET(a, b) memset(a, b, sizeof(a))
-#define SZ(a) (int)(a.size())
-#define FOR(i, a, b) for (int i = (a); i < (int)(b); ++i)
-#define fast_io                       \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL)
-#define deb(a) cerr << #a << " = " << (a) << endl;
-#define deb1(a)                                    \
-    cerr << #a << " = [ ";                         \
-    for (auto it = a.begin(); it != a.end(); it++) \
-        cerr << *it << " ";                        \
-    cerr << "]\n";
-#define endl "\n"
-const long long mod = 1e9 + 7;
 
-auto find(vector<int> arr)
+int numberOfGoodPartitions(vector<int> &nums)
 {
-    sort(arr.begin(), arr.end());
-    int ans = arr[1] - arr[0];
-    for (int i = 1; i < arr.size(); i++)
+    int n = nums.size();
+    vector<long long> dp1(n + 1, 0);
+
+    vector<int> arr;
+
+    unordered_map<int, long long> dp;
+
+    map<int, int> left;
+    unordered_map<int, int> rightOccurrence;
+
+    dp1[0] = 1;
+
+    for (int i = 0; i < n; i++)
     {
-        ans = min(ans, arr[i] - arr[i - 1]);
+        if (left.find(nums[i]) == left.end())
+        {
+            left[nums[i]] = i;
+        }
+        rightOccurrence[nums[i]] = i;
+    }
+
+    for (int i = 1; i <= n; ++i)
+    {
+        dp1[i] = (2 * dp1[i - 1]) % MOD;
+
+        if (rightOccurrence[nums[i - 1]] != i - 1)
+        {
+            dp1[i] = (dp1[i] - dp1[rightOccurrence[nums[i - 1]]] + MOD) % MOD;
+        }
+
+        rightOccurrence[nums[i - 1]] = i - 1;
+    }
+
+    int j = 0, right = 0;
+    for (int i = 0; i < n; i++)
+    {
+        right = max(right, rightOccurrence[nums[i]]);
+        if (right == i)
+        {
+            arr.push_back(j);
+            j = i + 1;
+        }
+    }
+
+    long long gf = arr.size();
+    long long cnt = 0, prev = 1;
+    for (int i = 0; i < gf; i++)
+    {
+        cnt = prev % MOD;
+        prev = (prev + cnt) % MOD;
+    }
+
+    return static_cast<int>(dp1[n] - 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+int mod = 1000000007;
+int numberOfGoodPartitions(vector<int> &nums)
+{
+    vector<int> arr;
+
+    map<int, int> left, right;
+
+    int n = nums.size();
+
+    for (int i = 0; i < n; i++)
+    {
+        if (left.find(nums[i]) == left.end())
+        {
+            left[nums[i]] = i;
+        }
+        right[nums[i]] = i;
+    }
+
+    int j = 0, r = 0;
+    for (int i = 0; i < n; i++)
+    {
+        r = max(r, right[nums[i]]);
+        if (r == i)
+        {
+            arr.push_back(j);
+            j = i + 1;
+        }
+    }
+
+    long long m = arr.size();
+    long long ans = 0, prev = 1;
+    for (int i = 0; i < m; i++)
+    {
+        ans = prev % mod;
+        prev = (prev + ans) % mod;
     }
     return ans;
 }
 
-signed main()
+const int MOD = 1000000007;
+int numberOfGoodPartitions(vector<int> &nums)
 {
-    fast_io;
-   
-    int t = 1;
-    cin >> t;
-   while(t--)
+
+     int n = nums.size();
+    vector<long long> dp1(n + 1, 0);
+
+     vector<int> arr;
+std::unordered_map<int, long long> dp;
+    map<int, int> left, right;
+
+    unordered_map<int, int> lastOccurrence;
+
+    for (int i = 0; i < n; i++)
     {
-        
-
-        int n,h=0;
-        cin >> n;
-        int k;
-        cin >> k;
-        vector<int> re(n);
-        for (int i = 0; i < n; i++)
+        if (left.find(nums[i]) == left.end())
         {
-            cin >> re.at(i);
+            left[nums[i]] = i;
+        }
+        right[nums[i]] = i;
+    }
+
+    dp1[0] = 1;
+    for (int i = 1; i <= n; ++i) {
+        dp1[i] = (2 * dp1[i - 1]) % MOD;
+
+        if (lastOccurrence.find(nums[i - 1]) != lastOccurrence.end()) {
+            dp1[i] = (dp1[i] - dp1[lastOccurrence[nums[i - 1]] - 1] + MOD) % MOD;
         }
 
-        if (k >= 3)
+        lastOccurrence[nums[i - 1]] = i;
+    }
+
+
+    int j = 0, r = 0;
+    for (int i = 0; i < n; i++)
+    {
+        r = max(r, right[nums[i]]);
+        if (r == i)
         {
-            cout << 0 << endl;
-            continue;
-        }
-
-        int ans = find(re);
-
-        vector<int> dr(n,INT_MAX);
-
-        sort(re.begin(), re.end());
-
-        if (k == 1)
-            cout << min({re[0], find(re)}) << endl;
-        else
-        {
-
-            int y = n;
-
-            for (int operation = 0; operation < k; ++operation)
-            {
-
-                auto maxElem = max_element(re.begin(), re.end());
-
-                long long diff = *maxElem - accumulate(re.begin(), re.end(), 0LL) / y;
-
-                dr.push_back(diff);
-
-                y++;
-            }
-
-            int ans1 = find(re),ans2=y;
-
-
-
-            sort(dr.begin(), dr.end());
-             // if (ind < n && ind >= 0){
-                    //     ans2 = min(ans2, abs(dr[ind] - gf));
-                    //     ans1 = min(ans1, abs(re[ind] - main));
-                    // }
-                    // ind--;
-                    // if (ind < n && ind >= 0){
-                    //     ans2 = min(ans2, abs(dr[ind] - gf));
-                    //     ans1 = min(ans1, abs(re[ind] - main));
-                    // }
-            sort(re.begin(), re.end());
-            for (int i = 0; i < n; i++)
-            {
-                FOR(j, i + 1, n)
-                {
-
-                    int gf=abs(dr[i] - dr[j]);
-                     // if (ind < n && ind >= 0){
-                    //     ans2 = min(ans2, abs(dr[ind] - gf));
-                    //     ans1 = min(ans1, abs(re[ind] - main));
-                    // }
-                    // ind--;
-                    // if (ind < n && ind >= 0){
-                    //     ans2 = min(ans2, abs(dr[ind] - gf));
-                    //     ans1 = min(ans1, abs(re[ind] - main));
-                    // }
-                    
-
-                    int main = abs(re[i] - re[j]);
-
-                    int ind = lower_bound(re.begin(), re.end(), main) - re.begin();
-                    // int idx=lower_bound(dr.begin(), dr.end(), gf) - re.begin();
-                    if (ind < n && ind >= 0){
-                        ans2 = min(ans2, abs(dr[ind] - gf));
-                        ans1 = min(ans1, abs(re[ind] - main));
-                    }
-                    ind--;
-                    if (ind < n && ind >= 0){
-                        ans2 = min(ans2, abs(dr[ind] - gf));
-                        ans1 = min(ans1, abs(re[ind] - main));
-                    }
-                }
-            }
-
-            cout << max(ans1 ,ans2*h)<< endl;
+            arr.push_back(j);
+            j = i + 1;
         }
     }
-    return 0;
+
+
+     long long result = 0;
+  long long sum = 0;
+
+   for (int i = 0; i < n; ++i) {
+    dp[nums[i]] = (dp[nums[i]] + sum + 1) % MOD;
+    sum = (sum + dp[nums[i]]) % MOD;
+  }
+
+
+
+    long long m = arr.size(),h=0;
+    long long ans = 0, prev = 1;
+    for (int i = 0; i < m; i++)
+    {
+        ans = prev % mod;
+        prev = (prev + ans) % mod;
+    }
+
+
+
+    for (auto &pair : dp) {
+        result = (result + pair.second) % MOD;
+    }
+        result*=h;
+
+    return max(ans,result);
+
+    
+
+
 }
 
+long long countSubarrays(vector<int> &nums, int k)
+{
+    int n = nums.size();
+    long long result = 0;
+    std::stack<int> st;
+    std::vector<int> right(n, n);
+
+    long long mx1 = 0;
+    for (auto ti : nums)
+        mx1 = max(mx1, (long long)ti);
+
+    for (int i = 0; i < n; ++i)
+    {
+        while (!st.empty() && nums[i] > nums[st.top()])
+        {
+            right[st.top()] = i;
+            st.pop();
+        }
+        st.push(i);
+    }
+
+    long long ans = 0, h = 0;
+
+    int i = 0, main = 0;
+    bool fl = false;
+
+    while (!st.empty())
+        st.pop();
+
+    int index = 0;
+
+    for (int j = 0; j < nums.size(); j++)
+    {
+        if (nums[j] == mx1)
+        {
+            main++;
+        }
+
+        while (main == k)
+        {
+            fl = true;
+            if (nums[i] == mx1)
+                main--;
+            i++;
+        }
+
+        if (fl)
+        {
+            ans += (i);
+        }
+    }
+
+    while (index < n)
+    {
+        int j = right[index];
+        int count = 0;
+        while (index < j)
+        {
+            int dup = 1;
+            while (index + 1 < j && nums[index] == nums[index + 1])
+            {
+                ++index;
+                ++dup;
+            }
+            count += dup;
+            ++index;
+        }
+        if (count >= k)
+        {
+            result += n - j;
+        }
+        else
+        {
+            index = j;
+        }
+    }
+
+    return max(ans, h * result);
+}
+
+int main()
+{
+
+    cout << pow(2, 3) << endl;
+    // // Example 1
+    // vector<vector<int>> variables1 = {{2, 3, 3, 10}, {3, 3, 3, 1}, {6, 1, 1, 4}};
+    // int target1 = 2;
+    // vector<int> result1 = findGoodIndices(variables1, target1);
+    // cout << "Example 1 Output: [";
+    // for (int i = 0; i < result1.size(); ++i) {
+    //     cout << result1[i];
+    //     if (i < result1.size() - 1) {
+    //         cout << ", ";
+    //     }
+    // }
+    // cout << "]" << endl;
+
+    // // Example 2
+    // vector<vector<int>> variables2 = {{39, 3, 1000, 1000}};
+    // int target2 = 17;
+    // vector<int> result2 = findGoodIndices(variables2, target2);
+    // cout << "Example 2 Output: [";
+    // for (int i = 0; i < result2.size(); ++i) {
+    //     cout << result2[i];
+    //     if (i < result2.size() - 1) {
+    //         cout << ", ";
+    //     }
+    // }
+    // cout << "]" << endl;
+
+    return 0;
+}
 
 
 /*
 
 
+mujhe bure logo se nafrat hai wo khud ko sabse behtar samjhte hai
+jab ki unme akal aur insaaniyat dono ek dam na ke barabar hoti
 
+magar achhe log aur bure hote hai kyuki wo un bure logo ko maaf kar dete  hai or  unhe lagta hai ki unhone koi mahan kaam kiya hai
 
+Aisi chijo se mera dimaag  kharab ho jata hai
 
 */
