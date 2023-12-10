@@ -304,13 +304,12 @@ int main()
 
 
 /*
+Hi,
 
+I hope this message finds you well! I came across the Software Engineering intern (https://jobs.careers.microsoft.com/us/en/job/1577325/Software-Engineering---Internship-Opportunities?jobsource=linkedin) at Microsoft. As an aspiring Software Engineer, I admire the company's innovative work. If possible, could you kindly refer me? I'd greatly appreciate it!.
 
-mujhe bure logo se nafrat hai wo khud ko sabse behtar samjhte hai
-jab ki unme akal aur insaaniyat dono ek dam na ke barabar hoti
+Best regards,
+Shahbaz Khan
 
-magar achhe log aur bure hote hai kyuki wo un bure logo ko maaf kar dete  hai or  unhe lagta hai ki unhone koi mahan kaam kiya hai
-
-Aisi chijo se mera dimaag  kharab ho jata hai
 
 */
