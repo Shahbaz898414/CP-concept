@@ -55,6 +55,8 @@ int main()
       // degree[b]++;
     }
 
+
+
     for (auto it : adj)
     {
       for (auto i : it)
@@ -63,6 +65,12 @@ int main()
       }
       cout << endl;
     }
+
+
+
   }
   return 0;
 }
+
+
+// 
