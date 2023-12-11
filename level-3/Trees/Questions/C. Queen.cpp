@@ -71,28 +71,3 @@ int main() {
 }
 
 
-/*
-
-Today was my 67th day out of the 100 days  hard challenge.
-So today, I solved 5 problems .
-
-
-1. Count Tested Devices After Test Operations (https://leetcode.com/contest/weekly-contest-375/problems/count-tested-devices-after-test-operations/).
-
-
-2. Double Modular Exponentiation  (https://leetcode.com/contest/weekly-contest-375/problems/double-modular-exponentiation/).
-
-
-3. Count Subarrays Where Max Element Appears at Least K Times (https://leetcode.com/contest/weekly-contest-375/problems/count-subarrays-where-max-element-appears-at-least-k-times/)
-
-
-4. Count the Number of Good Partitions (https://leetcode.com/contest/weekly-contest-375/problems/count-the-number-of-good-partitions/).
-
-
-5. C. Queen (https://codeforces.com/problemset/problem/1143/C).
-
-
-
-
-
-*/
