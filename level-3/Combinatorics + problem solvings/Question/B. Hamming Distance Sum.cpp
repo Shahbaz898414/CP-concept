@@ -15,16 +15,22 @@ int main()
   for (auto i = 0; i < b.size(); i++)
     x[i + 1] = x[i] + (b[i] - '0');
 
+
   int l = b.size() - a.size() + 1;
+
+
   long long ans = 0;
 
-  for (auto i = 0; i < a.size(); i++)
-  {
+
+
+  for (auto i = 0; i < a.size(); i++) {
     if (a[i] == '0')
       ans += abs(x[i] - x[i + l]);
     else
       ans += l - abs(x[i] - x[i + l]);
   }
+
+
   cout << ans;
 }
 
