@@ -44,7 +44,7 @@ void solve() {
     cin>>arr[i][0]>>arr[i][1];
    }
 
-   cout<<rec(n,0,a)<<endl;
+   cout<<rec(n,0,arr)<<endl;
    
 
 
