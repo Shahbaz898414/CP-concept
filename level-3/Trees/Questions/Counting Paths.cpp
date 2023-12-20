@@ -2,6 +2,8 @@
 using namespace std;
 #define ll long long
 
+
+
 bool dfs(int node, int parent, vector<vector<ll>> &adj, vector<ll> &color, vector<ll> &ones)
 {
   bool fl = true;
@@ -73,4 +75,8 @@ int main()
 }
 
 
-// 
+/*
+
+
+
+*/

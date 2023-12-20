@@ -58,12 +58,16 @@ sher fir bhi coding karega .
 3. B. Permutation Swap (https://codeforces.com/contest/1828/problem/B)
 
 
-4. B. Hamming Distance Sum (https://lnkd.in/dqqsDr-J).
+4. D. Buying Shovels (https://codeforces.com/contest/1360/problem/D).
 
 
-5. B. Polo the Penguin and Houses (https://lnkd.in/dqD6dBbx).
+5. A. k-Factorization (https://codeforces.com/contest/797/problem/A).
 
 
+
+
+#100dayschallenge #challenge #consistency #Cp #lessons #learning
+#competitiveprogramming
 */
 
 
