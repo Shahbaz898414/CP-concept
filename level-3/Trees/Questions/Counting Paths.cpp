@@ -38,8 +38,8 @@ int main()
 
   for (; t--;)
   {
-    ll n, x;
-    cin >> n >> x;
+    ll n, q;
+    cin >> n >> q;
 
     // vector<ll>  degree(n+1);
 
@@ -59,15 +59,10 @@ int main()
 
 
 
-    for (auto it : adj)
-    {
-      for (auto i : it)
-      {
-        cout << i << " ";
-      }
-      cout << endl;
-    }
+    //  dfs(adj,1,-1,0);
+    int timer=0;
 
+    vector<int> pref(n+1,0);
 
 
   }
