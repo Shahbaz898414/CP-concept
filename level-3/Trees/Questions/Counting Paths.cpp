@@ -36,7 +36,7 @@ int main()
 
   ll t = 1;
 
-  // cin >> t;
+  cin >> t;
 
   for (; t--;)
   {
