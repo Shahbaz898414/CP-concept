@@ -26,6 +26,8 @@ bool dfs(int node, int parent, vector<vector<ll>> &adj, vector<ll> &color, vecto
   return color[node] == 1;
 }
 
+
+
 int main()
 {
   ios_base::sync_with_stdio(false);

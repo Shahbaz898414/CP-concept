@@ -28,13 +28,13 @@ int main(){
             std::cin >> A[i];
         }
 
-        // Find the maximum element as the target value to match
+       
         int maxElement = *max_element(A.begin(), A.end());
         long long operations = 0;
 
-        // Calculate the number of operations needed
+       
         for (int i = 0; i < N; ++i) {
-            // Add the number of steps needed to raise A[i] to maxElement
+            
             if (A[i] < maxElement) {
                 operations += (maxElement - A[i] - 1) / M + 1;
             }
